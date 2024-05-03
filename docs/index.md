@@ -99,7 +99,6 @@ addopts = "--doctest-modules"
 [tool.isort]
 profile = "black"
 line_length = 79
-
 [tool.taskipy.tasks]
 check = "black --check --diff . && isort --check --diff ."
 correct = "black . && isort ."
