@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>My Docs</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="setup/" class="nav-link">Setup</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="setup/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#projeto-django-tela-inicial" class="nav-link">Projeto Django - Tela Inicial</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#introducao" class="nav-link">Introdução</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#recomendado" class="nav-link">Recomendado:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#como-executar" class="nav-link">Como Executar</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#conclusao" class="nav-link">Conclusão</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#padroes-de-codificacao" class="nav-link">Padrões de Codificação</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#ferramentas-de-formatacao-de-codigo" class="nav-link">Ferramentas de Formatação de Código</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configuracao-do-editorconfig" class="nav-link">Configuração do .editorconfig</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configuracao-do-taskipy" class="nav-link">Configuração do Taskipy</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="projeto-django-tela-inicial">Projeto Django - Tela Inicial</h1>
+<h2 id="introducao">Introdução</h2>
+<p>Este é um guia para  projeto Adote Um Pet. Ele inclui instruções sobre como configurar um ambiente virtual, instalar pacotes necessários e executar o projeto.</p>
+<h2 id="recomendado">Recomendado:</h2>
+<p><code>PYTHON &gt;= 3.11</code>
+<code>Django == 5.0.3</code></p>
+<h2 id="como-executar">Como Executar</h2>
+<p>Para executar o projeto, siga as etapas abaixo:</p>
+<h3 id="1-criacao-de-ambiente-virtual">1. Criação de Ambiente Virtual</h3>
+<p>Para isolar as dependências do projeto, é recomendável criar um ambiente virtual. Utilize o seguinte comando:</p>
+<pre><code class="language-bash"># No diretório do seu projeto
+python -m venv venv
+</code></pre>
+<h3 id="2-ativacao-do-ambiente-virtual">2. Ativação do Ambiente Virtual</h3>
+<h4 id="windows">Windows</h4>
+<pre><code class="language-bash">venv\Scripts\activate
+</code></pre>
+<h4 id="linux">Linux</h4>
+<pre><code class="language-bash">source venv/bin/activate
+</code></pre>
+<h3 id="3-instalacao-de-pacotes">3. Instalação de Pacotes</h3>
+<p>Com o ambiente virtual ativado, instale os pacotes necessários usando o <code>pip</code>:</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+<p>Certifique-se de ter um arquivo <code>requirements.txt</code> com as dependências do seu projeto.</p>
+<h3 id="4-execucao-do-projeto-django">4. Execução do Projeto Django</h3>
+<p>Após instalar as dependências, você pode rodar o projeto Django:</p>
+<pre><code class="language-bash">python manage.py runserver
+</code></pre>
+<p>O servidor de desenvolvimento será iniciado e você poderá acessar o projeto em <code>http://localhost:8000/</code>.</p>
+<h2 id="conclusao">Conclusão</h2>
+<p>Agora você está pronto para começar a desenvolver seu projeto.
+Certifique-se de manter seu ambiente virtual ativado sempre que estiver trabalhando no projeto.</p>
+<h1 id="padroes-de-codificacao">Padrões de Codificação</h1>
+<p>Neste projeto, adotamos uma abordagem  para manter a consistência e a legibilidade do código. Abaixo estão as ferramentas e configurações que utilizamos:</p>
+<h2 id="ferramentas-de-formatacao-de-codigo">Ferramentas de Formatação de Código</h2>
+<p>Utilizamos as seguintes ferramentas para garantir a padronização do código:</p>
+<ul>
+<li><strong>Black</strong>: Ferramenta de formatação de código Python que garante que todo o código Python seja formatado de maneira consistente.</li>
+<li><strong>isort</strong>: Utilizado para organizar automaticamente as importações em ordem alfabética e agrupadas logicamente.</li>
+<li><strong>Taskipy</strong>: Uma ferramenta que nos permite configurar atalhos para execução de comandos comuns, facilitando o processo de padronização e manutenção do código.</li>
+</ul>
+<p>Certifique-se de executar essas ferramentas regularmente para manter o código formatado corretamente.</p>
+<h2 id="configuracao-do-editorconfig">Configuração do <code>.editorconfig</code></h2>
+<p>O arquivo <code>.editorconfig</code> na raiz do projeto define algumas configurações para garantir a consistência do estilo de codificação em diferentes editores. Aqui está o conteúdo desse arquivo:</p>
+<p>EditorConfig is awesome: <code>https://EditorConfig.org</code></p>
+<pre><code class="language-ini">root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+</code></pre>
+<p>Essas configurações ajudam a manter uma base sólida para a formatação do código em diferentes ambientes de desenvolvimento.</p>
+<h2 id="configuracao-do-taskipy">Configuração do Taskipy</h2>
+<p>Além das configurações padrão para Black e isort, também configuramos atalhos úteis usando o Taskipy. Aqui está um exemplo de configuração no arquivo <code>pyproject.toml</code>:</p>
+<pre><code class="language-toml">[tool.pytest.ini_options]
+pythonpath = &quot;.&quot;
+addopts = &quot;--doctest-modules&quot;
+
+[tool.isort]
+profile = &quot;black&quot;
+line_length = 79
+
+[tool.taskipy.tasks]
+check = &quot;black --check --diff . &amp;&amp; isort --check --diff .&quot;
+correct = &quot;black . &amp;&amp; isort .&quot;
+docs = &quot;mkdocs serve&quot;
+test = &quot;pytest -s -x -vv&quot;
+post_test = &quot;coverage html&quot;
+</code></pre>
+<p>Com esses atalhos configurados, podemos executar tarefas comuns de padronização e teste com facilidade, por exemplo:</p>
+<ul>
+<li><code>task check</code>: Verifica se o código está formatado corretamente e as importações estão ordenadas.</li>
+<li><code>task correct</code>: Formata o código e organiza as importações de acordo com as configurações definidas.</li>
+<li><code>task docs</code>: Inicia o servidor de desenvolvimento do MkDocs para visualização da documentação.</li>
+<li><code>task test</code>: Executa os testes com o Pytest, exibindo informações detalhadas.</li>
+<li><code>task post_test</code>: Gera relatórios de cobertura após a execução dos testes.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.0
+Build Date UTC : 2024-05-03 19:20:44.728602+00:00
+-->
