@@ -1,0 +1,75 @@
+
+
+.navbar {
+    background-color: var(--color-card);
+    color: var(--color-fg);
+    padding: 20px;
+    position: sticky;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    width: 18rem;
+    display: none;
+    margin-top: -25px;
+    margin-bottom: 12px;
+    overflow: auto;
+    transition: overflow 0.3s ease;
+}
+.navbar::after {
+    content: "";
+    display: block;
+    height: 20px;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-section h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.filter-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+.filter-section li {
+    margin-bottom: 5px;
+}
+
+.filter-section input[type="checkbox"],
+.filter-section input[type="radio"] {
+    margin-right: 5px;
+    accent-color: var(--color-main);
+}
+
+.breed-list{
+    margin: 0 0 20px 20px;
+    display: none;
+}
+.breed-list li{
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+#filterBtn{
+    width: 100%;
+    background-color: var(--color-main);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 12px;
+    height: 2.4rem;
+    margin: 0;
+    font-weight: 600;
+}
+#filterBtn:hover{
+    background-color: var(--color-main-hover);
+}
+.hidden {
+    display: none;
+}
+

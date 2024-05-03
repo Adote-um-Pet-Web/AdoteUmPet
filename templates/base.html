@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+    <head>
+        {% include "partials/_head.html" %}
+
+        <title>{% block title %}{% endblock title %}</title>
+    </head>
+    <body data-theme="admin">
+
+        {% comment %} MAIN {% endcomment %}
+        {% block content %}{% endblock content %}
+
+        {% include "partials/_footer.html" %}
+    </body>
+</html>

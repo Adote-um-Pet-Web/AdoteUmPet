@@ -1,0 +1,376 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Pets {% endblock title %}
+
+{% block content %}
+<header>
+    <div id="left">
+        <h1 id="logoText">Adote um pet</h1>
+        <p>Duvidas frequentes</p>
+        <p id="filtroM">Filtros <span id="arrow">&#x25BE;</span></p>
+    </div>
+    <div id="right">
+        <i class="fi fi-br-menu-burger" id="menuIconMobile"></i>
+        <div id="search">
+            <i class="fi fi-br-search"></i
+            ><input
+                type="text"
+                name="search"
+                id="searchInp"
+                placeholder="Search"
+            />
+        </div>
+        <button id="entrar">Entrar</button>
+        <div id="avatar" style="display: none">
+            <img id="avatarImg" src="" alt="avatar" />
+        </div>
+    </div>
+    <div id="userNav" style="display: none">
+        <h3 id="usuario">
+            ola
+            <span id="usuarioName" style="color: var(--color-main)"
+                >aa</span
+            >!
+        </h3>
+
+        <ul>
+            <li class="menu-item">
+                <span>Animais salvos</span>
+                <i class="fi fi-br-bookmark"></i>
+            </li>
+            <li class="menu-item">
+                <span>Editar Perfil</span>
+                <i class="fi fi-br-user-pen"></i>
+            </li>
+            <li class="menu-item">
+                <span>Configurações</span>
+                <i class="fi fi-br-settings"></i>
+            </li>
+            <li class="menu-item" id="changeProfile">
+                <span>Trocar de conta</span>
+                <i class="fi fi-br-exchange"></i>
+            </li>
+        </ul>
+        <button id="trocarCargo">add pet</button>
+    </div>
+</header>
+
+<div id="moreItens">
+    <p>Duvidas frequentes</p>
+    <p id="filtro">Filtros <span id="arrow">&#x25BE;</span></p>
+</div>
+
+<div id="bannerArea">
+    <div id="sliders">
+        <div class="slide">
+            <img src=" {% static "assets/img/slider1.png" %} " alt="banner1" />
+        </div>
+        <div class="slide">
+            <img src=" {% static "assets/img/adoteUmPet.png" %} " alt="banner2" />
+        </div>
+        <div class="slide">
+            <img
+                src="{% static "assets/img/CapaLinkedin.png" %}"
+                alt="banner3"
+            />
+        </div>
+    </div>
+    <div id="sliderStatus"></div>
+</div>
+
+<main>
+    <nav class="navbar">
+        <div class="filter-section">
+            <h3 id="speciesTitle" class="filter-title">
+                Espécie
+                <span id="speciesTitleArrow" class="arrow"
+                    >&#x25BE;</span
+                >
+            </h3>
+            <ul id="speciesList" class="hidden">
+                <li>
+                    <input
+                        type="checkbox"
+                        id="dog"
+                        onchange="showBreeds('dog')"
+                    />
+                    <label for="dog">Cachorro</label>
+                </li>
+                <div
+                    class="filter-section breed-list"
+                    id="breedListDog"
+                >
+                    <ul>
+                        <li>
+                            <input
+                                type="checkbox"
+                                class="breed"
+                                value="Golden Retriever"
+                            />
+                            <label>Golden Retriever</label>
+                        </li>
+                        <li>
+                            <input
+                                type="checkbox"
+                                class="breed"
+                                value="Labrador Retriever"
+                            />
+                            <label>Labrador Retriever</label>
+                        </li>
+                        <li>
+                            <input
+                                type="checkbox"
+                                class="breed"
+                                value="Bulldog"
+                            />
+                            <label>Bulldog</label>
+                        </li>
+                    </ul>
+                </div>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="cat"
+                        onchange="showBreeds('cat')"
+                    />
+                    <label for="cat">Gato</label>
+                </li>
+                <div
+                    class="filter-section breed-list"
+                    id="breedListCat"
+                >
+                    <ul>
+                        <li>
+                            <input
+                                type="checkbox"
+                                class="breed"
+                                value="Siamês"
+                            />
+                            <label>Siamês</label>
+                        </li>
+                        <li>
+                            <input
+                                type="checkbox"
+                                class="breed"
+                                value="Maine Coon"
+                            />
+                            <label>Maine Coon</label>
+                        </li>
+                        <li>
+                            <input
+                                type="checkbox"
+                                class="breed"
+                                value="Persa"
+                            />
+                            <label>Persa</label>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <h3 id="sizeTitle" class="filter-title">
+                Tamanho
+                <span id="sizeTitleArrow" class="arrow">&#x25BE;</span>
+            </h3>
+            <ul id="sizeList" class="hidden">
+                <li>
+                    <input type="checkbox" id="size1" />
+                    <label for="size1">Pequeno</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="size2" />
+                    <label for="size2">Médio</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="size3" />
+                    <label for="size3">Grande</label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <h3 id="ageTitle" class="filter-title">
+                Idade
+                <span id="ageTitleArrow" class="arrow">&#x25BE;</span>
+            </h3>
+            <ul id="ageList" class="hidden">
+                <li>
+                    <input type="checkbox" id="age1" />
+                    <label for="age1">0-1 ano</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="age2" />
+                    <label for="age2">1-3 anos</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="age3" />
+                    <label for="age3">3-5 anos</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="age4" />
+                    <label for="age4">5+</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ageUnknown" />
+                    <label for="ageUnknown">Desconhecida</label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <h3 id="deficiencyTitle" class="filter-title">
+                Deficiência
+                <span id="deficiencyTitleArrow" class="arrow"
+                    >&#x25BE;</span
+                >
+            </h3>
+            <ul id="deficiencyList" class="hidden">
+                <li>
+                    <input type="checkbox" id="yes" name="deficiency" />
+                    <label for="yes">Sim</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="no" name="deficiency" />
+                    <label for="no">Não</label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <h3 id="genderTitle" class="filter-title">
+                Sexo
+                <span id="genderTitleArrow" class="arrow"
+                    >&#x25BE;</span
+                >
+            </h3>
+            <ul id="genderList" class="hidden">
+                <li>
+                    <input type="checkbox" name="macho" id="macho" />
+                    <label for="macho">Macho</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="femea" id="femea" />
+                    <label for="femea">Femea</label>
+                </li>
+            </ul>
+        </div>
+        <button id="filterBtn">Filtrar</button>
+    </nav>
+
+    <section id="cards">
+        <div id="subdivCard">
+            <div class="card">
+                <img
+                    src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Pedrin</h2>
+                    <p>Idade: 5 meses</p>
+                    <p>Espécie: Cachorro</p>
+                    <p>Raça: S.R.C</p>
+                    <p>Tamanho: Micro</p>
+                    <p>Sexo: Macho</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-yM6aQWIo5xxdoDjGcTIq7ZN9RbrNF-3mAZDQvtABQ&s"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Juan</h2>
+                    <p>Idade: 2 anos</p>
+                    <p>Espécie: Gato</p>
+                    <p>Raça: Siamês</p>
+                    <p>Tamanho: Pequeno</p>
+                    <p>Sexo: Macho</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFJ2o1m5ZRT9zL17KfLtUpz2p5MNefpRrkOQb9Tv7-yw&s"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Rex</h2>
+                    <p>Idade: 3 anos</p>
+                    <p>Espécie: Cachorro</p>
+                    <p>Raça: Labrador</p>
+                    <p>Tamanho: Grande</p>
+                    <p>Sexo: Macho</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://saude.abril.com.br/wp-content/uploads/2016/09/cachorro-vira-lata-91081.jpg?quality=85&strip=info&w=720&h=440&crop=1"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Tobby</h2>
+                    <p>Idade: 2 anos</p>
+                    <p>Espécie: Cachorro</p>
+                    <p>Raça: Vira-lata</p>
+                    <p>Tamanho: Médio</p>
+                    <p>Sexo: Macho</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3RtuwkMYTdGSdjV1GkwtqPlxT2m25OpTZ7CRIcpVCA&s"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Mimi</h2>
+                    <p>Idade: 1 ano e meio</p>
+                    <p>Espécie: Gato</p>
+                    <p>Raça: Persa</p>
+                    <p>Tamanho: Pequeno</p>
+                    <p>Sexo: Femea</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwD4Crezkb4D7yDCExwx7J7JnvS5uzCvt1OwDshi19Mg&s"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Luna</h2>
+                    <p>Idade: 4 anos</p>
+                    <p>Espécie: Cachorro</p>
+                    <p>Raça: Shih Tzu</p>
+                    <p>Tamanho: Pequeno</p>
+                    <p>Sexo: Femea</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="static/img/photo1713362414.jpeg"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Pitty</h2>
+                    <p>Idade: Desconhecida</p>
+                    <p>Espécie: Cachorro</p>
+                    <p>Raça: Vira lata</p>
+                    <p>Tamanho: Pequeno</p>
+                    <p>Sexo: Femea</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="static/img/photo1713362436.jpeg"
+                    alt="Imagem do Animal"
+                />
+                <div class="info">
+                    <h2>Atena</h2>
+                    <p>Idade: 2 anos</p>
+                    <p>Espécie: Cachorro</p>
+                    <p>Raça: Pit Monster</p>
+                    <p>Tamanho: Medio</p>
+                    <p>Sexo: Femea</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}
