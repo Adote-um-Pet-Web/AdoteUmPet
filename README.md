@@ -39,8 +39,8 @@ pip install -r requirements.txt
 
 Certifique-se de ter um arquivo `requirements.txt` com as dependências do seu projeto.
 
-### 4. Execução do Projeto Django
-Após instalar as dependências, você pode rodar o projeto Django:
+### 4. Execução do Projeto
+Após instalar as dependências, você pode rodar o projeto:
 
 ```bash
 python manage.py runserver
