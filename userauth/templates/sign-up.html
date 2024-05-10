@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign-up{% endblock title %}
+
+{% block content %}
+<!-- header-section start -->
+      <!-- Login Reg start -->
+      <section class="login-reg">
+        <div class="overlay pt-120">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-6 order-xl-0 order-1">
+                        <div class="sec-img d-rtl">
+                            <img src="{% static 'assets/images/login-reg-bg.png' %}" class="max-un" alt="image">
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="section-text text-center">
+                            <h5 class="sub-title">Account</h5>
+                            <h2 class="title">Welcome to AdoteUmPet</h2>
+                            <p class="dont-acc">Already have an account? <a href="{% url 'userauths:sign-in' %}">Login</a></p>
+
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="alert-danger alert">
+                                <!-- More robust error viewer -->
+
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <p> {{ error }} </p>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endif %}
+
+                                <!-- Less robust error viewer -->
+                                <!-- {% if form.errors %}
+                                    <p> {{ form.errors }} </p>
+                                {% endif %} -->
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="single-input">
+                                        {{form.username}}
+                                    </div>
+                                    <div class="single-input">
+                                        {{form.email}}
+                                    </div>
+                                    <div class="single-input">
+                                        {{form.phone_number}}
+                                    </div>
+                                    <div class="single-input">
+                                        {{form.password1}}
+                                    </div>
+                                    <div class="single-input">
+                                        {{form.password2}}
+                                    </div>
+                                    <button class="cmn-btn w-100" type="submit">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Login Reg end -->
+ {% endblock content %}
