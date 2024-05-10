@@ -18,7 +18,7 @@
                     <div class="col-xl-5">
                         <div class="section-text text-center">
                             <h5 class="sub-title">Account</h5>
-                            <h2 class="title">Welcome to Piggy</h2>
+                            <h2 class="title">Welcome to AdoteUmPet</h2>
                             <p class="dont-acc">Already have an account? <a href="{% url 'userauths:sign-in' %}">Login</a></p>
 
                         </div>
@@ -47,6 +47,9 @@
                                     </div>
                                     <div class="single-input">
                                         {{form.email}}
+                                    </div>
+                                    <div class="single-input">
+                                        {{form.phone_number}}
                                     </div>
                                     <div class="single-input">
                                         {{form.password1}}
