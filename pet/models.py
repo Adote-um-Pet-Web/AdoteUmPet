@@ -1,10 +1,12 @@
 from django.db import models
 from userprofile.models import Profile
 from utils.idrandom import random_id
+
+
 class Species(models.TextChoices):
     DOG = 'DOG', 'Dog'
     CAT = 'CAT', 'Cat'
-    # Add more species as needed
+
 
 
 class Pet(models.Model):
@@ -21,7 +23,6 @@ class Pet(models.Model):
     history = models.TextField()
     observations = models.TextField()
     image_profile = models.ImageField(upload_to="pets/profile/imagesPets/%Y/%m/", blank=True, null=True)
-    photos = models.CharField(max_length=255)
     adopted = models.BooleanField()
 
     def __str__(self):
