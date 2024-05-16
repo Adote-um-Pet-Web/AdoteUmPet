@@ -1,0 +1,50 @@
+body{
+    color: var(--color-fg);
+    justify-content: center;
+    align-items: center;
+}
+#login{
+    display: none;
+}
+#mobileTitle{
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+#cLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    width: 90%;
+}
+#cLogin button{
+    width: 94%;
+    margin-bottom: 12px;
+}
+.troca{
+    width: 94%;
+}
+.troca a{
+    width: 100%;
+}
+.containerI{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+.containerI i{
+    background-color: var(--color-main);
+    color: var(--color-card);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 12px;
+    border-radius: 12px;
+}

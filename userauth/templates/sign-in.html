@@ -7,14 +7,9 @@
         <h1>Bem vindo ao Adote um Pet!</h1>
         <div id="criarContaDiv">
             <p>Ainda nao tem uma conta?</p>
-            <a href="{% url 'userauths:sign-up' %}"">Criar sua conta</a>
+            <a href="{% url 'userauths:sign-up' %}">Criar sua conta</a>
         </div>
     </div>
-    {% if messages %}
-    {% for message in messages %}
-        <strong>{{ message }}</strong>
-    {% endfor %}
-    {% endif %}
     <form method="POST" id="rightL">
         {% csrf_token %}
         <h2>entrar</h2>
@@ -30,16 +25,21 @@
             placeholder="Senha"
         />
         <button type="submit">Login</button>
-        <p>ou entre pelo Fecabook ou Instagram</p>
+        <p>ou entre de outra maneira:</p>
         <div class="containerI">
             <i class="fi fi-brands-instagram"></i>
             <i class="fi fi-brands-facebook"></i>
+            <i class="fi fi-brands-google"></i>
         </div>
     </form>
 </div>
+
+
+
+
 <!-- mobile login -->
 <h1 id="mobileTitle">Entrar</h1>
-<div id="cLogin">
+<form method="POST" id="cLogin">
     <input
         type="email"
         name="emailm"
@@ -51,17 +51,18 @@
         id="senham"
         placeholder="Senha"
     />
-    <button id="entrarMobile">Entrar</button>
-    <p>ou entre pelo Fecabook ou Instagram</p>
+    <button type="submit">Entrar</button>
+    <p>ou entre de outra maneira:</p>
     <div class="containerI">
         <i class="fi fi-brands-instagram"></i>
         <i class="fi fi-brands-facebook"></i>
+        <i class="fi fi-brands-google"></i>
     </div>
     <div class="troca">
         <hr />
         <p>Ainda nao tem uma conta?</p>
-        <button id="criarContaMobile">criar conta</button>
+        <a href="{% url 'userauths:sign-up' %}">Criar sua conta</a>
     </div>
-</div>
+</form>
 {% endblock content %}
 
