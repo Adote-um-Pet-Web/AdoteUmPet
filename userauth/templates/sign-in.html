@@ -2,51 +2,66 @@
 {% load static %}
 {% block title %}Sign-in{% endblock title %}
 {% block content %}
-      <!-- Login Reg start -->
-      <section class="login-reg">
-        <div class="overlay pt-120">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-6 order-xl-0 order-1">
-                        <div class="sec-img d-rtl">
-                            img
-                        </div>
-                    </div>
-                    <div class="col-xl-5">
-                        <div class="section-text text-center">
-                            <h5 class="sub-title">Welcome to AdoteUmPEt</h5>
-                            <h2 class="title">Sign In</h2>
-                            <p class="dont-acc">Don't have an account yet? <a href="{% url 'userauths:sign-up' %}">Sign Up</a></p>
-                            <!-- <div class="reg-google">
-                                <a href="javascript:void(0)"><i class="fab fa-google"></i>Sign up with Google</a>
-                            </div>
-                            <span class="or">Or Continue With</span> -->
-                        </div>
-
-                        {% if messages %}
-                            {% for message in messages %}
-                                <strong>{{ message }}</strong>
-                            {% endfor %}
-                        {% endif %}
-
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="single-input">
-                                        <input type="text" required name="email" id="logemail" placeholder="Enter Your Email">
-                                    </div>
-                                    <div class="single-input">
-                                        <input type="password" required name="password" id="logemail" placeholder="Enter Your Password">
-                                    </div>
-                                    <button class="cmn-btn w-100" type="submit">Login</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div id="login">
+    <div id="leftL">
+        <h1>Bem vindo ao Adote um Pet!</h1>
+        <div id="criarContaDiv">
+            <p>Ainda nao tem uma conta?</p>
+            <a href="{% url 'userauths:sign-up' %}"">Criar sua conta</a>
         </div>
-    </section>
-    <!-- Login Reg end -->
- {% endblock content %}
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+        <strong>{{ message }}</strong>
+    {% endfor %}
+    {% endif %}
+    <form method="POST" id="rightL">
+        {% csrf_token %}
+        <h2>entrar</h2>
+        <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+        /><input
+            type="password"
+            name="senha"
+            id="senha"
+            placeholder="Senha"
+        />
+        <button type="submit">Login</button>
+        <p>ou entre pelo Fecabook ou Instagram</p>
+        <div class="containerI">
+            <i class="fi fi-brands-instagram"></i>
+            <i class="fi fi-brands-facebook"></i>
+        </div>
+    </form>
+</div>
+<!-- mobile login -->
+<h1 id="mobileTitle">Entrar</h1>
+<div id="cLogin">
+    <input
+        type="email"
+        name="emailm"
+        id="emailm"
+        placeholder="Email"
+    /><input
+        type="password"
+        name="senham"
+        id="senham"
+        placeholder="Senha"
+    />
+    <button id="entrarMobile">Entrar</button>
+    <p>ou entre pelo Fecabook ou Instagram</p>
+    <div class="containerI">
+        <i class="fi fi-brands-instagram"></i>
+        <i class="fi fi-brands-facebook"></i>
+    </div>
+    <div class="troca">
+        <hr />
+        <p>Ainda nao tem uma conta?</p>
+        <button id="criarContaMobile">criar conta</button>
+    </div>
+</div>
+{% endblock content %}
+

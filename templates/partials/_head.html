@@ -51,4 +51,9 @@
 />
 
 <!-- card css -->
-<link rel="stylesheet" href=" {% static "assets/css/card/card.css" %} " />https://andra-sun.github.io/all/
+<link rel="stylesheet" href=" {% static "assets/css/card/card.css" %} " />
+
+{% if request.path == "/user/sign-in/" or request.path == "/user/sign-up/"  %}
+<!-- login -->
+<link rel="stylesheet" href="{% static "assets/css/login.css" %}">
+{% endif %}
