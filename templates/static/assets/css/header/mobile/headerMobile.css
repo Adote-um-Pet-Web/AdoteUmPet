@@ -8,6 +8,9 @@
     height: 100%;
 
 }
+#right i{
+    padding: 5px;
+}
 #search{
     width: 80%;
 }
@@ -56,4 +59,7 @@ header{
 }
 #menuIconMobile:hover{
     color: var(--color-main-hover);
+}
+#entrar{
+    width: calc(6rem - 12px);
 }

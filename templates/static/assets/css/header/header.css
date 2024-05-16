@@ -19,6 +19,9 @@ header{
     display: flex;
     flex-direction: row;
 }
+#left a{
+    background-color: var(--color-main);
+}
 #left p{
     margin-right: 20px;
     cursor: pointer;
