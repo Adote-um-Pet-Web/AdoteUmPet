@@ -1,6 +1,4 @@
-document.querySelector("#entrar").addEventListener("click", function () {
-    window.location.href = "static/html/formulario/login.html";
-});
+
 
 const storedData = localStorage.getItem("usuarios");
 

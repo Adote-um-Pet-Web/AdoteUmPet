@@ -3,7 +3,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-#login{
+#login, #registro{
     display: none;
 }
 #mobileTitle{
@@ -23,12 +23,6 @@ body{
     width: 94%;
     margin-bottom: 12px;
 }
-.troca{
-    width: 94%;
-}
-.troca a{
-    width: 100%;
-}
 .containerI{
     display: flex;
     align-items: center;
@@ -37,14 +31,66 @@ body{
     width: 100%;
 
 }
-.containerI i{
+.containerIB{
     background-color: var(--color-main);
+    font-size: 2rem;
     color: var(--color-card);
-    display: flex;
+    cursor: pointer;
+    padding: 12px;
+    margin: auto 15px auto 15px;
+    transition: ease 0.2s;
     align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-decoration: none;
+}
+.containerIB i {
     text-align: center;
     justify-content: center;
-    font-size: 2rem;
-    padding: 12px;
-    border-radius: 12px;
+    display: flex;
+    align-items: center;
+}
+#cRegistro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#fotoDePerfil{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#fotoDePerfil input{
+    width: 30%;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    margin: 0;
+}
+hr{
+    width: 70%;
+    margin: 30px 0 30px 0;
+}
+.troca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+@media  (max-width: 500px) {
+    #cRegistro h2{
+        margin-top: 10rem;
+    }
 }
