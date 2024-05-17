@@ -32,7 +32,7 @@ class UserRegisterFormTestCase(TestCase):
         # Testa se os placeholders estão configurados corretamente
         form = UserRegisterForm()
         self.assertEqual(
-            form.fields["username"].widget.attrs["placeholder"], "Username"
+            form.fields["username"].widget.attrs["placeholder"], "Nome Completo"
         )
         self.assertEqual(form.fields["email"].widget.attrs["placeholder"], "Email")
         self.assertEqual(
