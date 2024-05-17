@@ -24,6 +24,7 @@
         </div>
 
     </div>
+
     <form method="POST" id="rightR">
         {% csrf_token %}
         <div class="alert-danger alert">
@@ -36,28 +37,12 @@
             {% endif %}
         </div>
         <h2>Cadastrar</h2>
-        <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-        /><input
-            type="password"
-            name="senha"
-            id="senha"
-            placeholder="Senha"
-        />
-        <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Nome Completo"
-        /><input
-            type="number"
-            name="telefone"
-            id="telefone"
-            placeholder="Numero de telefone"
-        />
+        {{form.username}}
+        {{form.email}}
+        {{form.phone_number}}
+        {{form.password1}}
+        {{form.password2}}
+
         <div id="fotoDePerfil">
             <h6 id="userAreaPhoto"><i id="userFlatICon" class="fi fi-br-user"></i></h6>
             <div id="fotoDePerfilInp">
