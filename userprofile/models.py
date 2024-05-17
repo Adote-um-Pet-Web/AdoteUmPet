@@ -45,5 +45,3 @@ def save_account(sender, instance, **kwargs):
 
 post_save.connect(create_account, sender=User)
 post_save.connect(save_account, sender=User)
-
-

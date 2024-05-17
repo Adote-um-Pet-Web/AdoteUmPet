@@ -345,9 +345,11 @@
             {% for pets in pet %}
             <div class="card">
                 <img
+                {% if pets.image_profile.url in pets %}
                     src="{{ pets.image_profile.url }}"
                     alt="Imagem do Animal"
                 />
+                {% endif %}
                 <div class="info">
                     <h2>{{ pets.name }}</h2>
                     <p>Espécie: {{ pets.species }}</p>
