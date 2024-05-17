@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-
+import dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO change secrect-key
 SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -40,16 +41,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-
     #My Apps
     "userprofile",
     "pet",
     "adoption",
     "userauth",
+
+    #Allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
 
 ]
@@ -71,8 +73,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '594001495494-olphauieiavboa909b40401oh8edpqkj.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': os.getenv("client_id"),
+            'secret': os.getenv("secret"),
             'key': ''
         }
     }
