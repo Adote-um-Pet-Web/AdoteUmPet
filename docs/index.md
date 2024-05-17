@@ -38,7 +38,18 @@ pip install -r requirements.txt
 
 Certifique-se de ter um arquivo `requirements.txt` com as dependências do seu projeto.
 
-### 4. Execução do Projeto Django
+### 4. Remova o "-example do arquivo .env"
+
+Para configurar corretamente o arquivo `.env`, remova o sufixo `-example` do nome do arquivo.
+
+Cria sua api [aqui](https://console.cloud.google.com/project).
+`https://console.cloud.google.com/project`
+```env
+client_id="COLOQUE AQUI SUA CLIENT-ID DO API DO GMAIL"
+secret="COLOQUE AQUI A SECRECT-KEY DO GMAIL"
+```
+
+### 5. Execução do Projeto Django
 Após instalar as dependências, você pode rodar o projeto Django:
 
 ```bash

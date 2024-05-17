@@ -1,4 +1,4 @@
 site_name: My Docs
 nav:
   - Home: index.md
-  - Setup: setup.md
+  - Setup: settings.md
