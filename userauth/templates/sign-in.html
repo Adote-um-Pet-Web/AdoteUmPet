@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
 {% block title %}Sign-in{% endblock title %}
 {% block content %}
 <div id="login">
@@ -29,7 +30,7 @@
         <div class="containerI">
             <i class="fi fi-brands-instagram"></i>
             <i class="fi fi-brands-facebook"></i>
-            <i class="fi fi-brands-google"></i>
+            <a href="{% provider_login_url "google"%}?next=/">  <i class="fi fi-brands-google"></i> </a>
         </div>
     </form>
 </div>
