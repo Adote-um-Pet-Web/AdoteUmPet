@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-
+import dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO change secrect-key
 SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -45,6 +46,14 @@ INSTALLED_APPS = [
     "pet",
     "adoption",
     "userauth",
+
+    #Allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +64,21 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': os.getenv("client_id"),
+            'secret': os.getenv("secret"),
+            'key': ''
+        }
+    }
+}
 
 ROOT_URLCONF = "setup.urls"
 
@@ -79,6 +102,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "setup.wsgi.application"
 
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -122,9 +154,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_URL = "userauths:sign-in"
-# LOGIN_REDIRECT_URL = "userauths:sign-in"
-LOGOUT_REDIRECT_URL = "userauths:sign-in"
+#LOGIN_URL = "userauths:sign-in"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

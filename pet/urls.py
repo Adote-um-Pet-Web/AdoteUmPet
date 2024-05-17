@@ -7,4 +7,5 @@ app_name = "pets"
 urlpatterns = [
     path("", views.PageView.as_view(), name="index"),
 
+
 ]
