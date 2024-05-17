@@ -1,39 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 
 from .forms import UserRegisterForm
 from .models import User
-
-
-def RegisterView(request):
-    if request.user.is_authenticated:
-        messages.warning(request, f"You are already logged in.")
-        return redirect("account:account")
-
-    if request.method == "POST":
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            # form.save()
-            new_user = form.save() # new_user.email
-            username = form.cleaned_data.get("username")
-            # username = request.POST.get("username")
-            messages.success(request, f"Hey {username}, your account was created successfully.")
-            # new_user = authenticate(username=form.cleaned_data.get('email'))
-            new_user = authenticate(username=form.cleaned_data['email'],
-                                    password=form.cleaned_data['password1'])
-            login(request, new_user)
-            return redirect("account:account")
-
-    else:
-        form = UserRegisterForm()
-    context = {
-        "form": form
-    }
-    return render(request, "userauths/sign-up.html", context)
 
 
 
@@ -80,7 +53,7 @@ def login_view(request):
             if user is not None: # if there is a user
                 login(request, user)
                 messages.success(request, "You are logged.")
-                return redirect("account:account")
+                return redirect("pets:index")
             else:
                 messages.warning(request, "Username or password does not exist")
                 return redirect("userauths:sign-in")
@@ -89,7 +62,7 @@ def login_view(request):
 
     if request.user.is_authenticated:
         messages.warning(request, "You are already logged In")
-        return redirect("account:account")
+        return redirect("pets:index")
 
     return render(request, "sign-in.html")
 
