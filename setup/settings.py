@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 import dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,27 +36,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "jazzmin", #Theme Django-admin
+    "jazzmin",  # Theme Django-admin
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    #My Apps
+    # My Apps
     "userprofile",
     "pet",
     "adoption",
     "userauth",
-
-    #Allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-
-
+    # Allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 ]
 
 MIDDLEWARE = [
@@ -69,14 +67,14 @@ MIDDLEWARE = [
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
-    'google': {
+    "google": {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
-        'APP': {
-            'client_id': os.getenv("client_id"),
-            'secret': os.getenv("secret"),
-            'key': ''
+        "APP": {
+            "client_id": os.getenv("client_id"),
+            "secret": os.getenv("secret"),
+            "key": "",
         }
     }
 }
@@ -87,8 +85,8 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-              BASE_DIR / "templates",
-            ],
+            BASE_DIR / "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -104,13 +102,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "setup.wsgi.application"
 
 AUTHENTICATION_BACKENDS = [
-
     # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
+    "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',
-
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 # Database
@@ -155,7 +150,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-#LOGIN_URL = "userauths:sign-in"
+# LOGIN_URL = "userauths:sign-in"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 

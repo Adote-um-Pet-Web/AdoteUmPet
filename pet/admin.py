@@ -1,6 +1,6 @@
 from django.contrib import admin
-from . import models
 
+from . import models
 
 
 class MedicalRecordLine(admin.StackedInline):
@@ -12,16 +12,14 @@ class ImagesPetsLine(admin.TabularInline):
     model = models.ImagesPets
     extra = 1
 
-class MedicalRecordAdmin(admin.ModelAdmin):
-    ...
+
+class MedicalRecordAdmin(admin.ModelAdmin): ...
+
 
 class PetAdmins(admin.ModelAdmin):
-    inlines = [MedicalRecordLine, ImagesPetsLine ]
-
-
+    inlines = [MedicalRecordLine, ImagesPetsLine]
 
 
 admin.site.register(models.Pet, PetAdmins)
 admin.site.register(models.ImagesPets)
 admin.site.register(models.MedicalRecord)
-
