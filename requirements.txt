@@ -14,6 +14,7 @@ django-allauth==0.61.0
 django-jazzmin==3.0.0
 exceptiongroup==1.2.1
 ghp-import==2.1.0
+gunicorn==22.0.0
 idna==3.7
 iniconfig==2.0.0
 isort==5.13.2
@@ -58,3 +59,4 @@ tomli==2.0.1
 typing_extensions==4.11.0
 urllib3==2.2.1
 watchdog==4.0.0
+whitenoise==6.6.0
