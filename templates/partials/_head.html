@@ -21,17 +21,19 @@ rel="stylesheet" href="{% static "assets/css/imports.css" %}">
 <link rel="stylesheet" href=" {% static "assets/css/banner/mobile/bannerMobile.css" %} " media="screen and (max-width: 840px)" />
 
 <!-- card css -->
-<link rel="stylesheet" href=" {% static "assets/css/card/card.css" %} " /> 
+<link rel="stylesheet" href=" {% static "assets/css/card/card.css" %} " />
 
 <!-- cadastro de pet -->
-<link rel="stylesheet" href=" {% static "assets/css/petCadastro/petCadastro.css" %} " /> 
+<link rel="stylesheet" href=" {% static "assets/css/petCadastro/petCadastro.css" %} " />
 
+<!-- FavIcon -->
+<link rel="shortcut icon" href="{% static "assets/img/favicons/favicon-16x16.png" %}">
 
 <!-- login -->
 {% if request.path == "/user/sign-in/" or request.path == "/user/sign-up/" %}
 <link rel="stylesheet" href="{% static "assets/css/login/login.css" %}">
-<link rel="stylesheet" href="{% static "assets/css/login/mobile/loginMobile.css"%}" media="screen and (max-width: 840px)"> 
+<link rel="stylesheet" href="{% static "assets/css/login/mobile/loginMobile.css"%}" media="screen and (max-width: 840px)">
 {% endif %}
-<link rel="stylesheet" href="{% static "assets/css/login/googleLogin.css"%}"> 
-<link rel="stylesheet" href="{% static "assets/css/login/mobile/googleLoginMobile.css"%}" media="screen and (max-width: 840px)"> 
+<link rel="stylesheet" href="{% static "assets/css/login/googleLogin.css"%}">
+<link rel="stylesheet" href="{% static "assets/css/login/mobile/googleLoginMobile.css"%}" media="screen and (max-width: 840px)">
 
