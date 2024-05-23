@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} Cadastro do Pet {% endblock title %}
+{% block content %}
+
+<div id="screen">
+    <nav id="listas">
+        <ul id="nav-list">
+            <li data-content="Informacoes basicas">Informacoes basicas</li>
+            <li data-content="Informacoes medicas">informacoes medicas</li>
+            <li data-content="Historico">Historico</li>
+            <li data-content="Fotos">fotos</li>
+        </ul>
+        <button>salvar</button>
+    </nav>
+    <section>
+        <h1>Cadastro do pet para adocao</h1>
+        <div id="espaco_dos_formularios"><h3>Informacoes basicas</h3></div>
+    </section>
+</div>
+{% endblock content %}
