@@ -26,13 +26,12 @@ dotenv.load_dotenv(dotenv.find_dotenv())
 SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk"
 
 #TODO doenv
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1' ]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", 'adoteumpet-production.up.railway.app']
 
-
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'https://adoteumpet-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
