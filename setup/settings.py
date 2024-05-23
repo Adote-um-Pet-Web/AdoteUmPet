@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,10 @@ SOCIALACCOUNT_PROVIDERS = {
             "secret": os.getenv("SECRET"),
             "key": "",
         }
+    },
+
+    'facebook': {
+        'LOCALE_FUNC': lambda request: 'en_US'
     }
 }
 
@@ -156,7 +161,8 @@ USE_TZ = True
 # LOGIN_URL = "userauths:sign-in"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
-
+SITE_ID = 1
+#ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

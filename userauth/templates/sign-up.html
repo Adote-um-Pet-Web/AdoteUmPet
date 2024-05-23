@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load socialaccount %}
+{% providers_media_js %}
 {% block title %}Sign-up{% endblock title %}
 
 {% block content %}
@@ -17,10 +18,7 @@
         <div id="peloFace">
             <p>ou entre de outra maneira:</p>
             <div class="containerI">
-                <a class="containerIB" href="#">
-                    <i class="fi fi-brands-instagram"></i>
-                </a>
-                <a class="containerIB" href="#">
+                <a class="containerIB" href="{% provider_login_url "facebook" %}">
                     <i class="fi fi-brands-facebook"></i>
                 </a>
                 <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
@@ -68,7 +66,7 @@
         {{form.phone_number}}
         {{form.password1}}
         {{form.password2}}
-    
+
     <div id="fotoDePerfil">
         <label for="avatar">Foto de perfil</label>
         <input type="file" name="avatar" id="avatarInp">
