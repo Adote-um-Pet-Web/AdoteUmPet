@@ -59,6 +59,7 @@ input{
 }
 #mobileRegistro{
     height: 100%;
+    width: 100%;
     overflow: auto;
 }
 #cRegistro{
@@ -87,8 +88,13 @@ input{
     margin: 0;
 }
 hr{
-    width: 70%;
-    margin: 30px 0 30px 0;
+    width: 100%;
+    margin: 10px 0 10px 0;
+}
+#cRegistro hr{
+    width: 80%;
+    margin: 40px 0 40px 0;
+
 }
 .troca{
     display: flex;
@@ -97,4 +103,11 @@ hr{
     flex-direction: column;
     width: 100%;
     margin-bottom: 1rem;
+}
+.troca p{
+    margin-top: 0;
+}
+#passwordForget{
+    margin-top: 0;
+    margin-bottom: 20px;
 }
