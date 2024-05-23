@@ -1,0 +1,309 @@
+@media screen and (min-width: 601px) {
+    body {
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #login {
+        display: flex;
+        width: 70%;
+        height: 32rem;
+        border-radius: 23px;
+        justify-content: center;
+    }
+    #login,
+    #registro {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        flex-direction: row;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        color: var(--color-fg);
+    }
+
+    #leftL {
+        background-color: var(--color-main);
+        height: 100%;
+        width: 50%;
+        padding: 1rem;
+        align-items: center;
+        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px 0 0 20px;
+    }
+    #criarContaDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    #rightL {
+        background-color: var(--color-card);
+        height: 100%;
+        width: 50%;
+        border-radius: 0 20px 20px 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #registro {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        overflow: auto;
+        justify-content: right;
+    }
+
+    #leftR {
+        background-color: var(--color-main);
+        height: 100%;
+        width: 25%;
+        padding: 1rem;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+    #rightR {
+        background-color: var(--color-card);
+        height: 100%;
+        width: 72%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        overflow-y: auto;
+    }
+    .containerIB {
+        font-size: 2rem;
+        color: var(--color-card);
+        cursor: pointer;
+        padding: 12px;
+        margin: auto 15px auto 15px;
+        transition: ease 0.2s;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        text-decoration: none;
+        background-color: var(--color-detail);
+    }
+    .containerIB i {
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+    .containerIB:hover {
+        color: var(--color-detail-hover);
+    }
+
+    .containerI {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #peloFace,
+    #jatemconta {
+        width: 97%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+    }
+    #peloFace {
+        margin-bottom: 2rem;
+    }
+
+    #fotoDePerfil {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        height: 6rem;
+        align-items: center;
+        justify-content: left;
+        margin-bottom: 1rem;
+    }
+    #fotoDePerfil h6 {
+        background-color: var(--color-main);
+        color: var(--color-detail);
+        font-size: 2rem;
+        width: 4rem;
+        height: 4rem;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        border-radius: 100%;
+        margin-right: 1rem;
+    }
+    #fotoDePerfil h6 img {
+        width: 90%;
+        height: 90%;
+        border-radius: 100%;
+    }
+    #fotoDePerfilInp {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 80%;
+        height: 100%;
+    }
+    #fotoDePerfil input[type="file"] {
+        border: none;
+    }
+    #fotoDePerfilInp label {
+        margin-bottom: 20px;
+    }
+
+    #cadastrar {
+        margin-bottom: 1rem;
+    }
+
+    #mobileTitle {
+        display: none;
+    }
+}
+
+
+input {
+    border: 3px solid var(--color-main);
+    background-color: var(--color-card);
+    color: var(--color-fg);
+    border-radius: 12px;
+    margin-bottom: 40px;
+    padding-left: 10px;
+    width: 90%;
+    outline: none;
+    font-size: 1rem;
+    height: 2.6rem;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 3rem;
+    text-align: center;
+}
+h2 {
+    font-weight: 700;
+    font-size: 2.3rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+.btnLogin {
+    height: 3rem;
+    width: 80%;
+    border: 3px solid var(--color-detail);
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: var(--color-detail);
+    color: var(--color-fg);
+    transition: ease 0.2s;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#rightR h2 {
+    margin-top: 5rem;
+}
+#rightR {
+    height: 100%;
+}
+#rightL h2 {
+    margin-top: 0;
+}
+#rightL .btnLogin{
+    width: 93%;
+}
+.btnLogin:hover {
+    background-color: var(--color-detail-hover);
+}
+p {
+    font-weight: 200;
+    font-size: 1.3rem;
+    text-align: center;
+}
+#passwordForget{
+    margin-top: 1.5rem;
+ text-decoration: none;
+ color: var(--color-fg);
+}
+#passwordForget span{
+ color: var(--color-detail);
+}
+#passwordForget span:hover{
+ color: var(--color-detail-hover);
+}
+@media screen and (min-width: 1115px){
+    #rightR {
+        width: 73%;
+    }
+}
+@media screen and (min-width: 1686px){
+    #rightR {
+        width: 74%;
+    }
+}
+@media screen and (min-width: 1900px) {
+    #login {
+        width: 60%;
+        height: 40rem;
+    }
+    input {
+        height: 3rem;
+    }
+    h2 {
+        font-weight: 900;
+        font-size: 3rem;
+        text-align: center;
+    }
+    #rightR h2 {
+        margin: 0;
+    }
+    p {
+        font-weight: 400;
+        font-size: 1.35rem;
+    }
+    #rightR {
+        width: 75%;
+        height: 100%;
+    }
+    #peloFace {
+        margin-bottom: 4rem;
+    }
+}
+@media screen and (min-width: 840px) {
+    #cLogin {
+        display: none;
+    }
+    #mobileRegistro {
+        display: none;
+    }
+}

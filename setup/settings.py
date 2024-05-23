@@ -65,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -171,7 +172,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/static")]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -1,0 +1,113 @@
+body{
+    color: var(--color-fg);
+    justify-content: center;
+    align-items: center;
+}
+input{
+    height: 3rem;
+}
+#login, #registro{
+    display: none;
+}
+#mobileTitle{
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+#cLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    width: 90%;
+}
+#cLogin button{
+    width: 94%;
+    margin-bottom: 12px;
+}
+.containerI{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+.containerIB{
+    background-color: var(--color-main);
+    font-size: 2rem;
+    color: var(--color-card);
+    cursor: pointer;
+    padding: 12px;
+    margin: auto 15px auto 15px;
+    transition: ease 0.2s;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-decoration: none;
+}
+.containerIB i {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+#mobileRegistro{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+#cRegistro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height:auto;
+}
+#fotoDePerfil{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#fotoDePerfil input{
+    width: 30%;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    margin: 0;
+}
+hr{
+    width: 100%;
+    margin: 10px 0 10px 0;
+}
+#cRegistro hr{
+    width: 80%;
+    margin: 40px 0 40px 0;
+
+}
+.troca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.troca p{
+    margin-top: 0;
+}
+#passwordForget{
+    margin-top: 0;
+    margin-bottom: 20px;
+}
