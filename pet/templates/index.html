@@ -21,7 +21,7 @@
             />
         </div>
         {% if not request.user.is_authenticated %}
-        
+
         <a href="{% url "userauths:sign-in" %}">
         <button id="entrar">Entrar</button>
         </a>
