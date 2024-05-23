@@ -107,12 +107,15 @@ header{
     padding: 0;
 }
 
-#userNav ul li {
+#userNav ul a {
     font-size: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
     text-align: center;
+    text-decoration: none;
+    color: var(--color-fg);
+
 }
 .menu-item:hover{
     background-color: var(--color-fg-hover);

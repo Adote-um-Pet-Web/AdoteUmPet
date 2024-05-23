@@ -1,5 +1,6 @@
 {% load static %}
-
+{% if request.path == "/"%}
 <script src=" {% static "assets/js/header.js" %} "></script>
 <script src=" {% static "assets/js/navBar.js" %} "></script>
 <script src=" {% static "assets/js/banner.js" %} "></script>
+{% endif %}

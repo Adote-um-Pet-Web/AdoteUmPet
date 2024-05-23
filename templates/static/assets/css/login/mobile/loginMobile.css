@@ -3,6 +3,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+input{
+    height: 3rem;
+}
 #login, #registro{
     display: none;
 }
@@ -54,11 +57,17 @@ body{
     display: flex;
     align-items: center;
 }
+#mobileRegistro{
+    height: 100%;
+    overflow: auto;
+}
 #cRegistro{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    height:auto;
 }
 #fotoDePerfil{
     display: flex;
@@ -88,9 +97,4 @@ hr{
     flex-direction: column;
     width: 100%;
     margin-bottom: 1rem;
-}
-@media  (max-width: 500px) {
-    #cRegistro h2{
-        margin-top: 10rem;
-    }
 }

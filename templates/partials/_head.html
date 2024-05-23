@@ -10,26 +10,22 @@ rel="stylesheet" href="{% static "assets/css/imports.css" %}">
 
 <!-- header css -->
 <link rel="stylesheet" href=" {% static "assets/css/header/header.css" %} " />
-<link rel="stylesheet" href=" {% static
-"assets/css/header/mobile/headerMobile.css" %} " media="screen and (max-width:
-840px)" />
+<link rel="stylesheet" href=" {% static "assets/css/header/mobile/headerMobile.css" %} " media="screen and (max-width: 840px)" />
 
 <!-- navBar css -->
 <link rel="stylesheet" href=" {% static "assets/css/navBar/navbar.css" %} " />
-<link rel="stylesheet" href=" {% static
-"assets/css/navBar/mobile/navBarMobile.css" %} " media="screen and (max-width:
-840px)" />
+<link rel="stylesheet" href=" {% static "assets/css/navBar/mobile/navBarMobile.css" %} " media="screen and (max-width: 840px)" />
 
 <!-- banner -->
 <link rel="stylesheet" href=" {% static "assets/css/banner/banner.css" %} " />
-<link rel="stylesheet" href=" {% static
-"assets/css/banner/mobile/bannerMobile.css" %} " media="screen and (max-width:
-840px)" />
+<link rel="stylesheet" href=" {% static "assets/css/banner/mobile/bannerMobile.css" %} " media="screen and (max-width: 840px)" />
 
 <!-- card css -->
 <link rel="stylesheet" href=" {% static "assets/css/card/card.css" %} " /> 
-{% if request.path == "/user/sign-in/" or request.path == "/user/sign-up/" %}
+
+
 <!-- login -->
+{% if request.path == "/user/sign-in/" or request.path == "/user/sign-up/" %}
 <link rel="stylesheet" href="{% static "assets/css/login/login.css" %}">
 <link rel="stylesheet" href="{% static "assets/css/login/mobile/loginMobile.css"%}" media="screen and (max-width: 840px)"> 
 {% endif %}
