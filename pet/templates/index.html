@@ -20,12 +20,16 @@
                 placeholder="Search"
             />
         </div>
+        {% if not request.user.is_authenticated %}
+        
         <a href="{% url "userauths:sign-in" %}">
         <button id="entrar">Entrar</button>
         </a>
-        <div id="avatar" style="display: none">
+        {% else %}
+        <div id="avatar">
             <img id="avatarImg" src="" alt="avatar" />
         </div>
+        {% endif %}
     </div>
     <div id="userNav" style="display: none">
         <h3 id="usuario">
@@ -36,22 +40,22 @@
         </h3>
 
         <ul>
-            <li class="menu-item">
+            <a class="menu-item">
                 <span>Animais salvos</span>
                 <i class="fi fi-br-bookmark"></i>
-            </li>
-            <li class="menu-item">
+            </a>
+            <a class="menu-item">
                 <span>Editar Perfil</span>
                 <i class="fi fi-br-user-pen"></i>
-            </li>
-            <li class="menu-item">
+            </a>
+            <a class="menu-item">
                 <span>Configurações</span>
                 <i class="fi fi-br-settings"></i>
-            </li>
-            <li class="menu-item" id="changeProfile">
+            </a>
+            <a class="menu-item" id="changeProfile" href="{% url "userauths:sign-out" %}">
                 <span>Trocar de conta</span>
                 <i class="fi fi-br-exchange"></i>
-            </li>
+            </a>
         </ul>
         <button id="trocarCargo">add pet</button>
     </div>
@@ -265,11 +269,6 @@
                 />
                 <div class="info">
                     <h2>Pedrin</h2>
-                    <p>Idade: 5 meses</p>
-                    <p>Espécie: Cachorro</p>
-                    <p>Raça: S.R.C</p>
-                    <p>Tamanho: Micro</p>
-                    <p>Sexo: Macho</p>
                 </div>
             </div>
             <div class="card">
@@ -279,11 +278,6 @@
                 />
                 <div class="info">
                     <h2>Juan</h2>
-                    <p>Idade: 2 anos</p>
-                    <p>Espécie: Gato</p>
-                    <p>Raça: Siamês</p>
-                    <p>Tamanho: Pequeno</p>
-                    <p>Sexo: Macho</p>
                 </div>
             </div>
             <div class="card">
@@ -293,11 +287,6 @@
                 />
                 <div class="info">
                     <h2>Rex</h2>
-                    <p>Idade: 3 anos</p>
-                    <p>Espécie: Cachorro</p>
-                    <p>Raça: Labrador</p>
-                    <p>Tamanho: Grande</p>
-                    <p>Sexo: Macho</p>
                 </div>
             </div>
             <div class="card">

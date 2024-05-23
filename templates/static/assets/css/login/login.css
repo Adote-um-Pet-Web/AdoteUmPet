@@ -12,7 +12,7 @@
     #login {
         display: flex;
         width: 70%;
-        height: 30rem;
+        height: 32rem;
         border-radius: 23px;
         justify-content: center;
     }
@@ -53,7 +53,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     #registro {
@@ -107,6 +107,7 @@
         display: flex;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         text-decoration: none;
+        background-color: var(--color-detail);
     }
     .containerIB i {
         text-align: center;
@@ -114,17 +115,7 @@
         display: flex;
         align-items: center;
     }
-    #login .containerIB {
-        background-color: var(--color-main);
-    }
-    #login .containerIB:hover {
-        color: var(--color-detail-hover);
-        background-color: var(--color-main-hover);
-    }
-    #leftR .containerIB {
-        background-color: var(--color-detail);
-    }
-    #leftR .containerIB:hover {
+    .containerIB:hover {
         color: var(--color-detail-hover);
     }
 
@@ -192,7 +183,7 @@
         margin-bottom: 1rem;
     }
     #cLogin,
-    #cRegistro {
+    #mobileRegistro {
         display: none;
     }
     #mobileTitle {
@@ -242,12 +233,14 @@ h2 {
     justify-content: center;
     text-align: center;
 }
-#rightL button,
-#rightR button {
-    width: 93%;
-}
 #rightR h2 {
     margin-top: 5rem;
+}
+#rightL h2 {
+    margin-top: 0;
+}
+#rightL .btnLogin{
+    width: 93%;
 }
 .btnLogin:hover {
     background-color: var(--color-detail-hover);
@@ -257,6 +250,17 @@ p {
     font-size: 1.3rem;
     text-align: center;
 }
+#passwordForget{
+    margin-top: 1.5rem;
+ text-decoration: none;
+ color: var(--color-fg);
+}
+#passwordForget span{
+ color: var(--color-detail);
+}
+#passwordForget span:hover{
+ color: var(--color-detail-hover);
+}
 @media screen and (min-width: 1900px) {
     #login {
         width: 60%;
@@ -264,13 +268,6 @@ p {
     }
     input {
         height: 3rem;
-        margin-bottom: -10px;
-    }
-    #rightL button,
-    #rightR button {
-        height: 3.5rem;
-        width: 90%;
-        font-size: 1.8rem;
     }
     h2 {
         font-weight: 900;
@@ -285,6 +282,7 @@ p {
         font-size: 1.35rem;
     }
     #rightR {
+        width: 75%;
         height: 100%;
     }
     #peloFace {
