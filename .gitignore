@@ -50,7 +50,7 @@ wheels/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
+media/
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -127,3 +127,5 @@ _local_settings.py
 gunicorn-error-log
 db.sqlite3
 db copy.sqlite3
+media
+media/

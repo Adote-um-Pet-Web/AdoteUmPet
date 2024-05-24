@@ -1,7 +1,7 @@
 from django.db import models
 
 from pet.models import Pet
-from userprofile.models import Profile
+from userauth.models import Profile
 from utils.idrandom import random_id
 
 
