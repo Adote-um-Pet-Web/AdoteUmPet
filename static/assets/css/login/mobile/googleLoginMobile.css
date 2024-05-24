@@ -1,0 +1,22 @@
+#a{
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#a1{
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: left;
+}
+#a1 h1{
+    margin-top: 0;
+    text-align: center;
+}
+#a1_5{
+    width: 100%;
+}
+#a2{
+    display: none;
+    width: 100%;
+}
