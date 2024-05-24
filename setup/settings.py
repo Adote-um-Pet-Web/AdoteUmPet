@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk
 
 #TODO doenv
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv("DEBUG"))
+DEBUG = True if os.getenv("DEBUG") == "True" else False
 
 
 
