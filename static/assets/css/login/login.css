@@ -28,6 +28,7 @@
 
     #leftL {
         background-color: var(--color-main);
+        color: var(--color-contraste);
         height: 100%;
         width: 50%;
         padding: 1rem;
@@ -65,6 +66,7 @@
     }
 
     #leftR {
+        color: var(--color-contraste);
         background-color: var(--color-main);
         height: 100%;
         width: 25%;
@@ -163,19 +165,28 @@
         height: 90%;
         border-radius: 100%;
     }
-    #fotoDePerfilInp {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: 80%;
-        height: 100%;
+    #userAreaPhoto i{
+        font-size: 2rem;
     }
-    #fotoDePerfil input[type="file"] {
-        border: none;
+    .custom-file-input {
+        display: none;
     }
-    #fotoDePerfilInp label {
-        margin-bottom: 20px;
+
+    .custom-file-label {
+        background-color: var(--color-detail);
+        color: var(--color-fg);
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .custom-file-label:hover {
+        background-color: var(--color-detail-hover);
+    }
+
+    .custom-file-input + .custom-file-label {
+        margin-top: 10px;
     }
 
     #cadastrar {
@@ -186,7 +197,6 @@
         display: none;
     }
 }
-
 
 input {
     border: 3px solid var(--color-main);
@@ -239,7 +249,7 @@ h2 {
 #rightL h2 {
     margin-top: 0;
 }
-#rightL .btnLogin{
+#rightL .btnLogin {
     width: 93%;
 }
 .btnLogin:hover {
@@ -250,23 +260,27 @@ p {
     font-size: 1.3rem;
     text-align: center;
 }
-#passwordForget{
+#passwordForget {
     margin-top: 1.5rem;
- text-decoration: none;
- color: var(--color-fg);
+    text-decoration: none;
+    color: var(--color-fg);
 }
-#passwordForget span{
- color: var(--color-detail);
+#passwordForget span {
+    color: var(--color-detail);
 }
-#passwordForget span:hover{
- color: var(--color-detail-hover);
+#passwordForget span:hover {
+    color: var(--color-detail-hover);
 }
-@media screen and (min-width: 1115px){
+@media screen and (min-width: 1115px) {
     #rightR {
         width: 73%;
+        height: auto;
+    }
+    #rightR .btnLogin {
+        margin-bottom: 20px;
     }
 }
-@media screen and (min-width: 1686px){
+@media screen and (min-width: 1686px) {
     #rightR {
         width: 74%;
     }
