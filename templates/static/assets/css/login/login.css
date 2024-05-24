@@ -28,6 +28,7 @@
 
     #leftL {
         background-color: var(--color-main);
+        color: var(--color-contraste);
         height: 100%;
         width: 50%;
         padding: 1rem;
@@ -264,6 +265,10 @@ p {
 @media screen and (min-width: 1115px){
     #rightR {
         width: 73%;
+        height: auto;
+    }
+    #rightR .btnLogin{
+        margin-bottom: 20px;
     }
 }
 @media screen and (min-width: 1686px){
