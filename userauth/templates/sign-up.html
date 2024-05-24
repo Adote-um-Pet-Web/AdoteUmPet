@@ -47,12 +47,39 @@
         {{form.password1}}
         {{form.password2}}
         <div id="fotoDePerfil">
-            <h6 id="userAreaPhoto"><i id="userFlatICon" class="fi fi-br-user"></i></h6>
+            <h6 id="userAreaPhoto">
+                <img src="#" id="preview" style="display:none;" alt="Preview">
+                <i class="fi fi-br-user" id="iconPlaceholder" ></i>
+            </h6>
             <div id="fotoDePerfilInp">
-                <label for="avatar">Foto de perfil</label>
-                <input type="file" name="avatar" id="avatarInp">
+                <input type="file" id="fileInput" class="custom-file-input" accept="image/*">
+                <label for="fileInput" class="custom-file-label">Escolha sua foto de perfil</label>
             </div>
         </div>
+        <script>
+            const fileInput = document.getElementById('fileInput');
+            const previewContainer = document.getElementById('preview-container');
+            const preview = document.getElementById('preview');
+            const iconPlaceholder = document.getElementById('iconPlaceholder');
+          
+            fileInput.addEventListener('change', function() {
+              const file = this.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                  preview.src = reader.result;
+                  preview.style.display = 'block';
+                  iconPlaceholder.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+              } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+                iconPlaceholder.style.display = 'block';
+              }
+            });
+          </script>
+
         <button class="btnLogin" type="submit">Cadastrar</button>
     </form>
 </div>
@@ -71,6 +98,10 @@
         <label for="avatar">Foto de perfil</label>
         <input type="file" name="avatar" id="avatarInp">
     </div>
+
+
+
+
     <button class="btnLogin" type="submit">Cadastrar</button>
     <hr />
     <div class="troca">
