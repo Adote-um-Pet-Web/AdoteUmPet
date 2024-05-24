@@ -32,6 +32,7 @@ header{
 }
 #left p:hover{
     background-color: var(--color-fg-hover);
+    transform: scale(1.05);
 }
 #right, #search{
     display: flex;
@@ -119,6 +120,7 @@ header{
 }
 .menu-item:hover{
     background-color: var(--color-fg-hover);
+    transform: scale(1.05);
     border-radius: 5px;
 }
 
@@ -157,6 +159,7 @@ header{
 }
 #entrar:hover, #trocarCargo:hover{
     background-color: var(--color-main-hover);
+    transform: scale(1.05);
 }
 #logoText{
     font-weight: 900;
