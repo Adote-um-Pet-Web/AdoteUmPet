@@ -1,9 +1,9 @@
 [data-theme="padrao"] {
     --color-bg: #F6F6F6;
     --color-fg: #000000;
-    --color-main: #FFE450;
+    --color-main: #ffde26;
     --color-main-hover: #ebd453;
-    --color-detail: #87CEEB;
+    --color-detail: #46cbff;
     --color-detail-hover: #6CADC8;
     --color-card: #fff;
     --color-fg-hover: #dadada;
@@ -12,9 +12,9 @@
 [data-theme="moderador"] {
     --color-bg: #F6F6F6;
     --color-fg: #000000;
-    --color-main: #87CEEB;
+    --color-main: #46cbff;
     --color-main-hover: #6CADC8;
-    --color-detail: #FFE450;
+    --color-detail: #ffde26;
     --color-detail-hover: #E3CD56;
     --color-card: #fff;
     --color-fg-hover: #dadada49;
