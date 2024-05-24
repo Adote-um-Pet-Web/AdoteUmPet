@@ -331,7 +331,7 @@
                     <p>Sexo: Femea</p>
                 </div>
             </div>
-            {% comment %} {% for pets in pet %}
+      {% for pets in pet %}
             <div class="card">
                 <img
                 {% if pets.image_profile.url in pets %}
@@ -348,7 +348,7 @@
                     <p>Dono: {{ pets.owner }}</p>
                 </div>
             </div>
-            {% endfor %} {% endcomment %}
+            {% endfor %}
 
 
 

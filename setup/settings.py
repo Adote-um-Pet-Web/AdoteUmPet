@@ -83,7 +83,28 @@ SOCIALACCOUNT_PROVIDERS = {
             "key": "",
         }
     },
-    "facebook": {"LOCALE_FUNC": lambda request: "en_US"},
+     'facebook': {
+        'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+    }
 }
 
 
@@ -109,26 +130,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "setup.wsgi.application"
 
-# if DEBUG == True:
+if DEBUG == True:
 
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         }
-#     }
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv("ENGINEDDB"),
-        'NAME': os.getenv("NAMEDDB"),
-        'USER': os.getenv("USERDDB"),
-        'PASSWORD': os.getenv("PASSWORDDDB"),
-        'HOST': os.getenv("HOSTDDB"),
-        'PORT': os.getenv("PORTDDB"),
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv("ENGINEDDB"),
+            'NAME': os.getenv("NAMEDDB"),
+            'USER': os.getenv("USERDDB"),
+            'PASSWORD': os.getenv("PASSWORDDDB"),
+            'HOST': os.getenv("HOSTDDB"),
+            'PORT': os.getenv("PORTDDB"),
+        }
+    }
 
 
 
