@@ -1,4 +1,36 @@
+// abertura e fechamento do filtro
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#filtro").addEventListener("click", function () {
+        var navbar = document.querySelector(".navbar");
+        var arrow = document.querySelector("#arrow");
 
+        var computedStyle = window.getComputedStyle(navbar);
+        var display = computedStyle.getPropertyValue("display");
+
+        if (display === "none") {
+            navbar.style.display = "block";
+            arrow.innerHTML = "&#x25B4;";
+        } else if (display === "block") {
+            navbar.style.display = "none";
+            arrow.innerHTML = "&#x25BE;";
+        }
+    });
+    document.querySelector("#filtroM").addEventListener("click", function () {
+        var navbarM = document.querySelector(".navbar");
+        var arrowM = document.querySelector("#arrowM");
+
+        var computedStyle = window.getComputedStyle(navbarM);
+        var display = computedStyle.getPropertyValue("display");
+
+        if (display === "none") {
+            navbarM.style.display = "block";
+            arrowM.innerHTML = "&#x25B4;";
+        } else if (display === "block") {
+            navbarM.style.display = "none";
+            arrowM.innerHTML = "&#x25BE;";
+        }
+    });
+});
 function showBreeds(species) {
     var breedListDog = document.getElementById("breedListDog");
     var breedListCat = document.getElementById("breedListCat");

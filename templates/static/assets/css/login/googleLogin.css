@@ -17,6 +17,9 @@
     font-size: 2rem;
     padding: 1rem;
 }
+#a1 span{
+    color: var(--color-main);
+}
 #a1 h1{
     margin-top: 0;
 }

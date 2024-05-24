@@ -11,9 +11,8 @@
     border-top-right-radius: 30px;
     width: 18rem;
     display: none;
-    margin-top: -25px;
-    margin-bottom: 12px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: overflow 0.3s ease;
 }
 .navbar::after {
