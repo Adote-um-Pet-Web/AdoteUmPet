@@ -1,6 +1,6 @@
 from django.db import models
-
-from userprofile.models import Profile
+import uuid
+from userauth.models import Profile
 from utils.idrandom import random_id
 
 
@@ -10,10 +10,10 @@ class Species(models.TextChoices):
 
 
 class Pet(models.Model):
-    id = models.IntegerField(
-        primary_key=True, unique=True, default=random_id, editable=False
+    id = models.UUIDField(
+        primary_key=True, unique=True, default=uuid.uuid4, editable=False
     )
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="pets")
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="pet")
     name = models.CharField(max_length=255)
     species = models.CharField(max_length=20, choices=Species.choices)
     breed = models.CharField(max_length=255)

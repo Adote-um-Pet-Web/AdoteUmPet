@@ -19,6 +19,13 @@ class UserRegisterForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={"placeholder": "Confirme a senha"})
     )
 
+    image_user_profile = forms.ImageField(
+    required=False,
+    widget=forms.FileInput(attrs={"id": "fileInput", "class": "custom-file-input"}),
+
+)
+
+
     class Meta:
         model = User
-        fields = ["username", "email", "phone_number", "password1", "password2"]
+        fields = ["username", "email", "phone_number", "password1", "password2", "image_user_profile"]

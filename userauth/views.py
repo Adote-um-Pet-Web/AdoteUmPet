@@ -4,38 +4,35 @@ from django.shortcuts import redirect, render
 
 from .forms import UserRegisterForm
 from .models import User
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+from .forms import UserRegisterForm
 
+class SignUpView(CreateView):
+    model = User
+    form_class = UserRegisterForm
+    template_name = 'sign-up.html'
+    success_url = reverse_lazy('pets:index')
 
-def register_view(request):
-    if request.method == "POST":
-        form = UserRegisterForm(request.POST)
+    def form_valid(self, form):
+        user = form.save()
+        username = form.cleaned_data.get("username")
+        messages.success(
+            self.request, f"Hello {username} your account was created success."
+        )
+        new_user = authenticate(
+            username=form.cleaned_data["email"],
+            password=form.cleaned_data["password1"],
+        )
 
-        if form.is_valid():
-            new_user = form.save()
+        login(self.request, new_user)
 
-            username = form.cleaned_data.get("username")
-            messages.success(
-                request, f"Hello {username} your account was created success."
-            )
+        if form.cleaned_data.get("image_user_profile"):
+            user.image = form.cleaned_data["image_user_profile"]
+            user.save()
 
-            new_user = authenticate(
-                username=form.cleaned_data["email"],
-                password=form.cleaned_data["password1"],
-            )
-
-            login(request, new_user)
-
-            return redirect("pets:index")
-
-    if request.user.is_authenticated:
-        messages.warning(request, f"You are logged in")
         return redirect("pets:index")
-
-    else:
-        form = UserRegisterForm()
-    context = {"form": form}
-    return render(request, "sign-up.html", context)
-
 
 def login_view(request):
     if request.method == "POST":
