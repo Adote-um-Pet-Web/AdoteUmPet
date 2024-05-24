@@ -18,14 +18,12 @@
         <div id="peloFace">
             <p>ou entre de outra maneira:</p>
             <div class="containerI">
-                {% if setup.settings.DEBUG == True %}
                 <a class="containerIB" href="{% provider_login_url "facebook"%}">
                     <i class="fi fi-brands-facebook"></i>
                 </a>
                 <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
                     <i class="fi fi-brands-google"></i>
                 </a>
-                {% endif %}
             </div>
         </div>
 
