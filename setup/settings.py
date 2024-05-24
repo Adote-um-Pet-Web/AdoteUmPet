@@ -27,7 +27,9 @@ SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk
 
 #TODO doenv
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.getenv("DEBUG"))
+
+
 
 ALLOWED_HOSTS = ["127.0.0.1", 'adoteumpet-production.up.railway.app']
 
@@ -107,14 +109,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "setup.wsgi.application"
 
+if DEBUG == True:
 
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv("ENGINEDDB"),
+            'NAME': os.getenv("NAMEDDB"),
+            'USER': os.getenv("USERDDB"),
+            'PASSWORD': os.getenv("PASSWORDDDB"),
+            'HOST': os.getenv("HOSTDDB"),
+            'PORT': os.getenv("PORTDDB"),
+        }
 }
+
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
