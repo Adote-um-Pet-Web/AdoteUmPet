@@ -65,18 +65,18 @@
     <p>Duvidas frequentes</p>
     <p id="filtro">Filtros <span id="arrow">&#x25BE;</span></p>
 </div>
-s
+
 <div id="bannerArea">
     <div id="sliders">
         <div class="slide">
-            <img src=" {% static "assets/img/banner2.png" %} " alt="banner1" />
+            <img src=" {% static "assets/img/slider1.png" %} " alt="banner1" />
         </div>
         <div class="slide">
-            <img src=" {% static "assets/img/banner4.png" %} " alt="banner2" />
+            <img src=" {% static "assets/img/adoteUmPet.png" %} " alt="banner2" />
         </div>
         <div class="slide">
             <img
-                src="{% static "assets/img/banner3.png" %}"
+                src="{% static "assets/img/CapaLinkedin.png" %}"
                 alt="banner3"
             />
         </div>
@@ -331,7 +331,7 @@ s
                     <p>Sexo: Femea</p>
                 </div>
             </div>
-      {% for pets in pet %}
+           {% comment %} {% for pets in pet %}
             <div class="card">
                 <img
                 {% if pets.image_profile.url in pets %}
@@ -348,7 +348,7 @@ s
                     <p>Dono: {{ pets.owner }}</p>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
 
 
 
