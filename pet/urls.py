@@ -6,5 +6,6 @@ from . import views
 app_name = "pets"
 
 urlpatterns = [
-    path("", views.PageView.as_view(), name="index"),
+    path("", views.PagePetIndex.as_view(), name="index"),
+    path("newpet/", views.PageNewPet.as_view(), name="newpet"),
 ]

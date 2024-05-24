@@ -179,8 +179,7 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
-# LOGIN_URL = "userauths:sign-in"
+LOGIN_URL = "userauths:sign-in"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 SITE_ID = 1
