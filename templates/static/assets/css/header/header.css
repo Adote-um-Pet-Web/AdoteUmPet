@@ -150,10 +150,16 @@ header{
 .menu-item:hover i{
     color: var(--color-main-hover);
 }
-#userNav button{
+#userNav #trocarCargo{
     width: 100%;
     align-self: center;
     margin: 0;
+    color: var(--color-contraste);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
 }
 #entrar, #trocarCargo{
     background-color: var(--color-main);
@@ -166,7 +172,7 @@ header{
     cursor: pointer;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-#entrar:hover, #trocarCargo:hover{
+trar:hover, #trocarCargo:hover{
     background-color: var(--color-main-hover);
     transform: scale(1.05);
 }
