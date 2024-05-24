@@ -66,6 +66,7 @@
     }
 
     #leftR {
+        color: var(--color-contraste);
         background-color: var(--color-main);
         height: 100%;
         width: 25%;
