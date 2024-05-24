@@ -27,15 +27,23 @@
         </a>
         {% else %}
         <div id="avatar">
-            <img id="avatarImg" src="" alt="avatar" />
+            {% if user.profilePhoto %}
+                <img src="{{user.profilePhoto.url}}" alt="Avatar" id="avatarImg">
+            {% else %}
+                <i class="fi fi-br-user" id="iconPlaceholder" ></i>
+            {% endif %}
         </div>
         {% endif %}
     </div>
     <div id="userNav" style="display: none">
         <h3 id="usuario">
-            ola
+            Olá
             <span id="usuarioName" style="color: var(--color-main)"
-                >aa</span
+                ><script>
+                    var fullName = "{{ user.username }}";
+                    var firstName = fullName.split(' ')[0];
+                    document.write(firstName);
+                </script></span
             >!
         </h3>
 
@@ -52,12 +60,15 @@
                 <span>Configurações</span>
                 <i class="fi fi-br-settings"></i>
             </a>
+            <a class="menu-item">
+                <span>Animais Adicionados</span>
+                <i class="fi fi-br-list"></i></a>
             <a class="menu-item" id="changeProfile" href="{% url "userauths:sign-out" %}">
                 <span>Trocar de conta</span>
                 <i class="fi fi-br-exchange"></i>
             </a>
         </ul>
-        <button id="trocarCargo">add pet</button>
+        <a href="" id="trocarCargo">Adicionar pet</a>
     </div>
 </header>
 

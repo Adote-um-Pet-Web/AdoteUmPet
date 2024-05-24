@@ -67,10 +67,19 @@ header{
     height: 2.4rem;
     width: 2.4rem;
     border-radius: 100%;
-    outline: 2px solid var(--color-main);
+    border: 2px solid var(--color-main);
     cursor: pointer;
     align-items: center;
     display: flex;
+    justify-content: center;
+    text-align: center;
+}
+#avatar i{
+    font-size: 1.5rem;
+    color: var(--color-contraste);
+    align-items: center;
+    display: flex;
+    text-align: center;
     justify-content: center;
 }
 #avatarImg{
