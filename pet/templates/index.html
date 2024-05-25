@@ -27,10 +27,10 @@
         </a>
         {% else %}
         <div id="avatar">
-            {% if user.profilePhoto %}
-                <img src="{{user.profilePhoto.url}}" alt="Avatar" id="avatarImg">
+            {% if user.image_user_profile %}
+                <img src="{{user.image_user_profile.url}}" alt="Avatar" id="avatarImg">
             {% else %}
-                <i class="fi fi-br-user" id="iconPlaceholder" ></i>
+                <img src="{% static "assets/img/avatar" %}" alt="Avatar" id="avatarImg">
             {% endif %}
         </div>
         {% endif %}
@@ -68,7 +68,7 @@
                 <i class="fi fi-br-exchange"></i>
             </a>
         </ul>
-        <a href="" id="trocarCargo">Adicionar pet</a>
+        <a href="newpet/" id="trocarCargo">Adicionar pet</a>
     </div>
 </header>
 
