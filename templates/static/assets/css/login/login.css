@@ -66,8 +66,8 @@
     }
 
     #leftR {
-        color: var(--color-contraste);
-        background-color: var(--color-main);
+        color: var(--color-fg);
+        background-color: var(--color-card);
         height: 100%;
         width: 25%;
         padding: 1rem;
@@ -85,6 +85,7 @@
 
     #rightR {
         background-color: var(--color-card);
+        background-color: var(--color-bg);
         height: 100%;
         width: 72%;
         display: flex;
@@ -136,57 +137,6 @@
     }
     #peloFace {
         margin-bottom: 2rem;
-    }
-
-    #fotoDePerfil {
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        height: 6rem;
-        align-items: center;
-        justify-content: left;
-        margin-bottom: 1rem;
-    }
-    #fotoDePerfil h6 {
-        background-color: var(--color-main);
-        color: var(--color-detail);
-        font-size: 2rem;
-        width: 4rem;
-        height: 4rem;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        display: flex;
-        border-radius: 100%;
-        margin-right: 1rem;
-    }
-    #fotoDePerfil h6 img {
-        width: 90%;
-        height: 90%;
-        border-radius: 100%;
-    }
-    #userAreaPhoto i{
-        font-size: 2rem;
-    }
-    .custom-file-input {
-        display: none;
-    }
-
-    .custom-file-label {
-        background-color: var(--color-detail);
-        color: var(--color-fg);
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .custom-file-label:hover {
-        background-color: var(--color-detail-hover);
-    }
-
-    .custom-file-input + .custom-file-label {
-        margin-top: 10px;
     }
 
     #cadastrar {
@@ -320,4 +270,57 @@ p {
     #mobileRegistro {
         display: none;
     }
+}
+#fotoDePerfil {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 6rem;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 1rem;
+}
+#fotoDePerfil h6 {
+    background-color: var(--color-main);
+    color: var(--color-detail);
+    font-size: 2rem;
+    width: 4rem;
+    height: 4rem;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 100%;
+    margin-right: 1rem;
+}
+#fotoDePerfil h6 img {
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+}
+#userAreaPhoto i{
+    font-size: 2rem;
+}
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-label {
+    background-color: var(--color-detail);
+    color: var(--color-fg);
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-label:hover {
+    background-color: var(--color-detail-hover);
+}
+
+.custom-file-input + .custom-file-label {
+    margin-top: 10px;
+}
+#rightR input[type= "text"]{
+    text-transform:capitalize;
 }

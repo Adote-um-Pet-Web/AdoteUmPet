@@ -56,29 +56,6 @@
                 <label for="fileInput" class="custom-file-label">Escolha sua foto de perfil</label>
             </div>
         </div>
-        <script>
-            const fileInput = document.getElementById('fileInput');
-            const previewContainer = document.getElementById('preview-container');
-            const preview = document.getElementById('preview');
-            const iconPlaceholder = document.getElementById('iconPlaceholder');
-
-            fileInput.addEventListener('change', function() {
-              const file = this.files[0];
-              if (file) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                  preview.src = reader.result;
-                  preview.style.display = 'block';
-                  iconPlaceholder.style.display = 'none';
-                }
-                reader.readAsDataURL(file);
-              } else {
-                preview.src = '#';
-                preview.style.display = 'none';
-                iconPlaceholder.style.display = 'block';
-              }
-            });
-          </script>
 
         <button class="btnLogin" type="submit">Cadastrar</button>
     </form>
@@ -94,10 +71,16 @@
         {{form.password1}}
         {{form.password2}}
 
-    <div id="fotoDePerfil">
-        <label for="avatar">Foto de perfil</label>
-        <input type="file" name="avatar" id="avatarInp">
-    </div>
+        <div id="fotoDePerfilM">
+            <h6 id="userAreaPhotoM">
+                <img src="#" id="previewM" style="display:none;" alt="Preview">
+                <i class="fi fi-br-user" id="iconPlaceholderM" ></i>
+            </h6>
+            <div id="fotoDePerfilInpM">
+                {{form.image_user_profile}}
+                <label for="fileInput" class="custom-file-label">Escolha sua foto de perfil</label>
+            </div>
+        </div>
 
 
 
