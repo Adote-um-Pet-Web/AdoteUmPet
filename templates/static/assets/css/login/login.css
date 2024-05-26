@@ -68,7 +68,7 @@
     #leftR {
         color: var(--color-fg);
         background-color: var(--color-card);
-        height: 100%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;        height: 100%;
         width: 25%;
         padding: 1rem;
         align-items: center;
@@ -161,10 +161,15 @@ input {
     height: 2.6rem;
 }
 
-h1 {
+#leftL h1 {
     font-weight: 900;
     font-size: 3rem;
     text-align: center;
+}
+#leftR h1{
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: left;
 }
 h2 {
     font-weight: 700;
@@ -323,4 +328,23 @@ p {
 }
 #rightR input[type= "text"]{
     text-transform:capitalize;
+}
+.label{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.label label{
+    padding: 3px;
+    border-radius: 6px;
+    position: absolute;
+    background-color: var(--color-card);
+    color: var(--color-fg);
+    font-size: 1rem;
+    font-weight: 200;
+    margin-left: -21rem;
+    margin-bottom: 2.2rem;
+    z-index: 2;
+    transition: margin 0.3s ease;
 }

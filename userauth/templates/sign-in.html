@@ -22,23 +22,60 @@
     </div>
     <form method="POST" id="rightL">
         {% csrf_token %}
-        <h2>entrar</h2>
-        <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-        /><input
-            type="password"
-            name="password"
-            id="senha"
-            placeholder="Senha"
-        />
+        <h2>Entrar</h2>
+        <div class="label">
+            <label for="email" id="label-email">
+                Email
+            </label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+            />
+        </div>
+        <div class="label">
+            <label for="password" id="label-senha">
+                Senha
+            </label>
+            <input
+                type="password"
+                name="password"
+                id="senha"
+            />
+        </div>
         <button class="btnLogin" type="submit">Login</button>
         <a href="{% url "password_reset" %}" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
     </form>
 </div>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const emailInput = document.getElementById("email");
+        const emailLabel = document.getElementById("label-email");
+        const passwordInput = document.getElementById("senha");
+        const passwordLabel = document.getElementById("label-senha");
+    
+        emailInput.addEventListener("focus", function() {
+            emailLabel.style.marginBottom = "5.2rem";
+        });
+    
+        emailInput.addEventListener("blur", function() {
+            if (emailInput.value === "") {
+                emailLabel.style.marginBottom = "2.5rem";
+            }
+        });
+    
+        passwordInput.addEventListener("focus", function() {
+            passwordLabel.style.marginBottom = "5.2rem";
+        });
+    
+        passwordInput.addEventListener("blur", function() {
+            if (passwordInput.value === "") {
+                passwordLabel.style.marginBottom = "2.5rem";
+            }
+        });
+    });
+    
+</script>
 
 
 <!-- mobile login -->
