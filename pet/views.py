@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.urls import reverse_lazy
 from . import models
 
@@ -21,3 +21,9 @@ class PageNewPet(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
+
+class PageDetailPet(LoginRequiredMixin, DetailView):
+    model = models.Pet
+    context_object_name = 'pet'
+    template_name = 'petDetail.html'

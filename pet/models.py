@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 from userauth.models import User
-from utils.idrandom import random_id
 
 
 class Species(models.TextChoices):

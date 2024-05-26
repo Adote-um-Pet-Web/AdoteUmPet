@@ -207,3 +207,7 @@ EMAIL_POST = os.getenv("EMAIL_POST")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+}
