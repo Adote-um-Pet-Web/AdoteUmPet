@@ -14,7 +14,7 @@ class PagePetIndex(ListView):
 
 class PageNewPet(LoginRequiredMixin, CreateView):
     model = models.Pet
-    fields = ['name', 'species', 'breed', 'age', 'color',  'sex', 'size', 'weight','history','observations','image_pet_profile','adopted']
+    fields = ['name', 'species', 'breed', 'age', 'color',  'sex', 'size', 'weight','history','observations','image_profile','adopted']
     success_url = reverse_lazy('pets:index')
     template_name = 'registerPet.html'
 

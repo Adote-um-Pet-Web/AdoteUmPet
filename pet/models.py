@@ -27,7 +27,7 @@ class Pet(models.Model):
     weight = models.IntegerField()
     history = models.TextField(blank=True, null=True)
     observations = models.TextField(blank=True, null=True)
-    image_pet_profile = models.ImageField(
+    image_profile = models.ImageField(
         upload_to="pets/profile/imagesPets/%Y/%m/", blank=False, null=False
     )
     adopted = models.BooleanField()
