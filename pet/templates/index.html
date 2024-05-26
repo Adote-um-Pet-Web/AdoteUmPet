@@ -344,10 +344,11 @@
             </div>
            {% for pets in pet %}
             <div class="card">
-                <img
-                {% if pets.image_profile.url in pets %}
+                {% if pets.image_profile %}
+                    <img
                     src="{{ pets.image_profile.url }}"
                     alt="Imagem do Animal"
+
                 />
                 {% endif %}
                 <div class="info">
