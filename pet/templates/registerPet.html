@@ -1,20 +1,71 @@
- {% extends "base.html" %} {% load static %} 
+{% extends "base.html" %} 
+{% load static %} 
 {% block title %} Cadastro do Pet {% endblock title %}
 {% block content %}
 
 <div id="screen">
     <nav id="listas">
         <ul id="nav-list">
-            <li data-content="Informacoes basicas">Informacoes basicas</li>
-            <li data-content="Informacoes medicas">informacoes medicas</li>
-            <li data-content="Historico">Historico</li>
-            <li data-content="Fotos">fotos</li>
+            <li id="tab1" class="active">Informações básicas</li>
+            <li id="tab2">Informações médicas</li>
+            <li id="tab3">Histórico</li>
+            <li id="tab4">Fotos</li>
         </ul>
-        <button>salvar</button> 
+        <button>Salvar</button> 
     </nav>
     <section>
-        <h1>Cadastro do pet para adocao</h1>
-        <div id="espaco_dos_formularios"><h3>Informacoes basicas</h3></div>
+        <div id="top">
+            <h1>Cadastro do pet para adoção</h1>
+            <h3 id="form-title">Informações básicas</h3>
+        </div>
+        <div id="espaco_dos_formularios">
+            <form id="form1" method="post" style="display: flex;">
+                <div id="div1">
+                    <input type="text" placeholder="Nome do Pet">
+                    <input type="text" placeholder="Raça">
+                </div>
+                <div>
+                    <select>
+                        <option value="0">Espécie</option>
+                        <option value="dog">Cachorro</option>
+                        <option value="cat">Gato</option>
+                    </select>
+                    <select>
+                        <option value="0">Sexo</option>
+                        <option value="male">Macho</option>
+                        <option value="female">Fêmea</option>
+                    </select>
+                    <input type="text" placeholder="Cor">
+                </div>
+                <div>
+                    <input type="number" placeholder="Idade em anos">
+                    <input type="number" placeholder="Peso em kg">
+                    <input type="number" placeholder="Altura em cm">
+                </div>
+            </form>
+            <form id="form2" method="post" style="display: none;">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </form>
+            <form id="form3" method="post" style="display: none;">
+                <textarea cols="120" rows="10" placeholder="História de vida"></textarea>
+                <textarea cols="120" rows="10" placeholder="Observações"></textarea>
+            </form>
+            <form id="form4" method="post" style="display: none;">
+                <div id="f4d01">
+                    <label for="profilePet">Foto Principal do Pet</label>
+                    <input type="file" name="profilePet" id="profilePet" accept="image/*">
+                    <label id="labelDiv" for="profilePet"><div id="main-photo-preview"><i id="ibtn" class="fi fi-br-plus"></i></div></label>
+                </div>
+                <div id="f4d02">
+                    <label for="adicPhoto">Fotos Extras do pet</label>
+                    <input type="file" name="adicPhoto" id="adicPhoto" accept="image/*" multiple style="display: none;">
+                    <button type="button" id="add-photo-button"><i class="fi fi-br-plus"></i></button>
+                    <div id="imageContainer"></div>
+                </div>
+            </form>
+        </div>
     </section>
 </div>
 {% endblock content %}
