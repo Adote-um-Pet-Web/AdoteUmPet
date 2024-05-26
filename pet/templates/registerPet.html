@@ -1,5 +1,5 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load static %}
 {% block title %} Cadastro do Pet {% endblock title %}
 {% block content %}
 
@@ -11,7 +11,7 @@
             <li id="tab3">Histórico</li>
             <li id="tab4">Fotos</li>
         </ul>
-        <button>Salvar</button> 
+        <button>Salvar</button>
     </nav>
     <section>
         <div id="top">
@@ -19,29 +19,32 @@
             <h3 id="form-title">Informações básicas</h3>
         </div>
         <div id="espaco_dos_formularios">
-            <form id="form1" method="post" style="display: flex;">
+            <form id="form1" method="POST" style="display: flex;" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div id="div1">
-                    <input type="text" placeholder="Nome do Pet">
-                    <input type="text" placeholder="Raça">
+                    <input type="file" name="image_pet_profile" id="fileInput" class="custom-file-input" accept="image/*">
+                    <input type="text" name="name" placeholder="Nome do Pet">
+                    <input type="text" name="breed" placeholder="Raça">
                 </div>
                 <div>
-                    <select>
+                    <select name="species">
                         <option value="0">Espécie</option>
-                        <option value="dog">Cachorro</option>
-                        <option value="cat">Gato</option>
+                        <option value="DOG">Cachorro</option>
+                        <option value="CAT">Gato</option>
                     </select>
-                    <select>
+                    <select name="sex">
                         <option value="0">Sexo</option>
-                        <option value="male">Macho</option>
-                        <option value="female">Fêmea</option>
+                        <option value="Male">Macho</option>
+                        <option value="Female">Fêmea</option>
                     </select>
-                    <input type="text" placeholder="Cor">
+                    <input name="color" type="text" placeholder="Cor">
                 </div>
                 <div>
-                    <input type="number" placeholder="Idade em anos">
-                    <input type="number" placeholder="Peso em kg">
-                    <input type="number" placeholder="Altura em cm">
+                    <input name="age" type="number" placeholder="Idade em anos">
+                    <input name="size" type="number" placeholder="Peso em kg">
+                    <input name="weight" type="number" placeholder="Altura em cm">
                 </div>
+                <button type="submit">ENTRE</button>
             </form>
             <form id="form2" method="post" style="display: none;">
                 <input type="text">

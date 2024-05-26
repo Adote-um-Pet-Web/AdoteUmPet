@@ -14,10 +14,10 @@ class PagePetIndex(ListView):
 
 class PageNewPet(LoginRequiredMixin, CreateView):
     model = models.Pet
-    fields = ['name', 'species', 'breed', 'age', 'color',  'sex', 'size', 'weight','history','observations','image_profile','adopted']
+    fields = ['name', 'species', 'breed', 'age', 'color',  'sex', 'size', 'weight','history','observations','image_pet_profile','adopted']
     success_url = reverse_lazy('pets:index')
     template_name = 'registerPet.html'
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(PageNewPet, self).form_valid(form)
+        form.instance.owner = self.request.user
+        return super().form_valid(form)

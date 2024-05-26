@@ -1,7 +1,7 @@
 from django.db import models
 
 from pet.models import Pet
-from userauth.models import Profile
+from userauth.models import User
 from utils.idrandom import random_id
 
 
@@ -10,7 +10,7 @@ class Adoption(models.Model):
         primary_key=True, unique=True, default=random_id, editable=False
     )
     adopter = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="adopted_pets"
+        User, on_delete=models.CASCADE, related_name="adopted_pets"
     )
     pet = models.OneToOneField(Pet, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
