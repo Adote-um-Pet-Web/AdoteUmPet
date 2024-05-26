@@ -21,6 +21,9 @@ html, body {
 input:focus{
     outline: none;
 }
+textarea:focus{
+    outline: none;
+}
 ::placeholder {
     color: var(--color-fg);
 }
