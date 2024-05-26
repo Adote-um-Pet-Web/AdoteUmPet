@@ -4,8 +4,13 @@
 <script src=" {% static "assets/js/navBar.js" %} "></script>
 <script src=" {% static "assets/js/banner.js" %} "></script>
 {% endif %}
-<script src=" {% static "assets/js/petCadastro.js" %} "></script>
 
-{% if request.path == "sign-up/" %}
+{% if request.path == "newPet/" %}
+<script src=" {% static "assets/js/petCadastro.js" %} "></script>
+{% endif %}
+
+
+{% if request.path == "/user/sign-up/"%}
 <script src=" {% static "assets/js/profilePhoto.js" %} "></script>
 {% endif %}
+

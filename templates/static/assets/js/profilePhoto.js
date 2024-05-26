@@ -1,3 +1,5 @@
+window.alert("oiiiiiiiii");
+
 const fileInput = document.getElementById("fileInput");
 const previewContainer = document.getElementById("preview-container");
 const preview = document.getElementById("preview");
