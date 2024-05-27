@@ -22,7 +22,7 @@ urlpatterns = [
 
     path('create_history_pet/<uuid:pet_id>/', views.CreateHistoryPetView.as_view(), name='create_history_pet'),
     path('create_medical_record/<uuid:pet_id>/', views.CreateMedicalRecordView.as_view(), name='create_medical_record'),
-    path('create_images_pets/<uuid:pet_id>/', views.create_images_pets, name='create_images_pets'),
+    path('create_images_pets/<uuid:pet_id>/', views.CreateImagesPetsView.as_view(), name='create_images_pets'),
 
 ]
 

@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 from userauth.models import User
-from multiupload.fields import MultiFileField
 
 class Species(models.TextChoices):
     DOG = "DOG", "Dog"
@@ -48,9 +47,11 @@ class MedicalRecord(models.Model):
     medical_history = models.TextField()
 
 
-class Image(models.Model):
-    image = models.ImageField(upload_to="pets/photos/imagesPets/%Y/%m/")
-
 class ImagesPets(models.Model):
     id_pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="images_pets")
-    image_pets = MultiFileField(upload_to="pets/pets_images/", null=True, blank=True)
+    image_pet_profile = models.ImageField(upload_to="pets/profile/%Y/%m/")
+    image_pet_datail1 = models.ImageField(upload_to="pets/photos/%Y/%m/")
+    image_pet_datail2 = models.ImageField(upload_to="pets/photos/%Y/%m/")
+    image_pet_datail3 = models.ImageField(upload_to="pets/photos/%Y/%m/")
+
+

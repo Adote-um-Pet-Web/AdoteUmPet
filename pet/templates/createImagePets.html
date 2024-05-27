@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <form method="post" enctype="multipart/form-data">
-
     {% csrf_token %}
-
     {{ form.as_p }}
 
-    <button type="submit">Criar Imagens do Pet</button>
-
+    <button type="submit">Salvar</button>
 </form>
   {% endblock content %}
 

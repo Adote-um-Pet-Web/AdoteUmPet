@@ -2,20 +2,21 @@
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from . import models
 
 from django.views.generic import CreateView
-from .forms import PetForm, HistoryPetForm, MedicalRecordForm, ImagesPetsForm
-from .models import Pet, ImagesPets, Image  # Importe o modelo Image
+from .forms import PetForm, HistoryPetForm, MedicalRecordForm
+from .models import Pet
+from django.shortcuts import get_object_or_404, redirect, render
 
-from django.shortcuts import render, redirect
-
-from .models import Pet, ImagesPets
+from django.views.generic.edit import FormView
 
 from .forms import ImagesPetsForm
 
+from .models import ImagesPets, Pet
 
+from uuid import UUID
 class PagePetIndex(ListView):
     model = models.Pet
     template_name = "index.html"
@@ -68,14 +69,21 @@ class CreateMedicalRecordView(CreateView):
         form.instance.id_pet = Pet.objects.get(id=self.kwargs['pet_id'])
         return super().form_valid(form)
 
+class CreateImagesPetsView(CreateView):
 
-class ImagesPetsCreateView(CreateView):
-    model = ImagesPets
     form_class = ImagesPetsForm
-    template_name = 'sua_template.html'  # Substitua 'sua_template.html' pelo nome do seu template
+
+    template_name = 'createImagePets.html'
+
+
+    def get_success_url(self):
+
+        return reverse_lazy('pets:index')  # redirect to a list view or any other page
+
 
     def form_valid(self, form):
-        # Adicione lógica adicional aqui, se necessário
+
+        form.instance.id_pet = Pet.objects.get(id=self.kwargs['pet_id'])
         return super().form_valid(form)
 
 class PageDetailPet(LoginRequiredMixin, DetailView):

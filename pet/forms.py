@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pet, HistoryPet, MedicalRecord, ImagesPets, Image
+from .models import Pet, HistoryPet, MedicalRecord, ImagesPets
 
 
 class PetForm(forms.ModelForm):
@@ -17,10 +17,10 @@ class MedicalRecordForm(forms.ModelForm):
         model = MedicalRecord
         fields = ['castreated', 'vaccines', 'vaccine_description', 'dewormed', 'dewormer_description', 'medical_history']
 
-
-from multiupload.fields import MultiFileField
-
 class ImagesPetsForm(forms.ModelForm):
+
     class Meta:
+
         model = ImagesPets
-        fields = ['id_pet', 'image_profile', 'image_pets']
+
+        fields = ('image_pet_profile', 'image_pet_datail1', 'image_pet_datail2', 'image_pet_datail3')
