@@ -4,10 +4,10 @@
 <script src=" {% static "assets/js/navBar.js" %} "></script>
 <script src=" {% static "assets/js/banner.js" %} "></script>
 {% endif %}
+<script src=" {% static "assets/js/petcadastro.js" %} "></script>
 
 {% if request.path == "/user/sign-up/" %}
 <script src=" {% static "assets/js/profilePhoto.js" %} "></script>
 {% endif %}
-{% if request.path == "/newpet/" %}
-<script src=" {% static "assets/js/petcadastro.js" %} "></script>
+{% if request.path == "/create_images_pets/" %}
 {% endif %}

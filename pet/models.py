@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from userauth.models import User
-
+from multiupload.fields import MultiFileField
 
 class Species(models.TextChoices):
     DOG = "DOG", "Dog"
@@ -24,16 +24,17 @@ class Pet(models.Model):
     sex = models.CharField(max_length=20, choices=Sex.choices)
     size = models.IntegerField()
     weight = models.IntegerField()
-    history = models.TextField(blank=True, null=True)
-    observations = models.TextField(blank=True, null=True)
-    image_profile = models.ImageField(
-        upload_to="pets/profile/imagesPets/%Y/%m/", blank=False, null=False
-    )
     adopted = models.BooleanField()
 
     def __str__(self):
         return self.name
 
+class HistoryPet(models.Model):
+    id_pet = models.ForeignKey(
+        Pet, on_delete=models.CASCADE, related_name="history_pet"
+    )
+    history = models.TextField(blank=True, null=True)
+    observations = models.TextField(blank=True, null=True)
 
 class MedicalRecord(models.Model):
     id_pet = models.ForeignKey(
@@ -47,8 +48,9 @@ class MedicalRecord(models.Model):
     medical_history = models.TextField()
 
 
+class Image(models.Model):
+    image = models.ImageField(upload_to="pets/photos/imagesPets/%Y/%m/")
+
 class ImagesPets(models.Model):
-    id_pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="ImagesPets")
-    image_pets = models.ImageField(
-        upload_to="pets/photos/imagesPets/%Y/%m/", blank=True, null=True
-    )
+    id_pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="images_pets")
+    image_pets = MultiFileField(upload_to="pets/pets_images/", null=True, blank=True)

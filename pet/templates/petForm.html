@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required><br>
+
+    <label for="species">Species:</label>
+    <select name="species" id="species" required>
+      <option value="DOG">Dog</option>
+      <option value="CAT">Cat</option>
+    </select><br>
+
+    <label for="breed">Breed:</label>
+    <input type="text" name="breed" id="breed" required><br>
+
+    <label for="age">Age:</label>
+    <input type="number" name="age" id="age" required><br>
+
+    <label for="color">Color:</label>
+    <input type="text" name="color" id="color" required><br>
+
+    <label for="sex">Sex:</label>
+    <select name="sex" id="sex" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select><br>
+
+    <label for="size">Size:</label>
+    <input type="number" name="size" id="size" required><br>
+
+    <label for="weight">Weight:</label>
+    <input type="number" name="weight" id="weight" required><br>
+
+    <button type="submit">Save</button>
+  </form>
+  {% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <label for="castreated">Castreated:</label>
+    <input type="checkbox" name="castreated" id="castreated"><br>
+
+    <label for="vaccines">Vaccines:</label>
+    <input type="checkbox" name="vaccines" id="vaccines"><br>
+
+    <label for="vaccine_description">Vaccine Description:</label>
+    <textarea name="vaccine_description" id="vaccine_description"></textarea><br>
+
+    <label for="dewormed">Dewormed:</label>
+    <input type="checkbox" name="dewormed" id="dewormed"><br>
+
+    <label for="dewormer_description">Dewormer Description:</label>
+    <textarea name="dewormer_description" id="dewormer_description"></textarea><br>
+
+    <label for="medical_history">Medical History:</label>
+    <textarea name="medical_history" id="medical_history"></textarea><br>
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock content %}
