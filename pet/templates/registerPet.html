@@ -11,7 +11,6 @@
             <li id="tab3">Histórico</li>
             <li id="tab4">Fotos</li>
         </ul>
-        <button>Salvar</button>
     </nav>
     <section>
         <div id="top">
@@ -44,16 +43,20 @@
                     <input name="size" type="number" placeholder="Peso em kg">
                     <input name="weight" type="number" placeholder="Altura em cm">
                 </div>
-                <button type="submit">ENTRE</button>
+                <button class="submit"  type="submit">Proximo</button>
             </form>
             <form id="form2" method="post" style="display: none;">
                 <input type="text">
                 <input type="text">
                 <input type="text">
+                <button class="submit" type="submit">Proximo</button>
             </form>
             <form id="form3" method="post" style="display: none;">
                 <textarea cols="120" rows="10" placeholder="História de vida"></textarea>
-                <textarea cols="120" rows="10" placeholder="Observações"></textarea>
+                <textarea cols="120" rows="10"
+                placeholder="Observações"></textarea>
+                <button class="submit" type="submit">Proximo</button>
+
             </form>
             <form id="form4" method="post" style="display: none;">
                 <div id="f4d01">
@@ -67,6 +70,7 @@
                     <button type="button" id="add-photo-button"><i class="fi fi-br-plus"></i></button>
                     <div id="imageContainer"></div>
                 </div>
+                <button class="submit" type="submit">Proximo</button>
             </form>
         </div>
     </section>

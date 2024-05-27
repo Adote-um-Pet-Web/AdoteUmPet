@@ -29,7 +29,6 @@
     align-items: center;
     background-color: var(--color-card);
     margin: 0;
-    font-size: 1.4rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #espaco_dos_formularios{
@@ -63,21 +62,6 @@
     transform: scale(1.05);
 }
 
-#listas button {
-    width: 90%;
-    height: 2.5rem;
-    margin: 1rem 0;
-    background-color: var(--color-main);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-#listas button:hover {
-    background-color: var(--color-main-hover);
-    transform: scale(1.05);
-}
 
 @media (min-width: 840px) {
     #listas{
@@ -88,9 +72,7 @@
         width: 100%;
     }
     #top{
-        padding: 1rem 0 1rem 1rem;
-        font-size: 1.4rem;
-        width: calc(100% - 1rem);
+        padding: 0;
     }
 }
 @media (min-width: 1900px) {
@@ -105,12 +87,13 @@
     #top{
         width: 100%;
         margin: 0;
-        padding: 1rem 0 1rem 2rem;
         font-size: 1.4rem;
     }
 }
 #top h1{
+    font-size: 2rem;
     margin: 0;
+    margin-left: 12px;
 }
 #top h3{
     font-size: 1.3rem;
@@ -137,6 +120,7 @@
     border-radius: 12px;
     background-color: var(--color-card);
     border: 3px solid var(--color-main);
+    color: var(--color-fg);
 }
 #form1, #form2, #form3{
     flex-direction: column;
@@ -232,4 +216,26 @@
     height: 10rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 12px;
+}
+
+#espaco_dos_formularios form .submit {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 6rem;
+    height: 2.5rem;
+    margin: 1rem;
+    font-size: 1rem;
+    background-color: var(--color-main);
+    color: var(--color-contraste);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    justify-self: right;
+}
+    
+#espaco_dos_formularios form .submit:hover {
+        background-color: var(--color-main-hover);
+        transform: scale(1.05);
 }

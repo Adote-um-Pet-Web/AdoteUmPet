@@ -273,7 +273,7 @@
     </nav>
 
     <section id="cards">
-            <div class="card">
+            <a class="card">
                 <img
                     src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS"
                     alt="Imagem do Animal"
@@ -281,8 +281,8 @@
                 <div class="info">
                     <h2>Pedrin</h2>
                 </div>
-            </div>
-            <div class="card">
+            </a>
+            <a class="card">
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-yM6aQWIo5xxdoDjGcTIq7ZN9RbrNF-3mAZDQvtABQ&s"
                     alt="Imagem do Animal"
@@ -290,8 +290,8 @@
                 <div class="info">
                     <h2>Juan</h2>
                 </div>
-            </div>
-            <div class="card">
+            </a>
+            <a class="card">
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFJ2o1m5ZRT9zL17KfLtUpz2p5MNefpRrkOQb9Tv7-yw&s"
                     alt="Imagem do Animal"
@@ -299,8 +299,8 @@
                 <div class="info">
                     <h2>Rex</h2>
                 </div>
-            </div>
-            <div class="card">
+            </a>
+            <a class="card">
                 <img
                     src="https://saude.abril.com.br/wp-content/uploads/2016/09/cachorro-vira-lata-91081.jpg?quality=85&strip=info&w=720&h=440&crop=1"
                     alt="Imagem do Animal"
@@ -313,8 +313,8 @@
                     <p>Tamanho: Médio</p>
                     <p>Sexo: Macho</p>
                 </div>
-            </div>
-            <div class="card">
+            </a>
+            <a class="card">
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3RtuwkMYTdGSdjV1GkwtqPlxT2m25OpTZ7CRIcpVCA&s"
                     alt="Imagem do Animal"
@@ -327,8 +327,8 @@
                     <p>Tamanho: Pequeno</p>
                     <p>Sexo: Femea</p>
                 </div>
-            </div>
-            <div class="card">
+            </a>
+            <a class="card">
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwD4Crezkb4D7yDCExwx7J7JnvS5uzCvt1OwDshi19Mg&s"
                     alt="Imagem do Animal"
@@ -341,9 +341,9 @@
                     <p>Tamanho: Pequeno</p>
                     <p>Sexo: Femea</p>
                 </div>
-            </div>
+            </a>
            {% for pets in pet %}
-            <div class="card">
+            <a class="card">
                 {% if pets.image_profile %}
                     <img
                     src="{{ pets.image_profile.url }}"
@@ -359,14 +359,8 @@
                     <p>Sexo: {{ pets.sex }}</p>
                     <p>Dono: {{ pets.owner }}</p>
                 </div>
-            </div>
+            </a>
             {% endfor %}
-
-
-
-
-
-
     </section>
 </main>
 
