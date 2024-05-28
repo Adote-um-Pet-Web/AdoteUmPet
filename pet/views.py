@@ -1,9 +1,12 @@
-from django.shortcuts import render
-from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView
+from django.views.generic.list import ListView
+
 from . import models
+from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
+from .models import Pet
 
 
 class PagePetIndex(ListView):
@@ -12,18 +15,66 @@ class PagePetIndex(ListView):
     context_object_name = "pet"
 
 
-class PageNewPet(LoginRequiredMixin, CreateView):
+class PageNavForm(LoginRequiredMixin, ListView):
     model = models.Pet
-    fields = ['name', 'species', 'breed', 'age', 'color',  'sex', 'size', 'weight','history','observations','image_profile','adopted']
-    success_url = reverse_lazy('pets:index')
-    template_name = 'registerPet.html'
+    template_name = "navForm.html"
+    context_object_name = "pet"
+
+
+class CreatePetView(LoginRequiredMixin, CreateView):
+    form_class = PetForm
+    template_name = "createPet.html"
+    context_object_name = "pet"
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
+
+        self.object = form.save()
+
+        return redirect("pets:create_history_pet", pet_id=self.object.id)
+
+
+class CreateHistoryPetView(LoginRequiredMixin, CreateView):
+    form_class = HistoryPetForm
+    template_name = "createHistory.html"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "pets:create_medical_record", kwargs={"pet_id": self.kwargs["pet_id"]}
+        )
+
+    def form_valid(self, form):
+        form.instance.id_pet = Pet.objects.get(id=self.kwargs["pet_id"])
         return super().form_valid(form)
 
 
-class PageDetailPet(LoginRequiredMixin, DetailView):
+class CreateMedicalRecordView(LoginRequiredMixin, CreateView):
+    form_class = MedicalRecordForm
+    template_name = "createMedicalRecord.html"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "pets:create_images_pets", kwargs={"pet_id": self.kwargs["pet_id"]}
+        )
+
+    def form_valid(self, form):
+        form.instance.id_pet = Pet.objects.get(id=self.kwargs["pet_id"])
+        return super().form_valid(form)
+
+
+class CreateImagesPetsView(LoginRequiredMixin, CreateView):
+    form_class = ImagesPetsForm
+    template_name = "createImagePets.html"
+
+    def get_success_url(self):
+        return reverse_lazy("pets:index")
+
+    def form_valid(self, form):
+        form.instance.id_pet = Pet.objects.get(id=self.kwargs["pet_id"])
+        return super().form_valid(form)
+
+
+class PageDetailPet(DetailView):
     model = models.Pet
-    context_object_name = 'pet'
-    template_name = 'petDetail.html'
+    context_object_name = "pet"
+    template_name = "petDetail.html"

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "partials/navForm.html" %}
+<form id="form4" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="f4d01">
+        <input type="file" name="image_pet_profile"  accept="image/*">
+    </div>
+    <div id="f4d02">
+
+        <input type="file" name="image_pet_datail1" accept="image/*" >
+        <input type="file" name="image_pet_datail2" accept="image/*"  >
+        <input type="file" name="image_pet_datail3" accept="image/*">
+
+    </div>
+    <button type="submit">Proximo</button>
+</form>
+{% endblock content %}

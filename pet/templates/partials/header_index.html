@@ -1,0 +1,69 @@
+{% load static %}
+<header>
+    <div id="left">
+        <h1 id="logoText">Adote um pet</h1>
+        <p>Duvidas frequentes</p>
+        <p id="filtro">Filtros <span id="arrow">&#x25BE;</span></p>
+    </div>
+    <div id="right">
+        <i class="fi fi-br-menu-burger" id="menuIconMobile"></i>
+        <div id="search">
+            <i class="fi fi-br-search"></i
+            ><input
+                type="text"
+                name="search"
+                id="searchInp"
+                placeholder="Search"
+            />
+        </div>
+        {% if not request.user.is_authenticated %}
+
+        <a href="{% url "userauths:sign-in" %}">
+        <button id="entrar">Entrar</button>
+        </a>
+        {% else %}
+        <div id="avatar">
+            {% if user.image_user_profile %}
+                <img src="{{user.image_user_profile.url}}" alt="Avatar" id="avatarImg">
+            {% else %}
+                <img src="{% static "assets/img/avatar.jpg" %}" alt="Avatar" id="avatarImg">
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div id="userNav" style="display: none">
+        <h3 id="usuario">
+            Olá
+            <span id="usuarioName" style="color: var(--color-main)"
+                ><script>
+                    var fullName = "{{ user.username }}";
+                    var firstName = fullName.split(' ')[0];
+                    document.write(firstName);
+                </script></span
+            >!
+        </h3>
+
+        <ul>
+            <a class="menu-item">
+                <span>Animais salvos</span>
+                <i class="fi fi-br-bookmark"></i>
+            </a>
+            <a class="menu-item">
+                <span>Editar Perfil</span>
+                <i class="fi fi-br-user-pen"></i>
+            </a>
+            <a class="menu-item">
+                <span>Configurações</span>
+                <i class="fi fi-br-settings"></i>
+            </a>
+            <a class="menu-item">
+                <span>Animais Adicionados</span>
+                <i class="fi fi-br-list"></i></a>
+            <a class="menu-item" id="changeProfile" href="{% url "userauths:sign-out" %}">
+                <span>Trocar de conta</span>
+                <i class="fi fi-br-exchange"></i>
+            </a>
+        </ul>
+        <a href="{% url "pets:navform"  %}" id="trocarCargo">Adicionar pet</a>
+    </div>
+</header>

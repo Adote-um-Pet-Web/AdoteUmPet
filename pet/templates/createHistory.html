@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "partials/navForm.html" %}
+<form method="post">
+    {% csrf_token %}
+    <label for="history">History:</label>
+    <textarea name="history" id="history"></textarea><br>
+
+    <label for="observations">Observations:</label>
+    <textarea name="observations" id="observations"></textarea><br>
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock content %}

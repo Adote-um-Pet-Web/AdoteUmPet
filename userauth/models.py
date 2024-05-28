@@ -1,16 +1,15 @@
 import uuid
 
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.db.models.signals import post_save
 from shortuuid.django_fields import ShortUUIDField
-from django.db import models
 
 ACCOUNT_STATUS = (
     ("active", "Active"),
     ("pending", "Pending"),
     ("in-active", "In-active"),
 )
-
 
 
 class User(AbstractUser):
