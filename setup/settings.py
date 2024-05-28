@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'uuid',
+    "uuid",
     # My Apps
     "pet",
     "adoption",
@@ -196,7 +196,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

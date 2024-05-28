@@ -20,7 +20,6 @@ class CreatePetView(LoginRequiredMixin, CreateView):
     template_name = "createPet.html"
     context_object_name = "pet"
 
-
     def form_valid(self, form):
         form.instance.owner = self.request.user
         self.object = form.save()
@@ -34,7 +33,7 @@ class CreateHistoryPetView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pet_id'] = self.kwargs['pet_id']
+        context["pet_id"] = self.kwargs["pet_id"]
 
         return context
 
@@ -55,7 +54,7 @@ class CreateMedicalRecordView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pet_id'] = self.kwargs['pet_id']
+        context["pet_id"] = self.kwargs["pet_id"]
         return context
 
     def get_success_url(self):
@@ -75,10 +74,9 @@ class CreateImagesPetsView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pet_id'] = self.kwargs['pet_id']
+        context["pet_id"] = self.kwargs["pet_id"]
 
         return context
-
 
     def get_success_url(self):
         return reverse_lazy("pets:index")
