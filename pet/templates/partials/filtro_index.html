@@ -1,0 +1,176 @@
+{% load static %}
+<nav class="navbar">
+    <div class="filter-section">
+        <h3 id="speciesTitle" class="filter-title">
+            Espécie
+            <span id="speciesTitleArrow" class="arrow"
+                >&#x25BE;</span
+            >
+        </h3>
+        <ul id="speciesList" class="hidden">
+            <li>
+                <input
+                    type="checkbox"
+                    id="dog"
+                    onchange="showBreeds('dog')"
+                />
+                <label for="dog">Cachorro</label>
+            </li>
+            <div
+                class="filter-section breed-list"
+                id="breedListDog"
+            >
+                <ul>
+                    <li>
+                        <input
+                            type="checkbox"
+                            class="breed"
+                            value="Golden Retriever"
+                        />
+                        <label>Golden Retriever</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            class="breed"
+                            value="Labrador Retriever"
+                        />
+                        <label>Labrador Retriever</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            class="breed"
+                            value="Bulldog"
+                        />
+                        <label>Bulldog</label>
+                    </li>
+                </ul>
+            </div>
+            <li>
+                <input
+                    type="checkbox"
+                    id="cat"
+                    onchange="showBreeds('cat')"
+                />
+                <label for="cat">Gato</label>
+            </li>
+            <div
+                class="filter-section breed-list"
+                id="breedListCat"
+            >
+                <ul>
+                    <li>
+                        <input
+                            type="checkbox"
+                            class="breed"
+                            value="Siamês"
+                        />
+                        <label>Siamês</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            class="breed"
+                            value="Maine Coon"
+                        />
+                        <label>Maine Coon</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            class="breed"
+                            value="Persa"
+                        />
+                        <label>Persa</label>
+                    </li>
+                </ul>
+            </div>
+        </ul>
+    </div>
+    <div class="filter-section">
+        <h3 id="sizeTitle" class="filter-title">
+            Tamanho
+            <span id="sizeTitleArrow" class="arrow">&#x25BE;</span>
+        </h3>
+        <ul id="sizeList" class="hidden">
+            <li>
+                <input type="checkbox" id="size1" />
+                <label for="size1">Pequeno</label>
+            </li>
+            <li>
+                <input type="checkbox" id="size2" />
+                <label for="size2">Médio</label>
+            </li>
+            <li>
+                <input type="checkbox" id="size3" />
+                <label for="size3">Grande</label>
+            </li>
+        </ul>
+    </div>
+    <div class="filter-section">
+        <h3 id="ageTitle" class="filter-title">
+            Idade
+            <span id="ageTitleArrow" class="arrow">&#x25BE;</span>
+        </h3>
+        <ul id="ageList" class="hidden">
+            <li>
+                <input type="checkbox" id="age1" />
+                <label for="age1">0-1 ano</label>
+            </li>
+            <li>
+                <input type="checkbox" id="age2" />
+                <label for="age2">1-3 anos</label>
+            </li>
+            <li>
+                <input type="checkbox" id="age3" />
+                <label for="age3">3-5 anos</label>
+            </li>
+            <li>
+                <input type="checkbox" id="age4" />
+                <label for="age4">5+</label>
+            </li>
+            <li>
+                <input type="checkbox" id="ageUnknown" />
+                <label for="ageUnknown">Desconhecida</label>
+            </li>
+        </ul>
+    </div>
+    <div class="filter-section">
+        <h3 id="deficiencyTitle" class="filter-title">
+            Deficiência
+            <span id="deficiencyTitleArrow" class="arrow"
+                >&#x25BE;</span
+            >
+        </h3>
+        <ul id="deficiencyList" class="hidden">
+            <li>
+                <input type="checkbox" id="yes" name="deficiency" />
+                <label for="yes">Sim</label>
+            </li>
+            <li>
+                <input type="checkbox" id="no" name="deficiency" />
+                <label for="no">Não</label>
+            </li>
+        </ul>
+    </div>
+    <div class="filter-section">
+        <h3 id="genderTitle" class="filter-title">
+            Sexo
+            <span id="genderTitleArrow" class="arrow"
+                >&#x25BE;</span
+            >
+        </h3>
+        <ul id="genderList" class="hidden">
+            <li>
+                <input type="checkbox" name="macho" id="macho" />
+                <label for="macho">Macho</label>
+            </li>
+            <li>
+                <input type="checkbox" name="femea" id="femea" />
+                <label for="femea">Femea</label>
+            </li>
+        </ul>
+    </div>
+    <button id="filterBtn">Filtrar</button>
+</nav>

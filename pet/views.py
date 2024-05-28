@@ -23,7 +23,7 @@ class PageNavForm(LoginRequiredMixin, ListView):
 
 
 
-class CreatePetView(CreateView):
+class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm
     template_name = 'createPet.html'
     context_object_name = "pet"
@@ -35,7 +35,7 @@ class CreatePetView(CreateView):
 
         return redirect('pets:create_history_pet', pet_id=self.object.id)
 
-class CreateHistoryPetView(CreateView):
+class CreateHistoryPetView(LoginRequiredMixin, CreateView):
     form_class = HistoryPetForm
     template_name = 'createHistory.html'
 
@@ -47,7 +47,7 @@ class CreateHistoryPetView(CreateView):
         return super().form_valid(form)
 
 
-class CreateMedicalRecordView(CreateView):
+class CreateMedicalRecordView(LoginRequiredMixin, CreateView):
     form_class = MedicalRecordForm
     template_name = 'createMedicalRecord.html'
 
@@ -58,7 +58,7 @@ class CreateMedicalRecordView(CreateView):
         form.instance.id_pet = Pet.objects.get(id=self.kwargs['pet_id'])
         return super().form_valid(form)
 
-class CreateImagesPetsView(CreateView):
+class CreateImagesPetsView(LoginRequiredMixin, CreateView):
     form_class = ImagesPetsForm
     template_name = 'createImagePets.html'
 
@@ -71,7 +71,7 @@ class CreateImagesPetsView(CreateView):
         form.instance.id_pet = Pet.objects.get(id=self.kwargs['pet_id'])
         return super().form_valid(form)
 
-class PageDetailPet(LoginRequiredMixin, DetailView):
+class PageDetailPet(DetailView):
     model = models.Pet
     context_object_name = 'pet'
     template_name = 'petDetail.html'
