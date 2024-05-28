@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %} Cadastro do Pet {% endblock title %}
+
 {% block content %}
 
 
@@ -8,10 +9,15 @@
             <li><a href="{% url "pets:create_pet" %}">Informações básicas</a></li>
 
             {% if pet_id %}
-            <li><a href="{% url "pets:create_history_pet" pet_id=pet.id %}">Historia</a></li>
-            <li><a href="{% url "pets:create_medical_record"  pet_id=pet.id  %}">Informações médicas</a></li>
-            <li><a href="{% url "pets:create_images_pets"   pet_id=pet.id %}">Fotos</a></li>
+                <li><a href="{% url 'pets:create_history_pet' pet_id=pet_id %}">História</a></li>
+                <li><a href="{% url 'pets:create_medical_record' pet_id=pet_id %}">Informações médicas</a></li>
+                <li><a href="{% url 'pets:create_images_pets' pet_id=pet_id %}">Fotos</a></li>
+            {% else %}
+                <li><a href="#">História</a></li>
+                <li><a href="#">Informações médicas</a></li>
+                <li><a href="#">Fotos</a></li>
             {% endif %}
+
         </ul>
 
 

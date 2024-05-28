@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "uuid",
     # My Apps
     "pet",
     "adoption",
@@ -139,17 +140,17 @@ if DEBUG == True:
         }
     }
 
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": os.getenv("ENGINEDDB"),
-            "NAME": os.getenv("NAMEDDB"),
-            "USER": os.getenv("USERDDB"),
-            "PASSWORD": os.getenv("PASSWORDDDB"),
-            "HOST": os.getenv("HOSTDDB"),
-            "PORT": os.getenv("PORTDDB"),
-        }
-    }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.getenv("ENGINEDDB"),
+#         "NAME": os.getenv("NAMEDDB"),
+#         "USER": os.getenv("USERDDB"),
+#         "PASSWORD": os.getenv("PASSWORDDDB"),
+#         "HOST": os.getenv("HOSTDDB"),
+#         "PORT": os.getenv("PORTDDB"),
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -196,10 +197,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-if DEBUG == True:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_POST = os.getenv("EMAIL_POST")
