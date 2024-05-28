@@ -53,7 +53,17 @@
     cursor: pointer;
     border-radius: 8px;
     margin-bottom: 0.5rem;
+    text-decoration: none;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+#listas ul li a{
+    font-size: 1.1rem;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--color-fg);
+    text-decoration: none;
 }
 
 #listas ul li:hover {
@@ -99,7 +109,12 @@
     font-size: 1.3rem;
     margin-right: 2rem;
 }
+#espaco_dos_formularios h1{
+    padding: 2rem;
+    color: var(--color-fg);
+    font-weight: 300;
 
+}
 #espaco_dos_formularios form{
     display: flex;
     align-items: center;
@@ -131,6 +146,33 @@
 #form2 input{
     width: 80%;
 }
+#form2 {
+    width: 97% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
+#form2 div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+#divLabel{
+    justify-content: left !important;
+
+}
+#form2 textarea{
+    width: 60%;
+}
+#form2 input[type = "checkbox"]{
+    width: auto;
+    margin-left: 10px;
+}
+
 #form4{
     display: flex;
     flex-direction: row;
@@ -145,6 +187,14 @@
     justify-content: center;
     align-items: center;
 }
+#form4 span{
+    color: red;
+    margin-top: 1rem;
+    position: 
+    absolute;
+    bottom: 0;
+    margin: 1rem;
+}
 #form4 #f4d01 label, #form4 #f4d02 label{
     font-size: 1.3rem;
     font-weight: 700;
@@ -155,10 +205,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
-#profilePet{
+
+#form4 input{
     display: none;
 }
+
 #labelDiv{
     width: 15rem; 
     height: 15rem;
@@ -179,30 +232,23 @@
     color: var(--color-main);
     text-align: center;
 }
-#add-photo-button{
-    border: 2px solid var(--color-main);
+
+#f4d03 .extra-photo-preview i{
     background-color: var(--color-main);
-    height: 4rem;
-    width: 4rem;
+    color: var(--color-fg);
+    text-align: center;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 12px;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    padding: 1rem;
+}
+#f4d03 i{
+    transition: background-color 0.3s, transform 0.3s;
 
 }
-#add-photo-button:hover{
-    background-color: var(--color-main-hover);
+#f4d03 i:hover{    
     transform: scale(1.05);
 }
-#add-photo-button i{
-    font-size: 1.6rem;
-    color: var(--color-contraste);
-    margin: 0;
-}
-#imageContainer{
-    margin-top: 20px;
+#f4d03{
+    margin-top: 3rem;
     width: 100%;
     height: 100%;
     flex-direction: row;
@@ -210,12 +256,13 @@
     justify-content: center;
     align-items: center;
 }
-.preview-img{
+.extra-photo-preview{
     margin: 10px;
     width: 10rem; 
     height: 10rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 12px;
+
 }
 
 #espaco_dos_formularios form .submit {

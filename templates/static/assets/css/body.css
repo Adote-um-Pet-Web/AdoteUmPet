@@ -27,6 +27,20 @@ textarea:focus{
 ::placeholder {
     color: var(--color-fg);
 }
+#nopet{
+    width: 100%;
+    height: auto;
+    color: var(--color-fg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#nopet img{
+    margin-top: 2rem;
+    height: 15rem;
+    border-radius: 12px;
+}
 
 @keyframes slideUp {
     from {

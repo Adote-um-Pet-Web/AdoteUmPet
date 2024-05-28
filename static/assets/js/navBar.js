@@ -9,10 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (display === "none") {
             navbar.style.display = "block";
+            navbar.style.animation = "slideLeft 0.3s ease forwards";
             arrow.innerHTML = "&#x25B4;";
         } else if (display === "block") {
-            navbar.style.display = "none";
-            arrow.innerHTML = "&#x25BE;";
+            navbar.style.animation = "slideRight 0.3s ease forwards";
+            setTimeout(() => {
+                navbar.style.display = "none";
+                arrow.innerHTML = "&#x25BE;";
+            }, 300);
         }
     });
     document.querySelector("#filtroM").addEventListener("click", function () {

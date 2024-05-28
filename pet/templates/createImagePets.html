@@ -1,18 +1,29 @@
-{% extends "base.html" %}
-{% block content %}
-{% include "partials/navForm.html" %}
+{% extends "createPetBase.html" %}
+{% block form_title %}Fotos{% endblock form_title %}
+{% block default_content %}{% endblock default_content %}
+{% block form_content %}
 <form id="form4" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div id="f4d01">
-        <input type="file" name="image_pet_profile"  accept="image/*">
+        <label for="profilePet">Foto Principal do Pet</label>
+        <input type="file" name="image_pet_profile" id="profilePet" accept="image/*">
+        <label id="labelDiv" for="profilePet"><div id="main-photo-preview"><i id="ibtn" class="fi fi-br-plus"></i></div></label>
     </div>
     <div id="f4d02">
-
-        <input type="file" name="image_pet_datail1" accept="image/*" >
-        <input type="file" name="image_pet_datail2" accept="image/*"  >
-        <input type="file" name="image_pet_datail3" accept="image/*">
-
+        <label for="adicPhoto">Fotos Extras do pet</label>
+        <div id="f4d03">
+            <input type="file" name="image_pet_datail1" id="image_pet_datail1" accept="image/*">
+            <label for="image_pet_datail1"><div class="extra-photo-preview" id="extra-photo-preview-1"><i id="ibtn1" class="fi fi-br-plus"></i></div></label>
+    
+            <input type="file" name="image_pet_datail2" id="image_pet_datail2" accept="image/*">
+            <label for="image_pet_datail2"><div class="extra-photo-preview" id="extra-photo-preview-2"><i id="ibtn2" class="fi fi-br-plus"></i></div></label>
+    
+            <input type="file" name="image_pet_datail3" id="image_pet_datail3" accept="image/*">
+            <label for="image_pet_datail3"><div class="extra-photo-preview" id="extra-photo-preview-3"><i id="ibtn3" class="fi fi-br-plus"></i></div></label>
+        </div>
     </div>
-    <button type="submit">Proximo</button>
+    <span>*Todas as fotos são obrigatorias</span>
+
+    <button class="submit" type="submit" id="finalizarForm">Finalizar</button>
 </form>
-{% endblock content %}
+{% endblock form_content %}

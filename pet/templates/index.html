@@ -48,7 +48,10 @@
             </a>
             {% endfor %}
             {% else %}
-            Desculpa nenhuma pet está disponivel no momento
+            <div id="nopet">
+                <h1>Desculpa nenhuma pet está disponivel no momento</h1>
+                <img src="{% static "assets/img/cat_sad.jpg" %}" alt="">
+            </div>
         {% endif %}
 
     </section>

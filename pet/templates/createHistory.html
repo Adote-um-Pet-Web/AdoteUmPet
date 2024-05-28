@@ -1,14 +1,25 @@
-{% extends "base.html" %}
-{% block content %}
-{% include "partials/navForm.html" %}
-<form method="post">
+{% extends "createPetBase.html" %}
+{% block form_title %}Historico{% endblock form_title %}
+{% block default_content %}{% endblock default_content %}
+{% block form_content %}
+<form method="post" id="form3">
     {% csrf_token %}
-    <label for="history">History:</label>
-    <textarea name="history" id="history"></textarea><br>
+    <textarea
+        name="history"
+        id="history"
+        cols="120"
+        rows="10"
+        placeholder="História de vida"
+    ></textarea>
 
-    <label for="observations">Observations:</label>
-    <textarea name="observations" id="observations"></textarea><br>
+    <textarea
+        name="observations"
+        id="observations"
+        cols="120"
+        rows="10"
+        placeholder="Observações"
+    ></textarea>
 
-    <button type="submit">Save</button>
-  </form>
-{% endblock content %}
+    <button class="submit" type="submit">Proximo</button>
+</form>
+{% endblock form_content %}
