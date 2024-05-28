@@ -3,23 +3,17 @@
 {% block title %} Cadastro do Pet {% endblock title %}
 {% block content %}
 
-<div id="screen">
-    <nav id="listas">
+
         <ul id="nav-list">
-            <a href="{% url "pets:create_pet" %}"><li id="tab1" class="active">Informações básicas</li></a>
+            <li><a href="{% url "pets:create_pet" %}">Informações básicas</a></li>
 
-
-            {% if pet_id  %}
-            <a href="{% url "pets:create_history_pet" pet_id=pet.id %}"><li id="tab3">Historia</li></a>
-            <a href="{% url "pets:create_medical_record"  pet_id=pet.id  %}"><li id="tab2">Informações médicas</li></a>
-            <a href="{% url "pets:create_images_pets"   pet_id=pet.id %}"><li id="tab4">Fotos</li></a>
-            {% else %}
-              <li id="tab2">Informações médicas </li>
-              <li id="tab3">Histórico </li>
-              <li id="tab4">Fotos </li>
+            {% if pet_id %}
+            <li><a href="{% url "pets:create_history_pet" pet_id=pet.id %}">Historia</a></li>
+            <li><a href="{% url "pets:create_medical_record"  pet_id=pet.id  %}">Informações médicas</a></li>
+            <li><a href="{% url "pets:create_images_pets"   pet_id=pet.id %}">Fotos</a></li>
             {% endif %}
         </ul>
-    </nav>
+
 
 
 {% endblock content %}

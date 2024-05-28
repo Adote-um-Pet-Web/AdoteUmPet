@@ -1,26 +1,34 @@
-{% extends "base.html" %}
-{% block content %}
-{% include "partials/navForm.html" %}
-<form method="post">
+{% extends "createPetBase.html" %}
+{% block form_title %}Informações Medicas{% endblock form_title %}
+{% block default_content %}{% endblock default_content %}
+{% block form_content %}
+<form method="post" id="form2">
     {% csrf_token %}
-    <label for="castreated">Castreated:</label>
-    <input type="checkbox" name="castreated" id="castreated"><br>
+      <div id="divLabel">
+        <label for="castreated">O pet é castrado?</label>
+        <input type="checkbox" name="castreated" id="castreated">
+      </div>
+      <div id="divLabel">
+        <label for="vaccines">Ja foi vacinado?</label>
+        <input type="checkbox" name="vaccines" id="vaccines">
+      </div>
+    <div>
+      <label for="vaccine_description">Se sim, quais vacinas foram aplicadas?</label>
+      <textarea name="vaccine_description" id="vaccine_description"  rows="2"></textarea>
+    </div>
+  <div id="divLabel">
+    <label for="dewormed">Livre de parasitas?</label>
+    <input type="checkbox" name="dewormed" id="dewormed">
+  </div>
+  <div>
+    <label for="dewormer_description">Se tem algum, quais?</label>
+    <textarea name="dewormer_description" id="dewormer_description"  rows="2"></textarea>
+  </div>
+  <div>
+    <label for="medical_history">Historico medico:</label>
+    <textarea name="medical_history" id="medical_history"  rows="2"></textarea>
+  </div>
 
-    <label for="vaccines">Vaccines:</label>
-    <input type="checkbox" name="vaccines" id="vaccines"><br>
-
-    <label for="vaccine_description">Vaccine Description:</label>
-    <textarea name="vaccine_description" id="vaccine_description"></textarea><br>
-
-    <label for="dewormed">Dewormed:</label>
-    <input type="checkbox" name="dewormed" id="dewormed"><br>
-
-    <label for="dewormer_description">Dewormer Description:</label>
-    <textarea name="dewormer_description" id="dewormer_description"></textarea><br>
-
-    <label for="medical_history">Medical History:</label>
-    <textarea name="medical_history" id="medical_history"></textarea><br>
-
-    <button type="submit">Save</button>
+    <button class="submit" type="submit">Proximo</button>
   </form>
-{% endblock content %}
+  {% endblock form_content %}

@@ -1,32 +1,6 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-    const tabs = document.querySelectorAll("#nav-list li");
-    const forms = document.querySelectorAll("#espaco_dos_formularios form");
-    const formTitles = [
-        "Informações básicas",
-        "Informações médicas",
-        "Histórico",
-        "Fotos",
-    ];
-    const formTitleElement = document.getElementById("form-title");
     const profilePetInput = document.getElementById("profilePet");
     const mainPhotoPreview = document.getElementById("main-photo-preview");
-    const addPhotoButton = document.getElementById("add-photo-button");
-    const adicPhotoInput = document.getElementById("adicPhoto");
-    const imageContainer = document.getElementById("imageContainer");
-    const maxFiles = 3;
-    let someVariable = 0;
-
-    tabs.forEach((tab, index) => {
-        tab.addEventListener("click", () => {
-            tabs.forEach((t) => t.classList.remove("active"));
-            forms.forEach((form) => (form.style.display = "none"));
-
-            tab.classList.add("active");
-            forms[index].style.display = "flex";
-            formTitleElement.textContent = formTitles[index];
-        });
-    });
 
     profilePetInput.addEventListener("change", function () {
         const file = profilePetInput.files[0];
@@ -43,34 +17,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    addPhotoButton.addEventListener("click", function () {
-        if (imageContainer.children.length < maxFiles) {
-            adicPhotoInput.click();
-        } else {
-            alert(`Você pode adicionar no máximo ${maxFiles} fotos.`);
-        }
-    });
+    const extraPhotoInputs = [
+        document.getElementById("image_pet_datail1"),
+        document.getElementById("image_pet_datail2"),
+        document.getElementById("image_pet_datail3")
+    ];
 
-    adicPhotoInput.addEventListener("change", function () {
-        const files = Array.from(adicPhotoInput.files);
-        const remainingSlots = maxFiles - imageContainer.children.length;
+    const extraPhotoPreviews = [
+        document.getElementById("extra-photo-preview-1"),
+        document.getElementById("extra-photo-preview-2"),
+        document.getElementById("extra-photo-preview-3")
+    ];
 
-        if (files.length > remainingSlots) {
-            alert(`Você pode adicionar no máximo ${maxFiles} fotos.`);
-            adicPhotoInput.value = "";
-            return;
-        }
+    const ibtns = [
+        document.getElementById("ibtn1"),
+        document.getElementById("ibtn2"),
+        document.getElementById("ibtn3")
+    ];
 
-        files.forEach((file) => {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.classList.add("preview-img");
-                img.id = "petPhoto" + (++someVariable);
-                imageContainer.appendChild(img);
-            };
-            reader.readAsDataURL(file);
+    extraPhotoInputs.forEach((input, index) => {
+        input.addEventListener("change", function () {
+            const file = input.files[0];
+            const preview = extraPhotoPreviews[index];
+            const ibtn = ibtns[index];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.style.backgroundImage = `url(${e.target.result})`;
+                    preview.style.backgroundSize = "cover";
+                    preview.style.backgroundPosition = "center";
+                    ibtn.style.display = "none";
+                };
+                reader.readAsDataURL(file);
+            }
         });
     });
 });

@@ -1,38 +1,67 @@
-{% extends "base.html" %}
-{% block content %}
-{% include "partials/navForm.html" %}
-<form method="post">
+{% extends "createPetBase.html" %}
+{% block form_title %}Informações Básicas{% endblock form_title %}
+{% block default_content %}{% endblock default_content %}
+{% block form_content %}
+<form id="form1" method="post">
     {% csrf_token %}
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" required><br>
 
-    <label for="species">Species:</label>
-    <select name="species" id="species" required>
-      <option value="DOG">Dog</option>
-      <option value="CAT">Cat</option>
-    </select><br>
+    <div id="div1">
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nome do Pet"
+            value="{{pet.name}}"
+            required
+        />
+        <input
+            type="text"
+            name="breed"
+            placeholder="Raça"
+            id="breed"
+            value="{{pet.breed}}"
+            required
+        />
+    </div>
 
-    <label for="breed">Breed:</label>
-    <input type="text" name="breed" id="breed" required><br>
+    <div>
+        <select name="species" id="species" required>
+            <option value="0">Espécie</option>
+            <option value="DOG">Cachorro</option>
+            <option value="CAT">Gato</option>
+        </select>
+        <select name="sex" id="sex" required>
+            <option value="0">Sexo</option>
+            <option value="Male">Macho</option>
+            <option value="Female">Fêmea</option>
+        </select>
+        <input name="color" type="text" placeholder="Cor" id="color" required value="{{pet.color}}" />
+    </div>
 
-    <label for="age">Age:</label>
-    <input type="number" name="age" id="age" required><br>
+    <div>
+        <input
+            name="age"
+            type="number"
+            placeholder="Idade em anos"
+            id="age"
+            required
+        />
+        <input
+            name="size"
+            type="number"
+            placeholder="Peso em kg"
+            id="size"
+            required
+        />
+        <input
+            name="weight"
+            type="number"
+            placeholder="Altura em cm"
+            id="weight"
+            required
+        />
+    </div>
 
-    <label for="color">Color:</label>
-    <input type="text" name="color" id="color" required><br>
-
-    <label for="sex">Sex:</label>
-    <select name="sex" id="sex" required>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select><br>
-
-    <label for="size">Size:</label>
-    <input type="number" name="size" id="size" required><br>
-
-    <label for="weight">Weight:</label>
-    <input type="number" name="weight" id="weight" required><br>
-
-    <button type="submit">Save</button>
-  </form>
-  {% endblock content %}
+    <button class="submit" type="submit">Proximo</button>
+</form>
+{% endblock form_content %}

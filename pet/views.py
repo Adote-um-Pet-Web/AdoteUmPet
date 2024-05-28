@@ -17,7 +17,7 @@ class PagePetIndex(ListView):
 
 class PageNavForm(LoginRequiredMixin, ListView):
     model = models.Pet
-    template_name = "navForm.html"
+    template_name = "createPetBase.html"
     context_object_name = "pet"
 
 
@@ -25,7 +25,7 @@ class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm
     template_name = "createPet.html"
     context_object_name = "pet"
-
+git
     def form_valid(self, form):
         form.instance.owner = self.request.user
 
