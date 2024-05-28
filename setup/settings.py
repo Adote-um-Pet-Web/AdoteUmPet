@@ -15,7 +15,6 @@ from pathlib import Path
 
 import dotenv
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -25,15 +24,17 @@ dotenv.load_dotenv(dotenv.find_dotenv())
 # TODO change secrect-key
 SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk"
 
-#TODO doenv
+# TODO doenv
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.getenv("DEBUGDB") == 'False' else True
+DEBUG = False if os.getenv("DEBUGDB") == "False" else True
 
 
+ALLOWED_HOSTS = ["127.0.0.1", "adoteumpet-production.up.railway.app"]
 
-ALLOWED_HOSTS = ["127.0.0.1", 'adoteumpet-production.up.railway.app']
-
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'https://adoteumpet-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1",
+    "https://adoteumpet-production.up.railway.app",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -82,28 +83,28 @@ SOCIALACCOUNT_PROVIDERS = {
             "key": "",
         }
     },
-     'facebook': {
-        'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
-        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'first_name',
-            'last_name',
-            'middle_name',
-            'name',
-            'name_format',
-            'picture',
-            'short_name'
+    "facebook": {
+        "METHOD": "oauth2",  # Set to 'js_sdk' to use the Facebook connect SDK
+        "SDK_URL": "//connect.facebook.net/{locale}/sdk.js",
+        "SCOPE": ["email", "public_profile"],
+        "AUTH_PARAMS": {"auth_type": "reauthenticate"},
+        "INIT_PARAMS": {"cookie": True},
+        "FIELDS": [
+            "id",
+            "first_name",
+            "last_name",
+            "middle_name",
+            "name",
+            "name_format",
+            "picture",
+            "short_name",
         ],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v13.0',
-        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
-    }
+        "EXCHANGE_TOKEN": True,
+        "LOCALE_FUNC": "path.to.callable",
+        "VERIFIED_EMAIL": False,
+        "VERSION": "v13.0",
+        "GRAPH_API_URL": "https://graph.facebook.com/v13.0",
+    },
 }
 
 
@@ -132,24 +133,23 @@ WSGI_APPLICATION = "setup.wsgi.application"
 
 if DEBUG == True:
     DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': os.getenv("ENGINEDDB"),
-            'NAME': os.getenv("NAMEDDB"),
-            'USER': os.getenv("USERDDB"),
-            'PASSWORD': os.getenv("PASSWORDDDB"),
-            'HOST': os.getenv("HOSTDDB"),
-            'PORT': os.getenv("PORTDDB"),
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": os.getenv("ENGINEDDB"),
+            "NAME": os.getenv("NAMEDDB"),
+            "USER": os.getenv("USERDDB"),
+            "PASSWORD": os.getenv("PASSWORDDDB"),
+            "HOST": os.getenv("HOSTDDB"),
+            "PORT": os.getenv("PORTDDB"),
+        }
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -168,7 +168,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "userauth.User"
-
 
 
 LANGUAGE_CODE = "en-us"
@@ -192,7 +191,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/static")]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

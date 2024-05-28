@@ -1,19 +1,18 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from .forms import UserRegisterForm
 from .models import User
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
-from .forms import UserRegisterForm
+
 
 class SignUpView(CreateView):
     model = User
     form_class = UserRegisterForm
-    template_name = 'sign-up.html'
-    success_url = reverse_lazy('pets:index')
+    template_name = "sign-up.html"
+    success_url = reverse_lazy("pets:index")
 
     def form_valid(self, form):
         user = form.save()
@@ -33,6 +32,7 @@ class SignUpView(CreateView):
             user.save()
 
         return redirect("pets:index")
+
 
 def login_view(request):
     if request.method == "POST":

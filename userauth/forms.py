@@ -20,12 +20,17 @@ class UserRegisterForm(UserCreationForm):
     )
 
     image_user_profile = forms.ImageField(
-    required=False,
-    widget=forms.FileInput(attrs={"id": "fileInput", "class": "custom-file-input"}),
-
-)
-
+        required=False,
+        widget=forms.FileInput(attrs={"id": "fileInput", "class": "custom-file-input"}),
+    )
 
     class Meta:
         model = User
-        fields = ["username", "email", "phone_number", "password1", "password2", "image_user_profile"]
+        fields = [
+            "username",
+            "email",
+            "phone_number",
+            "password1",
+            "password2",
+            "image_user_profile",
+        ]

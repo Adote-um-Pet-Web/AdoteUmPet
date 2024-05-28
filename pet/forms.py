@@ -1,21 +1,42 @@
 from django import forms
-from .models import Pet, HistoryPet, MedicalRecord, ImagesPets
+
+from .models import HistoryPet, ImagesPets, MedicalRecord, Pet
 
 
 class PetForm(forms.ModelForm):
     class Meta:
         model = Pet
-        fields = ['name', 'species', 'breed', 'age', 'color', 'sex', 'size', 'weight', 'adopted']
+        fields = [
+            "name",
+            "species",
+            "breed",
+            "age",
+            "color",
+            "sex",
+            "size",
+            "weight",
+            "adopted",
+        ]
+
 
 class HistoryPetForm(forms.ModelForm):
     class Meta:
         model = HistoryPet
-        fields = ['history', 'observations']
+        fields = ["history", "observations"]
+
 
 class MedicalRecordForm(forms.ModelForm):
     class Meta:
         model = MedicalRecord
-        fields = ['castreated', 'vaccines', 'vaccine_description', 'dewormed', 'dewormer_description', 'medical_history']
+        fields = [
+            "castreated",
+            "vaccines",
+            "vaccine_description",
+            "dewormed",
+            "dewormer_description",
+            "medical_history",
+        ]
+
 
 class ImagesPetsForm(forms.ModelForm):
 
@@ -23,4 +44,9 @@ class ImagesPetsForm(forms.ModelForm):
 
         model = ImagesPets
 
-        fields = ('image_pet_profile', 'image_pet_datail1', 'image_pet_datail2', 'image_pet_datail3')
+        fields = (
+            "image_pet_profile",
+            "image_pet_datail1",
+            "image_pet_datail2",
+            "image_pet_datail3",
+        )

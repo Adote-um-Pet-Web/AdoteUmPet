@@ -1,14 +1,19 @@
-from django.db import models
 import uuid
+
+from django.db import models
+
 from userauth.models import User
+
 
 class Species(models.TextChoices):
     DOG = "DOG", "Dog"
     CAT = "CAT", "Cat"
 
+
 class Sex(models.TextChoices):
     DOG = "Male", "Macho"
     CAT = "Female", "Femea"
+
 
 class Pet(models.Model):
     id = models.UUIDField(
@@ -28,12 +33,14 @@ class Pet(models.Model):
     def __str__(self):
         return self.name
 
+
 class HistoryPet(models.Model):
     id_pet = models.ForeignKey(
         Pet, on_delete=models.CASCADE, related_name="history_pet"
     )
     history = models.TextField(blank=True, null=True)
     observations = models.TextField(blank=True, null=True)
+
 
 class MedicalRecord(models.Model):
     id_pet = models.ForeignKey(
@@ -48,10 +55,10 @@ class MedicalRecord(models.Model):
 
 
 class ImagesPets(models.Model):
-    id_pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="images_pets")
+    id_pet = models.ForeignKey(
+        Pet, on_delete=models.CASCADE, related_name="images_pets"
+    )
     image_pet_profile = models.ImageField(upload_to="pets/profile/%Y/%m/")
     image_pet_datail1 = models.ImageField(upload_to="pets/photos/%Y/%m/")
     image_pet_datail2 = models.ImageField(upload_to="pets/photos/%Y/%m/")
     image_pet_datail3 = models.ImageField(upload_to="pets/photos/%Y/%m/")
-
-
