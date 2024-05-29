@@ -1,6 +1,7 @@
-{% extends "createPetBase.html" %}
-{% block form_title %}Informações Básicas{% endblock form_title %}
-{% block default_content %}{% endblock default_content %}
+{% extends "createPetBase.html" %} 
+{% block form_title %}Informações Básicas {% endblock form_title %} 
+{% block default_content %}
+{% endblock default_content %}
 {% block form_content %}
 <form id="form1" method="post">
     {% csrf_token %}
@@ -35,7 +36,14 @@
             <option value="Male">Macho</option>
             <option value="Female">Fêmea</option>
         </select>
-        <input name="color" type="text" placeholder="Cor" id="color" required value="{{pet.color}}" />
+        <input
+            name="color"
+            type="text"
+            placeholder="Cor"
+            id="color"
+            required
+            value="{{pet.color}}"
+        />
     </div>
 
     <div>
@@ -53,6 +61,12 @@
             id="size"
             required
         />
+        <select name="weight" id="weight" required>
+            <option value="0">Tamanho</option>
+            <option value="p">Pequeno</option>
+            <option value="m">Medio</option>
+            <option value="g">Grande</option>
+        </select>
         <input
             name="weight"
             type="number"
@@ -61,7 +75,16 @@
             required
         />
     </div>
-
-    <button class="submit" type="submit">Proximo</button>
+    <button id="submit" class="submit" type="submit">Proximo</button>
+    <script>
+        document.getElementById("submit").addEventListener("click", function(){
+            const species = document.getElementById("species").value;
+            const sex = document.getElementById("sex").value;
+            const weight = document.getElementById("weight").value;
+            if(species == "0" || sex == "0" || weight == "0"){
+                alert("preeche tudoooooooooooooooo");
+            }
+        });
+    </script>
 </form>
 {% endblock form_content %}

@@ -32,7 +32,7 @@
     {% include "partials/filtro_index.html" %}
 
     <section id="cards">
-        {% if pet %}
+        {% if pet.image_pet_profile %}
            {% for pets in pet %}
             <a class="card">
                 <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
