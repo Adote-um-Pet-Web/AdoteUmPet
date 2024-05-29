@@ -11,8 +11,14 @@ class Species(models.TextChoices):
 
 
 class Sex(models.TextChoices):
-    DOG = "Male", "Macho"
-    CAT = "Female", "Femea"
+    Male = "Male", "Macho"
+    Female = "Female", "Femea"
+
+
+class Size(models.TextChoices):
+    Small = "SMALL", "Pequeno"
+    Medio = "MEDIUM", "Medio"
+    Large = "Large", "Grande"
 
 
 class Pet(models.Model):
@@ -26,8 +32,9 @@ class Pet(models.Model):
     age = models.IntegerField()
     color = models.CharField(max_length=255)
     sex = models.CharField(max_length=20, choices=Sex.choices)
-    size = models.IntegerField()
-    weight = models.IntegerField()
+    size =  models.CharField(max_length=20, choices=Size.choices)
+    weight =  models.IntegerField()
+    heigth =  models.IntegerField()
     adopted = models.BooleanField()
 
     def __str__(self):
@@ -46,12 +53,12 @@ class MedicalRecord(models.Model):
     id_pet = models.ForeignKey(
         Pet, on_delete=models.CASCADE, related_name="medical_records"
     )
-    castreated = models.BooleanField()
-    vaccines = models.BooleanField()
-    vaccine_description = models.TextField()
-    dewormed = models.BooleanField()
-    dewormer_description = models.TextField()
-    medical_history = models.TextField()
+    castreated = models.BooleanField(blank=True, null=True)
+    vaccines = models.BooleanField(blank=True, null=True)
+    vaccine_description = models.TextField(blank=True, null=True)
+    dewormed = models.BooleanField(blank=True, null=True)
+    dewormer_description = models.TextField(blank=True, null=True)
+    medical_history = models.TextField(blank=True, null=True)
 
 
 class ImagesPets(models.Model):

@@ -14,6 +14,7 @@ class PetForm(forms.ModelForm):
             "color",
             "sex",
             "size",
+            "heigth",
             "weight",
             "adopted",
         ]

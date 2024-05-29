@@ -1,5 +1,5 @@
-{% extends "createPetBase.html" %} 
-{% block form_title %}Informações Básicas {% endblock form_title %} 
+{% extends "createPetBase.html" %}
+{% block form_title %}Informações Básicas {% endblock form_title %}
 {% block default_content %}
 {% endblock default_content %}
 {% block form_content %}
@@ -47,6 +47,12 @@
     </div>
 
     <div>
+        <select name="size" id="size" required>
+            <option value="0">Tamanho</option>
+            <option value="SMALL">Pequeno</option>
+            <option value="MEDIUM">Medio</option>
+            <option value="Large">Grande</option>
+        </select>
         <input
             name="age"
             type="number"
@@ -55,25 +61,21 @@
             required
         />
         <input
-            name="size"
+            name="heigth"
             type="number"
-            placeholder="Peso em kg"
+            placeholder="Altura em M"
             id="size"
             required
         />
-        <select name="weight" id="weight" required>
-            <option value="0">Tamanho</option>
-            <option value="p">Pequeno</option>
-            <option value="m">Medio</option>
-            <option value="g">Grande</option>
-        </select>
         <input
-            name="weight"
-            type="number"
-            placeholder="Altura em cm"
-            id="weight"
-            required
-        />
+        name="weight"
+        type="number"
+        placeholder="Peso em Kg"
+        id="weight"
+        required
+    />
+
+
     </div>
     <button id="submit" class="submit" type="submit">Proximo</button>
     <script>
