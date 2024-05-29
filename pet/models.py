@@ -32,9 +32,9 @@ class Pet(models.Model):
     age = models.IntegerField()
     color = models.CharField(max_length=255)
     sex = models.CharField(max_length=20, choices=Sex.choices)
-    size =  models.CharField(max_length=20, choices=Size.choices)
-    weight =  models.IntegerField()
-    heigth =  models.IntegerField()
+    size = models.CharField(max_length=20, choices=Size.choices)
+    weight = models.IntegerField()
+    heigth = models.IntegerField()
     adopted = models.BooleanField()
 
     def __str__(self):
