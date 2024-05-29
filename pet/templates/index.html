@@ -35,7 +35,8 @@
         {% if pet %}
         {% for pets in pet %}
             {% if pets.images_pets.first.image_pet_profile %}
-                <a class="card">
+
+                <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="card">
                     <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
 
                     <div class="info">

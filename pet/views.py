@@ -15,6 +15,14 @@ class PagePetIndex(ListView):
     context_object_name = "pet"
 
 
+
+class PageDetailPet(DetailView):
+    model = models.Pet
+    context_object_name = "pet"
+    template_name = "petDetail.html"
+
+
+
 class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm
     template_name = "createPet.html"
@@ -86,7 +94,3 @@ class CreateImagesPetsView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PageDetailPet(DetailView):
-    model = models.Pet
-    context_object_name = "pet"
-    template_name = "petDetail.html"
