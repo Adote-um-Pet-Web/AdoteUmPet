@@ -6,20 +6,31 @@
 
 
         <ul id="nav-list">
-            <li><a href="{% url "pets:create_pet" %}">Informações básicas</a></li>
-
-            {% if pet_id %}
-                <li><a href="{% url 'pets:create_history_pet' pet_id=pet_id %}">História</a></li>
-                <li><a href="{% url 'pets:create_medical_record' pet_id=pet_id %}">Informações médicas</a></li>
-                <li><a href="{% url 'pets:create_images_pets' pet_id=pet_id %}">Fotos</a></li>
-            {% else %}
-                <li><a href="#">História</a></li>
-                <li><a href="#">Informações médicas</a></li>
-                <li><a href="#">Fotos</a></li>
+            {% if not pet_id %}
+            <a href="{% url "pets:create_pet" %}"><li>Informações básicas</li></a>
+            <li class='alert'><a>História</a></li>
+            <li class='alert'><a>Informações médicas</a></li>
+            <li class='alert'><a>Fotos</a></li>
             {% endif %}
 
+            {% if pet_id %}
+                <li class='alert'><a>Informações básicas</a></li>
+                <a href="{% url 'pets:create_history_pet' pet_id=pet_id %}"><li>História</li></a>
+                <a href="{% url 'pets:create_medical_record' pet_id=pet_id %}"><li>Informações médicas</li></a>
+                <a href="{% url 'pets:create_images_pets' pet_id=pet_id %}"><li>Fotos</li></a>
+            {% endif %}
         </ul>
-
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const alertElements = document.querySelectorAll('.alert');
+                alertElements.forEach(function(element) {
+                    element.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('Você não pode acessar este formulário no momento.');
+                    });
+                });
+            });
+        </script>
 
 
 {% endblock content %}

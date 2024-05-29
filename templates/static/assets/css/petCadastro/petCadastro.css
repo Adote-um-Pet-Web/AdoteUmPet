@@ -60,7 +60,12 @@
     justify-content: center;
     align-items: center;
 }
-
+.alert{
+    background-color: #ff030338;
+}
+.alert:hover{
+    background-color: #ff03037a !important;
+}
 #listas ul {
     list-style-type: none;
     padding: 12px;

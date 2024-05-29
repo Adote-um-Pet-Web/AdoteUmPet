@@ -32,21 +32,23 @@
     {% include "partials/filtro_index.html" %}
 
     <section id="cards">
-        {% if pet.image_pet_profile %}
-           {% for pets in pet %}
-            <a class="card">
-                <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
+        {% if pet %}
+        {% for pets in pet %}
+            {% if pets.images_pets.first.image_pet_profile %}
+                <a class="card">
+                    <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
 
-                <div class="info">
-                    <h2>{{ pets.name }}</h2>
-                    <p>Espécie: {{ pets.species }}</p>
-                    <p>Raça: {{ pets.breed }}a</p>
-                    <p>Tamanho: {{ pets.size }}</p>
-                    <p>Sexo: {{ pets.sex }}</p>
-                    <p>Dono: {{ pets.owner }}</p>
-                </div>
-            </a>
-            {% endfor %}
+                    <div class="info">
+                        <h2>{{ pets.name }}</h2>
+                        <p>Espécie: {{ pets.species }}</p>
+                        <p>Raça: {{ pets.breed }}</p>
+                        <p>Tamanho: {{ pets.size }}</p>
+                        <p>Sexo: {{ pets.sex }}</p>
+                        <p>Dono: {{ pets.owner }}</p>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
             {% else %}
             <div id="nopet">
                 <h1>Desculpa nenhuma pet está disponivel no momento</h1>
