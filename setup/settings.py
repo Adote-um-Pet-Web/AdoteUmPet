@@ -140,17 +140,17 @@ if DEBUG == True:
         }
     }
 
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": os.getenv("ENGINEDDB"),
-#         "NAME": os.getenv("NAMEDDB"),
-#         "USER": os.getenv("USERDDB"),
-#         "PASSWORD": os.getenv("PASSWORDDDB"),
-#         "HOST": os.getenv("HOSTDDB"),
-#         "PORT": os.getenv("PORTDDB"),
-#     }
-# }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": os.getenv("ENGINEDDB"),
+            "NAME": os.getenv("NAMEDDB"),
+            "USER": os.getenv("USERDDB"),
+            "PASSWORD": os.getenv("PASSWORDDDB"),
+            "HOST": os.getenv("HOSTDDB"),
+            "PORT": os.getenv("PORTDDB"),
+        }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
