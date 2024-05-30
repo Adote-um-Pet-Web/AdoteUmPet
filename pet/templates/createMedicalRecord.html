@@ -1,24 +1,34 @@
 {% extends "createPetBase.html" %}
-{% block form_title %}Informações Medicas{% endblock form_title %}
+{% block form_title %}Informações Médicas{% endblock form_title %}
 {% block default_content %}{% endblock default_content %}
 {% block form_content %}
+s
 <form method="post" id="form2">
     {% csrf_token %}
       <div id="divLabel">
-        <label for="castreated">O pet é castrado?</label>
-        <input type="checkbox" name="castreated" id="castreated">
+        <label>O pet é castrado?</label>
+        <select name="castreated" id="size" required>
+            <option value="True">Sim</option>
+            <option value="False">Não</option>
+        </select>
       </div>
       <div id="divLabel">
-        <label for="vaccines">Ja foi vacinado?</label>
-        <input type="checkbox" name="vaccines" id="vaccines">
+        <label>Ja foi vacinado?</label>
+        <select name="vaccines" id="size" required>
+            <option value="True">Sim</option>
+            <option value="False">Não</option>
+        </select>
       </div>
     <div>
       <label for="vaccine_description">Se sim, quais vacinas foram aplicadas?</label>
       <textarea name="vaccine_description" id="vaccine_description"  rows="2"></textarea>
     </div>
   <div id="divLabel">
-    <label for="dewormed">Livre de parasitas?</label>
-    <input type="checkbox" name="dewormed" id="dewormed">
+    <label> O pet tem parasitas?</label>
+    <select name="dewormed" id="size" required>
+        <option value="True">Sim</option>
+        <option value="False">Não</option>
+    </select>
   </div>
   <div>
     <label for="dewormer_description">Se tem algum, quais?</label>

@@ -3,11 +3,17 @@ Pet{% endblock title %} {% block content %}
 <div id="petDetail">
     <div id="t1">
         <div id="titulo">
-            <img src="{% static "assets/img/pug/a.jpg" %}" alt="">
-            <h1>Oi, eu sou o <span>Luiz</span>!</h1>
+            <img src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}">
+            <h1>Oi, eu sou o <span>{{ pet.name }}</span>!</h1>
         </div>
         <div id="btns">
-            <button id="favoritar"><i class="fi fi-sr-heart"></i>Favoritar</button>
+
+                <button type="submit" id="favoritar"><i class="fi fi-sr-heart"></i>Favoritar</button>
+
+                <select name="favorited" id="size" required>
+                    <option value="True">Sim</option>
+                    <option value="False">Não</option>
+                </select>
             <button id="queroAdotar">
                 <i
                 class=
@@ -21,16 +27,16 @@ Pet{% endblock title %} {% block content %}
             <section id="galeria">
                 <h2>Galeria de Fotos</h2>
                 <div id="bigPhoto" class="big-photo">
-                    <img src="{% static 'assets/img/pug/b.jpg' %}" alt="Foto do Luiz" id="mainPhoto">
+                    <img id="mainPhoto" src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}">
                 </div>
                 <div class="gallery">
-                    <img src="{% static 'assets/img/pug/a.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
-                    <img src="{% static 'assets/img/pug/b.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
-                    <img src="{% static 'assets/img/pug/c.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
-                    <img src="{% static 'assets/img/pug/d.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
+                    <img src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
+                    <img src="{{ pet.images_pets.first.image_pet_datail1.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
+                    <img src="{{ pet.images_pets.first.image_pet_datail2.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
+                    <img src="{{ pet.images_pets.first.image_pet_datail3.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
                 </div>
             </section>
-        
+
             <div id="modal" class="modal">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <img class="modal-content" id="modalImage">
@@ -42,51 +48,51 @@ Pet{% endblock title %} {% block content %}
                 let galleryImages = document.querySelectorAll('.gallery img');
                 let currentIndex = 0;
                 let timer;
-    
+
                 function changePhoto(imgElement) {
                     mainPhoto.src = imgElement.src;
                     currentIndex = Array.from(galleryImages).indexOf(imgElement);
                     resetTimer();
                 }
-    
+
                 mainPhoto.onclick = function() {
                     modal.style.display = "flex";
                     modalImage.src = this.src;
                 }
-    
+
                 function closeModal() {
                     modal.style.display = "none";
                 }
-    
+
                 function nextPhoto() {
                     currentIndex = (currentIndex + 1) % galleryImages.length;
                     mainPhoto.src = galleryImages[currentIndex].src;
                 }
-    
+
                 function resetTimer() {
                     clearInterval(timer);
                     timer = setInterval(nextPhoto, 10000);
                 }
-    
+
                 document.addEventListener('DOMContentLoaded', (event) => {
                     timer = setInterval(nextPhoto, 10000);
                 });
-    
+
             </script>
     <div id="details">
         <!-- Informações básicas -->
         <section id="informacoes-basicas">
             <h2>Informações Básicas</h2>
             <ul>
-                <li><strong>Nome:</strong> Luiz</li>
-                <li><strong>Idade:</strong> 3 anos</li>
-                <li><strong>Especie:</strong> Cachorro</li>
-                <li><strong>Cor:</strong> Preto</li>
-                <li><strong>Raça:</strong> Pug</li>
-                <li><strong>Peso:</strong> 10 kg</li>
-                <li><strong>Tamanho:</strong> Pequeno</li>
-                <li><strong>Altura:</strong> 25 cm</li>
-                <li><strong>Atual Cuidador:</strong> Zezinho</li>
+                <li><strong>Nome:</strong> {{ pet.name }}</li>
+                <li><strong>Idade:</strong> {{ pet.age }} anos</li>
+                <li><strong>Especie:</strong> {{ pet.species }}</li>
+                <li><strong>Cor:</strong> {{ pet.color }}</li>
+                <li><strong>Raça:</strong> {{ pet.breed }}</li>
+                <li><strong>Peso:</strong> {{ pet.weight }}kg</li>
+                <li><strong>Tamanho:</strong> {{ pet.size }}</li>
+                <li><strong>Altura:</strong> {{ pet.heigth }}cm</li>
+                <li><strong>Atual Cuidador:</strong> {{ pet.owner }}</li>
             </ul>
         </section>
 
@@ -94,9 +100,7 @@ Pet{% endblock title %} {% block content %}
         <section id="historico">
             <h2>História</h2>
             <p>
-                Luiz foi adotado em janeiro de 2021. Ele adora brincar no parque e
-                se dá bem com outros animais. Recentemente, participou de um evento
-                de cães e ganhou um prêmio pelo seu comportamento exemplar.
+               {{pet.history_pet.first.history}}
             </p>
         </section>
 
@@ -104,22 +108,28 @@ Pet{% endblock title %} {% block content %}
         <section id="historico-medico">
             <h2>Histórico Médico</h2>
             <ul>
-                <li><strong>ja foi vacinado?</strong> Sim</li>
-                <li><strong>trem algum parasita? </strong> Nao</li>
-                <li><strong>Ja foi castrado? </strong> sim</li>
+                <li><strong>Ja foi castrado? </strong> {{ pet.medical_records.first.castreated }}</li>
+                <li><strong>ja foi vacinado?</strong> {{ pet.medical_records.first.vaccines }}</li>
+                {% if pet.medical_records.first.vaccines == True %}
+                <p><strong> Descrição da vacina:</strong>  {{ pet.medical_records.first.vaccine_description}}</p>
+                {% endif %}
+                <li><strong>tem algum parasita? </strong> {{ pet.medical_records.first.dewormed }}</li>
+                {% if pet.medical_records.first.dewormed == True %}
+                <p><strong> Descrição do parasita :</strong>  {{ pet.medical_records.first.dewormer_description}}</p>
+                {% endif %}
+                <p><strong> Histórico Médico: </strong>  {{ pet.medical_records.first.medical_history}}</p>
             </ul>
-            <p>preguica de escrever as vacinas</p>
         </section>
 
         <!-- Observacoes -->
         <section id="Observacoes">
             <h2>Observacoes</h2>
             <p>
-                O tadinho nao pode correr pq nao respira direito.
+                {{pet.history_pet.first.observations}}
             </p>
         </section>
     </div>
-        
+
 </div>
 
 

@@ -17,8 +17,8 @@ class PetForm(forms.ModelForm):
             "heigth",
             "weight",
             "adopted",
+            "favorited"
         ]
-
 
 class HistoryPetForm(forms.ModelForm):
     class Meta:

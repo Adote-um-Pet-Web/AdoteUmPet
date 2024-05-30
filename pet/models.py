@@ -36,6 +36,7 @@ class Pet(models.Model):
     weight = models.IntegerField()
     heigth = models.IntegerField()
     adopted = models.BooleanField()
+    favorited = models.BooleanField()
 
     def __str__(self):
         return self.name
