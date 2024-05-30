@@ -37,7 +37,7 @@
 }
 
 .card:hover {
-    filter: opacity(60%);
+    transform: scale(1.02);
 }
 .card img {
     height: 100%;
@@ -48,8 +48,8 @@
     position: absolute;
     border-radius: 0;
     border-bottom-right-radius: 12px;
-    border-top-left-radius: 11px;
-    margin: -2px auto 0 -2px;
+    border-top-left-radius: 6px;
+    margin: -1px auto 0 -1px;
     background-color: var(--color-card);
     height: auto;
     padding: 1rem;
