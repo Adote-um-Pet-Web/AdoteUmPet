@@ -1,0 +1,6 @@
+#petDetail{
+    color: var(--color-fg);
+}
+#petDetail span{
+    color: var(--color-main);
+}

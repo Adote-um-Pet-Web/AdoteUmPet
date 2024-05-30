@@ -1,8 +1,128 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %} informacoes do pet {% endblock title %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}Informações do
+Pet{% endblock title %} {% block content %}
+<div id="petDetail">
+    <div id="t1">
+        <div id="titulo">
+            <img src="{% static "assets/img/pug/a.jpg" %}" alt="">
+            <h1>Oi, eu sou o <span>Luiz</span>!</h1>
+        </div>
+        <div id="btns">
+            <button id="favoritar"><i class="fi fi-sr-heart"></i>Favoritar</button>
+            <button id="queroAdotar">
+                <i
+                class=
+                "fi fi-sr-star"
+                ></i>
+            Quero adotar</button>
+        </div>
+    </div>
+<div id="main">
+            <!-- Galeria de Fotos -->
+            <section id="galeria">
+                <h2>Galeria de Fotos</h2>
+                <div id="bigPhoto" class="big-photo">
+                    <img src="{% static 'assets/img/pug/b.jpg' %}" alt="Foto do Luiz" id="mainPhoto">
+                </div>
+                <div class="gallery">
+                    <img src="{% static 'assets/img/pug/a.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
+                    <img src="{% static 'assets/img/pug/b.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
+                    <img src="{% static 'assets/img/pug/c.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
+                    <img src="{% static 'assets/img/pug/d.jpg' %}" alt="Foto do Luiz" onclick="changePhoto(this)">
+                </div>
+            </section>
+        
+            <div id="modal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+            </div>
+            <script>
+                let mainPhoto = document.getElementById('mainPhoto');
+                let modal = document.getElementById('modal');
+                let modalImage = document.getElementById('modalImage');
+                let galleryImages = document.querySelectorAll('.gallery img');
+                let currentIndex = 0;
+                let timer;
+    
+                function changePhoto(imgElement) {
+                    mainPhoto.src = imgElement.src;
+                    currentIndex = Array.from(galleryImages).indexOf(imgElement);
+                    resetTimer();
+                }
+    
+                mainPhoto.onclick = function() {
+                    modal.style.display = "flex";
+                    modalImage.src = this.src;
+                }
+    
+                function closeModal() {
+                    modal.style.display = "none";
+                }
+    
+                function nextPhoto() {
+                    currentIndex = (currentIndex + 1) % galleryImages.length;
+                    mainPhoto.src = galleryImages[currentIndex].src;
+                }
+    
+                function resetTimer() {
+                    clearInterval(timer);
+                    timer = setInterval(nextPhoto, 10000);
+                }
+    
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    timer = setInterval(nextPhoto, 10000);
+                });
+    
+            </script>
+    <div id="details">
+        <!-- Informações básicas -->
+        <section id="informacoes-basicas">
+            <h2>Informações Básicas</h2>
+            <ul>
+                <li><strong>Nome:</strong> Luiz</li>
+                <li><strong>Idade:</strong> 3 anos</li>
+                <li><strong>Especie:</strong> Cachorro</li>
+                <li><strong>Cor:</strong> Preto</li>
+                <li><strong>Raça:</strong> Pug</li>
+                <li><strong>Peso:</strong> 10 kg</li>
+                <li><strong>Tamanho:</strong> Pequeno</li>
+                <li><strong>Altura:</strong> 25 cm</li>
+                <li><strong>Atual Cuidador:</strong> Zezinho</li>
+            </ul>
+        </section>
 
-PAGE DETAIL
+        <!-- Histórico -->
+        <section id="historico">
+            <h2>História</h2>
+            <p>
+                Luiz foi adotado em janeiro de 2021. Ele adora brincar no parque e
+                se dá bem com outros animais. Recentemente, participou de um evento
+                de cães e ganhou um prêmio pelo seu comportamento exemplar.
+            </p>
+        </section>
 
+        <!-- Histórico Médico -->
+        <section id="historico-medico">
+            <h2>Histórico Médico</h2>
+            <ul>
+                <li><strong>ja foi vacinado?</strong> Sim</li>
+                <li><strong>trem algum parasita? </strong> Nao</li>
+                <li><strong>Ja foi castrado? </strong> sim</li>
+            </ul>
+            <p>preguica de escrever as vacinas</p>
+        </section>
+
+        <!-- Observacoes -->
+        <section id="Observacoes">
+            <h2>Observacoes</h2>
+            <p>
+                O tadinho nao pode correr pq nao respira direito.
+            </p>
+        </section>
+    </div>
+        
+</div>
+
+
+
+</div>
 {% endblock content %}
