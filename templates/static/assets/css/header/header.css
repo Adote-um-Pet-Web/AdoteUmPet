@@ -21,6 +21,7 @@ header{
 }
 #left a{
     font-size: 2rem;
+    text-decoration: none;
 }
 #left p{
     margin-right: 20px;
