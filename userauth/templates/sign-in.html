@@ -53,28 +53,35 @@
         const emailLabel = document.getElementById("label-email");
         const passwordInput = document.getElementById("senha");
         const passwordLabel = document.getElementById("label-senha");
-    
+        emailLabel.style.marginBottom = "2.5rem";
+        passwordLabel.style.marginBottom = "2.5rem";
+
         emailInput.addEventListener("focus", function() {
             emailLabel.style.marginBottom = "5.2rem";
         });
-    
+        if(emailInput.value != ""){
+            emailLabel.style.marginBottom = "5.2rem";
+
+        }
         emailInput.addEventListener("blur", function() {
-            if (emailInput.value === "") {
-                emailLabel.style.marginBottom = "2.5rem";
+            if (emailInput.value != "") {
+                emailLabel.style.marginBottom = "5.2rem";
             }
         });
-    
+
         passwordInput.addEventListener("focus", function() {
             passwordLabel.style.marginBottom = "5.2rem";
         });
-    
+        if(passwordInput.value != ""){
+            passwordLabel.style.marginBottom = "5.2rem";
+        }
+
         passwordInput.addEventListener("blur", function() {
-            if (passwordInput.value === "") {
-                passwordLabel.style.marginBottom = "2.5rem";
+            if (passwordInput.value != "") {
+                passwordLabel.style.marginBottom = "5.2rem";
             }
         });
     });
-    
 </script>
 
 
