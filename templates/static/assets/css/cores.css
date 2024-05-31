@@ -20,9 +20,9 @@
     --color-detail-hover: #6B8E23;
 }
 [data-theme="light"]{
-    --color-bg: #F6F6F6;
+    --color-bg: #e4e4e4;
     --color-fg: #000000;
-    --color-fg-hover: #dadada;
+    --color-fg-hover: #b8b8b8;
     --color-fg-reverse: #fff;
     --color-card: #fff;
     --color-border: rgb(179, 179, 179);
