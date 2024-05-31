@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from django.views.generic import  UpdateView
+from django.views.generic import  UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserRegisterForm
 from .models import User
@@ -41,6 +41,13 @@ class PageUpdateUser(LoginRequiredMixin, UpdateView):
     fields = ['username', 'email', 'phone_number', 'image_user_profile']
     success_url = reverse_lazy('pets:index')
     template_name = 'userUpdate.html'
+    context_object_name = 'user'
+
+class PageConfigUser(LoginRequiredMixin, ListView):
+    model = User
+    fields = ['username', 'email', 'phone_number', 'image_user_profile']
+    success_url = reverse_lazy('pets:index')
+    template_name = 'userConfig.html'
     context_object_name = 'user'
 
 

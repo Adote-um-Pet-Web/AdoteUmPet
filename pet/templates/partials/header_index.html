@@ -44,22 +44,29 @@
         </h3>
 
         <ul>
-            <a class="menu-item">
+            <a  href="{% url "pets:pet-saves" %} " class="menu-item">
                 <span>Animais salvos</span>
                 <i class="fi fi-br-bookmark"></i>
             </a>
-            <a class="menu-item">
-                <span>Editar Perfil</span>
-                <i class="fi fi-br-user-pen"></i>
-            </a>
-            <a class="menu-item">
+            {% if request.user.is_authenticated %}
+                <a href="{% url "userauths:user-update" pk=user.id %} " class="menu-item">
+                    <span>Editar Perfil</span>
+                    <i class="fi fi-br-user-pen"></i>
+                </a>
+            {% else %}
+                <a href="{% url "userauths:sign-in" %} " class="menu-item">
+                    <span>Editar Perfil</span>
+                    <i class="fi fi-br-user-pen"></i>
+                </a>
+            {% endif %}
+            <a href="{% url "userauths:user-config" %}" class="menu-item">
                 <span>Configurações</span>
                 <i class="fi fi-br-settings"></i>
             </a>
-            <a class="menu-item">
+            <a href="{% url "pets:pet-added" %}" class="menu-item">
                 <span>Animais Adicionados</span>
                 <i class="fi fi-br-list"></i></a>
-            <a class="menu-item" id="changeProfile" href="{% url "userauths:sign-out" %}">
+            <a href="{% url "userauths:sign-out" %}" class="menu-item" id="changeProfile" >
                 <span>Trocar de conta</span>
                 <i class="fi fi-br-exchange"></i>
             </a>

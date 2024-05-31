@@ -21,7 +21,15 @@ class PageDetailPet(DetailView):
     context_object_name = "pet"
     template_name = "petDetail.html"
 
+class PagePetSaves(ListView):
+    model = models.Pet
+    template_name = "petSave.html"
+    context_object_name = "pet"
 
+class PagePetAdded(ListView):
+    model = models.Pet
+    template_name = "petAdded.html"
+    context_object_name = "pet"
 
 class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm

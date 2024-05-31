@@ -23,6 +23,8 @@ register_converter(UUIDConverter, "uuid")
 
 urlpatterns = [
     path("", views.PagePetIndex.as_view(), name="index"),
+    path("pet-saves/", views.PagePetSaves.as_view(), name="pet-saves"),
+    path("pet-added/", views.PagePetAdded.as_view(), name="pet-added"),
     path("pet/<uuid:pk>/", views.PageDetailPet.as_view(), name="pet_detail"),
 
     path("create_pet/", views.CreatePetView.as_view(), name="create_pet"),
