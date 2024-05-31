@@ -1,4 +1,27 @@
-{% extends "base.html" %}
-{% block content %}
-hhhh
+{% extends "base.html" %} {% block content %}
+<nav id="config-nav">
+    <ul>
+        <li><i class="fi fi-ss-palette"></i> Aparencia</li>
+        <li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li>
+    </ul>
+    <a href="/">Voltar</a>
+</nav>
+<section class="configSection">
+    <h1>Aparencia</h1>
+    <h3>Cores</h3>
+    <ul>
+        <li>Amarelo</li>
+        <li>Azul</li>
+        <li>Laranja</li>
+    </ul>
+    <button>aplicar</button>
+    <h3>Tema</h3>
+    <ul>
+        <li>Claro</li>
+        <li>Escuro</li>
+        <li>automático</li>
+    </ul>
+    <button>aplicar</button>
+</section>
+
 {% endblock content %}
