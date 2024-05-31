@@ -2,8 +2,6 @@ import uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models.signals import post_save
-from shortuuid.django_fields import ShortUUIDField
 
 ACCOUNT_STATUS = (
     ("active", "Active"),
@@ -13,11 +11,16 @@ ACCOUNT_STATUS = (
 
 
 class User(AbstractUser):
+    id = models.UUIDField(
+        primary_key=True, unique=True, default=uuid.uuid4, editable=False
+    )
     username = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     phone_number = models.CharField(max_length=100)
+    instagram_field = models.CharField(max_length=100, blank=True, null=True)
+    facebook_field = models.CharField(max_length=100, blank=True, null=True)
     image_user_profile = models.ImageField(
         upload_to="user/profile/%Y/%m/", blank=True, null=True
     )
