@@ -43,6 +43,8 @@ class PageUpdateUser(LoginRequiredMixin, UpdateView):
     template_name = 'userUpdate.html'
     context_object_name = 'user'
 
+
+
 class PageConfigUser(LoginRequiredMixin, ListView):
     model = User
     fields = ['username', 'email', 'phone_number', 'image_user_profile']

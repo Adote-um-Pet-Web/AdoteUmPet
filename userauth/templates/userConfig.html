@@ -1,8 +1,11 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 <nav id="config-nav">
     <ul>
         <a href="{% url "userauths:user-config" %}" ><li><i class="fi fi-ss-palette"></i> Aparencia</li></a>
-        <a><li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>
+
+        <a href="{% url "userauths:user-update" pk=user.first.id %}" > <li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>
+
     </ul>
     <a id="voltar" href="/">Voltar</a>
 </nav>
