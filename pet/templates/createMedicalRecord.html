@@ -2,7 +2,7 @@
 {% block form_title %}Informações Médicas{% endblock form_title %}
 {% block default_content %}{% endblock default_content %}
 {% block form_content %}
-s
+
 <form method="post" id="form2">
     {% csrf_token %}
       <div id="divLabel">
@@ -38,7 +38,8 @@ s
     <label for="medical_history">Historico medico:</label>
     <textarea name="medical_history" id="medical_history"  rows="2"></textarea>
   </div>
-
+  <div id="btnArea">
     <button class="submit" type="submit">Proximo</button>
+  </div>
   </form>
   {% endblock form_content %}

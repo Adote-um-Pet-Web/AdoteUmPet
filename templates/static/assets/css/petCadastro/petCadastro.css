@@ -4,6 +4,7 @@
     color: var(--color-fg);
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 #listas{
     background-color: var(--color-card);
@@ -186,6 +187,7 @@
     flex-direction: column;
     justify-content: left;
     align-items: center;
+    margin-top: 60px;
 }
 #form2 div{
     width: 100%;
@@ -197,7 +199,13 @@
 }
 #divLabel{
     justify-content: left !important;
-
+}
+#divLabel select{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 10px !important;
 }
 #form2 textarea{
     width: 60%;
@@ -298,11 +306,14 @@
     border-radius: 12px;
 
 }
-
+#btnArea{
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: right !important;
+}
 #espaco_dos_formularios form .submit {
-    position: fixed;
-    bottom: 0;
-    right: 0;
+
     width: 6rem;
     height: 2.5rem;
     margin: 1rem;
@@ -319,4 +330,8 @@
 #espaco_dos_formularios form .submit:hover {
         background-color: var(--color-main-hover);
         transform: scale(1.05);
+}
+
+#espaco_dos_formularios{
+    overflow-y: auto;
 }

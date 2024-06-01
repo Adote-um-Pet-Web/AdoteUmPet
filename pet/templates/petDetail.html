@@ -4,16 +4,29 @@ Pet{% endblock title %} {% block content %}
     <div id="t1">
         <div id="titulo">
             <img src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}">
-            <h1>Oi, eu sou o <span>{{ pet.name }}</span>!</h1>
+            <h1>Oi, eu sou {% if pet.sex == "Female" %}a {% else %}o {% endif %} <span style="text-transform: capitalize;">{{ pet.name }}</span>!</h1>
         </div>
         <div id="btns">
 
-                <button type="submit" id="favoritar"><i class="fi fi-sr-heart"></i>Favoritar</button>
-
-                <select name="favorited" id="size" required>
-                    <option value="True">Sim</option>
+                <button type="submit" id="favoritar"><i class="fi fi-sr-heart" id="coracao"></i>Favoritar</button>
+                <select name="favorited" id="fav" style="display: none;" required>
                     <option value="False">Não</option>
+                    <option value="True">Sim</option>
                 </select>
+                <script>
+                    const favoritar = document.getElementById("favoritar");
+                    const select = document.getElementById("fav");
+                    const coracao = document.getElementById("coracao").style;
+                    favoritar.addEventListener("click", () => {
+                        if(select.value ==="False"){
+                            select.value = "True";
+                            coracao.color = "red";
+                        }else{
+                            select.value = "False";
+                            coracao.color = "var(--color-fg)"
+                        }
+                    });
+                </script>
             <button id="queroAdotar">
                 <i
                 class=
@@ -86,11 +99,12 @@ Pet{% endblock title %} {% block content %}
             <ul>
                 <li><strong>Nome:</strong> {{ pet.name }}</li>
                 <li><strong>Idade:</strong> {{ pet.age }} anos</li>
-                <li><strong>Especie:</strong> {{ pet.species }}</li>
+                <li><strong>Especie:</strong> {% if pet.species == "DOG" %} Cachorro {% else %} Gato{% endif %}</li>
                 <li><strong>Cor:</strong> {{ pet.color }}</li>
                 <li><strong>Raça:</strong> {{ pet.breed }}</li>
                 <li><strong>Peso:</strong> {{ pet.weight }}kg</li>
-                <li><strong>Tamanho:</strong> {{ pet.size }}</li>
+                <li><strong>Genero:</strong> {% if pet.sex == "Male" %} Macho {% else %} Femea{% endif %}</li>
+                <li><strong>Tamanho:</strong> {% if  pet.size == "Small" %} Pequeno {% if  pet.size == "Medio" %} Medio{% endif %} {% else %} Grande{% endif %}</li>
                 <li><strong>Altura:</strong> {{ pet.heigth }}cm</li>
                 <li><strong>Atual Cuidador:</strong> {{ pet.owner }}</li>
             </ul>
@@ -108,12 +122,12 @@ Pet{% endblock title %} {% block content %}
         <section id="historico-medico">
             <h2>Histórico Médico</h2>
             <ul>
-                <li><strong>Ja foi castrado? </strong> {{ pet.medical_records.first.castreated }}</li>
-                <li><strong>ja foi vacinado?</strong> {{ pet.medical_records.first.vaccines }}</li>
+                <li><strong>Ja foi castrado? </strong> {% if pet.medical_records.first.castreated == True %} Sim {% else %}Nao{% endif %}</li>
+                <li><strong>ja foi vacinado?</strong> {% if pet.medical_records.first.vaccines == True %} Sim{% else %} Nao{% endif %}</li>
                 {% if pet.medical_records.first.vaccines == True %}
                 <p><strong> Descrição da vacina:</strong>  {{ pet.medical_records.first.vaccine_description}}</p>
                 {% endif %}
-                <li><strong>tem algum parasita? </strong> {{ pet.medical_records.first.dewormed }}</li>
+                <li><strong>tem algum parasita? </strong> {% if  pet.medical_records.first.dewormed == True %} Sim{% else %} Nao{% endif %}</li>
                 {% if pet.medical_records.first.dewormed == True %}
                 <p><strong> Descrição do parasita :</strong>  {{ pet.medical_records.first.dewormer_description}}</p>
                 {% endif %}
