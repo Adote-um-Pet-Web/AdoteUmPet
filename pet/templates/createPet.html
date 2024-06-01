@@ -63,7 +63,7 @@
         <input
             name="heigth"
             type="number"
-            placeholder="Altura em M"
+            placeholder="Altura em cm"
             id="size"
             required
         />
@@ -74,19 +74,29 @@
         id="weight"
         required
     />
-
-
     </div>
-    <button id="submit" class="submit" type="submit">Proximo</button>
+    <div id="btnArea">
+        <button id="submit" class="submit" type="submit" >Próximo</button>
+    </div>
+    <!-- <button id="submit" class="submit" type="button" onclick="validateForm()">Próximo</button>
     <script>
-        document.getElementById("submit").addEventListener("click", function(){
-            const species = document.getElementById("species").value;
-            const sex = document.getElementById("sex").value;
-            const weight = document.getElementById("weight").value;
-            if(species == "0" || sex == "0" || weight == "0"){
-                alert("Preecha todos os campos");
+        function validateForm() {
+            const form = document.getElementById('form1');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            let allFilled = true;
+    
+            inputs.forEach(input => {
+                if (!input.value || input.value === '0') {
+                    allFilled = false;
+                }
+            });
+    
+            if (allFilled) {
+                form.submit();
+            } else {
+                alert('Por favor, preencha todos os campos.');
             }
-        });
-    </script>
+        }
+    </script> -->
 </form>
 {% endblock form_content %}

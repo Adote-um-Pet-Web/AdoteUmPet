@@ -1,10 +1,10 @@
 {% extends "base.html" %} {% block content %}
 <nav id="config-nav">
     <ul>
-        <li><i class="fi fi-ss-palette"></i> Aparencia</li>
-        <li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li>
+        <a href="{% url "userauths:user-config" %}" ><li><i class="fi fi-ss-palette"></i> Aparencia</li></a>
+        <a><li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>
     </ul>
-    <a href="/">Voltar</a>
+    <a id="voltar" href="/">Voltar</a>
 </nav>
 <section class="configSection">
     <h1>Aparencia</h1>

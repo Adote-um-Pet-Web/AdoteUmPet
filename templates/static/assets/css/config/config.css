@@ -24,6 +24,10 @@
     color: var(--color-main-hover);
 }
 #config-nav a{
+    text-decoration: none;
+}
+
+#config-nav #voltar{
     background-color: var(--color-main);
     text-decoration: none;
     color:var(--color-contraste);
@@ -36,7 +40,7 @@
     font-size: 1.1rem;
     transition: background-color 0.3s, color 0.3s, border-radius 0.3s,transform 0.3s;
 }
-#config-nav a:hover{
+#config-nav #voltar:hover{
     background-color: var(--color-main-hover);
     transform: scale(1.05);
 
@@ -48,6 +52,8 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-radius 0.3s,transform 0.3s;
     border-radius: 7px;
+    text-decoration: none;
+    color: var(--color-fg);
 }
 #config-nav ul li:hover{
     background-color: var(--color-fg-hover);
