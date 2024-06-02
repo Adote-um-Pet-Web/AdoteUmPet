@@ -26,6 +26,7 @@ urlpatterns = [
     path("pet-saves/", views.PagePetSaves.as_view(), name="pet-saves"),
     path("pet-added/", views.PagePetAdded.as_view(), name="pet-added"),
     path("pet/<uuid:pk>/", views.PageDetailPet.as_view(), name="pet_detail"),
+    path('pet/<uuid:pk>/favorited/', views.ToggleFavoritedView.as_view(), name='toggle_favorited'),
 
     path("create_pet/", views.CreatePetView.as_view(), name="create_pet"),
     path("create_history_pet/<uuid:pet_id>/",
