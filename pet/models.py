@@ -21,6 +21,7 @@ class Size(models.TextChoices):
     Large = "Large", "Grande"
 
 
+
 class Pet(models.Model):
     id = models.UUIDField(
         primary_key=True, unique=True, default=uuid.uuid4, editable=False
@@ -35,8 +36,8 @@ class Pet(models.Model):
     size = models.CharField(max_length=20, choices=Size.choices)
     weight = models.IntegerField()
     heigth = models.IntegerField()
-    adopted = models.BooleanField()
-    favorited = models.BooleanField()
+    adopted = models.BooleanField(default=False)
+    favorited = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
