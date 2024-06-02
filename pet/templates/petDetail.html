@@ -8,11 +8,18 @@ Pet{% endblock title %} {% block content %}
         </div>
         <div id="btns">
 
+            <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}">
+
+                {% csrf_token %}
                 <button type="submit" id="favoritar"><i class="fi fi-sr-heart" id="coracao"></i>Favoritar</button>
-                <select name="favorited" id="fav" style="display: none;" required>
+
+
+            </form>
+                {% comment %} <select name="favorited" id="fav" style="display: none;" required>
                     <option value="False">Não</option>
                     <option value="True">Sim</option>
                 </select>
+                s {% endcomment %}
                 <script>
                     const favoritar = document.getElementById("favoritar");
                     const select = document.getElementById("fav");
