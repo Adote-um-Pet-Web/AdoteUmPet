@@ -150,7 +150,7 @@ else:
             "HOST": os.getenv("HOSTDDB"),
             "PORT": os.getenv("PORTDDB"),
         }
-}
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [

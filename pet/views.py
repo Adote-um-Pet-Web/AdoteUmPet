@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, View
 from django.views.generic.list import ListView
 
 from . import models
@@ -15,21 +15,31 @@ class PagePetIndex(ListView):
     context_object_name = "pet"
 
 
+class ToggleFavoritedView(View):
+    def post(self, request, pk):
+        pet = get_object_or_404(Pet, pk=pk)
+        pet.favorited = not pet.favorited
+        pet.save()
+        return redirect("pets:pet_detail", pk=pk)
+
 
 class PageDetailPet(DetailView):
     model = models.Pet
     context_object_name = "pet"
     template_name = "petDetail.html"
 
+
 class PagePetSaves(ListView):
     model = models.Pet
     template_name = "petSave.html"
     context_object_name = "pet"
 
+
 class PagePetAdded(ListView):
     model = models.Pet
     template_name = "petAdded.html"
     context_object_name = "pet"
+
 
 class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm
@@ -100,5 +110,3 @@ class CreateImagesPetsView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.id_pet = Pet.objects.get(id=self.kwargs["pet_id"])
         return super().form_valid(form)
-
-

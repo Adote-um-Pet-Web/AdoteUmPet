@@ -1,10 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView
 from django.views.generic.edit import CreateView
-from django.views.generic import  UpdateView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .forms import UserRegisterForm
 from .models import User
 
@@ -35,22 +36,20 @@ class SignUpView(CreateView):
         return redirect("pets:index")
 
 
-
 class PageUpdateUser(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ['username', 'email', 'phone_number', 'image_user_profile']
-    success_url = reverse_lazy('pets:index')
-    template_name = 'userUpdate.html'
-    context_object_name = 'user'
-
+    fields = ["username", "email", "phone_number", "image_user_profile"]
+    success_url = reverse_lazy("pets:index")
+    template_name = "userUpdate.html"
+    context_object_name = "user"
 
 
 class PageConfigUser(LoginRequiredMixin, ListView):
     model = User
-    fields = ['username', 'email', 'phone_number', 'image_user_profile']
-    success_url = reverse_lazy('pets:index')
-    template_name = 'userConfig.html'
-    context_object_name = 'user'
+    fields = ["username", "email", "phone_number", "image_user_profile"]
+    success_url = reverse_lazy("pets:index")
+    template_name = "userConfig.html"
+    context_object_name = "user"
 
 
 def login_view(request):
