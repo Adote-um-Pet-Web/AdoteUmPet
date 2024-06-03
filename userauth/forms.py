@@ -34,3 +34,23 @@ class UserRegisterForm(UserCreationForm):
             "password2",
             "image_user_profile",
         ]
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "facebook_field", "phone_number", "instagram_field"]
+        widgets = {
+            'username': forms.TextInput(attrs={"placeholder": "Nome Completo"}),
+            'facebook_field': forms.TextInput(attrs={"placeholder": "Facebook"}),
+            'instagram_field': forms.TextInput(attrs={"placeholder": "Instagram"}),
+            'phone_number': forms.NumberInput(attrs={"placeholder": "Número de Telefone"}),
+        }
+
+
+class UserProfileImageUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["image_user_profile"]
+        widgets = {
+            'image_user_profile': forms.FileInput(attrs={"id": "fileInput", "class": "custom-file-input"}),
+        }
