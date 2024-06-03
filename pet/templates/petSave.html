@@ -2,11 +2,26 @@
 {% load static %}
 {% block content %}
 <main class="listScreen">
-    <div class="petSaved">
-        <img src="{% static "assets/img/pug/a.jpg" %}" alt="foto principal do pet">
-            <h1>Luiz</h1>
-            <a class="heartIcon" title="apagar"><i class="fi fi-ss-heart"></i></a>
-    </div>
+    {% if pet %}
+    {% for pets in pet %}
+            <div class="petSaved">
+                {% if pets.images_pets.first.image_pet_profile %}
+                    <a href="{% url 'pets:pet_detail' pk=pets.id %}" >
+                        <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
+                        <h1>Luiz</h1>
+
+
+                        <a  title="apagar"><i class="fi fi-ss-heart"></i></a>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <div id="nopet">
+                <h1>Desculpa, você está sem nenhuma pet cadastrado no momento </h1>
+                <img src="{% static "assets/img/cat_sad.jpg" %}" alt="">
+            </div>
+
+            {% endif %}
 
 </main>
 
