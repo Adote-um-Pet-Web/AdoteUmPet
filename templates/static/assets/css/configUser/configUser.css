@@ -1,0 +1,49 @@
+#changePhotoLabel{
+    background-color: var(--color-detail);
+    padding: 10px;    
+    border-radius: 7px;
+    transition: background-color 0.3s, color 0.3s, border-radius 0.3s,transform 0.3s;
+}
+#changePhotoLabel:hover{
+    background-color: var(--color-detail-hover);
+    transform: scale(1.05);
+}
+#profileImageDiv{
+    width: 200px;
+    height: 200px;
+    background-color: var(--color-card);
+    border-radius: 5px;
+    margin-right: 1.3rem;
+}
+#profileImageDiv img{
+    width: 100%;
+    height: 100%;
+}
+#photoDiv{
+    display: flex;
+    flex-direction: row;
+    align-items:end;
+    justify-content: left;
+}
+#inputDiv{
+    color: var(--color-fg);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+#inputDiv input{
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    border: 3px solid var(--color-detail);
+    padding: 10px;
+    background-color: var(--color-card);
+}
+#deletarPerfil{
+    width: 100%;
+    background-color: red;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

@@ -1,4 +1,53 @@
+<!-- tenta fazer com que a imagem atual do usuario apareca utilizando aquele
+comentario da linha 22. la esta faltando um par de {} por que a pagina estava
+lendo a linha mesmo comentada -->
 {% extends "base.html" %}
 {% block content %}
-OLAAA
+{% include "partials/configNav.html" %}
+<section class="configSection">
+    <h1>Editar Perfil</h1>
+    <h3>Contato</h3>
+    <div id="inputDiv">
+        <label for="insta">Instagram:</label>
+        <input type="text" name="insta" id="insta" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
+        <label for="face">Facebook:</label>
+        <input type="text" name="face" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
+        <label for="phone">Telefone:</label>
+        <input type="number" name="phone" placeholder="EX.:77 777777777"
+        value="{{ user.phone_number }}">
+    </div>
+    <button>Salvar</button>
+    <h3>Foto de Perfil</h3>
+    <div id="photoDiv">
+        <div id="profileImageDiv">
+            <img src="#" alt="a" id="profileImage">
+            <!-- <img src="{user.image_user_profile.url}" alt="Foto de perfil do usuário" id="profileImage"> -->
+        </div>
+        <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
+        <input type="file" name="change" id="changePhoto" style="display: none;">
+    </div>
+    <button>Salvar</button>
+    <h1 id="deletarPerfil">DELETAR PERFIL</h1>
+</section>
+
+<script>
+document.getElementById('changePhoto').addEventListener('change', function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('profileImage');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+});
+document.getElementById("deletarPerfil").addEventListener("click", function() {
+    const question1 = window.confirm("Realmente deseja deletar este perfil?");
+    if (question1 === true) {
+        const question2 = window.prompt("Para confirmar, digite 'Sim'");
+        if (question2 === "Sim") {
+            window.alert("conta deletada");
+        }
+    }
+});
+
+</script>
 {% endblock content %}
