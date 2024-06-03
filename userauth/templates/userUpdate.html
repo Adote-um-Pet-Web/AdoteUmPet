@@ -7,26 +7,37 @@ lendo a linha mesmo comentada -->
 <section class="configSection">
     <h1>Editar Perfil</h1>
     <h3>Contato</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
     <div id="inputDiv">
-        <label for="insta">Instagram:</label>
-        <input type="text" name="insta" id="insta" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
-        <label for="face">Facebook:</label>
-        <input type="text" name="face" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
-        <label for="phone">Telefone:</label>
-        <input type="number" name="phone" placeholder="EX.:77 777777777"
+
+        <label for="username">Nome de usuario:</label>
+        <input type="text" name="username" id="insta" placeholder="Nome do seu usuario aqui">
+        <label for="instagram_field">Instagram:</label>
+        <input type="text" name="instagram_field" id="insta" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
+        <label for="facebook_field">Facebook:</label>
+        <input type="text" name="facebook_field" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
+        <label for="phone_number">Telefone:</label>
+        <input type="number" name="phone_number" placeholder="EX.:77 777777777"
         value="{{ user.phone_number }}">
+        <button type="submit">Salvar</button>
     </div>
-    <button>Salvar</button>
-    <h3>Foto de Perfil</h3>
-    <div id="photoDiv">
-        <div id="profileImageDiv">
-            <img src="#" alt="a" id="profileImage">
-            <!-- <img src="{user.image_user_profile.url}" alt="Foto de perfil do usuário" id="profileImage"> -->
+
+</form>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Foto de Perfil</h3>
+        <div id="photoDiv">
+            <div id="profileImageDiv">
+                <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil do usuário" id="profileImage">
+            </div>
+            <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
+            <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
+
         </div>
-        <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
-        <input type="file" name="change" id="changePhoto" style="display: none;">
-    </div>
-    <button>Salvar</button>
+        <button type="submit">Salvar</button>
+    </form>
     <h1 id="deletarPerfil">DELETAR PERFIL</h1>
 </section>
 
