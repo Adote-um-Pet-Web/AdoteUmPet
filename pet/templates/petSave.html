@@ -8,10 +8,11 @@
                 {% if pets.images_pets.first.image_pet_profile %}
                     <a href="{% url 'pets:pet_detail' pk=pets.id %}" >
                         <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
-                        <h1>Luiz</h1>
-
-
-                        <a  title="apagar"><i class="fi fi-ss-heart"></i></a>
+                        <h1>{{pets.name}}</h1>
+                        <form method="post" action="{% url 'pets:toggle_favorited_saved' pk=pets.pk %}">
+                            {% csrf_token %}
+                            <button type="submit"><i class="fi fi-ss-heart"></i></button>
+                        </form>
                 {% endif %}
             </div>
             {% endfor %}
