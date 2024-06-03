@@ -46,6 +46,13 @@ class ToggleFavoritedView(View):
         pet.save()
         return redirect("pets:pet_detail", pk=pk)
 
+class ToggleFavoritedSavedView(View):
+    def post(self, request, pk):
+        pet = get_object_or_404(Pet, pk=pk)
+        pet.favorited = not pet.favorited
+        pet.save()
+        return redirect("pets:pet-saves")
+
 
 class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm
