@@ -88,14 +88,15 @@
 <!-- mobile login -->
 <h1 id="mobileTitle">Entrar</h1>
 <form method="POST" id="cLogin">
+    {% csrf_token %}
     <input
         type="email"
-        name="emailm"
+        name="email"
         id="emailm"
         placeholder="Email"
     /><input
         type="password"
-        name="senham"
+        name="password"
         id="senham"
         placeholder="Senha"
     />
