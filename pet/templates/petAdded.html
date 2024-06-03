@@ -1,4 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-asasasas
+<main id="addedPet">
+    <div class="petAdded">
+        <img src="{% static "assets/img/pug/a.jpg" %}" alt="foto principal do pet">
+        <div class="mainInfo">
+            <h1>Luiz</h1>
+            <p>25/01/2024</p>
+        </div>
+        <div class="iconsDiv">
+            <a class="trashIcon" title="apagar"><i class="fi fi-br-trash"></i></a>
+            <a class="editIcon" title="editar"><i class="fi fi-br-edit"></i></a>
+        </div>
+    </div>
+</main>    
 {% endblock content %}
