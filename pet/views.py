@@ -15,13 +15,6 @@ class PagePetIndex(ListView):
     context_object_name = "pet"
 
 
-class ToggleFavoritedView(View):
-    def post(self, request, pk):
-        pet = get_object_or_404(Pet, pk=pk)
-        pet.favorited = not pet.favorited
-        pet.save()
-        return redirect("pets:pet_detail", pk=pk)
-
 
 class PageDetailPet(DetailView):
     model = models.Pet
@@ -34,11 +27,24 @@ class PagePetSaves(ListView):
     template_name = "petSave.html"
     context_object_name = "pet"
 
+    def get_queryset(self):
+        return Pet.objects.filter(owner=self.request.user, favorited=True)
+
 
 class PagePetAdded(ListView):
     model = models.Pet
     template_name = "petAdded.html"
     context_object_name = "pet"
+
+    def get_queryset(self):
+        return Pet.objects.filter(owner=self.request.user)
+
+class ToggleFavoritedView(View):
+    def post(self, request, pk):
+        pet = get_object_or_404(Pet, pk=pk)
+        pet.favorited = not pet.favorited
+        pet.save()
+        return redirect("pets:pet_detail", pk=pk)
 
 
 class CreatePetView(LoginRequiredMixin, CreateView):
