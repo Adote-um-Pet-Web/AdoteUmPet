@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-asas
+<main class="listScreen">
+    <div class="petSaved">
+        <img src="{% static "assets/img/pug/a.jpg" %}" alt="foto principal do pet">
+            <h1>Luiz</h1>
+            <a class="heartIcon" title="apagar"><i class="fi fi-ss-heart"></i></a>
+    </div>
+</main>    
 {% endblock content %}
