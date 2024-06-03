@@ -6,9 +6,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView
 from django.views.generic.edit import CreateView
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, UserProfileImageUpdateForm
 from .models import User
-
 
 class SignUpView(CreateView):
     model = User
@@ -36,12 +35,37 @@ class SignUpView(CreateView):
         return redirect("pets:index")
 
 
-class PageUpdateUser(LoginRequiredMixin, UpdateView):
+class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ["username", "email", "phone_number", "image_user_profile"]
-    success_url = reverse_lazy("pets:index")
+    form_class = UserUpdateForm
     template_name = "userUpdate.html"
     context_object_name = "user"
+    success_url = reverse_lazy("pets:index")
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['image_form'] = UserProfileImageUpdateForm(instance=self.request.user)
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        image_form = UserProfileImageUpdateForm(request.POST, request.FILES, instance=self.request.user)
+
+        if 'image_user_profile' in request.FILES:
+            if image_form.is_valid():
+                image_form.save()
+                messages.success(request, "Your profile picture was updated successfully.")
+            else:
+                messages.error(request, "There was an error updating your profile picture.")
+        elif form.is_valid():
+            form.save()
+            messages.success(request, "Your profile was updated successfully.")
+        else:
+            return self.form_invalid(form)
+
+        return redirect(self.success_url)
 
 
 class PageConfigUser(LoginRequiredMixin, ListView):
