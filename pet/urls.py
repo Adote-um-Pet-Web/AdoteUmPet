@@ -31,6 +31,11 @@ urlpatterns = [
         views.ToggleFavoritedView.as_view(),
         name="toggle_favorited",
     ),
+    path(
+        "pet/<uuid:pk>/favorited-save/",
+        views.ToggleFavoritedSavedView.as_view(),
+        name="toggle_favorited_saved",
+    ),
     path("create_pet/", views.CreatePetView.as_view(), name="create_pet"),
     path(
         "create_history_pet/<uuid:pet_id>/",
