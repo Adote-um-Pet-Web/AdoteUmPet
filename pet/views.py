@@ -15,7 +15,6 @@ class PagePetIndex(ListView):
     context_object_name = "pet"
 
 
-
 class PageDetailPet(DetailView):
     model = models.Pet
     context_object_name = "pet"
@@ -39,12 +38,14 @@ class PagePetAdded(ListView):
     def get_queryset(self):
         return Pet.objects.filter(owner=self.request.user)
 
+
 class ToggleFavoritedView(View):
     def post(self, request, pk):
         pet = get_object_or_404(Pet, pk=pk)
         pet.favorited = not pet.favorited
         pet.save()
         return redirect("pets:pet_detail", pk=pk)
+
 
 class ToggleFavoritedSavedView(View):
     def post(self, request, pk):

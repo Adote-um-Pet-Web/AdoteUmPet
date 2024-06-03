@@ -132,7 +132,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "setup.wsgi.application"
 
 
-
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("DATABASE_ENGINE"),
