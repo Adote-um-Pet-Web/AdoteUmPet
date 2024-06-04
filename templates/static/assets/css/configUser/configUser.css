@@ -31,19 +31,36 @@
     flex-direction: column;
     justify-content: left;
 }
+#inputDiv label{
+    margin-bottom: 0.5rem;
+}
 #inputDiv input{
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     border-radius: 7px;
     border: 3px solid var(--color-detail);
-    padding: 10px;
+    padding: 14px;
     background-color: var(--color-card);
+    color: var(--color-fg);
+    font-size: 0.9rem;
 }
 #deletarPerfil{
-    width: 100%;
-    background-color: red;
+    background-color: transparent;
+    border: 2px solid red;
     text-align: center;
     border-radius: 6px;
     margin-top: 5rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 10%;
+    font-weight: 200;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+ 
+}
+#deletarPerfil:hover{
+    background-color: rgba(255, 31, 31, 0.692);
+    transform: scale(1.05);
+
+}
+#phtoform{
+    margin-top: 3rem;
 }
