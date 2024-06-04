@@ -16,8 +16,8 @@
                         </div>
 
                         <div class="iconsDiv">
-                            <a class="trashIcon" title="apagar"><i class="fi fi-br-trash"></i></a>
-                            <a class="editIcon" title="editar"><i class="fi fi-br-edit"></i></a>
+                            <a href="{% url "pets:pet-delete" pk=pets.id  %}" class="trashIcon" title="apagar"><i class="fi fi-br-trash"></i></a>
+                            <a href="{% url "pets:update_pet" pk=pets.id  %}" class="editIcon" title="editar"><i class="fi fi-br-edit"></i></a>
                         </div>
                 {% endif %}
                 </div>
