@@ -1,7 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, View, DeleteView, UpdateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    UpdateView,
+    View,
+)
 from django.views.generic.list import ListView
 
 from . import models
@@ -55,12 +61,11 @@ class ToggleFavoritedSavedView(View):
         return redirect("pets:pet-saves")
 
 
-
 class DeletePetView(LoginRequiredMixin, DeleteView):
     model = models.Pet
-    context_object_name = 'pet'
-    template_name = 'petDeleteConfirm.html'
-    success_url =  reverse_lazy("pets:index")
+    context_object_name = "pet"
+    template_name = "petDeleteConfirm.html"
+    success_url = reverse_lazy("pets:index")
 
     def get_queryset(self):
         return self.model.objects.filter(owner=self.request.user)
@@ -137,6 +142,7 @@ class CreateImagesPetsView(LoginRequiredMixin, CreateView):
         form.instance.id_pet = Pet.objects.get(id=self.kwargs["pet_id"])
         return super().form_valid(form)
 
+
 # UPDATE PET
 class UpdatePetView(LoginRequiredMixin, UpdateView):
     model = Pet
@@ -166,7 +172,10 @@ class UpdateHistoryPetView(LoginRequiredMixin, UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy("pets:update_medical_record", kwargs={"pet_id": self.kwargs["pet_id"]})
+        return reverse_lazy(
+            "pets:update_medical_record", kwargs={"pet_id": self.kwargs["pet_id"]}
+        )
+
 
 class UpdateMedicalRecordView(LoginRequiredMixin, UpdateView):
     form_class = MedicalRecordForm
@@ -182,7 +191,10 @@ class UpdateMedicalRecordView(LoginRequiredMixin, UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy("pets:update_images_pets", kwargs={"pet_id": self.kwargs["pet_id"]})
+        return reverse_lazy(
+            "pets:update_images_pets", kwargs={"pet_id": self.kwargs["pet_id"]}
+        )
+
 
 class UpdateImagesPetsView(LoginRequiredMixin, UpdateView):
     form_class = ImagesPetsForm

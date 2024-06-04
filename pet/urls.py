@@ -25,11 +25,23 @@ urlpatterns = [
     path("", views.PagePetIndex.as_view(), name="index"),
     path("pet-saves/", views.PagePetSaves.as_view(), name="pet-saves"),
     path("pet-added/", views.PagePetAdded.as_view(), name="pet-added"),
-    path('pet-delete/<uuid:pk>/', views.DeletePetView.as_view(), name='pet-delete'),
-    path('pet/update/<uuid:pk>/', views.UpdatePetView.as_view(), name='update_pet'),
-    path('pet/update/history/<uuid:pet_id>/', views.UpdateHistoryPetView.as_view(), name='update_history_pet'),
-    path('pet/update/medical_record/<uuid:pet_id>/',views.UpdateMedicalRecordView.as_view(), name='update_medical_record'),
-    path('pet/update/images/<uuid:pet_id>/', views.UpdateImagesPetsView.as_view(), name='update_images_pets'),
+    path("pet-delete/<uuid:pk>/", views.DeletePetView.as_view(), name="pet-delete"),
+    path("pet/update/<uuid:pk>/", views.UpdatePetView.as_view(), name="update_pet"),
+    path(
+        "pet/update/history/<uuid:pet_id>/",
+        views.UpdateHistoryPetView.as_view(),
+        name="update_history_pet",
+    ),
+    path(
+        "pet/update/medical_record/<uuid:pet_id>/",
+        views.UpdateMedicalRecordView.as_view(),
+        name="update_medical_record",
+    ),
+    path(
+        "pet/update/images/<uuid:pet_id>/",
+        views.UpdateImagesPetsView.as_view(),
+        name="update_images_pets",
+    ),
     path("pet/<uuid:pk>/", views.PageDetailPet.as_view(), name="pet_detail"),
     path(
         "pet/<uuid:pk>/favorited/",
@@ -57,5 +69,4 @@ urlpatterns = [
         views.CreateImagesPetsView.as_view(),
         name="create_images_pets",
     ),
-
 ]
