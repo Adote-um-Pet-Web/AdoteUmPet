@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, View
+from django.views.generic import CreateView, DetailView, View, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from . import models
@@ -55,6 +55,18 @@ class ToggleFavoritedSavedView(View):
         return redirect("pets:pet-saves")
 
 
+
+class DeletePetView(LoginRequiredMixin, DeleteView):
+    model = models.Pet
+    context_object_name = 'pet'
+    template_name = 'petDeleteConfirm.html'
+    success_url =  reverse_lazy("pets:index")
+
+    def get_queryset(self):
+        return self.model.objects.filter(owner=self.request.user)
+
+
+# CREATE PET
 class CreatePetView(LoginRequiredMixin, CreateView):
     form_class = PetForm
     template_name = "createPet.html"
@@ -124,3 +136,66 @@ class CreateImagesPetsView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.id_pet = Pet.objects.get(id=self.kwargs["pet_id"])
         return super().form_valid(form)
+
+# UPDATE PET
+class UpdatePetView(LoginRequiredMixin, UpdateView):
+    model = Pet
+    form_class = PetForm
+    template_name = "createPet.html"
+    context_object_name = "pet"
+
+    def get_queryset(self):
+        return self.model.objects.filter(owner=self.request.user)
+
+    def form_valid(self, form):
+        self.object = form.save()
+        return redirect("pets:update_history_pet", pet_id=self.object.id)
+
+
+class UpdateHistoryPetView(LoginRequiredMixin, UpdateView):
+    form_class = HistoryPetForm
+    template_name = "createHistory.html"
+    context_object_name = "history"
+
+    def get_object(self):
+        return models.HistoryPet.objects.get(id_pet=self.kwargs["pet_id"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["pet_id"] = self.kwargs["pet_id"]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy("pets:update_medical_record", kwargs={"pet_id": self.kwargs["pet_id"]})
+
+class UpdateMedicalRecordView(LoginRequiredMixin, UpdateView):
+    form_class = MedicalRecordForm
+    template_name = "createMedicalRecord.html"
+    context_object_name = "medical_record"
+
+    def get_object(self):
+        return models.MedicalRecord.objects.get(id_pet=self.kwargs["pet_id"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["pet_id"] = self.kwargs["pet_id"]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy("pets:update_images_pets", kwargs={"pet_id": self.kwargs["pet_id"]})
+
+class UpdateImagesPetsView(LoginRequiredMixin, UpdateView):
+    form_class = ImagesPetsForm
+    template_name = "createImagePets.html"
+    context_object_name = "images"
+
+    def get_object(self):
+        return models.ImagesPets.objects.get(id_pet=self.kwargs["pet_id"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["pet_id"] = self.kwargs["pet_id"]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy("pets:index")
