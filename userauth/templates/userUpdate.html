@@ -11,7 +11,6 @@ lendo a linha mesmo comentada -->
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
     <div id="inputDiv">
-
         <label for="username">Nome de usuario:</label>
         <input type="text" name="username" id="insta" placeholder="Nome do seu usuario aqui">
         <label for="instagram_field">Instagram:</label>
@@ -19,13 +18,11 @@ lendo a linha mesmo comentada -->
         <label for="facebook_field">Facebook:</label>
         <input type="text" name="facebook_field" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
         <label for="phone_number">Telefone:</label>
-        <input type="number" name="phone_number" placeholder="EX.:77 777777777"
-        value="{{ user.phone_number }}">
-        <button type="submit">Salvar</button>
+        <input type="number" name="phone_number" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
     </div>
-
+    <button type="submit">Salvar</button>
 </form>
-    <form method="POST" enctype="multipart/form-data">
+    <form id="phtoform" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>Foto de Perfil</h3>
         <div id="photoDiv">
@@ -38,7 +35,7 @@ lendo a linha mesmo comentada -->
         </div>
         <button type="submit">Salvar</button>
     </form>
-    <h1 id="deletarPerfil">DELETAR PERFIL</h1>
+    <h1 id="deletarPerfil">Deletar perfil</h1>
 </section>
 
 <script>
