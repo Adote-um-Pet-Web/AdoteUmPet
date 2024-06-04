@@ -9,31 +9,9 @@ Pet{% endblock title %} {% block content %}
         <div id="btns">
 
             <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}">
-
                 {% csrf_token %}
                 <button type="submit" id="favoritar"><i class="fi fi-sr-heart" id="coracao"></i>Favoritar</button>
-
-
             </form>
-                {% comment %} <select name="favorited" id="fav" style="display: none;" required>
-                    <option value="False">Não</option>
-                    <option value="True">Sim</option>
-                </select>
-                s {% endcomment %}
-                <script>
-                    const favoritar = document.getElementById("favoritar");
-                    const select = document.getElementById("fav");
-                    const coracao = document.getElementById("coracao").style;
-                    favoritar.addEventListener("click", () => {
-                        if(select.value ==="False"){
-                            select.value = "True";
-                            coracao.color = "red";
-                        }else{
-                            select.value = "False";
-                            coracao.color = "var(--color-fg)"
-                        }
-                    });
-                </script>
             <button id="queroAdotar">
                 <i
                 class=

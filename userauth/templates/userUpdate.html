@@ -11,8 +11,8 @@ lendo a linha mesmo comentada -->
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
     <div id="inputDiv">
-        <label for="username">Nome de usuario:</label>
-        <input type="text" name="username" id="insta" placeholder="Nome do seu usuario aqui">
+        <label for="username">Nome Completo:</label>
+        <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
         <label for="instagram_field">Instagram:</label>
         <input type="text" name="instagram_field" id="insta" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
         <label for="facebook_field">Facebook:</label>
