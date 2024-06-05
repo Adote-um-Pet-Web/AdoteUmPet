@@ -81,6 +81,18 @@ class PageConfigUser(LoginRequiredMixin, ListView):
     template_name = "userConfig.html"
     context_object_name = "user"
 
+class ContactPage(ListView):
+    model = User
+    success_url = reverse_lazy("pets:index")
+    template_name = "contact.html"
+    context_object_name = "User"
+    
+class InstaTest(ListView):
+    model = User
+    success_url = reverse_lazy("pets:index")
+    template_name = "instaTest.html"
+    context_object_name = "User"
+
 
 def login_view(request):
     if request.method == "POST":
