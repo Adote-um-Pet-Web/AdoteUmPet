@@ -19,4 +19,6 @@ urlpatterns = [
         name="user-update",
     ),
     path("user-config/", views.PageConfigUser.as_view(), name="user-config"),
+    path("contact-page/", views.ContactPage.as_view(), name="contact-page"),
+    path("insta-test/", views.InstaTest.as_view(), name="insta-test/"),
 ]

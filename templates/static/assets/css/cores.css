@@ -1,7 +1,7 @@
 [data-color="padrao"] {
     --color-contraste: #252525;
-    --color-main: #ffde26;
-    --color-main-hover: #ebd453;
+    --color-main: #ffc401;
+    --color-main-hover: #ffc401;
     --color-detail: #46cbff;
     --color-detail-hover: #6CADC8;
 }
@@ -9,8 +9,8 @@
     --color-contraste: #fff;
     --color-main: #46cbff;
     --color-main-hover: #6CADC8;
-    --color-detail: #ffde26;
-    --color-detail-hover: #E3CD56;
+    --color-detail: #ffc401;
+    --color-detail-hover: #ffc401;
 }
 [data-color="laranja"] {
     --color-contraste: #fff;
