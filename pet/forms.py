@@ -17,7 +17,6 @@ class PetForm(forms.ModelForm):
             "heigth",
             "weight",
             "adopted",
-            "favorited",
         ]
 
 
