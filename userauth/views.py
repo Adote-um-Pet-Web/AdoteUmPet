@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
 
 from .forms import UserProfileImageUpdateForm, UserRegisterForm, UserUpdateForm
@@ -34,6 +34,16 @@ class SignUpView(CreateView):
             user.save()
 
         return redirect("pets:index")
+
+
+class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
+    model = User
+    context_object_name = "user"
+    template_name = "userDelete.html"
+    success_url = reverse_lazy("userauths:sign-in")
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
