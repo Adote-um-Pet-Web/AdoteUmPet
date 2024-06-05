@@ -7,10 +7,12 @@ Pet{% endblock title %} {% block content %}
             <h1>Oi, eu sou {% if pet.sex == "Female" %}a {% else %}o {% endif %} <span style="text-transform: capitalize;">{{ pet.name }}</span>!</h1>
         </div>
         <div id="btns">
-
             <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}">
                 {% csrf_token %}
-                <button type="submit" id="favoritar"><i class="fi fi-sr-heart" id="coracao"></i>Favoritar</button>
+                <button type="submit" id="favoritar">
+                    <i class="fi fi-sr-heart" id="coracao"></i>
+                    Favoritar
+                </button>
             </form>
             <button id="queroAdotar">
                 <i
