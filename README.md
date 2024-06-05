@@ -6,7 +6,7 @@ Documentação: https://adote-um-pet-web.github.io/Documentation/
 
 ## Recomendado:
 `PYTHON >= 3.11`
-`Django == 5.0.3`
+`Django == 5`
 
 ## Como Executar
 Para executar o projeto, siga as etapas abaixo:
@@ -44,15 +44,27 @@ Certifique-se de ter um arquivo `requirements.txt` com as dependências do seu p
 
 Para configurar corretamente o arquivo `.env`, remova o sufixo `-example` do nome do arquivo.
 
-Cria sua api [aqui](https://console.cloud.google.com/project).
-`https://console.cloud.google.com/project`
-```env
-client_id="COLOQUE AQUI SUA CLIENT-ID DO API DO GMAIL"
-secret="COLOQUE AQUI A SECRECT-KEY DO GMAIL"
+Exemplo:
+
+![Remova o "-example do arquivo .env"](docs/img/env-example.png)
+
+Deixa assim:
+
+![.env](docs/img/env.png)
+
+
+
+### 5. Configuração do Banco de Dados
+Este projeto carrega dados do banco de dados utilizando o gerenciador Python `makemigrations` e `migrate`.
+
+Antes de começar, certifique-se de ter configurado corretamente o banco de dados. Para isso, execute os seguintes comandos:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
 ```
 
-
-### 5. Execução do Projeto
+### 6. Execução do Projeto
 Após instalar as dependências, você pode rodar o projeto:
 
 ```bash
@@ -61,18 +73,8 @@ python manage.py runserver
 
 O servidor de desenvolvimento será iniciado e você poderá acessar o projeto em `http://localhost:8000/`.
 
-# Uso
 
-Este projeto carrega dados do banco de dados utilizando o gerenciador Python `makemigrations` e `migrate`.
-
-### Configuração do Banco de Dados
-
-Antes de começar, certifique-se de ter configurado corretamente o banco de dados. Para isso, execute os seguintes comandos:
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
+# Atalhos
 
 ### Executando a Documentação
 
@@ -101,3 +103,42 @@ Alternativamente, você pode utilizar o atalho `task test` para rodar os testes.
 - `task docs`: Inicia o servidor de desenvolvimento do MkDocs para visualização da documentação.
 - `task test`: Executa os testes com o Pytest, exibindo informações detalhadas.
 - `task post_test`: Gera relatórios de cobertura após a execução dos testes.
+
+
+
+# Configuração extra `.env`:
+
+### API-Gmail
+Api do gmail para poder habilitar login via google
+
+Cria sua api [aqui](https://console.cloud.google.com/project).
+`https://console.cloud.google.com/project`
+```bash
+client_id="COLOQUE AQUI SUA CLIENT-ID DO API DO GMAIL"
+secret="COLOQUE AQUI A SECRECT-KEY DO GMAIL"
+```
+
+### Enviu-Email
+
+Habilita Configuração para poder enviar email pro usuario
+
+```bash
+EMAIL_HOST = 'SEU PROVEDOR EMAIL'
+EMAIL_POST = 'USA PORTA'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER ='SEU EMAIL APP'
+EMAIL_HOST_PASSWORD ='SUA SENHA APP EMAIL'
+```
+### Usa-database-Postgres
+
+Se deseja altera o banco de dados adicione essa configuração
+#### Postgres
+
+```bash
+DATABASE_ENGINE='django.db.backends.postgresql'
+DATABASE_NAME="NOME SUA DATABSE"
+DATABASE_USER = "NOME DE USER"
+DATABASE_PASSWORD = "SENHA DO DB"
+DATABASE_HOST = "HOST-DB"
+DATABASE_PORT = "PORT-DB"
+```
