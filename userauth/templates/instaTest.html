@@ -55,8 +55,12 @@
 <div class="container">
     <h1>Gerar Imagem para Instagram Stories</h1>
     <div id="canvas">
-        <h1>para adocao</h1>
-        <img id="pet-image" src="{% static 'assets/img/pug/a.jpg' %}" alt="pet" />
+        <h1>para adoção</h1>
+        <img
+            id="pet-image"
+            src="{% static 'assets/img/pug/a.jpg' %}"
+            alt="pet"
+        />
         <div id="dados">
             <p>luiz</p>
             <p>1 ano</p>
@@ -68,39 +72,50 @@
         <button id="share">Compartilhar</button>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-    document.getElementById('download').addEventListener('click', function() {
-        var canvas = document.getElementById('canvas');
-        html2canvas(canvas).then(function(canvas) {
-            var link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png');
-            link.download = 'imagem_instagram.png';
+    const canvas = document.getElementById("canvas");
+
+    document.getElementById("download").addEventListener("click", function () {
+        html2canvas(canvas).then(function (canvas) {
+            const link = document.createElement("a");
+            link.href = canvas.toDataURL("image/png");
+            link.download = "imagem_instagram.png";
             link.click();
         });
     });
 
-    document.getElementById('share').addEventListener('click', function() {
-        html2canvas(document.getElementById('canvas')).then(function(canvas) {
-            var imgBase64 = canvas.toDataURL('image/png');
-
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Imagem Compartilhada',
-                    text: 'Confira esta imagem!',
-                    files: [new File([imgBase64], 'imagem_instagram.png', {type: 'image/png'})] // Cria um File com base na imagem gerada
-                }).then(() => {
-                    console.log('Conteúdo compartilhado com sucesso!');
-                }).catch((error) => {
-                    console.error('Erro ao compartilhar:', error);
-                    alert("O compartilhamento direto não é suportado neste navegador.");
-                });
-            } else {
-                alert("Navigator.share não é suportado neste navegador");
-            }
+    document.getElementById("share").addEventListener("click", function () {
+        html2canvas(canvas).then(function (canvas) {
+            canvas.toBlob(function (blob) {
+                const filesArray = [
+                    new File([blob], "imagem.png", { type: "image/png" }),
+                ];
+                if (
+                    navigator.canShare &&
+                    navigator.canShare({ files: filesArray })
+                ) {
+                    navigator
+                        .share({
+                            files: filesArray,
+                            title: "Compartilhar no Instagram",
+                            text: "Confira esta imagem!",
+                        })
+                        .then(() => {
+                            alert("Compartilhamento bem-sucedido");
+                        })
+                        .catch((error) => {
+                            console.error("Erro ao compartilhar:", error);
+                            alert("Erro no compartilhamento");
+                        });
+                } else {
+                    alert(
+                        "O compartilhamento direto não é suportado neste navegador."
+                    );
+                }
+            }, "image/png");
         });
     });
 </script>
-
-{% endblock content %}
+{% endblock %}
