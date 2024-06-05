@@ -9,6 +9,11 @@ urlpatterns = [
     path("sign-in/", views.login_view, name="sign-in"),
     path("sign-out/", views.logout_view, name="sign-out"),
     path(
+        "user-delete/<uuid:pk>/",
+        views.UserProfileDeleteView.as_view(),
+        name="user-delete",
+    ),
+    path(
         "user-update/<uuid:pk>/",
         views.UserProfileUpdateView.as_view(),
         name="user-update",

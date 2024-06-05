@@ -27,7 +27,9 @@ lendo a linha mesmo comentada -->
         <h3>Foto de Perfil</h3>
         <div id="photoDiv">
             <div id="profileImageDiv">
+                {% if user.first.image_user_profile.url %}
                 <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil do usuário" id="profileImage">
+                {% endif %}
             </div>
             <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
             <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
@@ -35,7 +37,7 @@ lendo a linha mesmo comentada -->
         </div>
         <button type="submit">Salvar</button>
     </form>
-    <h1 id="deletarPerfil">Deletar perfil</h1>
+    <h1 id="deletarPerfil"><a href="{% url "userauths:user-delete" pk=user.pk  %}">Deletar perfil</a></h1>
 </section>
 
 <script>
