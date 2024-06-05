@@ -33,7 +33,9 @@ class PagePetSaves(ListView):
     context_object_name = "pet"
 
     def get_queryset(self):
-        favorited_pets = models.FavoritedPet.objects.filter(user=self.request.user, favorited=True).values_list('pet', flat=True)
+        favorited_pets = models.FavoritedPet.objects.filter(
+            user=self.request.user, favorited=True
+        ).values_list("pet", flat=True)
         return Pet.objects.filter(id__in=favorited_pets)
 
 
@@ -49,15 +51,20 @@ class PagePetAdded(ListView):
 class ToggleFavoritedView(LoginRequiredMixin, View):
     def post(self, request, pk):
         pet = get_object_or_404(Pet, pk=pk)
-        favorited_pet, created = models.FavoritedPet.objects.get_or_create(user=request.user, pet=pet)
+        favorited_pet, created = models.FavoritedPet.objects.get_or_create(
+            user=request.user, pet=pet
+        )
         favorited_pet.favorited = not favorited_pet.favorited
         favorited_pet.save()
         return redirect("pets:pet_detail", pk=pk)
 
+
 class ToggleFavoritedSavedView(LoginRequiredMixin, View):
-     def post(self, request, pk):
+    def post(self, request, pk):
         pet = get_object_or_404(Pet, pk=pk)
-        favorited_pet, created = models.FavoritedPet.objects.get_or_create(user=request.user, pet=pet)
+        favorited_pet, created = models.FavoritedPet.objects.get_or_create(
+            user=request.user, pet=pet
+        )
         favorited_pet.favorited = not favorited_pet.favorited
         favorited_pet.save()
         return redirect("pets:pet-saves")

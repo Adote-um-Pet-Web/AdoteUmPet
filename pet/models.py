@@ -73,10 +73,13 @@ class ImagesPets(models.Model):
     image_pet_datail2 = models.ImageField(upload_to="pets/photos/%Y/%m/")
     image_pet_datail3 = models.ImageField(upload_to="pets/photos/%Y/%m/")
 
+
 class FavoritedPet(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorited_pets")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="favorited_pets"
+    )
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="favorited_by")
     favorited = models.BooleanField(default=False)
 
     class Meta:
-        unique_together = ('user', 'pet')
+        unique_together = ("user", "pet")
