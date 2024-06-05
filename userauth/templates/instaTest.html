@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <style>
     .container {
         display: flex;
@@ -11,77 +9,98 @@
         color: var(--color-fg);
     }
     #canvas {
-        border: 5px solid var(--color-main);
+        background-color: var(--color-detail);
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-        width: 30%;
-        height: auto;
+        width: 360px;
+        height: 640px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
-    button {
+    #canvas img {
+        border-radius: 14px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+        max-height: 90%;
+        min-width: 50%;
+        min-height: 40%;
+    }
+    #canvas h1 {
+        margin: 0;
+    }
+    #canvas div {
+        background-color: var(--color-main);
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: var(--color-contraste);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+    }
+    #canvas div p {
         margin: 10px;
+    }
+    #buttons {
+        margin-top: 20px;
+    }
+    #buttons button {
+        margin: 5px;
     }
 </style>
 
 <div class="container">
     <h1>Gerar Imagem para Instagram Stories</h1>
-    <canvas id="canvas" ></canvas>
-    <br>
-    <button id="download">Baixar Imagem</button>
-    <button id="share">Compartilhar no Instagram</button>
+    <div id="canvas">
+        <h1>para adocao</h1>
+        <img id="pet-image" src="{% static 'assets/img/pug/a.jpg' %}" alt="pet" />
+        <div id="dados">
+            <p>luiz</p>
+            <p>1 ano</p>
+            <p>Pequeno</p>
+        </div>
+    </div>
+    <div id="buttons">
+        <button id="download">Baixar Imagem</button>
+        <button id="share">Compartilhar</button>
+    </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    // Carregar a imagem de fundo
-    const image = new Image();
-    image.src = '{% static "assets/img/pug/a.jpg" %}'; // Substitua pelo caminho correto da sua imagem
-
-    image.onload = () => {
-        // Desenhar a imagem de fundo no canvas
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-        // Adicionar o texto "auau"
-        ctx.fillStyle = 'white';
-        ctx.font = '48px serif';
-        ctx.fillText('auau', 150, 320);
-
-        // Desenhar a borda amarela
-        ctx.strokeStyle = 'yellow';
-        ctx.lineWidth = 10;
-        ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    };
-
     document.getElementById('download').addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.download = 'imagem.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+        var canvas = document.getElementById('canvas');
+        html2canvas(canvas).then(function(canvas) {
+            var link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'imagem_instagram.png';
+            link.click();
+        });
     });
 
     document.getElementById('share').addEventListener('click', function() {
-        const image = canvas.toDataURL('image/png');
-        const byteString = atob(image.split(',')[1]);
-        const mimeString = image.split(',')[0].split(':')[1].split(';')[0];
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
-        }
-        const blob = new Blob([ab], { type: mimeString });
+        html2canvas(document.getElementById('canvas')).then(function(canvas) {
+            var imgBase64 = canvas.toDataURL('image/png');
 
-        const filesArray = [new File([blob], 'imagem.png', { type: 'image/png' })];
-        if (navigator.canShare && navigator.canShare({ files: filesArray })) {
-            navigator.share({
-                files: filesArray,
-                title: 'Compartilhar no Instagram',
-                text: 'Confira esta imagem!',
-            })
-            .then(() => alert('Compartilhamento bem-sucedido'))
-            .catch(error => alert('Erro no compartilhamento', error));
-        } else {
-            alert('O compartilhamento direto não é suportado neste navegador.');
-        }
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Imagem Compartilhada',
+                    text: 'Confira esta imagem!',
+                    files: [new File([imgBase64], 'imagem_instagram.png', {type: 'image/png'})] // Cria um File com base na imagem gerada
+                }).then(() => {
+                    console.log('Conteúdo compartilhado com sucesso!');
+                }).catch((error) => {
+                    console.error('Erro ao compartilhar:', error);
+                    alert("O compartilhamento direto não é suportado neste navegador.");
+                });
+            } else {
+                alert("Navigator.share não é suportado neste navegador");
+            }
+        });
     });
 </script>
+
 {% endblock content %}
