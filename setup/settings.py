@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk
 DEBUG = False if os.getenv("DEBUGDB") == "False" else True
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "adoteumpet-production.up.railway.app"]
+ALLOWED_HOSTS = ["127.0.0.1", "adoteumpet-production.up.railway.app", ".vercel.app", ".now.sh"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1",
