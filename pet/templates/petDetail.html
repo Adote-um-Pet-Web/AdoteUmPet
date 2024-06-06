@@ -14,12 +14,18 @@ Pet{% endblock title %} {% block content %}
                     Favoritar
                 </button>
             </form>
-            <button id="queroAdotar">
-                <i
-                class=
-                "fi fi-sr-star"
-                ></i>
-            Quero adotar</button>
+
+
+            <form method="post" action="{% url 'adoption:adoption-pet' pk=pet.pk %}">
+                {% csrf_token %}
+                <button type="submit" id="queroAdotar">
+                    <i class="fi fi-sr-star"></i>
+                    Quero adotar
+                </button></a>
+            </form>
+
+
+
         </div>
     </div>
 <div id="main">

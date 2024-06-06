@@ -8,6 +8,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("pet.urls")),
     path("user/", include("userauth.urls")),
+    path("adoption/", include("adoption.urls")),
     path("accounts/", include("allauth.urls")),
     # CHANGE PASSWORD
     path(
