@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main class="listScreen">
+    {% if pet %}
+        AQUI OS CONTATOS DOS PETS
+    {% else %}
+    <div id="nopet">
+        <h1>Desculpa, você ainda não tentou adotar um pet :(</h1>
+        <img src="{% static "assets/img/cat_sad.jpg" %}" alt="">
+    </div>
+    {% endif %}
+
+</main>
+
+{% endblock content %}
