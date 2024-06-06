@@ -37,6 +37,7 @@ class Pet(models.Model):
     heigth = models.IntegerField()
     adopted = models.BooleanField(default=False)
     favorited = models.BooleanField(default=False)
+    adoption = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -80,6 +81,16 @@ class FavoritedPet(models.Model):
     )
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="favorited_by")
     favorited = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ("user", "pet")
+
+class AdoptionPets(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="adoption_pets"
+    )
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="adoption_by")
+    adoption = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ("user", "pet")
