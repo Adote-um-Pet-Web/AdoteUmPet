@@ -85,6 +85,7 @@ class FavoritedPet(models.Model):
     class Meta:
         unique_together = ("user", "pet")
 
+
 class AdoptionPets(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="adoption_pets"
