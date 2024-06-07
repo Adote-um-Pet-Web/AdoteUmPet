@@ -1,48 +1,74 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <style>
-    .container {
+    .containerInsta {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
         color: var(--color-fg);
     }
     #canvas {
         background-color: var(--color-detail);
+        background-image: url("{% static 'assets/img/Luiz.png' %}");
+        background-size: cover;
+        background-position: center;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
         width: 360px;
         height: 640px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
     }
-    #canvas img {
-        border-radius: 14px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-        max-width: 100%;
-        max-height: 90%;
-        min-width: 50%;
-        min-height: 40%;
+    #canvas img{
+        border-radius: 100%;
+        width: 13rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        height: 13rem;
+        outline: 3px solid #46cbff;
     }
-    #canvas h1 {
+    #canvas h1{
+        margin: 4px;
+        font-size: 3rem;
+    }
+    #canvas h3{
+        margin: 4px;
+        font-size: 2.4rem;
+    }
+    #canvas div{
+        text-align: center;
+    }
+    #canvas #instaInfo{
+        background-color: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: left;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    #canvas #donoPhone p{
         margin: 0;
     }
-    #canvas div {
-        background-color: var(--color-main);
-        font-weight: 800;
-        font-size: 1.3rem;
-        color: var(--color-contraste);
-        width: 100%;
+    #canvas #donoPhone{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        background-color: #fff;
+        color: #222;
+        border-radius: 10px;
+        text-align: center;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        text-align: left;
+        padding: 1rem;
+        margin-top: 10px;
     }
-    #canvas div p {
-        margin: 10px;
+    #canvas #instaInfo ul li{
+        list-style: none;
+        margin-bottom: 10px;
+    }
+    #canvas #instaInfo ul {
+        padding: 1rem;
+        margin: 0;
     }
     #buttons {
         margin-top: 20px;
@@ -52,19 +78,23 @@
     }
 </style>
 
-<div class="container">
+<div class="containerInsta">
     <h1>Gerar Imagem para Instagram Stories</h1>
     <div id="canvas">
-        <h1>para adoção</h1>
-        <img
-            id="pet-image"
-            src="{% static 'assets/img/pug/a.jpg' %}"
-            alt="pet"
-        />
-        <div id="dados">
-            <p>luiz</p>
-            <p>1 ano</p>
-            <p>Pequeno</p>
+        <div>
+            <h1>Adoção</h1>
+            <h3>Luiz</h3>
+        </div>
+        <img src="{% static 'assets/img/pug/a.jpg' %}" alt="pet" />
+        <div>
+            <div id="instaInfo">
+                <ul>
+                    <li><i class="fi fi-sr-paw"></i>  Idade: <strong>1 ano</strong></li>
+                    <li><i class="fi fi-sr-paw"></i>  Tamanho: <strong>Pequeno</strong></li>
+                    <li><i class="fi fi-sr-paw"></i>  Peso: <strong>6kg</strong></li>
+                </ul>
+            </div>
+            <div id="donoPhone"><p><i class="fi fi-sr-phone-call"></i>  (77) 777777-7777</p></div>
         </div>
     </div>
     <div id="buttons">
@@ -76,6 +106,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
     const canvas = document.getElementById("canvas");
+    const shareText = "abcde";
 
     document.getElementById("download").addEventListener("click", function () {
         html2canvas(canvas).then(function (canvas) {
@@ -100,7 +131,7 @@
                         .share({
                             files: filesArray,
                             title: "Compartilhar no Instagram",
-                            text: "Confira esta imagem!",
+                            text: "Confira esta imagem!" + shareText,
                         })
                         .then(() => {
                             alert("Compartilhamento bem-sucedido");
