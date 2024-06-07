@@ -21,7 +21,6 @@ dotenv.load_dotenv(dotenv.find_dotenv())
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
 # TODO change secrect-key
 SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk"
 
