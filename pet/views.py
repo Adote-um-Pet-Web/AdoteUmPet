@@ -27,7 +27,7 @@ class PageDetailPet(DetailView):
     template_name = "petDetail.html"
 
 
-class PagePetSaves(ListView):
+class PagePetSaves(LoginRequiredMixin, ListView):
     model = Pet
     template_name = "petSave.html"
     context_object_name = "pet"
@@ -39,7 +39,7 @@ class PagePetSaves(ListView):
         return Pet.objects.filter(id__in=favorited_pets)
 
 
-class PagePetAdded(ListView):
+class PagePetAdded(LoginRequiredMixin, ListView):
     model = models.Pet
     template_name = "petAdded.html"
     context_object_name = "pet"
