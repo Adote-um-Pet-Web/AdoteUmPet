@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+import dotenv
+
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
