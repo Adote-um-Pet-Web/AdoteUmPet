@@ -6,28 +6,28 @@
     {% if pet %}
     {% for pets in pet %}
     <div class="petAdded">
-                {% if pets.images_pets.first.image_pet_profile %}
-                    <a href="{% url 'pets:pet_detail' pk=pets.id %}" >
-                        <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
-                        <div class="mainInfo">
-                            <h1>{{pets.name }}</h1>
-                            <p>{{ pets.adopted}}</p>
-                            <p>{{ pets.created_at|date:"d/m/Y" }}</p>
-                        </div>
-
-                        <div class="iconsDiv">
-                            <a href="{% url "pets:pet-delete" pk=pets.id  %}" class="trashIcon" title="apagar"><i class="fi fi-br-trash"></i></a>
-                            <a href="{% url "pets:update_pet" pk=pets.id  %}" class="editIcon" title="editar"><i class="fi fi-br-edit"></i></a>
-                        </div>
-                {% endif %}
-                </div>
-            {% endfor %}
-            {% else %}
-            <div id="nopet">
-                <h1>Desculpa, você está sem nenhuma pet cadastrado no momento </h1>
-                <img src="{% static "assets/img/cat_sad.jpg" %}" alt="">
+        {% if pets.images_pets.first.image_pet_profile %}
+            
+            <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
+            <div class="mainInfo">
+                <h1>{{pets.name }}</h1>
+                <p>{% if pets.adopted %}Adotado {% else %}Não foi adotado{% endif %}</p>
+                <p>{{ pets.created_at|date:"d/m/Y" }}</p>
             </div>
 
-            {% endif %}
+            <div class="iconsDiv">
+                <a href="{% url "pets:pet-delete" pk=pets.id  %}" class="trashIcon" title="Apagar"><i class="fi fi-br-trash"></i></a>
+                <a href="{% url "pets:update_pet" pk=pets.id  %}" class="editIcon" title="Editar"><i class="fi fi-br-edit"></i></a>
+                <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="eyeIcon" title="Visualizar"><i class="fi fi-br-eye"></i></a>
+            </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div id="nopet">
+        <h1>Desculpa, você está sem nenhuma pet cadastrado no momento </h1>
+        <img src="{% static "assets/img/cat_sad.jpg" %}" alt="">
+    </div>
+    {% endif %}
 </main>
 {% endblock content %}

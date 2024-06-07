@@ -4,6 +4,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
         flex-direction: column;
         color: var(--color-fg);
     }
@@ -25,7 +26,7 @@
         width: 13rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
         height: 13rem;
-        outline: 3px solid #46cbff;
+        border: 3px solid #46cbff;
     }
     #canvas h1{
         margin: 4px;
@@ -71,7 +72,8 @@
         margin: 0;
     }
     #buttons {
-        margin-top: 20px;
+        margin: 20px;
+        margin-bottom: 30px;
     }
     #buttons button {
         margin: 5px;
@@ -81,7 +83,7 @@
         border: none;
         width: auto;
         height: 3rem;
-        border-radius: 12px;
+        border-radius: 7px;
         font-size: 1rem;
         font-weight: 700;
     }
@@ -92,6 +94,10 @@
 
 <div class="containerInsta">
     <h1>Gerar Imagem Para Compartilhamento</h1>
+    <div id="buttons">
+        <button id="download">Baixar Imagem</button>
+        <button id="share">Compartilhar</button>
+    </div>
     <div id="canvas">
         <div>
             <h1>Adoção</h1>
@@ -108,10 +114,6 @@
             </div>
             <div id="donoPhone"><p><i class="fi fi-sr-phone-call"></i>  (77) 777777-7777</p></div>
         </div>
-    </div>
-    <div id="buttons">
-        <button id="download">Baixar Imagem</button>
-        <button id="share">Compartilhar</button>
     </div>
 </div>
 
@@ -142,7 +144,7 @@
                     navigator
                         .share({
                             files: filesArray,
-                            title: "Compartilhar no Instagram",
+                            title: "Compartilhar Imagem",
                             text: "Confira esta imagem!" + shareText,
                         })
                         .then(() => {

@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
     height: 10rem;
-    width: 25%;
+    width: auto;
     background-color: var(--color-card);
     text-decoration: none;
     color: var(--color-fg);
@@ -28,6 +28,8 @@
 .petAdded .mainInfo{
     justify-content: space-between;
     padding: 0;
+    margin-left: 15px;
+    margin-right: 8px;
 }
 .petAdded .mainInfo h1, .petAdded .mainInfo p{
     margin: 0;
@@ -39,17 +41,27 @@
 }
 .petAdded i{
     margin: 10px;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .petAdded .iconsDiv a{
     margin-bottom: 1rem;
+    text-decoration: none;
+}
+.trashIcon{
+    color: red;
+}
+.editIcon{
+    color: var(--color-main);
+}
+.eyeIcon{
+    color: var(--color-detail);
 }
 .trashIcon:hover{
-    color: red;
     transform: scale(1.02);
 }
 .editIcon:hover{
-    color: var(--color-main);
     transform: scale(1.05);
-
+}
+.eyeIcon:hover{
+    transform: scale(1.05);
 }
