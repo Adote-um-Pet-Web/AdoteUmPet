@@ -7,8 +7,10 @@ defusedxml==0.7.1
 Django==5.0.6
 django-allauth==0.61.0
 django-jazzmin==3.0.0
+gunicorn==22.0.0
 idna==3.7
 oauthlib==3.2.2
+packaging==24.0
 pillow==10.3.0
 psycopg2-binary==2.9.9
 pycparser==2.22
@@ -19,3 +21,4 @@ requests==2.32.3
 requests-oauthlib==2.0.0
 sqlparse==0.5.0
 urllib3==2.2.1
+whitenoise==6.6.0
