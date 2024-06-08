@@ -9,9 +9,6 @@ class UserRegisterForm(UserCreationForm):
         widget=forms.TextInput(attrs={"placeholder": "Nome Completo"})
     )
     email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email"}))
-    phone_number = forms.IntegerField(
-        widget=forms.NumberInput(attrs={"placeholder": "Número de Telefone"})
-    )
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "Senha"})
     )

@@ -6,13 +6,14 @@ lendo a linha mesmo comentada -->
 {% include "partials/configNav.html" %}
 <section class="configSection">
     <h1>Editar Perfil</h1>
-    <h3>Contato</h3>
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-    <div id="inputDiv">
+        <div id="inputDiv">
         <label for="username">Nome Completo:</label>
         <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
+        <h3>Contatos</h3>
+        <p>PELO MENOS 1 CONTANTO DEVE SER ADICIONADO CASO QUEIRA ADICIONA UM PET</p>
         <label for="instagram_field">Instagram:</label>
         <input type="text" name="instagram_field" id="insta" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
         <label for="facebook_field">Facebook:</label>

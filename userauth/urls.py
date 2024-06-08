@@ -5,7 +5,6 @@ from . import views
 app_name = "userauths"
 
 from .views import (
-    ContactPage,
     InstaTest,
     LoginView,
     LogoutView,
@@ -22,6 +21,5 @@ urlpatterns = [
     path("user/delete/<uuid:pk>/", UserProfileDeleteView.as_view(), name="user-delete"),
     path("user/update/<uuid:pk>/", UserProfileUpdateView.as_view(), name="user-update"),
     path("user/config/", PageConfigUser.as_view(), name="user-config"),
-    path("contact/", ContactPage.as_view(), name="contact"),
     path("insta-test/", InstaTest.as_view(), name="insta-test"),
 ]
