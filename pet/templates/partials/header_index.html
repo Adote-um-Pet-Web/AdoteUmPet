@@ -71,6 +71,9 @@
                 <i class="fi fi-br-exchange"></i>
             </a>
         </ul>
-        <a href="{% url "pets:create_pet"  %}" id="trocarCargo">Adicionar pet</a>
+
+        <form id="trocarCargo" method="get" action="{% url 'adoption:check-fields' %}">
+            <button type="submit">Adicionar pet</button>
+        </form>
     </div>
 </header>
