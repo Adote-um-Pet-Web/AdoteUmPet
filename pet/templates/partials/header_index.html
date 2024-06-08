@@ -53,11 +53,11 @@
                     <span>Adoção de animais</span>
                     <i class="fi fi-br-user-pen"></i>
                 </a>
-            {% else %}
-                <a href="{% url "userauths:sign-in" %} " class="menu-item">
-                    <span>Editar Perfil</span>
-                    <i class="fi fi-br-user-pen"></i>
-                </a>
+
+            {% comment %} <a href="{% url "userauths:sign-in" %} " class="menu-item">
+                <span>Editar Perfil</span>
+                <i class="fi fi-br-user-pen"></i>
+            </a> {% endcomment %}
             {% endif %}
             <a href="{% url "pets:pet-added" %}" class="menu-item">
                 <span>Animais Adicionados</span>
