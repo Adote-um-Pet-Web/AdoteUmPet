@@ -82,8 +82,18 @@ SOCIALACCOUNT_PROVIDERS = {
             "client_id": os.environ.get("CLIENT_ID"),
             "secret": os.environ.get("SECRET"),
             "key": "",
-        }
+        },
+
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+            'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
     },
+
     "facebook": {
         "METHOD": "oauth2",  # Set to 'js_sdk' to use the Facebook connect SDK
         "SDK_URL": "//connect.facebook.net/{locale}/sdk.js",
@@ -158,6 +168,19 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+
+SOCIALACCOUNT_PIPELINE = (
+    'allauth.socialaccount.pipeline.social_login',
+    'userauths.pipeline.link_to_existing_user',  # Add this line
+    'allauth.socialaccount.pipeline.social_user',
+    'allauth.socialaccount.pipeline.associate_user',
+    'allauth.socialaccount.pipeline.load_extra_data',
+    'allauth.socialaccount.pipeline.user.create_user',
+    'allauth.socialaccount.pipeline.save_social_token',
+    'allauth.socialaccount.pipeline.social_account',
+    'allauth.socialaccount.pipeline.sync_user_profile',
+)
 
 AUTH_USER_MODEL = "userauth.User"
 
