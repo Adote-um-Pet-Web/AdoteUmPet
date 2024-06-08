@@ -3,8 +3,9 @@
 {% block content %}
 <nav id="config-nav">
     <ul>
-        {% if request.path == "/user/user-config/" %}
+        {% if request.path == "/user/user/config/" %}
         <a href="{% url "userauths:user-update" pk=user.first.id %}" > <li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>
+
         <a href="{% url "userauths:user-config" %}" ><li><i class="fi fi-ss-palette"></i> Aparencia</li></a>
         {% else %}
         <a > <li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>

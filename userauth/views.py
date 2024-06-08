@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -5,10 +6,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, ListView, UpdateView
 from django.views.generic.edit import CreateView
-
 from .forms import UserProfileImageUpdateForm, UserRegisterForm, UserUpdateForm
 from .models import User
-
 
 class SignUpView(CreateView):
     model = User
@@ -19,9 +18,7 @@ class SignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         username = form.cleaned_data.get("username")
-        messages.success(
-            self.request, f"Hello {username} your account was created success."
-        )
+        messages.success(self.request, f"Hello {username}, your account was created successfully.")
         new_user = authenticate(
             username=form.cleaned_data["email"],
             password=form.cleaned_data["password1"],
@@ -35,7 +32,6 @@ class SignUpView(CreateView):
 
         return redirect("pets:index")
 
-
 class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     context_object_name = "user"
@@ -44,7 +40,6 @@ class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_object(self, queryset=None):
         return self.request.user
-
 
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
@@ -91,13 +86,11 @@ class PageConfigUser(LoginRequiredMixin, ListView):
     template_name = "userConfig.html"
     context_object_name = "user"
 
-
 class ContactPage(ListView):
     model = User
     success_url = reverse_lazy("pets:index")
     template_name = "contact.html"
     context_object_name = "User"
-
 
 class InstaTest(ListView):
     model = User
@@ -105,9 +98,10 @@ class InstaTest(ListView):
     template_name = "instaTest.html"
     context_object_name = "User"
 
+class LoginView(CreateView):
+    template_name = "sign-in.html"
 
-def login_view(request):
-    if request.method == "POST":
+    def post(self, request, *args, **kwargs):
         email = request.POST.get("email")
         password = request.POST.get("password")
 
@@ -115,24 +109,26 @@ def login_view(request):
             user = User.objects.get(email=email)
             user = authenticate(request, email=email, password=password)
 
-            if user is not None:  # if there is a user
+            if user is not None:
                 login(request, user)
-                messages.success(request, "You are logged.")
+                messages.success(request, "You are logged in.")
                 return redirect("pets:index")
             else:
-                messages.warning(request, "Username or password does not exist")
+                messages.warning(request, "Username or password does not exist.")
                 return redirect("userauths:sign-in")
-        except:
-            messages.warning(request, "User does not exist")
+        except User.DoesNotExist:
+            messages.warning(request, "User does not exist.")
 
-    if request.user.is_authenticated:
-        messages.warning(request, "You are already logged In")
-        return redirect("pets:index")
+        return render(request, self.template_name)
 
-    return render(request, "sign-in.html")
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.warning(request, "You are already logged in.")
+            return redirect("pets:index")
+        return render(request, self.template_name)
 
-
-def logout_view(request):
-    logout(request)
-    messages.success(request, "You have been logged out.")
-    return redirect("userauths:sign-in")
+class LogoutView(CreateView):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        messages.success(request, "You have been logged out.")
+        return redirect("userauths:sign-in")

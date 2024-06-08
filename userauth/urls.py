@@ -4,21 +4,24 @@ from . import views
 
 app_name = "userauths"
 
+from .views import (
+    SignUpView,
+    UserProfileDeleteView,
+    UserProfileUpdateView,
+    PageConfigUser,
+    ContactPage,
+    InstaTest,
+    LoginView,
+    LogoutView
+)
+
 urlpatterns = [
-    path("sign-up/", views.SignUpView.as_view(), name="sign-up"),
-    path("sign-in/", views.login_view, name="sign-in"),
-    path("sign-out/", views.logout_view, name="sign-out"),
-    path(
-        "user-delete/<uuid:pk>/",
-        views.UserProfileDeleteView.as_view(),
-        name="user-delete",
-    ),
-    path(
-        "user-update/<uuid:pk>/",
-        views.UserProfileUpdateView.as_view(),
-        name="user-update",
-    ),
-    path("user-config/", views.PageConfigUser.as_view(), name="user-config"),
-    path("contact-page/", views.ContactPage.as_view(), name="contact-page"),
-    path("insta-test/", views.InstaTest.as_view(), name="insta-test/"),
+    path("sign-up/", SignUpView.as_view(), name="sign-up"),
+    path("sign-in/", LoginView.as_view(), name="sign-in"),
+    path("logout/", LogoutView.as_view(), name="sign-out"),
+    path("user/delete/<uuid:pk>/", UserProfileDeleteView.as_view(), name="user-delete"),
+    path("user/update/<uuid:pk>/", UserProfileUpdateView.as_view(), name="user-update"),
+    path("user/config/", PageConfigUser.as_view(), name="user-config"),
+    path("contact/", ContactPage.as_view(), name="contact"),
+    path("insta-test/", InstaTest.as_view(), name="insta-test"),
 ]
