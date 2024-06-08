@@ -3,8 +3,9 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
-from userauth.models import User
+
 from pet.models import AdoptionPets, Pet
+from userauth.models import User
 
 
 class AdoptionContactPage(LoginRequiredMixin, TemplateView):
@@ -43,12 +44,13 @@ class AdoptionPetsList(LoginRequiredMixin, ListView):
         ).values_list("pet", flat=True)
         return Pet.objects.filter(id__in=adoption_pets)
 
+
 class CheckFieldsView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         user = request.user
 
         if user.phone_number or user.instagram_field or user.facebook_field:
-            return redirect('pets:create_pet')
+            return redirect("pets:create_pet")
         else:
-            return redirect('userauths:user-update', pk=user.id)
+            return redirect("userauths:user-update", pk=user.id)
