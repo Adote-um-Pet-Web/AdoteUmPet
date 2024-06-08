@@ -1,14 +1,14 @@
+from allauth.socialaccount.providers.google.urls import (
+    urlpatterns as google_urlpatterns,
+)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from allauth.socialaccount.providers.google.urls import urlpatterns as google_urlpatterns
-
-
 
 social_urlpatterns = [
-    path('', include(google_urlpatterns)),
+    path("", include(google_urlpatterns)),
 ]
 
 
@@ -17,7 +17,7 @@ urlpatterns = [
     path("", include("pet.urls")),
     path("user/", include("userauth.urls")),
     path("adoption/", include("adoption.urls")),
-    path('accounts/', include(social_urlpatterns)),
+    path("accounts/", include(social_urlpatterns)),
     # CHANGE PASSWORD
     path(
         "password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"

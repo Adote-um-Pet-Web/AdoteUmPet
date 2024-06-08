@@ -1,4 +1,3 @@
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,8 +5,10 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, ListView, UpdateView
 from django.views.generic.edit import CreateView
+
 from .forms import UserProfileImageUpdateForm, UserRegisterForm, UserUpdateForm
 from .models import User
+
 
 class SignUpView(CreateView):
     model = User
@@ -18,7 +19,9 @@ class SignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         username = form.cleaned_data.get("username")
-        messages.success(self.request, f"Hello {username}, your account was created successfully.")
+        messages.success(
+            self.request, f"Hello {username}, your account was created successfully."
+        )
         new_user = authenticate(
             username=form.cleaned_data["email"],
             password=form.cleaned_data["password1"],
@@ -32,6 +35,7 @@ class SignUpView(CreateView):
 
         return redirect("pets:index")
 
+
 class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     context_object_name = "user"
@@ -40,6 +44,7 @@ class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
 
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
@@ -86,17 +91,20 @@ class PageConfigUser(LoginRequiredMixin, ListView):
     template_name = "userConfig.html"
     context_object_name = "user"
 
+
 class ContactPage(ListView):
     model = User
     success_url = reverse_lazy("pets:index")
     template_name = "contact.html"
     context_object_name = "User"
 
+
 class InstaTest(ListView):
     model = User
     success_url = reverse_lazy("pets:index")
     template_name = "instaTest.html"
     context_object_name = "User"
+
 
 class LoginView(CreateView):
     template_name = "sign-in.html"
@@ -126,6 +134,7 @@ class LoginView(CreateView):
             messages.warning(request, "You are already logged in.")
             return redirect("pets:index")
         return render(request, self.template_name)
+
 
 class LogoutView(CreateView):
     def get(self, request, *args, **kwargs):

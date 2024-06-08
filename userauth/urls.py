@@ -5,14 +5,14 @@ from . import views
 app_name = "userauths"
 
 from .views import (
-    SignUpView,
-    UserProfileDeleteView,
-    UserProfileUpdateView,
-    PageConfigUser,
     ContactPage,
     InstaTest,
     LoginView,
-    LogoutView
+    LogoutView,
+    PageConfigUser,
+    SignUpView,
+    UserProfileDeleteView,
+    UserProfileUpdateView,
 )
 
 urlpatterns = [

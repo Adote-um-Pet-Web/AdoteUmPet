@@ -1,13 +1,14 @@
-
 import logging
-from django.contrib.auth import get_user_model
+
 from allauth.account.utils import perform_login
+from django.contrib.auth import get_user_model
 
 logger = logging.getLogger(__name__)
 
+
 def link_to_existing_user(request, sociallogin):
     User = get_user_model()
-    email = sociallogin.account.extra_data.get('email')
+    email = sociallogin.account.extra_data.get("email")
 
     if email:
         try:
