@@ -66,7 +66,7 @@
 
 <div class="contact-container" id="contact-container">
     <h1 class="contact-header">Contatos para a Adoção do Pet</h1>
-    <img class="contact-photo"  src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}">
+    <img class="contact-photo"  src="{{ owner.image_user_profile.url }}" alt="Foto de perfil do dono : {{ owner.username }}">
     <img class="contact-photo" src="{{ pet.images_pets.first.image_pet_datail1.url }}" alt="Foto de perfil do pet {{ pet.name }}">
     <ul class="contact-details">
         <li>
@@ -91,8 +91,8 @@
 <script>
     function downloadImage() {
         html2canvas(document.querySelector("#contact-container"), {
-            scale: 2, // Aumenta a escala para melhorar a qualidade da imagem
-            useCORS: true // Habilita CORS para carregar imagens de outros domínios
+            scale: 2,
+            useCORS: true
         }).then(canvas => {
             let link = document.createElement('a');
             link.href = canvas.toDataURL('image/png');
@@ -102,6 +102,6 @@
     }
 </script>
 
-<!-- Incluindo html2canvas -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 {% endblock content %}
