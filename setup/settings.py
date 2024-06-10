@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "pet",
     "adoption",
     "userauth",
+    "banner",
     # Allauth
     "allauth",
     "allauth.account",
