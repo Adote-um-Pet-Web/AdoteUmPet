@@ -5,7 +5,6 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
 from pet.models import AdoptionPets, Pet
-from userauth.models import User
 
 
 class AdoptionContactPage(LoginRequiredMixin, TemplateView):
