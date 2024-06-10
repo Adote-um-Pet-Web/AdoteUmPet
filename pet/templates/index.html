@@ -6,27 +6,11 @@
 {% include "partials/header_index.html" %}
 
 <div id="moreItens">
-    <p>Duvidas frequentes</p>
+
+    <a href="{% url "pets:pet-faq" %}">Duvidas frequentes</a>
     <p id="filtroM">Filtros <span id="arrowM">&#x25BE;</span></p>
 </div>
-
-<div id="bannerArea">
-    <div id="sliders">
-        <div class="slide">
-            <img src=" {% static "assets/img/banner2.png" %} " alt="banner1" />
-        </div>
-        <div class="slide">
-            <img src=" {% static "assets/img/banner3.png" %} " alt="banner2" />
-        </div> 
-        <div class="slide">
-            <img
-                src="{% static "assets/img/banner4.png" %}"
-                alt="banner3"
-            />
-        </div>
-    </div>
-    <div id="sliderStatus"></div>
-</div>
+{% include "partials/banner.html" %}
 
 <main>
     {% include "partials/filtro_index.html" %}

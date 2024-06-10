@@ -1,0 +1,28 @@
+{% block content %}
+<div id="bannerArea">
+    {% if banners %}
+    <div id="sliders">
+    {% for banner in banners %}
+        <div class="slide">
+            {% if banner.banner_image1 %}
+                <img src="{{ banner.banner_image1.url }}" alt="Banner Image 1">
+            {% endif %}
+        </div>
+        <div class="slide">
+            {% if banner.banner_image2 %}
+                <img src="{{ banner.banner_image2.url }}" alt="Banner Image 2">
+            {% endif %}
+        </div>
+        <div class="slide">
+            {% if banner.banner_image3 %}
+                <img src="{{ banner.banner_image3.url }}" alt="Banner Image 3">
+            {% endif %}
+        </div>
+    </div>
+    <div id="sliderStatus"></div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}
+
+
