@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
 <style>
     .contact-container {
@@ -37,7 +35,7 @@
     .contact-details li:last-child {
         border-bottom: none;
     }
-    .contact-details a{
+    .contact-details a {
         color: var(--color-detail);
         text-decoration: none;
     }
@@ -66,42 +64,54 @@
 
 <div class="contact-container" id="contact-container">
     <h1 class="contact-header">Contatos para a Adoção do Pet</h1>
-    <img class="contact-photo"  src="{{ owner.image_user_profile.url }}" alt="Foto de perfil do dono : {{ owner.username }}">
-    <img class="contact-photo" src="{{ pet.images_pets.first.image_pet_datail1.url }}" alt="Foto de perfil do pet {{ pet.name }}">
+    {% if owner.image_user_profile.url %}
+    <img
+        class="contact-photo"
+        src="{{ owner.image_user_profile.url }}"
+        alt="Foto de perfil do dono : {{ owner.username }}"
+    />
+    {% endif %}
+    <img
+        class="contact-photo"
+        src="{{ pet.images_pets.first.image_pet_datail1.url }}"
+        alt="Foto de perfil do pet {{ pet.name }}"
+    />
     <ul class="contact-details">
         <li>
-            <span class="contact-label">Nome do atual dono:</span> {{owner.username}}
+            <span class="contact-label">Nome do atual dono:</span>
+            {{owner.username}}
         </li>
-        <li>
-            <span class="contact-label">Email:</span> {{owner.email}}
-        </li>
+        <li><span class="contact-label">Email:</span> {{owner.email}}</li>
         <li>
             <span class="contact-label">Telefone:</span> {{owner.phone_number}}
         </li>
         <li>
-            <span class="contact-label">Instagram:</span> <a href="instagram.com/username">{{owner.instagram_field}}</a>
+            <span class="contact-label">Instagram:</span>
+            <a href="instagram.com/username">{{owner.instagram_field}}</a>
         </li>
         <li>
-            <span class="contact-label">Facebook:</span> <a href="facebook.com/username">{{owner.facebook_field}}</a>
+            <span class="contact-label">Facebook:</span>
+            <a href="facebook.com/username">{{owner.facebook_field}}</a>
         </li>
     </ul>
-    <button class="contact-button" onclick="downloadImage()">Baixar Imagem</button>
+    <button class="contact-button" onclick="downloadImage()">
+        Baixar Imagem
+    </button>
 </div>
 
 <script>
     function downloadImage() {
         html2canvas(document.querySelector("#contact-container"), {
             scale: 2,
-            useCORS: true
-        }).then(canvas => {
-            let link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png');
-            link.download = 'informacoesDeContato.png';
+            useCORS: true,
+        }).then((canvas) => {
+            let link = document.createElement("a");
+            link.href = canvas.toDataURL("image/png");
+            link.download = "informacoesDeContato.png";
             link.click();
         });
     }
 </script>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 {% endblock content %}
