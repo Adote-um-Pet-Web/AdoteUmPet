@@ -13,7 +13,7 @@ Pet{% endblock title %} {% block content %}
                     {% if is_favorited %}
                     <i style="color: #ff245b;" class="fi fi-sr-heart" id="coracao"></i>
                 {% else %}
-                    <i style="color: green;" class="fi fi-sr-heart" id="coracao"></i>
+                    <i style="color: var(--color-fg);" class="fi fi-sr-heart" id="coracao"></i>
                 {% endif %}
                     Favoritar
                 </button>
@@ -25,11 +25,13 @@ Pet{% endblock title %} {% block content %}
                 <button type="submit" id="queroAdotar">
                     <i class="fi fi-sr-star"></i>
                     Quero adotar
-                </button></a>
+                </button>
             </form>
 
-
-
+            <a id="compartilharBtn">
+                    <i class="fi fi-sr-share"></i>
+                     Compartilhar
+            </a>
         </div>
     </div>
 <div id="main">
@@ -101,9 +103,18 @@ Pet{% endblock title %} {% block content %}
                 <li><strong>Raça:</strong> {{ pet.breed }}</li>
                 <li><strong>Peso:</strong> {{ pet.weight }}kg</li>
                 <li><strong>Genero:</strong> {% if pet.sex == "Male" %} Macho {% else %} Femea{% endif %}</li>
-                <li><strong>Tamanho:</strong> {% if  pet.size == "Small" %} Pequeno {% if  pet.size == "Medio" %} Medio{% endif %} {% else %} Grande{% endif %}</li>
+                <li>
+                    <strong>Tamanho:</strong> 
+                    {% if pet.size == "SMALL" %}
+                      Pequeno
+                    {% elif pet.size == "Medium" %}
+                      Medio
+                    {% else %}
+                      Grande
+                    {% endif %}
+                  </li>
                 <li><strong>Altura:</strong> {{ pet.heigth }}cm</li>
-                <li><strong>Atual Cuidador:</strong> {{ pet.owner }}</li>
+                <li style="text-transform: capitalize;"><strong>Atual Cuidador:</strong> {{ pet.owner }}</li>
             </ul>
         </section>
 

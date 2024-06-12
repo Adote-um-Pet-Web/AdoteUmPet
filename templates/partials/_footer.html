@@ -10,18 +10,15 @@
 {% if request.path == "/user/sign-up/" %}
 <script src=" {% static "assets/js/profilePhoto.js" %} "></script>
 {% endif %}
-{% if request.path == "/create_history_pet/" or request.path == "/create_pet/" or request.path == "/create_medical_record/" or request.path == "/create_images_pets/" %}
 <script src=" {% static "assets/js/petcadastro.js" %} "></script>
-{% endif %}
 <script src=" {% static "assets/js/theme.js" %} "></script>
 
 {% comment %} Vercel {% endcomment %}
 <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script>
-window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
