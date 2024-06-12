@@ -19,13 +19,23 @@
     border-radius: 8px;
 }
 .heartIcon{
-    position: absolute;
 }
-.heartIcon i{
+.heartIcon .favIconHeart{
+    background-color: transparent;
+    border: none;
     color: #ff0000;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
-.heartIcon:hover  {
+.heartIcon .seeIconEye{
+    background-color: transparent;
+    border: none;
+    color: var(--color-main);
+    font-size: 1.5rem;
+}
+.heartIcon a{
+    text-decoration: none;
+}
+.favIconHeart:hover, .heartIcon a:hover  {
     transform: scale(1.05);
 }
 .petSaved h1{

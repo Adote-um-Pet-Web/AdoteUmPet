@@ -56,7 +56,8 @@
     width: 10%;
     font-weight: 200;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
- 
+    color: var(--color-fg);
+    text-decoration: none;
 }
 #deletarPerfil:hover{
     background-color: rgba(255, 31, 31, 0.692);
