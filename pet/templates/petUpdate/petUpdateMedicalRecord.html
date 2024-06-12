@@ -1,0 +1,46 @@
+{% extends "createPetBase.html" %}
+{% block form_title %}Informações Médicas{% endblock form_title %}
+{% block default_content %}{% endblock default_content %}
+{% block form_content %}
+
+<form method="post" id="form2">
+    {% csrf_token %}
+    <h1>Olá mundo</h1>
+      <div id="divLabel">
+        <label>O pet é castrado?</label>
+        <select name="castreated" id="size" required>
+            <option value="True" {% if medical_record.castreated %}selected{% endif %}>Sim</option>
+            <option value="False" {% if not medical_record.castreated %}selected{% endif %} >Não</option>
+        </select>
+      </div>
+      <div id="divLabel">
+        <label>Ja foi vacinado?</label>
+        <select name="vaccines" id="size" required>
+            <option value="True" {% if medical_record.vaccines %}selected{% endif %}>Sim</option>
+            <option value="False" {% if not medical_record.vaccines %}selected{% endif %}>Não</option>
+        </select>
+      </div>
+    <div>
+      <label for="vaccine_description">Se sim, quais vacinas foram aplicadas?</label>
+      <textarea name="vaccine_description" id="vaccine_description"  rows="2">{{medical_record.vaccine_description}}</textarea>
+    </div>
+  <div id="divLabel">
+    <label> O pet tem parasitas?</label>
+    <select name="dewormed" id="size" required>
+        <option value="True"  {% if medical_record.dewormed %}selected{% endif %}>Sim</option>
+        <option value="False"  {% if not medical_record.dewormed %}selected{% endif %}>Não</option>
+    </select>
+  </div>
+  <div>
+    <label for="dewormer_description">Se tem algum, quais?</label>
+    <textarea name="dewormer_description" id="dewormer_description"  rows="2">{{medical_record.dewormer_description}}</textarea>
+  </div>
+  <div>
+    <label for="medical_history">Historico medico:</label>
+    <textarea name="medical_history" id="medical_history"  rows="2">{{medical_record.medical_history}}</textarea>
+  </div>
+  <div id="btnArea">
+    <button class="submit" type="submit">Proximo</button>
+  </div>
+  </form>
+  {% endblock form_content %}

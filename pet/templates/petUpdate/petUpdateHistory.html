@@ -1,0 +1,27 @@
+{% extends "createPetBase.html" %}
+{% block form_title %}Historico{% endblock form_title %}
+{% block default_content %}{% endblock default_content %}
+{% block form_content %}
+<form method="post" id="form3">
+    {% csrf_token %}
+    <h1>heelo</h1>
+    <textarea
+        name="history"
+        id="history"
+        cols="120"
+        rows="10"
+        placeholder="História de vida"
+    >{{history.history}}</textarea>
+
+    <textarea
+        name="observations"
+        id="observations"
+        cols="120"
+        rows="10"
+        placeholder="Observações"
+
+    >{{ history.observations }}</textarea>
+
+    <button class="submit" type="submit">Proximo</button>
+</form>
+{% endblock form_content %}
