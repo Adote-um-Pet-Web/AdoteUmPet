@@ -65,7 +65,7 @@
 </style>
 
 <div class="contact-container" id="contact-container">
-    <h1 class="contact-header">Contatos para a Adoção do Pet</h1>
+    <h1 class="contact-header">Contatos para a Adoção {% if pet.sex == "Female" %}da {% else %}do {% endif %} <span style="text-transform: capitalize; color:var(--color-main);">{{ pet.name }}</span></h1>
     {% if owner.image_user_profile %}
     <img
         class="contact-photo"
@@ -76,8 +76,7 @@
     <img
     class="contact-photo"
     src="{% static "assets/img/avatar.jpg" %}"
-    alt="Foto de perfil do dono : {{ owner.username }}"
-/>
+    alt="Foto de perfil do dono : {{ owner.username }}"/>
     {% endif %}
     <img
         class="contact-photo"
@@ -85,7 +84,7 @@
         alt="Foto de perfil do pet {{ pet.name }}"
     />
     <ul class="contact-details">
-        <li>
+        <li style="text-transform: capitalize;">
             <span class="contact-label">Nome do atual dono:</span>
             {{owner.username}}
         </li>
@@ -95,17 +94,25 @@
         </li>
         <li>
             <span class="contact-label">Instagram:</span>
-            <a href="instagram.com/username">{{owner.instagram_field}}</a>
+            {% if owner.instagram_field %}
+            <a href="https://www.instagram.com/{{owner.instagram_field}}">@{{owner.instagram_field}}</a>
+            {% else %}
+            <p>Nenhum Intagram adicionado pelo usuario</p>
+            {% endif %}
         </li>
         <li>
             <span class="contact-label">Facebook:</span>
-            <a href="facebook.com/username">{{owner.facebook_field}}</a>
+            {% if owner.facebook_field %}
+            <a href="https://www.facebook.com/{{owner.facebook_field}}">@{{owner.facebook_field}}</a>
+            {% else %}
+            <p>Nenhum Facebook adicionado pelo usuario</p>
+            {% endif %}
         </li>
     </ul>
-    <button class="contact-button" onclick="downloadImage()">
-        Baixar Imagem
-    </button>
 </div>
+        <button class="contact-button" onclick="downloadImage()">
+            Baixar Imagem
+        </button>
 
 <script>
     function downloadImage() {

@@ -1,8 +1,6 @@
-<!-- tenta fazer com que a imagem atual do usuario apareca utilizando aquele
-comentario da linha 22. la esta faltando um par de {} por que a pagina estava
-lendo a linha mesmo comentada -->
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 {% include "partials/configNav.html" %}
 <section class="configSection">
     <h1>Editar Perfil</h1>
@@ -13,11 +11,10 @@ lendo a linha mesmo comentada -->
         <label for="username">Nome Completo:</label>
         <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
         <h3>Contatos</h3>
-        <p>PELO MENOS 1 CONTANTO DEVE SER ADICIONADO CASO QUEIRA ADICIONA UM PET</p>
         <label for="instagram_field">Instagram:</label>
-        <input type="text" name="instagram_field" id="insta" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
+        <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
         <label for="facebook_field">Facebook:</label>
-        <input type="text" name="facebook_field" placeholder="EX.: https://www.instagram.com/nome_do_usuario/">
+        <input type="text" name="facebook_field" placeholder="EX.: user_123">
         <label for="phone_number">Telefone:</label>
         <input type="number" name="phone_number" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
     </div>
@@ -28,37 +25,14 @@ lendo a linha mesmo comentada -->
         <h3>Foto de Perfil</h3>
         <div id="photoDiv">
             <div id="profileImageDiv">
-                {% if user.first.image_user_profile.url %}
-                <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil do usuário" id="profileImage">
-                {% endif %}
+                <img src="{{user.image_user_profile.url}}" alt="Foto de perfil do usuário" id="profileImage">
             </div>
             <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
-            <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
-
+            <input type="file" name="change" id="changePhoto" style="display: none;">
         </div>
         <button type="submit">Salvar</button>
     </form>
     <h1 style="margin-top: 4.3rem;"><a id="deletarPerfil" href="{% url "userauths:user-delete" pk=user.pk  %}">Deletar perfil</a></h1>
 </section>
-
-<script>
-document.getElementById('changePhoto').addEventListener('change', function(event) {
-    var reader = new FileReader();
-    reader.onload = function(){
-        var output = document.getElementById('profileImage');
-        output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-});
-document.getElementById("deletarPerfil").addEventListener("click", function() {
-    const question1 = window.confirm("Realmente deseja deletar este perfil?");
-    if (question1 === true) {
-        const question2 = window.prompt("Para confirmar, digite 'Sim'");
-        if (question2 === "Sim") {
-            window.alert("conta deletada");
-        }
-    }
-});
-
-</script>
+<script src=" {% static "assets/js/profilePhotoUpdate.js" %} "></script>
 {% endblock content %}

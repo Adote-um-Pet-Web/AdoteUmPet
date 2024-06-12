@@ -1,6 +1,7 @@
 {% extends "createPetBase.html" %}
 {% block form_title %}Fotos{% endblock form_title %}
 {% block default_content %}{% endblock default_content %}
+{% load static %}
 {% block form_content %}
 <form id="form4" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -28,4 +29,5 @@
         <button class="submit" type="submit">Finalizar</button>
     </div>
 </form>
+<script src=" {% static "assets/js/petCadastro.js" %} "></script>
 {% endblock form_content %}
