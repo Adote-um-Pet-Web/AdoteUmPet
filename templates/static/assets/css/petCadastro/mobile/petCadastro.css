@@ -48,6 +48,7 @@
 }
 #form1{
     flex-direction: column;
+    margin-top: 45%;
 }
 #form1 input, #form1 select{
     width: 100%;
