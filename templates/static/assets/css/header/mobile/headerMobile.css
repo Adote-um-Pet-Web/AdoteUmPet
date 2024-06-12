@@ -63,3 +63,6 @@ header{
 #entrar{
     width: calc(6rem - 12px);
 }
+#avatar{
+    width: auto;
+}

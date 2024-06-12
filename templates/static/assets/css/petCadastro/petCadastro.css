@@ -335,3 +335,6 @@
 #espaco_dos_formularios{
     overflow-y: auto;
 }
+#menuIconNav, #menuIconNavClose{
+    display: none;
+}

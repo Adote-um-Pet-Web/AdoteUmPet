@@ -4,6 +4,8 @@
 {% block content %}
 <div id="screen">
         <nav id="listas">
+            <i class="fi fi-br-cross" id="menuIconNavClose"></i>
+
             {% include "partials/navForm.html" %}
             <a 
            id="cancelPet" href="/">Cancelar</a>
@@ -11,6 +13,7 @@
     <section>
         <div id="top">
             <h1>Cadastro do pet para adoção</h1>
+            <i class="fi fi-br-menu-burger" id="menuIconNav"></i>
             <h3 id="form-title">{% block form_title %}{% endblock form_title %}</h3>
         </div>
         <div id="espaco_dos_formularios">
@@ -18,4 +21,15 @@
         </div>
     </section>
 </div>
+<script>
+    const menuNav = document.getElementById("menuIconNav");
+    const menuNavClose = document.getElementById("menuIconNavClose");
+    const nav = document.getElementById("listas").style;
+    menuNav.addEventListener("click", () => {
+        nav.display="flex";
+    });
+    menuNavClose.addEventListener("click", () => {
+        nav.display="none";
+    });
+</script>
 {% endblock content %}

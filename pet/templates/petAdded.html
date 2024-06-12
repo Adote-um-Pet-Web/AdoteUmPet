@@ -2,11 +2,11 @@
 {% load static %}
 {% block content %}
 
-<main id="addedPet">
+<main id="addedPet" class="listScreen">
     {% if pet %}
     {% for pets in pet %}
+    {% if pets.images_pets.first.image_pet_profile %}
     <div class="petAdded">
-        {% if pets.images_pets.first.image_pet_profile %}
             
             <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
             <div class="mainInfo">
@@ -20,8 +20,8 @@
                 <a href="{% url "pets:update_pet" pk=pets.id  %}" class="editIcon" title="Editar"><i class="fi fi-br-edit"></i></a>
                 <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="eyeIcon" title="Visualizar"><i class="fi fi-br-eye"></i></a>
             </div>
-        {% endif %}
     </div>
+        {% endif %}
     {% endfor %}
     {% else %}
     <div id="nopet">
