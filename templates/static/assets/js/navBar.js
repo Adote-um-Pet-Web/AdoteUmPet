@@ -71,11 +71,6 @@ document.getElementById("ageTitle").addEventListener("click", function () {
     toggleListVisibility("ageList", "ageTitleArrow");
 });
 
-document
-    .getElementById("deficiencyTitle")
-    .addEventListener("click", function () {
-        toggleListVisibility("deficiencyList", "deficiencyTitleArrow");
-    });
 
 document.getElementById("genderTitle").addEventListener("click", function () {
     toggleListVisibility("genderList", "genderTitleArrow");

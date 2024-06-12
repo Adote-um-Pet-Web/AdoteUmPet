@@ -3,13 +3,16 @@
 <script src=" {% static "assets/js/header.js" %} "></script>
 <script src=" {% static "assets/js/navBar.js" %} "></script>
 <script src=" {% static "assets/js/banner.js" %} "></script>
+<script src=" {% static "assets/js/search.js" %} "></script>
+<script src=" {% static "assets/js/filter.js" %} "></script>
 {% endif %}
 
 {% if request.path == "/user/sign-up/" %}
 <script src=" {% static "assets/js/profilePhoto.js" %} "></script>
 {% endif %}
-
+{% if request.path == "/create_history_pet/" or request.path == "/create_pet/" or request.path == "/create_medical_record/" or request.path == "/create_images_pets/" %}
 <script src=" {% static "assets/js/petcadastro.js" %} "></script>
+{% endif %}
 <script src=" {% static "assets/js/theme.js" %} "></script>
 
 {% comment %} Vercel {% endcomment %}
