@@ -27,13 +27,13 @@
     <div>
         <select name="species" id="species" required>
             <option value="0">Espécie</option>
-            <option value="DOG">Cachorro</option>
-            <option value="CAT">Gato</option>
+            <option value="DOG" {% if species == Species.DOG %}selected{% endif %}>Cachorro</option>
+            <option value="CAT" {% if species == Species.CAT %}selected{% endif %}>Gato</option>
         </select>
         <select name="sex" id="sex" required>
             <option value="0">Sexo</option>
-            <option value="Male">Macho</option>
-            <option value="Female">Fêmea</option>
+            <option value="Male" {% if sex == Sex.Male %}selected{% endif %}>Macho</option>
+            <option value="Female" {% if sex == Sex.Female%}selected{% endif %}>Fêmea</option>
         </select>
         <input
             name="color"
@@ -48,15 +48,16 @@
     <div>
         <select name="size" id="size" required>
             <option value="0">Tamanho</option>
-            <option value="SMALL">Pequeno</option>
-            <option value="MEDIUM">Medio</option>
-            <option value="Large">Grande</option>
+            <option value="SMALL" {% if size == Size.SMALL %}selected{% endif %}>Pequeno</option>
+            <option value="MEDIUM" {% if size == Size.MEDIUM %}selected{% endif %}>Medio</option>
+            <option value="Large" {% if size == Size.Large %}selected{% endif %}>Grande</option>
         </select>
         <input
             name="age"
             type="number"
             placeholder="Idade em anos"
             id="age"
+            value="{{pet.age}}"
             required
         />
         <input
@@ -64,6 +65,7 @@
             type="number"
             placeholder="Altura em cm"
             id="size"
+            value="{{pet.heigth}}"
             required
         />
         <input
@@ -71,6 +73,7 @@
         type="number"
         placeholder="Peso em Kg"
         id="weight"
+        value="{{pet.weight}}"
         required
     />
     </div>

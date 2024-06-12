@@ -10,11 +10,11 @@ Pet{% endblock title %} {% block content %}
             <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}">
                 {% csrf_token %}
                 <button type="submit" id="favoritar">
-                    {% if pet.favorited %}
+                    {% if is_favorited %}
                     <i style="color: #ff245b;" class="fi fi-sr-heart" id="coracao"></i>
-                    {% else %}
+                {% else %}
                     <i style="color: green;" class="fi fi-sr-heart" id="coracao"></i>
-                    {% endif %}
+                {% endif %}
                     Favoritar
                 </button>
             </form>

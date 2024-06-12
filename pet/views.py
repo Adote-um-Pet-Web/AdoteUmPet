@@ -10,10 +10,12 @@ from django.views.generic import (
 )
 from django.views.generic.list import ListView
 
+from banner.models import BannerImagens
+
 from . import models
 from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
 from .models import Pet
-from banner.models import BannerImagens
+
 
 class PagePetIndex(ListView):
     model = models.Pet
@@ -22,7 +24,7 @@ class PagePetIndex(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['banners'] = BannerImagens.objects.all()
+        context["banners"] = BannerImagens.objects.all()
         return context
 
 
@@ -31,12 +33,26 @@ class PageFaqQuestions(ListView):
     context_object_name = "pet"
     template_name = "faqQuestions.html"
 
+
 class PageDetailPet(DetailView):
     model = models.Pet
     context_object_name = "pet"
     template_name = "petDetail.html"
 
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pet = self.get_object()
+        user = self.request.user
+        if user.is_authenticated:
+            favorited_pet = models.FavoritedPet.objects.filter(
+                user=user, pet=pet
+            ).first()
+            context["is_favorited"] = (
+                favorited_pet.favorited if favorited_pet else False
+            )
+        else:
+            context["is_favorited"] = False
+        return context
 
 
 class PagePetSaves(LoginRequiredMixin, ListView):
@@ -168,7 +184,7 @@ class CreateImagesPetsView(LoginRequiredMixin, CreateView):
 class UpdatePetView(LoginRequiredMixin, UpdateView):
     model = Pet
     form_class = PetForm
-    template_name = "createPet.html"
+    template_name = "petUpdate/petUpdate.html"
     context_object_name = "pet"
 
     def get_queryset(self):
@@ -181,7 +197,7 @@ class UpdatePetView(LoginRequiredMixin, UpdateView):
 
 class UpdateHistoryPetView(LoginRequiredMixin, UpdateView):
     form_class = HistoryPetForm
-    template_name = "createHistory.html"
+    template_name = "petUpdate/petUpdateHistory.html"
     context_object_name = "history"
 
     def get_object(self):
@@ -200,7 +216,7 @@ class UpdateHistoryPetView(LoginRequiredMixin, UpdateView):
 
 class UpdateMedicalRecordView(LoginRequiredMixin, UpdateView):
     form_class = MedicalRecordForm
-    template_name = "createMedicalRecord.html"
+    template_name = "petUpdate/petUpdateMedicalRecord.html"
     context_object_name = "medical_record"
 
     def get_object(self):
@@ -219,7 +235,7 @@ class UpdateMedicalRecordView(LoginRequiredMixin, UpdateView):
 
 class UpdateImagesPetsView(LoginRequiredMixin, UpdateView):
     form_class = ImagesPetsForm
-    template_name = "createImagePets.html"
+    template_name = "petUpdate/petUpdateImagens.html"
     context_object_name = "images"
 
     def get_object(self):
