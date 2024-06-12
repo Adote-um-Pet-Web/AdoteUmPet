@@ -75,6 +75,8 @@
         <form  method="get" action="{% url 'adoption:check-fields' %}">
             <button id="trocarCargo" type="submit">Adicionar pet</button>
         </form>
-        <a id="adminButton"> Area de admin</a>
+        {% if user.is_superuser %}
+        <a href="{% url 'admin:index' %}" id="adminButton"> Area de admin</a>
+        {% endif %}
     </div>
 </header>
