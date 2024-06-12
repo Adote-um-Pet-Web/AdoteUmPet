@@ -10,10 +10,12 @@ from django.views.generic import (
 )
 from django.views.generic.list import ListView
 
+from banner.models import BannerImagens
+
 from . import models
 from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
 from .models import Pet
-from banner.models import BannerImagens
+
 
 class PagePetIndex(ListView):
     model = models.Pet
@@ -22,7 +24,7 @@ class PagePetIndex(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['banners'] = BannerImagens.objects.all()
+        context["banners"] = BannerImagens.objects.all()
         return context
 
 
@@ -30,6 +32,7 @@ class PageFaqQuestions(ListView):
     model = models.Pet
     context_object_name = "pet"
     template_name = "faqQuestions.html"
+
 
 class PageDetailPet(DetailView):
     model = models.Pet
@@ -41,10 +44,14 @@ class PageDetailPet(DetailView):
         pet = self.get_object()
         user = self.request.user
         if user.is_authenticated:
-            favorited_pet = models.FavoritedPet.objects.filter(user=user, pet=pet).first()
-            context['is_favorited'] = favorited_pet.favorited if favorited_pet else False
+            favorited_pet = models.FavoritedPet.objects.filter(
+                user=user, pet=pet
+            ).first()
+            context["is_favorited"] = (
+                favorited_pet.favorited if favorited_pet else False
+            )
         else:
-            context['is_favorited'] = False
+            context["is_favorited"] = False
         return context
 
 
