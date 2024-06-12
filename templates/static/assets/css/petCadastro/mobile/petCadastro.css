@@ -11,6 +11,7 @@
 }
 #menuIconNavClose{
     position: fixed;
+    display: block;
     top: 0;
     left: 0;
     font-size: 2rem;
@@ -36,6 +37,7 @@
     height: 8%;
 }
 #menuIconNav{
+    display: block;
     color: var(--color-main);
     font-size: 2rem;
     margin-left: 1rem;
