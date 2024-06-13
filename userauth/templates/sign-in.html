@@ -86,8 +86,8 @@
 
 
 <!-- mobile login -->
-<h1 id="mobileTitle">Entrar</h1>
 <form method="POST" id="cLogin">
+    <h1 id="mobileTitle">Entrar</h1>
     {% csrf_token %}
     <input
         type="email"
@@ -101,18 +101,17 @@
         placeholder="Senha"
     />
     <button class="btnLogin" type="submit">Entrar</button>
-    <a href="{% url "password_reset" %}" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
-    <hr />
-    <div class="troca">
-        <p>Ainda nao tem uma conta?</p>
-        <a class="btnLogin" href="{% url 'userauths:sign-up' %}">Criar sua conta</a>
-    </div>
-    <p>ou entre de outra maneira</p>
+    <a href="{% url "password_reset" %}" class="loginLink" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
+</form>
+<div class="troca" id="trocaLoginMobile">
+    <a class="loginLink" href="{% url 'userauths:sign-up' %}" >Ainda nao tem
+    uma conta? <br><span >Clique aqui.</span></a>       
+    <a class="loginLink">ou entre de outra maneira</a>
     <div class="containerI">
         <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i></a>
         <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
         <i class="fi fi-brands-google"></i> </a>
     </div>
-</form>
+</div>
 {% endblock content %}
 

@@ -43,6 +43,7 @@
         <h2>Cadastrar</h2>
         {{form.username}}
         {{form.email}}
+        {{form.phone_number}}
         {{form.password1}}
         {{form.password2}}
         <div id="fotoDePerfil">
@@ -61,16 +62,23 @@
 </div>
 
 <!-- registro mobile -->
-<div id="mobileRegistro" >
-    <h2>Cadastrar</h2>
     <form id="cRegistro" method="post" enctype="multipart/form-data">
+        <h2>Cadastrar</h2>
         {% csrf_token %}
+        <div class="alert-danger alert">
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p> {{ error }} </p>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </div>
         {{form.username}}
         {{form.email}}
         {{form.phone_number}}
         {{form.password1}}
         {{form.password2}}
-
         <div id="fotoDePerfilM">
             <h6 id="userAreaPhotoM">
                 <img src="#" id="previewM" style="display:none;" alt="Preview">
@@ -81,22 +89,15 @@
                 <label for="fileInput" class="custom-file-label">Escolha sua foto de perfil</label>
             </div>
         </div>
-
-
-
-
-    <button class="btnLogin" type="submit">Cadastrar</button>
-    <hr />
-    <div class="troca">
-        <p>Ja tem uma conta?</p>
-        <a class="btnLogin" href="{% url 'userauths:sign-in' %}">Entrar</a>
-        <p>ou entre de outra maneira:</p>
-        <div class="containerI">
-            <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i></a>
-            <a class="containerIB" href="{% provider_login_url "google"%}?next=/">  <i class="fi fi-brands-google"></i> </a>
-        </div>
-    </div>
+        <button class="btnLogin" type="submit">Cadastrar</button>
     </form>
-</div>
+    <div class="troca">
+        <a class="loginLink" href="{% url 'userauths:sign-in' %}">Ja tem uma conta? <span style="font-size: 1.5rem;">Entrar</span></a>
+`                <p>ou entre de outra maneira:</p>
+                <div class="containerI">
+                    <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i></a>
+                    <a class="containerIB" href="{% provider_login_url "google"%}?next=/">  <i class="fi fi-brands-google"></i> </a>
+                </div>
+    </div>
 {% endblock content %}
 
