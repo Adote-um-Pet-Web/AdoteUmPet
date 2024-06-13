@@ -1,28 +1,27 @@
-{% block content %}
 <div id="bannerArea">
-    {% if banners %}
+    {% if banner_images %}
     <div id="sliders">
-    {% for banner in banners %}
-        <div class="slide">
+    {% for banner in banner_images %}
+        {% comment %} <div class="slide"> {% endcomment %}
             {% if banner.banner_image1 %}
                 <img src="{{ banner.banner_image1.url }}" alt="Banner Image 1">
             {% endif %}
-        </div>
-        <div class="slide">
+        {% comment %} </div> {% endcomment %}
+        {% comment %} <div class="slide"> {% endcomment %}
             {% if banner.banner_image2 %}
                 <img src="{{ banner.banner_image2.url }}" alt="Banner Image 2">
             {% endif %}
-        </div>
-        <div class="slide">
+        {% comment %} </div> {% endcomment %}
+        {% comment %} <div class="slide"> {% endcomment %}
             {% if banner.banner_image3 %}
                 <img src="{{ banner.banner_image3.url }}" alt="Banner Image 3">
             {% endif %}
-        </div>
+        {% comment %} </div> {% endcomment %}
     </div>
-    <div id="sliderStatus"></div>
+
     {% endfor %}
     {% endif %}
 </div>
-{% endblock content %}
+
 
 

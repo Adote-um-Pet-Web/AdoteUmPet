@@ -95,3 +95,16 @@ class AdoptionPets(models.Model):
 
     class Meta:
         unique_together = ("user", "pet")
+
+
+# Create your models here.
+class BannerImagens(models.Model):
+    banner_image1 = models.ImageField(
+        upload_to="banner/imagens/%Y/%m/", blank=False, null=False
+    )
+    banner_image2 = models.ImageField(
+        upload_to="banner/imagens/%Y/%m/", blank=False, null=False
+    )
+    banner_image3 = models.ImageField(
+        upload_to="banner/imagens/%Y/%m/", blank=False, null=False
+    )
