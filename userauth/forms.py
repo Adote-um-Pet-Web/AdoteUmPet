@@ -32,9 +32,8 @@ class UserRegisterForm(UserCreationForm):
             "image_user_profile",
         ]
 
-
     def clean_username(self):
-        return self.cleaned_data['username'].lower()
+        return self.cleaned_data["username"].lower()
 
 
 class UserUpdateForm(forms.ModelForm):

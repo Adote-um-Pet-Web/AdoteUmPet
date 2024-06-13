@@ -46,7 +46,6 @@ class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
         return self.request.user
 
 
-
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
@@ -63,14 +62,20 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
-        image_form = UserProfileImageUpdateForm(request.POST, request.FILES, instance=self.request.user)
+        image_form = UserProfileImageUpdateForm(
+            request.POST, request.FILES, instance=self.request.user
+        )
 
         if "image_user_profile" in request.FILES:
             if image_form.is_valid():
                 image_form.save()
-                messages.success(request, "Your profile picture was updated successfully.")
+                messages.success(
+                    request, "Your profile picture was updated successfully."
+                )
             else:
-                messages.error(request, "There was an error updating your profile picture.")
+                messages.error(
+                    request, "There was an error updating your profile picture."
+                )
         elif form.is_valid():
             form.save()
             messages.success(request, "Your profile was updated successfully.")
@@ -78,6 +83,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
             return self.form_invalid(form)
 
         return redirect(self.success_url)
+
 
 class PageConfigUser(LoginRequiredMixin, ListView):
     model = User
@@ -89,8 +95,10 @@ class PageConfigUser(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         current_user = self.request.user
-        context['current_user'] = current_user
-        context['user_update_url'] = reverse_lazy('user-update', kwargs={'pk': current_user.pk})
+        context["current_user"] = current_user
+        context["user_update_url"] = reverse_lazy(
+            "user-update", kwargs={"pk": current_user.pk}
+        )
         return context
 
 
