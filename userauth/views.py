@@ -46,6 +46,7 @@ class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
         return self.request.user
 
 
+
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
@@ -56,25 +57,20 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["image_form"] = UserProfileImageUpdateForm(instance=self.request.user)
+        context["current_user"] = self.request.user
         return context
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
-        image_form = UserProfileImageUpdateForm(
-            request.POST, request.FILES, instance=self.request.user
-        )
+        image_form = UserProfileImageUpdateForm(request.POST, request.FILES, instance=self.request.user)
 
         if "image_user_profile" in request.FILES:
             if image_form.is_valid():
                 image_form.save()
-                messages.success(
-                    request, "Your profile picture was updated successfully."
-                )
+                messages.success(request, "Your profile picture was updated successfully.")
             else:
-                messages.error(
-                    request, "There was an error updating your profile picture."
-                )
+                messages.error(request, "There was an error updating your profile picture.")
         elif form.is_valid():
             form.save()
             messages.success(request, "Your profile was updated successfully.")
@@ -83,13 +79,19 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
 
         return redirect(self.success_url)
 
-
 class PageConfigUser(LoginRequiredMixin, ListView):
     model = User
     fields = ["username", "email", "phone_number", "image_user_profile"]
     success_url = reverse_lazy("pets:index")
     template_name = "userConfig.html"
     context_object_name = "user"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_user = self.request.user
+        context['current_user'] = current_user
+        context['user_update_url'] = reverse_lazy('user-update', kwargs={'pk': current_user.pk})
+        return context
 
 
 class InstaTest(ListView):

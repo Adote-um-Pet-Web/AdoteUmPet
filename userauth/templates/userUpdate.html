@@ -12,9 +12,9 @@
         <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
         <h3>Contatos</h3>
         <label for="instagram_field">Instagram:</label>
-        <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
+        <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123" value="{{user.instagram_field}}">
         <label for="facebook_field">Facebook:</label>
-        <input type="text" name="facebook_field" placeholder="EX.: user_123">
+        <input type="text" name="facebook_field" placeholder="EX.: user_123"  value="{{user.facebook_field}}">
         <label for="phone_number">Telefone:</label>
         <input type="number" name="phone_number" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
     </div>
@@ -25,10 +25,14 @@
         <h3>Foto de Perfil</h3>
         <div id="photoDiv">
             <div id="profileImageDiv">
-                <img src="{{user.image_user_profile.url}}" alt="Foto de perfil do usuário" id="profileImage">
+                {% if user.image_user_profile %}
+                    <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil do {{ user.name }}" id="profileImage">
+                {% else %}
+                    <img id="profileImage" src="{% static 'assets/img/avatar.jpg' %}" alt="Foto de perfil do {{ user.username }}"/>
+                {% endif %}
             </div>
             <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
-            <input type="file" name="change" id="changePhoto" style="display: none;">
+            <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
         </div>
         <button type="submit">Salvar</button>
     </form>
