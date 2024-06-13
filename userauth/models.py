@@ -14,7 +14,7 @@ class User(AbstractUser):
     id = models.UUIDField(
         primary_key=True, unique=True, default=uuid.uuid4, editable=False
     )
-    username = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=False)
     email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

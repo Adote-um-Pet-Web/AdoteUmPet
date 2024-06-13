@@ -56,6 +56,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["image_form"] = UserProfileImageUpdateForm(instance=self.request.user)
+        context["current_user"] = self.request.user
         return context
 
     def post(self, request, *args, **kwargs):
@@ -90,6 +91,15 @@ class PageConfigUser(LoginRequiredMixin, ListView):
     success_url = reverse_lazy("pets:index")
     template_name = "userConfig.html"
     context_object_name = "user"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_user = self.request.user
+        context["current_user"] = current_user
+        context["user_update_url"] = reverse_lazy(
+            "user-update", kwargs={"pk": current_user.pk}
+        )
+        return context
 
 
 class InstaTest(ListView):
