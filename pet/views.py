@@ -10,10 +10,9 @@ from django.views.generic import (
 )
 from django.views.generic.list import ListView
 
-
 from . import models
 from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
-from .models import Pet, BannerImagens
+from .models import BannerImagens, Pet
 
 
 class PagePetIndex(ListView):
@@ -25,10 +24,9 @@ class PagePetIndex(ListView):
 
         context = super().get_context_data(**kwargs)
 
-        context['banner_images'] = BannerImagens.objects.all()
+        context["banner_images"] = BannerImagens.objects.all()
 
         return context
-
 
 
 class PageFaqQuestions(ListView):

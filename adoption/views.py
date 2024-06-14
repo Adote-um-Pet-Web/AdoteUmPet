@@ -21,7 +21,6 @@ class AdoptionContactPage(LoginRequiredMixin, TemplateView):
         return context
 
 
-
 class AdoptPetView(LoginRequiredMixin, View):
     def post(self, request, pk):
         pet = get_object_or_404(Pet, pk=pk)
@@ -31,6 +30,7 @@ class AdoptPetView(LoginRequiredMixin, View):
         adoption_pets.adoption = True
         adoption_pets.save()
         return redirect("adoption:adoption-contact", pet_id=pk)
+
 
 class SharePetAdoption(LoginRequiredMixin, TemplateView):
     template_name = "sharePet.html"

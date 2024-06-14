@@ -1,6 +1,5 @@
 from django.urls import path
 
-
 app_name = "userauths"
 
 from .views import (

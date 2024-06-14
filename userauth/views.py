@@ -102,7 +102,6 @@ class PageConfigUser(LoginRequiredMixin, ListView):
         return context
 
 
-
 class LoginView(CreateView):
     template_name = "sign-in.html"
 
