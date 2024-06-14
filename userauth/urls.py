@@ -1,11 +1,9 @@
 from django.urls import path
 
-from . import views
 
 app_name = "userauths"
 
 from .views import (
-    InstaTest,
     LoginView,
     LogoutView,
     PageConfigUser,
@@ -21,5 +19,4 @@ urlpatterns = [
     path("delete/<uuid:pk>/", UserProfileDeleteView.as_view(), name="user-delete"),
     path("update/<uuid:pk>/", UserProfileUpdateView.as_view(), name="user-update"),
     path("config/", PageConfigUser.as_view(), name="user-config"),
-    path("insta-test/", InstaTest.as_view(), name="insta-test"),
 ]
