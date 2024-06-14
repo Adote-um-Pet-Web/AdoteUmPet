@@ -64,15 +64,6 @@
     <form id="cRegistro" method="post" enctype="multipart/form-data">
         <h2>Cadastrar</h2>
         {% csrf_token %}
-        <div class="alert-danger alert">
-            {% if form.errors %}
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <p> {{ error }} </p>
-                    {% endfor %}
-                {% endfor %}
-            {% endif %}
-        </div>
         {{form.username}}
         {{form.email}}
         {{form.password1}}
