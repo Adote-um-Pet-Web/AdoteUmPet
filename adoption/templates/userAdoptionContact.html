@@ -29,7 +29,12 @@
         </li>
         <li><span class="contact-label">Email:</span> {{owner.email}}</li>
         <li>
-            <span class="contact-label">Telefone:</span> {{owner.phone_number}}
+            <span class="contact-label">Telefone:</span> 
+            {% if owner.phone_number %}
+            {{owner.phone_number}}
+            {% else %}
+            <p>Nenhum Telefone adicionado pelo usuario</p>
+            {% endif %}
         </li>
         <li>
             <span class="contact-label">Instagram:</span>

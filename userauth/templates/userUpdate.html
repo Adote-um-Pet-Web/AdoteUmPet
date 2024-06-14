@@ -12,11 +12,25 @@
         <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
         <h3>Contatos</h3>
         <label for="instagram_field">Instagram:</label>
+        {% if user.instagram_field %}
         <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123" value="{{user.instagram_field}}">
+        {% else %}
+        <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
+        {% endif %}
+        
         <label for="facebook_field">Facebook:</label>
+        {% if user.facebook_field %}
         <input type="text" name="facebook_field" placeholder="EX.: user_123"  value="{{user.facebook_field}}">
+        {% else %}
+        <input type="text" name="facebook_field" placeholder="EX.: user_123">
+        {% endif %}
+
         <label for="phone_number">Telefone:</label>
+        {% if user.phone_number %}
         <input type="number" name="phone_number" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
+        {% else %}
+        <input type="number" name="phone_number" placeholder="EX.:77 777777777">
+        {% endif %}
     </div>
     <button type="submit">Salvar</button>
 </form>
