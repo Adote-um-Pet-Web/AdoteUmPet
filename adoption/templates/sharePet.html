@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+ {% load static %}
+  {% block content %}
+<style>
+    .containerInsta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        color: var(--color-fg);
+    }
+    #canvas {
+        background-color: var(--color-detail);
+        background-image: url("{% static 'assets/img/backgroundShared.png' %}");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        width: 360px;
+        height: 640px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #canvas img{
+        border-radius: 100%;
+        width: 13rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        height: 13rem;
+        border: 3px solid #46cbff;
+    }
+    #canvas h1{
+        margin: 4px;
+        font-size: 3rem;
+    }
+    #canvas h3{
+        margin: 4px;
+        font-size: 2.4rem;
+    }
+    #canvas div{
+        text-align: center;
+    }
+    #canvas #instaInfo{
+        background-color: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: left;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    #canvas #donoPhone p{
+        margin: 0;
+    }
+    #canvas #donoPhone{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        background-color: #fff;
+        color: #222;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        margin-top: 10px;
+    }
+    #canvas #instaInfo ul li{
+        list-style: none;
+        margin-bottom: 10px;
+    }
+    #canvas #instaInfo ul {
+        padding: 1rem;
+        margin: 0;
+    }
+    #buttons {
+        margin: 20px;
+        margin-bottom: 30px;
+    }
+    #buttons button {
+        margin: 5px;
+        background-color: var(--color-main);
+        color: var(--color-contraste);
+        padding: 13px;
+        border: none;
+        width: auto;
+        height: 3rem;
+        border-radius: 7px;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+    #buttons button:hover{
+        background-color: var(--color-main-hover);
+    }
+</style>
+
+<div class="containerInsta">
+    <h1>Gerar Imagem Para Compartilhamento</h1>
+    <div id="buttons">
+        <button id="download">Baixar Imagem</button>
+        <button id="share">Compartilhar</button>
+    </div>
+    <div id="canvas">
+        <div>
+            <h1>Adoção</h1>
+            <h3>{{pet.name}}</h3>
+        </div>
+        <img src="{{pet.images_pets.first.image_pet_profile.url}}" alt="pet" />
+        <div>
+            <div id="instaInfo">
+                <ul>
+                    <li><i class="fi fi-sr-paw"></i>  Raça: <strong>{{ pet.breed }}</strong></li>
+                    <li><i class="fi fi-sr-paw"></i>  Idade: <strong>{{ pet.age }}</strong></li>
+                    <li><i class="fi fi-sr-paw"></i>  Cor: <strong>{{ pet.color }}</strong></li>
+                    <li><i class="fi fi-sr-paw"></i>  Sex: <strong>{{ pet.sex }}</strong></li>
+                </ul>
+            </div>
+            <div id="donoPhone"><p><i class="fi fi-sr-phone-call"></i> @adoteUmPet</p></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+    const canvas = document.getElementById("canvas");
+    const shareText = "abcde";
+
+    document.getElementById("download").addEventListener("click", function () {
+        html2canvas(canvas).then(function (canvas) {
+            const link = document.createElement("a");
+            link.href = canvas.toDataURL("image/png");
+            link.download = "imagem_instagram.png";
+            link.click();
+        });
+    });
+
+    document.getElementById("share").addEventListener("click", function () {
+        html2canvas(canvas).then(function (canvas) {
+            canvas.toBlob(function (blob) {
+                const filesArray = [
+                    new File([blob], "imagem.png", { type: "image/png" }),
+                ];
+                if (
+                    navigator.canShare &&
+                    navigator.canShare({ files: filesArray })
+                ) {
+                    navigator
+                        .share({
+                            files: filesArray,
+                            title: "Compartilhar Imagem",
+                            text: "Confira esta imagem!" + shareText,
+                        })
+                        .then(() => {
+                            alert("Compartilhamento bem-sucedido");
+                        })
+                        .catch((error) => {
+                            console.error("Erro ao compartilhar:", error);
+                            alert("Erro no compartilhamento");
+                        });
+                } else {
+                    alert(
+                        "O compartilhamento direto não é suportado neste navegador."
+                    );
+                }
+            }, "image/png");
+        });
+    });
+</script>
+{% endblock %}
+

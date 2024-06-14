@@ -21,6 +21,7 @@ class AdoptionContactPage(LoginRequiredMixin, TemplateView):
         return context
 
 
+
 class AdoptPetView(LoginRequiredMixin, View):
     def post(self, request, pk):
         pet = get_object_or_404(Pet, pk=pk)
@@ -30,6 +31,30 @@ class AdoptPetView(LoginRequiredMixin, View):
         adoption_pets.adoption = True
         adoption_pets.save()
         return redirect("adoption:adoption-contact", pet_id=pk)
+
+class SharePetAdoption(LoginRequiredMixin, TemplateView):
+    template_name = "sharePet.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pet_id = self.kwargs.get("pet_id")
+        pet = get_object_or_404(Pet, id=pet_id)
+        owner = pet.owner
+
+        context["pet"] = pet
+        context["owner"] = owner
+        return context
+
+
+class SharedPet(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        pet = get_object_or_404(Pet, pk=pk)
+        adoption_pets, created = AdoptionPets.objects.get_or_create(
+            user=request.user, pet=pet
+        )
+        adoption_pets.adoption = True
+        adoption_pets.save()
+        return redirect("adoption:share-pet-adoption", pet_id=pk)
 
 
 class AdoptionPetsList(LoginRequiredMixin, ListView):
