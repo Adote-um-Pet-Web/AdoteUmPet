@@ -102,13 +102,6 @@ class PageConfigUser(LoginRequiredMixin, ListView):
         return context
 
 
-class InstaTest(ListView):
-    model = User
-    success_url = reverse_lazy("pets:index")
-    template_name = "instaTest.html"
-    context_object_name = "User"
-
-
 class LoginView(CreateView):
     template_name = "sign-in.html"
 

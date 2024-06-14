@@ -170,7 +170,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SOCIALACCOUNT_PIPELINE = (
     "allauth.socialaccount.pipeline.social_login",
-    "userauths.pipeline.link_to_existing_user",  # Add this line
+    "userauths.pipeline.link_to_existing_user",
     "allauth.socialaccount.pipeline.social_user",
     "allauth.socialaccount.pipeline.associate_user",
     "allauth.socialaccount.pipeline.load_extra_data",

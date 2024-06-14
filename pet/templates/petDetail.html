@@ -28,10 +28,14 @@ Pet{% endblock title %} {% block content %}
                 </button>
             </form>
 
-            <a id="compartilharBtn">
+            <form method="post" action="{% url 'adoption:share-pet' pk=pet.pk %}">
+                {% csrf_token %}
+                <button id="compartilharBtn" type="submit">
                     <i class="fi fi-sr-share"></i>
-                     Compartilhar
-            </a>
+                    Compartilhar
+                </button>
+            </form>
+
         </div>
     </div>
 <div id="main">
@@ -104,7 +108,7 @@ Pet{% endblock title %} {% block content %}
                 <li><strong>Peso:</strong> {{ pet.weight }}kg</li>
                 <li><strong>Genero:</strong> {% if pet.sex == "Male" %} Macho {% else %} Femea{% endif %}</li>
                 <li>
-                    <strong>Tamanho:</strong> 
+                    <strong>Tamanho:</strong>
                     {% if pet.size == "SMALL" %}
                       Pequeno
                     {% elif pet.size == "Medium" %}
