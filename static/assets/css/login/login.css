@@ -348,3 +348,9 @@ p {
     z-index: 2;
     transition: margin 0.3s ease;
 }
+.troca{
+    display: none;
+}
+#cRegistro{
+    display: none;
+}

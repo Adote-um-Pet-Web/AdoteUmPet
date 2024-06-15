@@ -6,44 +6,50 @@
     flex-wrap: wrap;
 }
 .petAdded{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 10rem;
     width: auto;
     background-color: var(--color-card);
     text-decoration: none;
     color: var(--color-fg);
     text-transform: capitalize;
-    padding: 7px;
     border-radius: 10px;
     margin: 1rem;
+    height: 13.6rem;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
-.petAdded div{
+.cardMainInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10rem;
+}
+.cardMainInfo div{
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-.petAdded .mainInfo{
+.cardMainInfo .mainInfo{
     justify-content: space-between;
     padding: 0;
     margin-left: 15px;
     margin-right: 8px;
 }
-.petAdded .mainInfo h1, .petAdded .mainInfo p{
+.cardMainInfo .mainInfo h1, .cardMainInfo .mainInfo p{
     margin: 0;
 }
-.petAdded img{
+.cardMainInfo img{
     height: 100%;
     width: 50%;
     border-radius: 8px;
 }
-.petAdded i{
+.cardMainInfo i{
     margin: 10px;
     font-size: 1.2rem;
 }
-.petAdded .iconsDiv a{
+.cardMainInfo .iconsDiv a{
     margin-bottom: 1rem;
     text-decoration: none;
 }
@@ -64,4 +70,22 @@
 }
 .eyeIcon:hover{
     transform: scale(1.05);
+}
+.petAdded button{
+    width: 100%;
+    height: 3rem;
+    background-color: var(--color-main);
+    color: var(--color-contraste);    
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 7px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.petAdded button:hover{
+    background-color: var(--color-main-hover);
+    transform: scale(1.01);
+
+
 }

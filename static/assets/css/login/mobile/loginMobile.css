@@ -1,7 +1,7 @@
 body{
     color: var(--color-fg);
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 input{
     height: 3rem;
@@ -11,7 +11,11 @@ input{
 }
 #mobileTitle{
     font-size: 2rem;
-    margin-bottom: 50px;
+    width: 100%;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 #cLogin{
     display: flex;
@@ -19,8 +23,12 @@ input{
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0;
-    width: 90%;
+    width: 80%;
+    margin-top: 2rem;
+    background-color: var(--color-card);
+    padding: 1.5rem 1rem 2.3rem 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 10px;
 }
 #cLogin button{
     width: 94%;
@@ -57,18 +65,18 @@ input{
     display: flex;
     align-items: center;
 }
-#mobileRegistro{
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-}
+
 #cRegistro{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    height: auto;
+    width: 80%;
+    margin-top: 4rem;
+    background-color: var(--color-card);
+    padding: 0 1rem 2.3rem 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 10px;
 }
 #fotoDePerfilM{
     display: flex;
@@ -101,8 +109,11 @@ hr{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    margin-bottom: 1rem;
+    width: 90%;
+    background-color: var(--color-bg);
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 3rem;
 }
 .troca p{
     margin-top: 0;
@@ -110,6 +121,17 @@ hr{
 #passwordForget{
     margin-top: 0;
     margin-bottom: 20px;
+}
+.loginLink{
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: var(--color-fg);
+}
+.loginLink span{
+    color: var(--color-detail);
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 #fotoDePerfilM h6 {
@@ -133,4 +155,20 @@ hr{
 }
 #userAreaPhotoM i{
     font-size: 2rem;
+    
+}
+.alert{
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: red;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff;
+    padding: .7rem;
+    border-bottom-left-radius: 12px;
+}
+.alert p{
+    font-weight: 700;
+    font-size: 1.4rem;
 }
