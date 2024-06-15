@@ -1,3 +1,7 @@
+
+{% load cache %}
+
+{% cache 500 banner_images %}
 <div id="bannerArea">
     {% if banner_images %}
     <div id="sliders">
@@ -22,6 +26,7 @@
     {% endfor %}
     {% endif %}
 </div>
+{% endcache %}
 
 
 

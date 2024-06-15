@@ -1,0 +1,13 @@
+.contact-container{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.contact-header{
+    width: calc(100% - 2rem);
+    align-self: center;
+    padding: 1rem;
+}
+.contact-button{
+    border-radius: 0;
+}
