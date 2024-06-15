@@ -9,6 +9,7 @@ cryptography==42.0.8
 defusedxml==0.7.1
 Django==5.0.6
 django-allauth==0.61.0
+django-debug-toolbar==4.4.2
 django-jazzmin==3.0.0
 gunicorn==22.0.0
 idna==3.7
@@ -25,6 +26,7 @@ pycparser==2.22
 PyJWT==2.8.0
 python-dotenv==1.0.1
 python3-openid==3.2.0
+redis==5.0.6
 requests==2.32.3
 requests-oauthlib==2.0.0
 sqlparse==0.5.0
