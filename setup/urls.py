@@ -14,6 +14,7 @@ social_urlpatterns = [
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("__debug__/", include("debug_toolbar.urls")),
     path("", include("pet.urls")),
     path("user/", include("userauth.urls")),
     path("adoption/", include("adoption.urls")),
