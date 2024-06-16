@@ -29,11 +29,11 @@ SECRET_KEY = "django-insecure-6n@haxmlnd&u*gs*y2sbodhna43sbe++v3ex6lvcpp3ga_bkmk
 DEBUG = False if os.environ.get("DEBUGDB") == "False" else True
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "adoteumpet.up.railway.app", ".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = ["127.0.0.1", "adoteumpet.up.railway.app"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1",
-    "https://adoteumpet.up.railway.app",
+    "https://adoteumpet.up.railway.app"
 ]
 # Application definition
 
@@ -141,22 +141,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "setup.wsgi.application"
 
-
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("DATABASE_ENGINE"),
-        "NAME": os.environ.get("DATABASE_NAME"),
-        "USER": os.environ.get("DATABASE_USER"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-        "HOST": os.environ.get("DATABASE_HOST"),
-        "PORT": os.environ.get("DATABASE_PORT"),
+        "NAME": os.environ.get("PGDATABASE"),
+        "USER": os.environ.get("PGUSER"),
+        "PASSWORD": os.environ.get("PGPASSWORD"),
+        "HOST": os.environ.get("PGHOST"),
+        "PORT": os.environ.get("PGPORT"),
     }
 }
+
 
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": os.environ.get("LOCATION_REDIS"),
+        "LOCATION": os.environ.get("REDIS_URL"),
     }
 }
 
@@ -209,13 +209,15 @@ SITE_ID = 1
 
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_URL = "/media/"
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/static")]
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+MEDIA_ROOT = os.environ.get("RAILWAY_VOLUME_MOUNT_PATH")
+
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -277,24 +279,4 @@ JAZZMIN_SETTINGS = {
     # Use modals instead of popups
     "related_modal_active": False,
     #############
-    # UI Tweaks #
-    #############
-    # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css": None,
-    "custom_js": None,
-    # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
-    "use_google_fonts_cdn": True,
-    # Whether to show the UI customizer on the sidebar
-    "show_ui_builder": False,
-    ###############
-    # Change view #
-    ###############
-    # Render out the change view as a single form, or in tabs, current options are
-    # - single
-    # - horizontal_tabs (default)
-    # - vertical_tabs
-    # - collapsible
-    # - carousel
-    "changeform_format": "horizontal_tabs",
-    # override change forms on a per modeladmin basis
 }
