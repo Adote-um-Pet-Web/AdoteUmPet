@@ -63,19 +63,43 @@
             name="heigth"
             type="number"
             placeholder="Altura em cm"
-            id="size"
+            id="height"
             required
         />
         <input
-        name="weight"
-        type="number"
-        placeholder="Peso em Kg"
-        id="weight"
-        required
-    />
+            name="weight"
+            type="number"
+            placeholder="Peso em Kg"
+            id="weight"
+            required
+        />
     </div>
     <div id="btnArea">
-        <button id="submit" class="submit" type="submit" >Próximo</button>
+        <button id="submit" class="submit" type="submit" disabled>Próximo</button>
     </div>
 </form>
+
+<script>
+    const form = document.getElementById('form1');
+    const submitButton = document.getElementById('submit');
+    const inputs = form.querySelectorAll('input, select');
+
+    function checkFormValidity() {
+        let allFieldsFilled = true;
+
+        inputs.forEach(input => {
+            if (input.value.trim() === '' || input.value === '0') {
+                allFieldsFilled = false;
+            }
+        });
+
+        submitButton.disabled = !allFieldsFilled;
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', checkFormValidity);
+    });
+
+    window.addEventListener('load', checkFormValidity);
+</script>
 {% endblock form_content %}
