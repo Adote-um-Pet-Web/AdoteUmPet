@@ -5,6 +5,8 @@
 <section class="configSection">
     <h1>Editar Perfil</h1>
 
+
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div id="inputDiv">
@@ -17,7 +19,7 @@
         {% else %}
         <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
         {% endif %}
-        
+
         <label for="facebook_field">Facebook:</label>
         {% if user.facebook_field %}
         <input type="text" name="facebook_field" placeholder="EX.: user_123"  value="{{user.facebook_field}}">
@@ -31,9 +33,31 @@
         {% else %}
         <input type="number" name="phone_number" placeholder="EX.:77 777777777">
         {% endif %}
+
+
     </div>
     <button type="submit">Salvar</button>
+
 </form>
+
+<div id="error-messages" class="alerts alert-dangers" style="display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">X</span>
+    </button>
+
+    {% if form.errors %}
+    <ul id="error-list">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
     <form id="phtoform" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>Foto de Perfil</h3>
@@ -48,7 +72,10 @@
             <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
             <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
         </div>
+
         <button type="submit">Salvar</button>
+
+
     </form>
     <h1 style="margin-top: 4.3rem;"><a id="deletarPerfil" href="{% url "userauths:user-delete" pk=user.pk  %}">Deletar perfil</a></h1>
 </section>
