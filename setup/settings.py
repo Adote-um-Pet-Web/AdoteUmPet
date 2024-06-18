@@ -191,7 +191,7 @@ SOCIALACCOUNT_PIPELINE = (
 AUTH_USER_MODEL = "userauth.User"
 
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = "pt-br"
 
 
 TIME_ZONE = "UTC"
