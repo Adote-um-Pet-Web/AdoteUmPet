@@ -20,14 +20,13 @@ class PagePetIndex(ListView):
     template_name = "index.html"
     context_object_name = "pet"
 
+    def get_queryset(self):
+        return models.Pet.objects.filter(adopted=False)
+
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
-
         context["banner_images"] = BannerImagens.objects.all()
-
         return context
-
 
 class PageFaqQuestions(ListView):
     model = models.Pet
