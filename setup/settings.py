@@ -31,10 +31,7 @@ DEBUG = False if os.environ.get("DEBUGDB") == "False" else True
 
 ALLOWED_HOSTS = ["127.0.0.1", "adoteumpet.up.railway.app"]
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1",
-    "https://adoteumpet.up.railway.app"
-]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "https://adoteumpet.up.railway.app"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -217,7 +214,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = os.environ.get("RAILWAY_VOLUME_MOUNT_PATH")
 
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

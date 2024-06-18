@@ -136,4 +136,4 @@ class LogoutView(CreateView):
     def get(self, request, *args, **kwargs):
         logout(request)
         messages.success(request, "You have been logged out.")
-        return redirect("userauths:sign-in")
+        return redirect("pets:index")

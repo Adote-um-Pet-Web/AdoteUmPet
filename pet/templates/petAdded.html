@@ -14,14 +14,24 @@
                     <p>{% if pets.adopted %}Adotado {% else %}Não foi adotado{% endif %}</p>
                     <p>{{ pets.created_at|date:"d/m/Y" }}</p>
                 </div>
-    
+
                 <div class="iconsDiv">
                     <a href="{% url "pets:pet-delete" pk=pets.id  %}" class="trashIcon" title="Apagar"><i class="fi fi-br-trash"></i></a>
                     <a href="{% url "pets:update_pet" pk=pets.id  %}" class="editIcon" title="Editar"><i class="fi fi-br-edit"></i></a>
                     <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="eyeIcon" title="Visualizar"><i class="fi fi-br-eye"></i></a>
                 </div>
             </div>
-            <button>marcar como adotado</button>
+
+            <form action="{% url 'pets:toggle_adopted' pk=pets.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if pets.adopted %}
+                        Colocar pra adoção
+                    {% else %}
+                        Marcar Como Adotado
+                    {% endif %}
+                </button>
+            </form>
     </div>
         {% endif %}
     {% endfor %}
