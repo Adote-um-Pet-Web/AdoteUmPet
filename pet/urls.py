@@ -28,7 +28,11 @@ urlpatterns = [
     path("pet-added/", views.PagePetAdded.as_view(), name="pet-added"),
     path("pet-delete/<uuid:pk>/", views.DeletePetView.as_view(), name="pet-delete"),
     path("pet/update/<uuid:pk>/", views.UpdatePetView.as_view(), name="update_pet"),
-    path('pet/toggle_adopted/<uuid:pk>/', views.ToggleAdoptedView.as_view(), name='toggle_adopted'),
+    path(
+        "pet/toggle_adopted/<uuid:pk>/",
+        views.ToggleAdoptedView.as_view(),
+        name="toggle_adopted",
+    ),
     path(
         "pet/update/history/<uuid:pet_id>/",
         views.UpdateHistoryPetView.as_view(),
