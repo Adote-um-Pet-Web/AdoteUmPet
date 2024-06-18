@@ -5,10 +5,42 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, ListView, UpdateView
 from django.views.generic.edit import CreateView
-
-from .forms import UserProfileImageUpdateForm, UserRegisterForm, UserUpdateForm
+from django.views import View
+from .forms import UserProfileImageUpdateForm, UserRegisterForm, UserUpdateForm, UserLoginForm
 from .models import User
 
+
+class LoginView(View):
+    template_name = 'sign-in.html'
+    form_class = UserLoginForm
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.warning(request, "Você já está logado.")
+            return redirect("pets:index")
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.warning(request, "Você já está logado.")
+            return redirect("pets:index")
+
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password")
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "Você está logado")
+                return redirect("pets:index")
+            else:
+                messages.warning(request, "Credenciais inválidas.")
+        else:
+            messages.warning(request, "Por favor, corrija os erros abaixo.")
+
+        return render(request, self.template_name, {'form': form})
 
 class SignUpView(CreateView):
     model = User
@@ -20,7 +52,7 @@ class SignUpView(CreateView):
         user = form.save()
         username = form.cleaned_data.get("username")
         messages.success(
-            self.request, f"Hello {username}, your account was created successfully."
+            self.request, f"Olá {username}, Sua conta foi criada com sucesso."
         )
         new_user = authenticate(
             username=form.cleaned_data["email"],
@@ -70,15 +102,15 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
             if image_form.is_valid():
                 image_form.save()
                 messages.success(
-                    request, "Your profile picture was updated successfully."
+                    request, "Sua foto de perfil foi atualizada com sucesso"
                 )
             else:
                 messages.error(
-                    request, "There was an error updating your profile picture."
+                    request, "Houve um erro ao atualiza a foto de perfil"
                 )
         elif form.is_valid():
             form.save()
-            messages.success(request, "Your profile was updated successfully.")
+            messages.success(request, "Sua foto de perfil foi atualizada com sucesso")
         else:
             return self.form_invalid(form)
 
@@ -102,38 +134,10 @@ class PageConfigUser(LoginRequiredMixin, ListView):
         return context
 
 
-class LoginView(CreateView):
-    template_name = "sign-in.html"
-
-    def post(self, request, *args, **kwargs):
-        email = request.POST.get("email")
-        password = request.POST.get("password")
-
-        try:
-            user = User.objects.get(email=email)
-            user = authenticate(request, email=email, password=password)
-
-            if user is not None:
-                login(request, user)
-                messages.success(request, "You are logged in.")
-                return redirect("pets:index")
-            else:
-                messages.warning(request, "Username or password does not exist.")
-                return redirect("userauths:sign-in")
-        except User.DoesNotExist:
-            messages.warning(request, "User does not exist.")
-
-        return render(request, self.template_name)
-
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            messages.warning(request, "You are already logged in.")
-            return redirect("pets:index")
-        return render(request, self.template_name)
 
 
 class LogoutView(CreateView):
     def get(self, request, *args, **kwargs):
         logout(request)
-        messages.success(request, "You have been logged out.")
+        messages.success(request, "Você saiu de sua conta")
         return redirect("pets:index")

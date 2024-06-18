@@ -45,7 +45,28 @@
         </div>
         <button class="btnLogin" type="submit">Login</button>
         <a href="{% url "password_reset" %}" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
+
+        <div id="error-messages" class="alerts alert-dangers" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">X</span>
+            </button>
+
+            {% if form.errors %}
+            <ul id="error-list">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
     </form>
+
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -102,10 +123,29 @@
     />
     <button class="btnLogin" type="submit">Entrar</button>
     <a href="{% url "password_reset" %}" class="loginLink" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
+
+    <div id="error-messages" class="alerts alert-dangers" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+
+        {% if form.errors %}
+        <ul id="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
 </form>
 <div class="troca" id="trocaLoginMobile">
     <a class="loginLink" href="{% url 'userauths:sign-up' %}" >Ainda nao tem
-    uma conta? <br><span >Clique aqui.</span></a>       
+    uma conta? <br><span >Clique aqui.</span></a>
     <a class="loginLink">ou entre de outra maneira</a>
     <div class="containerI">
         <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i></a>
