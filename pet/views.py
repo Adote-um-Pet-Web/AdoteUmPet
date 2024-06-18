@@ -28,6 +28,7 @@ class PagePetIndex(ListView):
         context["banner_images"] = BannerImagens.objects.all()
         return context
 
+
 class PageFaqQuestions(ListView):
     model = models.Pet
     context_object_name = "pet"

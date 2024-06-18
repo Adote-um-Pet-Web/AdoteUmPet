@@ -3,15 +3,21 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import DeleteView, ListView, UpdateView
 from django.views.generic.edit import CreateView
-from django.views import View
-from .forms import UserProfileImageUpdateForm, UserRegisterForm, UserUpdateForm, UserLoginForm
+
+from .forms import (
+    UserLoginForm,
+    UserProfileImageUpdateForm,
+    UserRegisterForm,
+    UserUpdateForm,
+)
 from .models import User
 
 
 class LoginView(View):
-    template_name = 'sign-in.html'
+    template_name = "sign-in.html"
     form_class = UserLoginForm
 
     def get(self, request, *args, **kwargs):
@@ -19,7 +25,7 @@ class LoginView(View):
             messages.warning(request, "Você já está logado.")
             return redirect("pets:index")
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {"form": form})
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -40,7 +46,8 @@ class LoginView(View):
         else:
             messages.warning(request, "Por favor, corrija os erros abaixo.")
 
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {"form": form})
+
 
 class SignUpView(CreateView):
     model = User
@@ -105,9 +112,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
                     request, "Sua foto de perfil foi atualizada com sucesso"
                 )
             else:
-                messages.error(
-                    request, "Houve um erro ao atualiza a foto de perfil"
-                )
+                messages.error(request, "Houve um erro ao atualiza a foto de perfil")
         elif form.is_valid():
             form.save()
             messages.success(request, "Sua foto de perfil foi atualizada com sucesso")
@@ -132,8 +137,6 @@ class PageConfigUser(LoginRequiredMixin, ListView):
             "user-update", kwargs={"pk": current_user.pk}
         )
         return context
-
-
 
 
 class LogoutView(CreateView):
