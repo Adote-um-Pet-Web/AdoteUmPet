@@ -77,6 +77,13 @@ class PagePetAdded(LoginRequiredMixin, ListView):
         return Pet.objects.filter(owner=self.request.user)
 
 
+class ToggleAdoptedView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        pet = get_object_or_404(Pet, id=self.kwargs['pk'])
+        pet.adopted = not pet.adopted
+        pet.save()
+        return redirect('pets:pet-added')
+
 class ToggleFavoritedView(LoginRequiredMixin, View):
     def post(self, request, pk):
         pet = get_object_or_404(Pet, pk=pk)
