@@ -5,9 +5,16 @@
     width: 6rem;
     height: 6rem;
 }
+#petDetail #titulo h1{
+    width: 60%;
+    text-align: right;
+}
 #petDetail #titulo {
     margin-top: 0;
     margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 #petDetail #t1 #btns{
     font-size: 1rem;

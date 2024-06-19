@@ -12,7 +12,8 @@
     padding: 5px;
 }
 #search{
-    width: 80%;
+    width: 67%;
+    margin:0;
 }
 header{
     align-items: center;
@@ -51,11 +52,10 @@ header{
 }
 #menuIconMobile{
     display: flex;
-    margin-right: 30px;
     color: var(--color-main);
     cursor: pointer;
     font-size: 1.5rem;
-
+    padding: 0;
 }
 #menuIconMobile:hover{
     color: var(--color-main-hover);
@@ -64,5 +64,5 @@ header{
     width: calc(6rem - 12px);
 }
 #avatar{
-    width: auto;
+    width: 10%;
 }

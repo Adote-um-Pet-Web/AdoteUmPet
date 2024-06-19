@@ -11,9 +11,9 @@ Pet{% endblock title %} {% block content %}
                 {% csrf_token %}
                 <button type="submit" id="favoritar">
                     {% if is_favorited %}
-                    <i style="color: #ff245b;" class="fi fi-sr-heart" id="coracao"></i>
+                    <i style="color: #b40000;" class="fi fi-sr-heart" id="coracao"></i>
                 {% else %}
-                    <i style="color: var(--color-fg);" class="fi fi-sr-heart" id="coracao"></i>
+                    <i style="color: #fff;" class="fi fi-sr-heart" id="coracao"></i>
                 {% endif %}
                     Favoritar
                 </button>
@@ -24,7 +24,7 @@ Pet{% endblock title %} {% block content %}
                 {% csrf_token %}
                 <button type="submit" id="queroAdotar">
                     <i class="fi fi-sr-star"></i>
-                    Quero adotar
+                    Adotar
                 </button>
             </form>
 

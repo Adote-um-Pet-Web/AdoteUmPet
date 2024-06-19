@@ -4,17 +4,16 @@
 <main class="listScreen">
     {% if pet %}
     {% for pets in pet %}
-            <div class="petSaved">
+            <a href="{% url 'pets:pet_detail' pk=pets.id %}"  class="petSaved">
                 {% if pets.images_pets.first.image_pet_profile %}
-                        <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
+                        <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
                         <h1>{{pets.name}}</h1>
                         <form method="post" action="{% url 'pets:toggle_favorited_saved' pk=pets.pk %}" class="heartIcon">
                             {% csrf_token %}
                             <button type="submit" class="favIconHeart"><i class="fi fi-ss-heart"></i></button>
-                            <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="seeIconEye"><i class="fi fi-ss-eye"></i></a>
                         </form>
                 {% endif %}
-            </div>
+            </a>
             {% endfor %}
             {% else %}
             <div id="nopet">

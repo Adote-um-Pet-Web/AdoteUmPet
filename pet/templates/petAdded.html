@@ -8,7 +8,7 @@
     {% if pets.images_pets.first.image_pet_profile %}
     <div class="petAdded">
             <div class="cardMainInfo">
-                <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}"></a>
+                <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
                 <div class="mainInfo">
                     <h1>{{pets.name }}</h1>
                     <p>{% if pets.adopted %}Adotado {% else %}Não foi adotado{% endif %}</p>

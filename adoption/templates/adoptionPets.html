@@ -3,7 +3,12 @@
 {% block content %}
 <main class="listScreen">
     {% if pet %}
-        AQUI OS CONTATOS DOS PETS
+    {% for pets in pet %}
+    <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="petSaved">
+        <img src="{% static "assets/img/pug/a.jpg" %}" alt="Foto de perfil do pet {{ pets.name }}">
+        <h1>{{pets.name}}</h1>
+    </a>
+    {% endfor %}
     {% else %}
     <div id="nopet">
         <h1>Desculpa, você ainda não tentou adotar um pet :(</h1>
