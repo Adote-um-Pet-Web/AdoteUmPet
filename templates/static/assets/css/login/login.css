@@ -72,7 +72,7 @@
         width: 25%;
         padding: 1rem;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -147,7 +147,11 @@
         display: none;
     }
 }
-
+#leftR img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+}
 input {
     border: 3px solid var(--color-main);
     background-color: var(--color-card);
