@@ -72,7 +72,7 @@
 </div>
 
 <!-- registro mobile -->
-    <form id="cRegistro" method="post" enctype="multipart/form-data">
+    <form id="cRegistro" method="post" enctype="multipart/form-data" class="mobileForm">
         <h2>Cadastrar</h2>
         {% csrf_token %}
         {{form.username}}
@@ -112,14 +112,16 @@
         </div>
         </form>
 
-
-    <div class="troca">
-        <a class="loginLink" href="{% url 'userauths:sign-in' %}">Ja tem uma conta? <span style="font-size: 1.5rem;">Entrar</span></a>
-`                <p>ou entre de outra maneira:</p>
-                <div class="containerI">
-                    <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i></a>
-                    <a class="containerIB" href="{% provider_login_url "google"%}?next=/">  <i class="fi fi-brands-google"></i> </a>
-                </div>
-    </div>
+        <div class="troca" id="trocaLoginMobile">
+            <a class="loginLink" href="{% url 'userauths:sign-in' %}" >Ja tem
+            uma conta? <br><span >Clique aqui.</span></a>
+            <a class="loginLink">ou entre de outra maneira</a>
+            <div class="containerI">
+                <a class="containerIB" href="#"><i class="fi
+                fi-brands-facebook"></i>Login via Facebook</a>
+                <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
+                <i class="fi fi-brands-google"></i>Login via Google</a>
+            </div>
+        </div>
 {% endblock content %}
 

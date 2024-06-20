@@ -194,6 +194,7 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 #rightR h2 {
     margin-top: 5rem;
@@ -209,6 +210,7 @@ h2 {
 }
 .btnLogin:hover {
     background-color: var(--color-detail-hover);
+    transform: scale(1.05);
 }
 p {
     font-weight: 200;
@@ -269,7 +271,7 @@ p {
     }
 }
 @media screen and (min-width: 840px) {
-    #cLogin {
+    .mobileForm {
         display: none;
     }
     #mobileRegistro {
@@ -351,6 +353,6 @@ p {
 .troca{
     display: none;
 }
-#cRegistro{
+.mobileForm{
     display: none;
 }

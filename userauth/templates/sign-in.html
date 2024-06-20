@@ -107,7 +107,7 @@
 
 
 <!-- mobile login -->
-<form method="POST" id="cLogin">
+<form method="POST" id="cLogin" class="mobileForm">
     <h1 id="mobileTitle">Entrar</h1>
     {% csrf_token %}
     <input
@@ -148,9 +148,10 @@
     uma conta? <br><span >Clique aqui.</span></a>
     <a class="loginLink">ou entre de outra maneira</a>
     <div class="containerI">
-        <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i></a>
+        <a class="containerIB" href="#"><i class="fi
+        fi-brands-facebook"></i>Login via Facebook</a>
         <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
-        <i class="fi fi-brands-google"></i> </a>
+        <i class="fi fi-brands-google"></i>Login via Google</a>
     </div>
 </div>
 {% endblock content %}

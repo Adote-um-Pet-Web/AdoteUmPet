@@ -17,7 +17,7 @@ input{
     text-align: center;
     margin-bottom: 1rem;
 }
-#cLogin{
+.mobileForm, .troca{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,34 +39,44 @@ input{
     align-items: center;
     text-align: center;
     justify-content: space-evenly;
+    flex-direction: column;
     width: 100%;
 
 }
 .containerIB{
     background-color: var(--color-main);
-    font-size: 2rem;
+    font-size: 1rem;
     color: var(--color-card);
     cursor: pointer;
     padding: 12px;
-    margin: auto 15px auto 15px;
+    /* margin: auto 15px auto 15px; */
+    margin-bottom: 15px;
     transition: ease 0.2s;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    width: 2rem;
+    /* width: 2rem; */
+    width: 90%;
     height: 2rem;
     display: flex;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+
 }
 .containerIB i {
     text-align: center;
     justify-content: center;
     display: flex;
     align-items: center;
+    font-size: 2rem;
+    margin-right: 2rem;
 }
-
-#cRegistro{
+.containerIB:hover{
+    background-color: var(--color-main-hover);
+    transform: scale(1.05);
+}
+/* #cRegistro{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +87,7 @@ input{
     padding: 0 1rem 2.3rem 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 10px;
-}
+} */
 #fotoDePerfilM{
     display: flex;
     flex-direction: row;
@@ -99,25 +109,12 @@ hr{
     width: 100%;
     margin: 10px 0 10px 0;
 }
-#cRegistro hr{
+/* #cRegistro hr{
     width: 80%;
     margin: 40px 0 40px 0;
 
-}
-.troca{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 90%;
-    background-color: var(--color-bg);
-    text-align: center;
-    font-size: 1.3rem;
-    margin-top: 3rem;
-}
-.troca p{
-    margin-top: 0;
-}
+} */
+
 #passwordForget{
     margin-top: 0;
     margin-bottom: 20px;
@@ -171,4 +168,7 @@ hr{
 .alert p{
     font-weight: 700;
     font-size: 1.4rem;
+}
+body{
+    height: auto;
 }
