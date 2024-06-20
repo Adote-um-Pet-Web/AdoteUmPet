@@ -64,5 +64,6 @@ header{
     width: calc(6rem - 12px);
 }
 #avatar{
-    width: 10%;
+    width: 3rem;
+    height: 3rem;
 }

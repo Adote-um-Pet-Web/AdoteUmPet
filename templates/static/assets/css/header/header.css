@@ -19,6 +19,9 @@ header {
     display: flex;
     flex-direction: row;
 }
+#left img{
+    display: none;
+}
 .la {
     margin-right: 20px;
     cursor: pointer;
@@ -62,8 +65,8 @@ header {
 }
 #avatar {
     background-color: var(--color-main);
-    height: 2.4rem;
-    width: 2.4rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 100%;
     border: 2px solid var(--color-main);
     cursor: pointer;
@@ -216,4 +219,20 @@ header {
 #adminButton:hover{
     background-color: rgb(233, 43, 43);
     transform: scale(1.05);
+}
+
+@media screen and (max-width: 1015px){
+    #left img{
+        display: block;
+        width: 3rem;
+        border-radius: 100%;
+        align-self: center;
+        margin-right: 2rem;
+    }
+    #logo{
+        align-self: center;
+    }
+    #logoText{
+        display: none;
+    }
 }
