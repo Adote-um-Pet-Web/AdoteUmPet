@@ -14,19 +14,19 @@
 
     <script>
         function showErrors() {
-            document.getElementById('error-messages').style.display = 'block';
+            document.getElementById('error-messages').style.display = 'flex';
             setTimeout(hideErrors, 6000);
         }
         function hideErrors() {
             document.getElementById('error-messages').style.display = 'none';
         }
         window.onload = function() {
-            var formErrors = document.querySelectorAll('.alert-dangers .close');
+            var formErrors = document.querySelectorAll('.alert-dangers #close');
             if (formErrors.length > 0) {
                 showErrors();
             }
         };
-        document.querySelector('.alert-dangers .close').addEventListener('click', function() {
+        document.querySelector('.alert-dangers #close').addEventListener('click', function() {
             hideErrors();
         });
 

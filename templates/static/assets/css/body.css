@@ -41,7 +41,36 @@ textarea:focus{
     height: 15rem;
     border-radius: 12px;
 }
+#error-messages{
+    display: flex;
+    flex-direction: row-reverse;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    padding: .8rem;
+    background-color: rgba(255, 0, 0, 0.404);
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
 
+#close{
+    font-size: 1.2rem;
+    font-weight: 900;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+#close:hover{
+    color: red;
+    transform: scale(1.05);
+}
 @keyframes slideUp {
     from {
         transform: translateY(0);
