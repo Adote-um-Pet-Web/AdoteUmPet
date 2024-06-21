@@ -41,8 +41,8 @@ textarea:focus{
     height: 15rem;
     border-radius: 12px;
 }
-#error-messages{
-    display: flex;
+#error-messages, #error-messages-mobile {
+    display: none;
     flex-direction: row-reverse;
     position: fixed;
     top: 0;
@@ -55,7 +55,7 @@ textarea:focus{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-#close{
+.closeE{
     font-size: 1.2rem;
     font-weight: 900;
     background-color: transparent;
@@ -67,7 +67,7 @@ textarea:focus{
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
-#close:hover{
+.closeE:hover{
     color: red;
     transform: scale(1.05);
 }

@@ -78,14 +78,14 @@
     margin-top: 30px;
 }
 
-.configSection ul {
+.configSection .configUl {
     list-style-type: none;
     padding: 0;
     display: flex;
     flex-direction: row;
 }
 
-.configSection ul li {
+.configSection .configUl li {
     color: var(--color-fg);
     background-color: var(--color-card);
     padding: 10px;
@@ -99,12 +99,12 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.configSection ul li:hover {
+.configSection .configUl li:hover {
     background-color: var(--color-fg-hover);
     transform: scale(1.05);
 }
 
-.configSection button {
+.configSection .userUpdateBtn {
     display: block;
     margin: 20px 0;
     padding: 10px 20px;
@@ -119,7 +119,7 @@
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.configSection button:hover {
+.configSection .userUpdateBtn:hover {
     background-color: var(--color-main-hover);
     transform: scale(1.05);
 }

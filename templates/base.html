@@ -5,32 +5,40 @@
 
         <title>{% block title %}{% endblock title %}</title>
     </head>
-    <body data-color="padrao" data-theme="dark">
+    <body data-color="" data-theme="">
 
         {% comment %} MAIN {% endcomment %}
         {% block content %}{% endblock content %}
 
         {% include "partials/_footer.html" %}
 
-    <script>
-        function showErrors() {
-            document.getElementById('error-messages').style.display = 'flex';
-            setTimeout(hideErrors, 6000);
-        }
-        function hideErrors() {
-            document.getElementById('error-messages').style.display = 'none';
-        }
-        window.onload = function() {
-            var formErrors = document.querySelectorAll('.alert-dangers #close');
-            if (formErrors.length > 0) {
-                showErrors();
+        <script>
+            function showErrors(id) {
+                document.getElementById(id).style.display = 'flex';
+                setTimeout(function() {
+                    hideErrors(id);
+                }, 6000);
             }
-        };
-        document.querySelector('.alert-dangers #close').addEventListener('click', function() {
-            hideErrors();
-        });
-
-
-    </script>
+        
+            function hideErrors(id) {
+                document.getElementById(id).style.display = 'none';
+            }
+        
+            window.onload = function() {
+                var formErrors = document.querySelectorAll('.alert-dangers');
+                formErrors.forEach(function(errorContainer) {
+                    if (errorContainer.querySelector('ul#error-list li')) {
+                        showErrors(errorContainer.id);
+                    }
+                });
+        
+                var closeButtons = document.querySelectorAll('.alert-dangers .closeE');
+                closeButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        hideErrors(button.closest('.alert-dangers').id);
+                    });
+                });
+            };
+        </script>
     </body>
 </html>

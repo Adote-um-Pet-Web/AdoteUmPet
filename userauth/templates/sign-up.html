@@ -2,16 +2,16 @@
 {% load static %}
 {% load socialaccount %}
 {% providers_media_js %}
+
 {% block title %}Sign-up{% endblock title %}
 
 {% block content %}
-
 <div id="registro">
     <div id="leftR">
-        <img src="{% static "assets/img/LogoAdoteUmPet.png" %}" alt="logo" >
+        <img src="{% static "assets/img/LogoAdoteUmPet.png" %}" alt="logo">
 
         <div id="jatemconta">
-            <p>Ja tem uma conta?</p>
+            <p>Já tem uma conta?</p>
             <a class="btnLogin" href="{% url 'userauths:sign-in' %}">Entrar</a>
         </div>
 
@@ -21,83 +21,38 @@
                 <a class="containerIB" href="#">
                     <i class="fi fi-brands-facebook"></i>
                 </a>
-                <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
+                <a class="containerIB" href="{% provider_login_url "google" %}?next=/">
                     <i class="fi fi-brands-google"></i>
                 </a>
             </div>
         </div>
-
     </div>
 
     <form method="POST" id="rightR" enctype="multipart/form-data">
         {% csrf_token %}
-
         <h2>Cadastrar</h2>
-        {{form.username}}
-        {{form.email}}
-        {{form.password1}}
-        {{form.password2}}
+        {{ form.username }}
+        {{ form.email }}
+        {{ form.password1 }}
+        {{ form.password2 }}
         <div id="fotoDePerfil">
             <h6 id="userAreaPhoto">
                 <img src="#" id="preview" style="display:none;" alt="Preview">
-                <i class="fi fi-br-user" id="iconPlaceholder" ></i>
+                <i class="fi fi-br-user" id="iconPlaceholder"></i>
             </h6>
             <div id="fotoDePerfilInp">
-                {{form.image_user_profile}}
+                {{ form.image_user_profile }}
                 <label for="fileInput" class="custom-file-label">Escolha sua foto de perfil</label>
             </div>
-            <div id="error-messages" class="alerts alert-dangers" style="display: none;">
-                <button type="button" id="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">X</span>
-                </button>
-
-                {% if form.errors %}
-                <ul id="error-list">
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    {% endfor %}
-                    {% for error in form.non_field_errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-
         </div>
 
         <button class="btnLogin" type="submit">Cadastrar</button>
-    </form>
-</div>
 
-<!-- registro mobile -->
-    <form id="cRegistro" method="post" enctype="multipart/form-data" class="mobileForm">
-        <h2>Cadastrar</h2>
-        {% csrf_token %}
-        {{form.username}}
-        {{form.email}}
-        {{form.password1}}
-        {{form.password2}}
-        <div id="fotoDePerfilM">
-            <h6 id="userAreaPhotoM">
-                <img src="#" id="previewM" style="display:none;" alt="Preview">
-                <i class="fi fi-br-user" id="iconPlaceholderM" ></i>
-            </h6>
-            <div id="fotoDePerfilInpM">
-                {{form.image_user_profile}}
-                <label for="fileInput" class="custom-file-label">Foto de perfil</label>
-            </div>
-        </div>
-        <button class="btnLogin" type="submit">Cadastrar</button>
-
-
-        <div id="error-messages" class="alerts alert-dangers" style="display: none;">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        {% if form.errors %}
+        <div id="error-messages" class="alerts alert-dangers">
+            <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">X</span>
             </button>
-
-            {% if form.errors %}
             <ul id="error-list">
                 {% for field in form %}
                     {% for error in field.errors %}
@@ -108,20 +63,57 @@
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
-            {% endif %}
         </div>
-        </form>
+        {% endif %}
+    </form>
+</div>
 
-        <div class="troca" id="trocaLoginMobile">
-            <a class="loginLink" href="{% url 'userauths:sign-in' %}" >Ja tem
-            uma conta? <br><span >Clique aqui.</span></a>
-            <a class="loginLink">ou entre de outra maneira</a>
-            <div class="containerI">
-                <a class="containerIB" href="#"><i class="fi
-                fi-brands-facebook"></i>Login via Facebook</a>
-                <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
-                <i class="fi fi-brands-google"></i>Login via Google</a>
-            </div>
+<!-- Mobile form -->
+<form id="cRegistro" method="POST" enctype="multipart/form-data" class="mobileForm">
+    <h2>Cadastrar</h2>
+    {% csrf_token %}
+    {{ form.username }}
+    {{ form.email }}
+    {{ form.password1 }}
+    {{ form.password2 }}
+    <div id="fotoDePerfilM">
+        <h6 id="userAreaPhotoM">
+            <img src="#" id="previewM" style="display:none;" alt="Preview">
+            <i class="fi fi-br-user" id="iconPlaceholderM"></i>
+        </h6>
+        <div id="fotoDePerfilInpM">
+            {{ form.image_user_profile }}
+            <label for="fileInput" class="custom-file-label">Foto de perfil</label>
         </div>
+    </div>
+    <button class="btnLogin" type="submit">Cadastrar</button>
+
+    {% if form.errors %}
+    <div id="error-messages-mobile" class="alerts alert-dangers">
+        <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+        <ul id="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</form>
+
+<div class="troca" id="trocaLoginMobile">
+    <a class="loginLink" href="{% url 'userauths:sign-in' %}">Já tem uma conta? <br><span>Clique aqui.</span></a>
+    <a class="loginLink">ou entre de outra maneira</a>
+    <div class="containerI">
+        <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i>Login via Facebook</a>
+        <a class="containerIB" href="{% provider_login_url "google" %}?next=/">
+            <i class="fi fi-brands-google"></i>Login via Google</a>
+    </div>
+</div>
 {% endblock content %}
-

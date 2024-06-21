@@ -8,7 +8,7 @@
     <div id="leftL">
         <h1>Bem vindo ao Adote um Pet!</h1>
         <div id="criarContaDiv">
-            <p>Ainda nao tem uma conta?</p>
+            <p>Ainda não tem uma conta?</p>
             <a class="btnLogin" href="{% url 'userauths:sign-up' %}">Criar sua conta</a>
         </div>
         <p>ou entre de outra maneira</p>
@@ -16,8 +16,9 @@
             <a class="containerIB" href="#">
                 <i class="fi fi-brands-facebook"></i>
             </a>
-            <a class="containerIB" href="{% provider_login_url "google"%}?next=/">  <i class="fi fi-brands-google"></i> </a>
-
+            <a class="containerIB" href="{% provider_login_url "google" %}?next=/">
+                <i class="fi fi-brands-google"></i>
+            </a>
         </div>
     </div>
     <form method="POST" id="rightL">
@@ -27,31 +28,22 @@
             <label for="email" id="label-email">
                 Email
             </label>
-            <input
-                type="email"
-                name="email"
-                id="email"
-            />
+            <input type="email" name="email" id="email" />
         </div>
         <div class="label">
             <label for="password" id="label-senha">
                 Senha
             </label>
-            <input
-                type="password"
-                name="password"
-                id="senha"
-            />
+            <input type="password" name="password" id="senha" />
         </div>
         <button class="btnLogin" type="submit">Login</button>
         <a href="{% url "password_reset" %}" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
 
-        <div id="error-messages" class="alerts alert-dangers" style="display: none;">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        {% if form.errors %}
+        <div id="error-messages" class="alerts alert-dangers">
+            <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">X</span>
             </button>
-
-            {% if form.errors %}
             <ul id="error-list">
                 {% for field in form %}
                     {% for error in field.errors %}
@@ -62,12 +54,11 @@
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
-            {% endif %}
         </div>
-
+        {% endif %}
     </form>
-
 </div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const emailInput = document.getElementById("email");
@@ -105,31 +96,20 @@
     });
 </script>
 
-
-<!-- mobile login -->
+<!-- Mobile login -->
 <form method="POST" id="cLogin" class="mobileForm">
     <h1 id="mobileTitle">Entrar</h1>
     {% csrf_token %}
-    <input
-        type="email"
-        name="email"
-        id="emailm"
-        placeholder="Email"
-    /><input
-        type="password"
-        name="password"
-        id="senham"
-        placeholder="Senha"
-    />
+    <input type="email" name="email" id="emailm" placeholder="Email" />
+    <input type="password" name="password" id="senham" placeholder="Senha" />
     <button class="btnLogin" type="submit">Entrar</button>
     <a href="{% url "password_reset" %}" class="loginLink" id="passwordForget">Esqueceu a senha? <span>Clique aqui.</span></a>
 
-    <div id="error-messages" class="alerts alert-dangers" style="display: none;">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    {% if form.errors %}
+    <div id="error-messages-mobile" class="alerts alert-dangers">
+        <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">X</span>
         </button>
-
-        {% if form.errors %}
         <ul id="error-list">
             {% for field in form %}
                 {% for error in field.errors %}
@@ -140,19 +120,17 @@
                 <li>{{ error }}</li>
             {% endfor %}
         </ul>
-        {% endif %}
     </div>
+    {% endif %}
 </form>
+
 <div class="troca" id="trocaLoginMobile">
-    <a class="loginLink" href="{% url 'userauths:sign-up' %}" >Ainda nao tem
-    uma conta? <br><span >Clique aqui.</span></a>
+    <a class="loginLink" href="{% url 'userauths:sign-up' %}">Ainda não tem uma conta? <br><span>Clique aqui.</span></a>
     <a class="loginLink">ou entre de outra maneira</a>
     <div class="containerI">
-        <a class="containerIB" href="#"><i class="fi
-        fi-brands-facebook"></i>Login via Facebook</a>
-        <a class="containerIB" href="{% provider_login_url "google"%}?next=/">
-        <i class="fi fi-brands-google"></i>Login via Google</a>
+        <a class="containerIB" href="#"><i class="fi fi-brands-facebook"></i>Login via Facebook</a>
+        <a class="containerIB" href="{% provider_login_url "google" %}?next=/">
+            <i class="fi fi-brands-google"></i>Login via Google</a>
     </div>
 </div>
 {% endblock content %}
-

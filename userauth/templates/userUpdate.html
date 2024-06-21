@@ -10,54 +10,55 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div id="inputDiv">
-        <label for="username">Nome Completo:</label>
-        <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
-        <h3>Contatos</h3>
-        <label for="instagram_field">Instagram:</label>
-        {% if user.instagram_field %}
-        <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123" value="{{user.instagram_field}}">
-        {% else %}
-        <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
-        {% endif %}
+            <label for="username">Nome Completo:</label>
+            <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
+            <h3>Contatos</h3>
 
-        <label for="facebook_field">Facebook:</label>
-        {% if user.facebook_field %}
-        <input type="text" name="facebook_field" placeholder="EX.: user_123"  value="{{user.facebook_field}}">
-        {% else %}
-        <input type="text" name="facebook_field" placeholder="EX.: user_123">
-        {% endif %}
+            <p>*É preciso adicionar pelo menos o numero de telefone para adicionar um pet.*</p>
 
-        <label for="phone_number">Telefone:</label>
-        {% if user.phone_number %}
-        <input type="number" name="phone_number" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
-        {% else %}
-        <input type="number" name="phone_number" placeholder="EX.:77 777777777">
-        {% endif %}
+            <label for="instagram_field">Instagram:</label>
+            {% if user.instagram_field %}
+            <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123" value="{{user.instagram_field}}">
+            {% else %}
+            <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
+            {% endif %}
+    
+            <label for="facebook_field">Facebook:</label>
+            {% if user.facebook_field %}
+            <input type="text" name="facebook_field" id="facebook" placeholder="EX.: user_123" value="{{user.facebook_field}}">
+            {% else %}
+            <input type="text" name="facebook_field" id="facebook" placeholder="EX.: user_123">
+            {% endif %}
+    
+            <label for="phone_number">Telefone:</label>
+            {% if user.phone_number %}
+            <input type="number" name="phone_number" id="phone" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
+            {% else %}
+            <input type="number" name="phone_number" id="phone" placeholder="EX.:77 777777777">
+            {% endif %}
+        </div>
+        <button class="userUpdateBtn" type="submit">Salvar</button>
+    </form>
 
+    <div id="error-messages" class="alerts alert-dangers" style="display: none;">
+        <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
 
-    </div>
-    <button type="submit">Salvar</button>
-
-</form>
-
-<div id="error-messages" class="alerts alert-dangers" style="display: none;">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">X</span>
-    </button>
-
-    {% if form.errors %}
-    <ul id="error-list">
-        {% for field in form %}
-            {% for error in field.errors %}
+        {% if form.errors %}
+        <ul id="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
                 <li>{{ error }}</li>
             {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-</div>
+        </ul>
+        {% endif %}
+    </div>
+    
     <form id="phtoform" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>Foto de Perfil</h3>
@@ -73,10 +74,25 @@
             <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
         </div>
 
-        <button type="submit">Salvar</button>
+        <button class="userUpdateBtn" type="submit">Salvar</button>
 
 
     </form>
     <h1 style="margin-top: 4.3rem;"><a id="deletarPerfil" href="{% url "userauths:user-delete" pk=user.pk  %}">Deletar perfil</a></h1>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function preventAtSymbol(event) {
+            if (event.key === '@') {
+                event.preventDefault();
+            }
+        }
+
+        const instaInput = document.getElementById('insta');
+        const facebookInput = document.getElementById('facebook');
+
+        instaInput.addEventListener('keypress', preventAtSymbol);
+        facebookInput.addEventListener('keypress', preventAtSymbol);
+    });
+</script>
 {% endblock content %}
