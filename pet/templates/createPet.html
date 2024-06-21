@@ -54,21 +54,21 @@
         </select>
         <input
             name="age"
-            type="number"
+            type="text"
             placeholder="Idade em anos"
             id="age"
             required
         />
         <input
             name="heigth"
-            type="number"
+            type="text"
             placeholder="Altura em cm"
             id="height"
             required
         />
         <input
             name="weight"
-            type="number"
+            type="text"
             placeholder="Peso em Kg"
             id="weight"
             required
@@ -77,6 +77,25 @@
     <div id="btnArea">
         <button id="submit" class="submit" type="submit" disabled>Próximo</button>
     </div>
+
+
+    {% if form.errors %}
+    <div id="error-messages-mobile" class="alerts alert-dangers">
+        <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+        <ul id="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 </form>
 
 <script>

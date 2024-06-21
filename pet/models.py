@@ -49,8 +49,8 @@ class HistoryPet(models.Model):
     id_pet = models.ForeignKey(
         Pet, on_delete=models.CASCADE, related_name="history_pet"
     )
-    history = models.TextField(blank=True, null=True)
-    observations = models.TextField(blank=True, null=True)
+    history = models.TextField(default="Nenhuma historia foi adicionado", blank=True, null=True)
+    observations = models.TextField(default="Nenhuma historia foi adicionado",blank=True, null=True)
 
 
 class MedicalRecord(models.Model):
