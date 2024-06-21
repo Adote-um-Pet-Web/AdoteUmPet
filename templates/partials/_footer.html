@@ -5,6 +5,8 @@
 <script src=" {% static "assets/js/banner.js" %} "></script>
 <script src=" {% static "assets/js/search.js" %} "></script>
 <script src=" {% static "assets/js/filter.js" %} "></script>
+{% else %}
+<script src=" {% static "assets/js/profilePhotoUpdate.js" %} "></script>
 {% endif %}
 
 {% if request.path == "/user/sign-up/" %}
@@ -14,4 +16,4 @@
 <script src=" {% static "assets/js/theme.js" %} "></script>
 
 
-<script src=" {% static "assets/js/profilePhotoUpdate.js" %} "></script>
+
