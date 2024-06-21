@@ -15,10 +15,10 @@
         <div id="f4d03">
             <input type="file" name="image_pet_datail1" id="image_pet_datail1" accept="image/*">
             <label for="image_pet_datail1"><div class="extra-photo-preview" id="extra-photo-preview-1"><i id="ibtn1" class="fi fi-br-plus"></i></div></label>
-    
+
             <input type="file" name="image_pet_datail2" id="image_pet_datail2" accept="image/*">
             <label for="image_pet_datail2"><div class="extra-photo-preview" id="extra-photo-preview-2"><i id="ibtn2" class="fi fi-br-plus"></i></div></label>
-    
+
             <input type="file" name="image_pet_datail3" id="image_pet_datail3" accept="image/*">
             <label for="image_pet_datail3"><div class="extra-photo-preview" id="extra-photo-preview-3"><i id="ibtn3" class="fi fi-br-plus"></i></div></label>
         </div>
@@ -28,6 +28,24 @@
     <div id="btnArea">
         <button class="submit" type="submit">Finalizar</button>
     </div>
+
+    {% if form.errors %}
+    <div id="error-messages-mobile" class="alerts alert-dangers">
+        <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+        <ul id="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 </form>
 <script src=" {% static "assets/js/petCadastro.js" %} "></script>
 {% endblock form_content %}
