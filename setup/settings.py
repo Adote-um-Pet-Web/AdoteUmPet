@@ -15,6 +15,8 @@ from pathlib import Path
 
 import dotenv
 
+
+
 dotenv.load_dotenv(dotenv.find_dotenv())
 
 
@@ -223,6 +225,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_POST = os.environ.get("EMAIL_POST")
