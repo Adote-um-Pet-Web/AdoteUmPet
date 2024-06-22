@@ -112,7 +112,13 @@
             }
         });
 
-        submitButton.disabled = !allFieldsFilled;
+        if (allFieldsFilled) {
+            submitButton.disabled = false;
+            submitButton.classList.remove('disabled-button');
+        } else {
+            submitButton.disabled = true;
+            submitButton.classList.add('disabled-button');
+        }
     }
 
     inputs.forEach(input => {

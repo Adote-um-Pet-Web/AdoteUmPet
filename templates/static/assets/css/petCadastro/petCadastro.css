@@ -338,3 +338,8 @@
 #menuIconNav, #menuIconNavClose{
     display: none;
 }
+
+.disabled-button {
+    background-color: rgb(255, 0, 0) !important;
+    cursor: url('http://www.rw-designer.com/cursor-view/207281.png'), no-drop !important;
+}
