@@ -17,11 +17,12 @@
     src="{% static "assets/img/avatar.jpg" %}"
     alt="Foto de perfil do dono : {{ owner.username }}"/>
     {% endif %}
-    <img
-        class="contact-photo"
-        src="{{ pets.images_pets.first.image_pet_profile.url }}"
-        alt="Foto de perfil do pet {{ pet.name }}"
+    <img 
+    src="{{ pet.images_pets.first.image_pet_profile.url }}"
+    alt="Foto de perfil do pet {{ pet.name }}" 
+    class="contact-photo"
     />
+
     <ul class="contact-details">
         <li style="text-transform: capitalize;">
             <span class="contact-label">Nome do atual dono:</span>
@@ -71,6 +72,5 @@
         });
     }
 </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 {% endblock content %}

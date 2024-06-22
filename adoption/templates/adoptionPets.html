@@ -5,7 +5,9 @@
     {% if pet %}
     {% for pets in pet %}
     <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="petSaved">
-        <img src="{% static "assets/img/pug/a.jpg" %}" alt="Foto de perfil do pet {{ pets.name }}">
+        <img 
+        src="{{ pet.images_pets.first.image_pet_profile.url }}"
+        alt="Foto de perfil do pet {{ pet.name }}" />        
         <h1>{{pets.name}}</h1>
     </a>
     {% endfor %}
@@ -15,7 +17,6 @@
         <img src="{% static "assets/img/cat_sad.jpg" %}" alt="">
     </div>
     {% endif %}
-
 </main>
 
 {% endblock content %}

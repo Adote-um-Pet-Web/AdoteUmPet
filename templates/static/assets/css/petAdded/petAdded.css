@@ -43,6 +43,10 @@
 .cardMainInfo img{
     height: 100%;
     width: 50%;
+
+    max-width: 160px;
+    min-width: 160px;
+
     border-radius: 8px;
 }
 .cardMainInfo i{
@@ -88,4 +92,17 @@
     transform: scale(1.01);
 
 
+}
+
+.mainInfo h1 {
+    max-width: 133px;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+
+}
+@media screen and (max-width: 400px) {
+    .mainInfo h1 {
+        max-width: 93px;
+    }
 }
