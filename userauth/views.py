@@ -138,9 +138,11 @@ class PageConfigUser(LoginRequiredMixin, ListView):
         )
         return context
 
+
 class SocialaccountLoginCancelled(View):
     def get(self, request, *args, **kwargs):
         return redirect("userauths:sign-in")
+
 
 class LogoutView(CreateView):
     def get(self, request, *args, **kwargs):

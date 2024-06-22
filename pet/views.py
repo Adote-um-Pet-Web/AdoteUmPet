@@ -1,23 +1,24 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
+    ListView,
     UpdateView,
     View,
 )
 from django.views.generic.list import ListView
 
+from userauth.models import User
+
 from . import models
 from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
 from .models import BannerImagens, Pet
 
-from django.views.generic import ListView
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required, user_passes_test
-from userauth.models import User
 
 class PagePetIndex(ListView):
     model = models.Pet
