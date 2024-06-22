@@ -14,6 +14,10 @@ from . import models
 from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
 from .models import BannerImagens, Pet
 
+from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required, user_passes_test
+from userauth.models import User
 
 class PagePetIndex(ListView):
     model = models.Pet
@@ -33,6 +37,17 @@ class PageFaqQuestions(ListView):
     model = models.Pet
     context_object_name = "pet"
     template_name = "faqQuestions.html"
+
+
+class PageDashBoard(ListView):
+    model = models.Pet
+    context_object_name = "pet"
+    template_name = "dashboard/dashboard.html"
+
+    @method_decorator(login_required)
+    @method_decorator(user_passes_test(lambda user: user.is_staff))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class PageDetailPet(DetailView):
