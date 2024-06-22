@@ -1,6 +1,225 @@
-{% block content %}
-- Mostra quantos animais tem pra adoção
-- Mostra Quantos animais ja fora adotados
-- mostra funcção de adiciona banner
-- etc
-{% endblock content %}
+{% extends "base.html" %} {% block content %}
+<div id="admin-dashboard">
+    <div class="sidebarAdmin">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="#secao-adocao">Animais para Adoção</a></li>
+            <li><a href="#secao-adotados">Animais Adotados</a></li>
+            <li><a href="#secao-banner">Adicionar Banner</a></li>
+            <li><a href="#secao-configuracoes">Configurações</a></li>
+        </ul>
+    </div>
+    <div class="main-content-admin">
+        <!-- Seção de Animais para Adoção -->
+        <div id="secao-adocao" class="sectionAdmin">
+            <h2>Animais para Adoção</h2>
+            <div class="cardAdmin">
+                <h3>Total de Animais para Adoção</h3>
+                <p><span id="total-adocao">25</span></p>
+            </div>
+        </div>
+
+        <!-- Seção de Animais Adotados -->
+        <div id="secao-adotados" class="sectionAdmin">
+            <h2>Animais Adotados</h2>
+            <div class="cardAdmin">
+                <h3>Total de Animais Adotados</h3>
+                <p><span id="total-adotados">50</span></p>
+            </div>
+        </div>
+
+        <!-- Seção de Banner -->
+        <div id="secao-banner" class="sectionAdmin">
+            <h2>Adicionar Banners</h2>
+            <div class="cardAdmin">
+                <form id="banner-form">
+                    <label for="banner1-imagem">Banner 1</label>
+                    <div class="form-group">
+                        <input
+                            type="file"
+                            id="banner1-imagem"
+                            class="form-control"
+                            accept="image/*"
+                            onchange="previewBanner(event, 'banner1')"
+                        />
+                    </div>
+                    <label for="banner2-imagem">Banner 2</label>
+                    <div class="form-group">
+                        <input
+                            type="file"
+                            id="banner2-imagem"
+                            class="form-control"
+                            accept="image/*"
+                            onchange="previewBanner(event, 'banner2')"
+                        />
+                    </div>
+                    <label for="banner3-imagem">Banner 3</label>
+                    <div class="form-group">
+                        <input
+                            type="file"
+                            id="banner3-imagem"
+                            class="form-control"
+                            accept="image/*"
+                            onchange="previewBanner(event, 'banner3')"
+                        />
+                    </div>
+                    <button type="submit" class="btn-admin">
+                        Salvar Banners
+                    </button>
+                </form>
+                <div class="banner-preview mt-3">
+                    <h3>Banners Atuais</h3>
+                    <div class="banner-container">
+                        <a id="banner1-preview-link" href="#" target="_blank">
+                            <img
+                                id="banner1-preview-img"
+                                src="#"
+                                alt="Pré-visualização do Banner 1"
+                                style="max-width: 100%; display: none"
+                            />
+                        </a>
+                        <a id="banner2-preview-link" href="#" target="_blank">
+                            <img
+                                id="banner2-preview-img"
+                                src="#"
+                                alt="Pré-visualização do Banner 2"
+                                style="max-width: 100%; display: none"
+                            />
+                        </a>
+                        <a id="banner3-preview-link" href="#" target="_blank">
+                            <img
+                                id="banner3-preview-img"
+                                src="#"
+                                alt="Pré-visualização do Banner 3"
+                                style="max-width: 100%; display: none"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de cores -->
+        <div id="secao-cores" class="sectionAdmin">
+            <p>*nao ta funcionando ainda</p>
+            <h2>Editar Cores</h2>
+            <div class="cardAdmin">
+                <h3>Tema Atual</h3>
+                <div class="color-palette">
+                    <div
+                        class="color-square"
+                        data-color-var="--color-contraste"
+                        style="background-color: var(--color-contraste)"
+                        onclick="changeColor('--color-contraste')"
+                        title="--color-contraste"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-main"
+                        style="background-color: var(--color-main)"
+                        onclick="changeColor('--color-main')"
+                        title="--color-main"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-main-hover"
+                        style="background-color: var(--color-main-hover)"
+                        onclick="changeColor('--color-main-hover')"
+                        title="--color-main-hover"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-detail"
+                        style="background-color: var(--color-detail)"
+                        onclick="changeColor('--color-detail')"
+                        title="--color-detail"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-detail-hover"
+                        style="background-color: var(--color-detail-hover)"
+                        onclick="changeColor('--color-detail-hover')"
+                        title="--color-detail-hover"
+                    ></div>
+                </div>
+
+                <h3>Modo Atual</h3>
+                <div class="color-palette">
+                    <div
+                        class="color-square"
+                        data-color-var="--color-bg"
+                        style="background-color: var(--color-bg)"
+                        onclick="changeColor('--color-bg')"
+                        title="--color-bg"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-card"
+                        style="background-color: var(--color-card)"
+                        onclick="changeColor('--color-card')"
+                        title="--color-card"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-fg"
+                        style="background-color: var(--color-fg)"
+                        onclick="changeColor('--color-fg')"
+                        title="--color-fg"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-fg-hover"
+                        style="background-color: var(--color-fg-hover)"
+                        onclick="changeColor('--color-fg-hover')"
+                        title="--color-fg-hover"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-fg-reverse"
+                        style="background-color: var(--color-fg-reverse)"
+                        onclick="changeColor('--color-fg-reverse')"
+                        title="--color-fg-reverse"
+                    ></div>
+                    <div
+                        class="color-square"
+                        data-color-var="--color-border"
+                        style="background-color: var(--color-border)"
+                        onclick="changeColor('--color-border')"
+                        title="--color-border"
+                    ></div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function changeColor(variable) {
+                const newColor = prompt(
+                    "Digite uma nova cor (em formato hexadecimal, ex: #ffffff):"
+                );
+                if (newColor !== null && newColor !== "") {
+                    const variableName = variable.substring(2); // Remove '--'
+                    document.querySelectorAll('.color-square').forEach(function(square) {
+                        if (square.getAttribute('data-color-var') === variable) {
+                            square.style.backgroundColor = newColor;
+                        }
+                    });
+                }
+            }
+        </script>
+    </div>
+    <script>
+        function previewBanner(event, bannerId) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const previewImg = document.getElementById(
+                    bannerId + "-preview-img"
+                );
+                previewImg.src = reader.result;
+                previewImg.style.display = "block";
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</div>
+
+{% endblock %}

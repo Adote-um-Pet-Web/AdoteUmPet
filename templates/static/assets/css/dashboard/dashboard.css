@@ -1,0 +1,106 @@
+#admin-dashboard{
+    display: flex;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+}
+.sidebarAdmin {
+    width: 250px;
+    background: var(--color-card);
+    padding: 15px;
+    border-right: 1px solid var(--color-border);
+}
+.sidebarAdmin h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+.sidebarAdmin ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebarAdmin ul li {
+    margin: 10px 0;
+}
+.sidebarAdmin ul li a {
+    text-decoration: none;
+    color: var(--color-fg);
+}
+.sidebarAdmin ul li a:hover {
+    text-decoration: underline;
+    color: var(--color-fg-hover);
+}
+.main-content-admin {
+    flex: 1;
+    padding: 20px;
+}
+.sectionAdmin {
+    margin-bottom: 20px;
+}
+.cardAdmin {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.cardAdmin h3 {
+    margin-top: 0;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group input {
+    margin-bottom: 15px;
+}
+.form-control {
+    background-color: var(--color-card);
+    color: var(--color-fg);
+    width: calc(100% - 17px);
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+.btn-admin {
+    padding: 10px 20px;
+    background: var(--color-main);
+    border: none;
+    color: var(--color-contraste);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-admin:hover {
+    background: var(--color-main-hover);
+}
+
+.banner-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.banner-container a {
+    display: block;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+}
+.banner-container img {
+    max-width: 100%;
+}
+
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.color-square {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.color-square:hover {
+    transform: scale(1.1);
+}
