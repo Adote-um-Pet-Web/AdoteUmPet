@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.utils.html import format_html
 
 from userauth.models import User
 
@@ -49,8 +50,12 @@ class HistoryPet(models.Model):
     id_pet = models.ForeignKey(
         Pet, on_delete=models.CASCADE, related_name="history_pet"
     )
-    history = models.TextField(default="Nenhuma historia foi adicionado", blank=True, null=True)
-    observations = models.TextField(default="Nenhuma historia foi adicionado",blank=True, null=True)
+    history = models.TextField(
+        default="Nenhuma historia foi adicionado", blank=True, null=True
+    )
+    observations = models.TextField(
+        default="Nenhuma historia foi adicionado", blank=True, null=True
+    )
 
 
 class MedicalRecord(models.Model):
@@ -73,6 +78,17 @@ class ImagesPets(models.Model):
     image_pet_datail1 = models.ImageField(upload_to="pets/photos/%Y/%m/")
     image_pet_datail2 = models.ImageField(upload_to="pets/photos/%Y/%m/")
     image_pet_datail3 = models.ImageField(upload_to="pets/photos/%Y/%m/")
+
+    def image_pet_profile_thumbnail(self):
+        if self.image_pet_profile:
+            return format_html(
+                '<img src="{}" style="width: 45px; height:45px;" />'.format(
+                    self.image_pet_profile.url
+                )
+            )
+        return ""
+
+    image_pet_profile_thumbnail.short_description = "Profile Image"
 
 
 class FavoritedPet(models.Model):
@@ -108,3 +124,36 @@ class BannerImagens(models.Model):
     banner_image3 = models.ImageField(
         upload_to="banner/imagens/%Y/%m/", blank=False, null=False
     )
+
+    def banner_image1_thumbnail(self):
+        if self.banner_image1:
+            return format_html(
+                '<img src="{}" style="width: 45px; height:45px;" />'.format(
+                    self.banner_image1.url
+                )
+            )
+        return ""
+
+    banner_image1_thumbnail.short_description = "Banner Image 1"
+
+    def banner_image2_thumbnail(self):
+        if self.banner_image2:
+            return format_html(
+                '<img src="{}" style="width: 45px; height:45px;" />'.format(
+                    self.banner_image2.url
+                )
+            )
+        return ""
+
+    banner_image2_thumbnail.short_description = "Banner Image 2"
+
+    def banner_image3_thumbnail(self):
+        if self.banner_image3:
+            return format_html(
+                '<img src="{}" style="width: 45px; height:45px;" />'.format(
+                    self.banner_image3.url
+                )
+            )
+        return ""
+
+    banner_image3_thumbnail.short_description = "Banner Image 3"

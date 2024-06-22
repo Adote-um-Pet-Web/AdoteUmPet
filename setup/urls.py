@@ -5,7 +5,9 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path, re_path
+
 from userauth import views as userauth_views
+
 social_urlpatterns = [
     path("", include(google_urlpatterns)),
 ]
@@ -18,8 +20,10 @@ urlpatterns = [
     path("user/", include("userauth.urls")),
     path("adoption/", include("adoption.urls")),
     path("accounts/", include(social_urlpatterns)),
-    path("accounts/social/login/cancelled/", userauth_views.SocialaccountLoginCancelled.as_view()),
-
+    path(
+        "accounts/social/login/cancelled/",
+        userauth_views.SocialaccountLoginCancelled.as_view(),
+    ),
     # CHANGE PASSWORD
     path(
         "password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"

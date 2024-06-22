@@ -1,14 +1,19 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
+    ListView,
     UpdateView,
     View,
 )
 from django.views.generic.list import ListView
+
+from userauth.models import User
 
 from . import models
 from .forms import HistoryPetForm, ImagesPetsForm, MedicalRecordForm, PetForm
@@ -33,6 +38,17 @@ class PageFaqQuestions(ListView):
     model = models.Pet
     context_object_name = "pet"
     template_name = "faqQuestions.html"
+
+
+class PageDashBoard(ListView):
+    model = models.Pet
+    context_object_name = "pet"
+    template_name = "dashboard/dashboard.html"
+
+    @method_decorator(login_required)
+    @method_decorator(user_passes_test(lambda user: user.is_staff))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class PageDetailPet(DetailView):
