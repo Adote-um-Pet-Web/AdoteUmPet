@@ -1,13 +1,79 @@
 {% extends 'base.html' %}
  {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        <h1>
-            Deseja realmente quer apaga sua conta: <b>{{ pet.name }}</b> ?
-        </h1>
-        <div >
-            <a href="{% url 'pets:index' %}">&#8592; Voltar</a>
-            <button  type="submit" value="Delete">Apagar</button>
-        </div>
-    </form>
+ <style>
+    #deletUserDiv{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #userDelet {
+        background-color: var(--color-card);
+        color: var(--color-fg);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: auto;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #userDelet h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    #userDelet h1 b{
+        color: var(--color-main);
+        text-transform: capitalize;
+    }
+
+    #userDelet button[type="submit"] {
+        background-color: #ff4c4c;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    #userDelet button[type="submit"]:hover {
+        background-color: #ff1a1a;
+    }
+    
+    form#userDelet a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+    
+    #userDelet a:hover {
+        text-decoration: underline;
+    }
+    
+    #userDelet div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media (max-width: 600px) {
+        #userDelet {
+            width: 80%;
+        }
+    }
+ </style>
+ <div id="deletUserDiv">
+     <form id="userDelet" method="POST">
+         {% csrf_token %}
+         <h1>
+             Deseja realmente apagar sua conta, <b>{{ user.username }}</b>?
+         </h1>
+         <div >
+             <a href="{% url 'pets:index' %}">&#8592; Voltar</a>
+             <button  type="submit" value="Delete">Apagar</button>
+         </div>
+     </form>
+ </div>
 {% endblock content %}
