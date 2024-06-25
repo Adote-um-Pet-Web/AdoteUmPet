@@ -47,7 +47,12 @@
     height: 70%;
     border-radius: 8px;
 }
+@media (min-width: 1151px) {
+    .card {
+        width: 15%;
+    }
 
+}
 @media (max-width: 1150px) {
     .card {
         width: 25%;
