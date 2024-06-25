@@ -21,6 +21,7 @@
                 <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="card">
                     <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
 
+                    <h1>{{pets.name}}</h1>
                     <div class="info">
                         <h2 class="pet-name">{{ pets.name }}</h2>
                         <p class="pet-species" data-species="{{ pets.species }}">Espécie: {{ pets.get_species_display }}</p>

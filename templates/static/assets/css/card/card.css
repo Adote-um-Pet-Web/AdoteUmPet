@@ -10,8 +10,11 @@
 .card {
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    /* border-radius: 8px; */
+    justify-content: flex-start;
+    padding: 7px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: var(--color-card);
@@ -20,30 +23,88 @@
     cursor: pointer;
     text-decoration: none;
     text-transform: none;
-    transition: opacity 0.3s;
-    width: calc(25% - 35px);
+    transition: background-color 0.3s, transform 0.3s, color 0.3s, opacity 0.3s;
+    /* width: calc(20% - 35px); */
+    width: 20%;
     height: 20rem;
 }
+
+.card h1{
+    margin: 0;
+    margin-top: 10px;
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: left;
+    
+    
+    max-width: 100%;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+.card img{
+    width: 100%;
+    height: 70%;
+    border-radius: 8px;
+}
+
+@media (max-width: 1150px) {
+    .card {
+        width: 25%;
+    }
+
+}
+@media (max-width: 950px) {
+    .card {
+        width: 28%;
+    }
+}
+
 @media (max-width: 800px) {
     .card {
-        width: 44%;
+        width: 32%;
+    }
+}
+@media (max-width: 700px) {
+    .card {
+        width: 35%;
     }
 }
 @media (max-width: 600px) {
     .card {
-        width: 40%;
-        height: 14rem;
+        width: 41%;
     }
+}
+@media (max-width: 550px) {
+    .card {
+        width: calc(50% - 50px);
+    }
+}
+@media (max-width: 490px) {
+    .card {
+        width: calc(48% - 40px);
+    }
+}
+@media (max-width: 450px) {
+    .card {
+        width: calc(100% - 50px);
+    }
+    .card img{
+        height: 80%;
+    }
+
 }
 
 .card:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
-.card img {
+/* .card img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-}
+} */
+
+
 .info {
     position: absolute;
     border-radius: 0;
@@ -53,26 +114,37 @@
     background-color: var(--color-card);
     height: auto;
     padding: 1rem;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
-.info h2 {
-    margin: 0;
-    text-align: center;
-}
-
-.info p {
-    display: none;
-    margin: 8px 0;
-    font-size: 14px;
-    color: var(--color-fg);
-}
 @media (max-width: 600px) {
-    .info{
-        padding: 12px;
-    }
-    .info h2{
-        font-size: 15px;
-    }
+
+}
+.iconsPetIcon{
+    background-color: transparent;
+    color: red;
+    font-size: 1.45rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s, opacity 0.3s;
+}
+.iconsPetIcon:hover{
+    transform: scale(1.05);
+    color: rgb(228, 9, 9);
+}
+#compartilharBtnPet{
+    color: var(--color-main) !important;
+    margin-left: 10px;
+}
+#compartilharBtnPet:hover{
+    color: var(--color-main-hover) !important;
+}
+.iconsPet{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: left;
+    margin-top: 10px;
 }

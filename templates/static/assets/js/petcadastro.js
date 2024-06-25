@@ -1,4 +1,3 @@
-console.log("sjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjssssssssssssssssssssssss");
 document.addEventListener("DOMContentLoaded", function () {
     const profilePetInput = document.getElementById("profilePet");
     const mainPhotoPreview = document.getElementById("main-photo-preview");
