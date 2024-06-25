@@ -8,19 +8,39 @@
     <div id="f4d01">
         <label for="profilePet">Foto Principal do Pet</label>
         <input type="file" name="image_pet_profile" id="profilePet" accept="image/*">
-        <label id="labelDiv" for="profilePet"><div id="main-photo-preview"><i id="ibtn" class="fi fi-br-plus"></i></div></label>
+        <label id="labelDiv" for="profilePet">
+            <div id="main-photo-preview">
+                <i id="ibtn" class="fi fi-br-plus"></i>
+                <img id="main-photo-preview-img" src="" alt="" style="display: none;">
+            </div>
+        </label>
     </div>
     <div id="f4d02">
         <label for="adicPhoto">Fotos Extras do Pet</label>
         <div id="f4d03">
             <input type="file" name="image_pet_datail1" id="image_pet_datail1" accept="image/*">
-            <label for="image_pet_datail1"><div class="extra-photo-preview" id="extra-photo-preview-1"><i id="ibtn1" class="fi fi-br-plus"></i></div></label>
+            <label for="image_pet_datail1">
+                <div class="extra-photo-preview" id="extra-photo-preview-1">
+                    <i id="ibtn1" class="fi fi-br-plus"></i>
+                    <img id="extra-photo-preview-img-1" src="" alt="" style="display: none;">
+                </div>
+            </label>
 
             <input type="file" name="image_pet_datail2" id="image_pet_datail2" accept="image/*">
-            <label for="image_pet_datail2"><div class="extra-photo-preview" id="extra-photo-preview-2"><i id="ibtn2" class="fi fi-br-plus"></i></div></label>
+            <label for="image_pet_datail2">
+                <div class="extra-photo-preview" id="extra-photo-preview-2">
+                    <i id="ibtn2" class="fi fi-br-plus"></i>
+                    <img id="extra-photo-preview-img-2" src="" alt="" style="display: none;">
+                </div>
+            </label>
 
             <input type="file" name="image_pet_datail3" id="image_pet_datail3" accept="image/*">
-            <label for="image_pet_datail3"><div class="extra-photo-preview" id="extra-photo-preview-3"><i id="ibtn3" class="fi fi-br-plus"></i></div></label>
+            <label for="image_pet_datail3">
+                <div class="extra-photo-preview" id="extra-photo-preview-3">
+                    <i id="ibtn3" class="fi fi-br-plus"></i>
+                    <img id="extra-photo-preview-img-3" src="" alt="" style="display: none;">
+                </div>
+            </label>
         </div>
     </div>
     <span>*Todas as fotos são obrigatorias</span>
@@ -47,5 +67,90 @@
     </div>
     {% endif %}
 </form>
-<script src=" {% static "assets/js/petCadastro.js" %} "></script>
+
+<script>
+    const profilePetInput = document.getElementById("profilePet");
+    const mainPhotoPreview = document.getElementById("main-photo-preview");
+    const mainPhotoPreviewImg = document.getElementById("main-photo-preview-img");
+
+    profilePetInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                mainPhotoPreviewImg.src = reader.result;
+                mainPhotoPreviewImg.style.display = "block";
+                ibtn.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            mainPhotoPreviewImg.src = "#";
+            mainPhotoPreviewImg.style.display = "none";
+            ibtn.style.display = "block";
+        }
+    });
+
+    const imagePetDatail1Input = document.getElementById("image_pet_datail1");
+    const extraPhotoPreview1 = document.getElementById("extra-photo-preview-1");
+    const extraPhotoPreviewImg1 = document.getElementById("extra-photo-preview-img-1");
+
+    imagePetDatail1Input.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                extraPhotoPreviewImg1.src = reader.result;
+                extraPhotoPreviewImg1.style.display = "block";
+                ibtn1.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            extraPhotoPreviewImg1.src = "#";
+            extraPhotoPreviewImg1.style.display = "none";
+            ibtn1.style.display = "block";
+        }
+    });
+
+    const imagePetDatail2Input = document.getElementById("image_pet_datail2");
+    const extraPhotoPreview2 = document.getElementById("extra-photo-preview-2");
+    const extraPhotoPreviewImg2 = document.getElementById("extra-photo-preview-img-2");
+
+    imagePetDatail2Input.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                extraPhotoPreviewImg2.src = reader.result;
+                extraPhotoPreviewImg2.style.display = "block";
+                ibtn2.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            extraPhotoPreviewImg2.src = "#";
+            extraPhotoPreviewImg2.style.display = "none";
+            ibtn2.style.display = "block";
+        }
+    });
+
+    const imagePetDatail3Input = document.getElementById("image_pet_datail3");
+    const extraPhotoPreview3 = document.getElementById("extra-photo-preview-3");
+    const extraPhotoPreviewImg3 = document.getElementById("extra-photo-preview-img-3");
+
+    imagePetDatail3Input.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                extraPhotoPreviewImg3.src = reader.result;
+                extraPhotoPreviewImg3.style.display = "block";
+                ibtn3.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            extraPhotoPreviewImg3.src = "#";
+            extraPhotoPreviewImg3.style.display = "none";
+            ibtn3.style.display = "block";
+        }
+    });
+</script>
 {% endblock form_content %}

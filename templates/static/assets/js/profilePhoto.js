@@ -19,7 +19,7 @@ fileInput.addEventListener("change", function () {
         iconPlaceholder.style.display = "block";
     }
 });
-
+ 
 const previewContainerM = document.getElementById("preview-containerM");
 const previewM = document.getElementById("previewM");
 const iconPlaceholderM = document.getElementById("iconPlaceholderM");
