@@ -88,11 +88,20 @@
 @media (max-width: 450px) {
     .card {
         width: calc(100% - 50px);
+        height: 27rem;
+        /* width: 40; */
+        /* height: 12rem; */
     }
     .card img{
         height: 80%;
     }
 
+}
+@media (max-width: 400px) {
+    .card {
+        width: 100%;
+        height: 24rem;
+    }
 }
 
 .card:hover {
