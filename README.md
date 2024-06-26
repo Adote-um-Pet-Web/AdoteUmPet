@@ -1,3 +1,8 @@
+## Integrantes
+- [Camile Andrade - Andra-sun](https://www.github.com/andra-sun)
+- [Wendel Alves - wendellast](https://www.github.com/wendellast)
+
+
 # Introdução
 Este é um guia para  projeto Adote Um Pet. Ele inclui instruções sobre como configurar um ambiente virtual, instalar pacotes necessários e executar o projeto.
 
