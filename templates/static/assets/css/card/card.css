@@ -54,7 +54,7 @@
     }
 
 }
-@media (min-width: 1150px) {
+@media (max-width: 1499px) {
     .card {
         width: calc( 24% - 37px);
     }
