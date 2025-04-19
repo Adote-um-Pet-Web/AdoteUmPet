@@ -121,50 +121,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script>
-    const canvas = document.getElementById("canvas");
-    const shareText = "abcde";
-
-    document.getElementById("download").addEventListener("click", function () {
-        html2canvas(canvas).then(function (canvas) {
-            const link = document.createElement("a");
-            link.href = canvas.toDataURL("image/png");
-            link.download = "imagem_instagram.png";
-            link.click();
-        });
-    });
-
-    document.getElementById("share").addEventListener("click", function () {
-        html2canvas(canvas).then(function (canvas) {
-            canvas.toBlob(function (blob) {
-                const filesArray = [
-                    new File([blob], "imagem.png", { type: "image/png" }),
-                ];
-                if (
-                    navigator.canShare &&
-                    navigator.canShare({ files: filesArray })
-                ) {
-                    navigator
-                        .share({
-                            files: filesArray,
-                            title: "Compartilhar Imagem",
-                            text: "Confira esta imagem!" + shareText,
-                        })
-                        .then(() => {
-                            alert("Compartilhamento bem-sucedido");
-                        })
-                        .catch((error) => {
-                            console.error("Erro ao compartilhar:", error);
-                            alert("Erro no compartilhamento");
-                        });
-                } else {
-                    alert(
-                        "O compartilhamento direto não é suportado neste navegador."
-                    );
-                }
-            }, "image/png");
-        });
-    });
-</script>
+<script src="{% static 'assets/js/sharePet.js' %}"></script>
 {% endblock %}
 
