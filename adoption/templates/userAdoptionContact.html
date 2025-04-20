@@ -59,18 +59,6 @@
             Baixar Imagem
         </button>
 
-<script>
-    function downloadImage() {
-        html2canvas(document.querySelector("#contact-container"), {
-            scale: 2,
-            useCORS: true,
-        }).then((canvas) => {
-            let link = document.createElement("a");
-            link.href = canvas.toDataURL("image/png");
-            link.download = "informacoesDeContato.png";
-            link.click();
-        });
-    }
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="{% static 'assets/js/userAdoptionContact.js' %}"></script>
 {% endblock content %}
