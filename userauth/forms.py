@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+import phonenumbers
 
 from .models import User
 
@@ -127,16 +128,33 @@ class UserUpdateForm(forms.ModelForm):
         widget=forms.TextInput(attrs={"placeholder": "Instagram"}),
     )
     phone_number = forms.CharField(
-        widget=forms.NumberInput(attrs={"placeholder": "Número de Telefone"}),
+        widget=forms.TextInput(attrs={"placeholder": "Número de Telefone"}),
         error_messages={
             "required": _("Este campo é obrigatório."),
             "invalid": _("Insira um número de telefone válido."),
         },
+        required=True, 
     )
 
     class Meta:
         model = User
         fields = ["username", "facebook_field", "phone_number", "instagram_field"]
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get("phone_number")
+        try:
+            parsed_number = phonenumbers.parse(phone_number, "BR")
+            if not phonenumbers.is_valid_number(parsed_number):
+                raise ValidationError(_("Número de telefone inválido."))
+            
+            formatted_number = phonenumbers.format_number(
+                parsed_number,
+                phonenumbers.PhoneNumberFormat.NATIONAL
+            )
+            return formatted_number
+        except phonenumbers.NumberParseException as e:
+            error_message = _("Número de telefone inválido.")
+            raise ValidationError(error_message)
 
 
 class UserProfileImageUpdateForm(forms.ModelForm):
