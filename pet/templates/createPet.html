@@ -12,7 +12,7 @@
             id="name"
             name="name"
             placeholder="Nome do Pet"
-            value="{{pet.name}}"
+            value="{{ form.name.value | default:'' }}"
             required
         />
         <input
@@ -20,7 +20,7 @@
             name="breed"
             placeholder="Raça"
             id="breed"
-            value="{{pet.breed}}"
+            value="{{ form.breed.value | default:'' }}"
             required
         />
     </div>
@@ -28,13 +28,13 @@
     <div>
         <select name="species" id="species" required>
             <option value="0">Espécie</option>
-            <option value="DOG">Cachorro</option>
-            <option value="CAT">Gato</option>
+            <option value="DOG" {% if form.species.value == "DOG" %}selected{% endif %}>Cachorro</option>
+            <option value="CAT" {% if form.species.value == "CAT" %}selected{% endif %}>Gato</option>
         </select>
         <select name="sex" id="sex" required>
             <option value="0">Sexo</option>
-            <option value="Male">Macho</option>
-            <option value="Female">Fêmea</option>
+            <option value="Male" {% if form.sex.value == "Male" %}selected{% endif %}>Macho</option>
+            <option value="Female" {% if form.sex.value == "Female" %}selected{% endif %}>Fêmea</option>
         </select>
         <input
             name="color"
@@ -42,16 +42,16 @@
             placeholder="Cor"
             id="color"
             required
-            value="{{pet.color}}"
+            value="{{ form.color.value | default:'' }}"
         />
     </div>
 
     <div>
         <select name="size" id="size" required>
             <option value="0">Tamanho</option>
-            <option value="SMALL">Pequeno</option>
-            <option value="MEDIUM">Medio</option>
-            <option value="Large">Grande</option>
+            <option value="SMALL" {% if form.size.value == "SMALL" %}selected{% endif %}>Pequeno</option>
+            <option value="MEDIUM" {% if form.size.value == "MEDIUM" %}selected{% endif %}>Médio</option>
+            <option value="Large" {% if form.size.value == "Large" %}selected{% endif %}>Grande</option>
         </select>
         <input
             name="age"
@@ -59,6 +59,7 @@
             placeholder="Idade em anos"
             id="age"
             required
+            value="{{ form.age.value | default:'' }}"
         />
         <input
             name="heigth"
@@ -66,6 +67,7 @@
             placeholder="Altura em cm"
             id="height"
             required
+            value="{{ form.heigth.value | default:'' }}"
         />
         <input
             name="weight"
@@ -73,6 +75,7 @@
             placeholder="Peso em Kg"
             id="weight"
             required
+            value="{{ form.weight.value | default:'' }}"
         />
     </div>
     <div id="btnArea">
