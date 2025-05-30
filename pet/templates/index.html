@@ -16,29 +16,28 @@
 
     <section id="cards">
         {% if pet %}
-        {% for pets in pet %}
-            {% if pets.images_pets.first.image_pet_profile %}
-                <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="card">
-                    <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
-
-                    <h1>{{pets.name}}</h1>
-                    <div class="info">
-                        <h2 class="pet-name">{{ pets.name }}</h2>
-                        <p class="pet-species" data-species="{{ pets.species }}">Espécie: {{ pets.get_species_display }}</p>
-                        <p class="pet-breed" data-breed="{{ pets.breed }}">Raça: {{ pets.breed }}</p>
-                        <p class="pet-size" data-size="{{ pets.size }}">Tamanho: {{ pets.get_size_display }}</p>
-                        <p class="pet-age" data-age="{{ pets.age }}">Idade: {{ pets.age }}</p>
-                        <p class="pet-sex" data-sex="{{ pets.sex }}">Sexo: {{ pets.get_sex_display }}</p>
-                        <p class="pet-owner">Dono: {{ pets.owner }}</p>
-                    </div>
-                </a>
-            {% endif %}
-        {% endfor %}
+            {% for pets in pet %}
+                {% if pets.images_pets.first.image_pet_profile %}
+                    <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="card">
+                        <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
+                        <h1>{{ pets.name }}</h1>
+                        <div class="info">
+                            <p class="pet-species">{{ pets.get_species_display }}</p>
+                            <p class="pet-breed">{{ pets.breed }}</p>
+                            <p class="pet-size">{{ pets.get_size_display }}</p>
+                            <p class="pet-age">{{ pets.age }} anos</p>
+                            <p class="pet-sex">{{ pets.get_sex_display }}</p>
+                            <p class="pet-owner">{{ pets.owner }}</p>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
         {% else %}
-        <div id="nopet">
-            <h1>Desculpa, nenhum pet está disponível no momento</h1>
-            <img src="{% static 'assets/img/cat_sad.jpg' %}" alt="">
-        </div>
+            <div class="no-pets-message">
+                <img src="{% static 'assets/img/cat_sad.jpg' %}" alt="Gato triste">
+                <h2>Desculpe, nenhum pet está disponível no momento</h2>
+                <p>Volte mais tarde para conhecer novos amigos!</p>
+            </div>
         {% endif %}
     </section>
 </main>
