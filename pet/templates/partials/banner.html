@@ -1,32 +1,25 @@
-
 {% load cache %}
 
-{% cache 500 banner_images %}
 <div id="bannerArea">
     {% if banner_images %}
     <div id="sliders">
-    {% for banner in banner_images %}
+        {% for banner in banner_images %}
         <div class="slide">
             {% if banner.banner_image1 %}
-                <img src="{{ banner.banner_image1.url }}" alt="Banner Image 1">
+            <img src="{{ banner.banner_image1.url }}" alt="Banner Image 1" />
             {% endif %}
         </div>
         <div class="slide">
             {% if banner.banner_image2 %}
-                <img src="{{ banner.banner_image2.url }}" alt="Banner Image 2">
+            <img src="{{ banner.banner_image2.url }}" alt="Banner Image 2" />
             {% endif %}
         </div>
         <div class="slide">
             {% if banner.banner_image3 %}
-                <img src="{{ banner.banner_image3.url }}" alt="Banner Image 3">
+            <img src="{{ banner.banner_image3.url }}" alt="Banner Image 3" />
             {% endif %}
         </div>
+        {% endfor %}
     </div>
-    <div id="sliderStatus"></div>
-    {% endfor %}
     {% endif %}
 </div>
-{% endcache %}
-
-
-
