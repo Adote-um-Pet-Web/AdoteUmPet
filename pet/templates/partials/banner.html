@@ -6,20 +6,51 @@
         {% for banner in banner_images %}
         <div class="slide">
             {% if banner.banner_image1 %}
-            <img src="{{ banner.banner_image1.url }}" alt="Banner Image 1" />
+            <a href="{{ banner.banner_link1|default:'#' }}">
+                <img
+                    src="{{ banner.banner_image1.url }}"
+                    alt="Banner Image 1"
+                    loading="lazy"
+                />
+            </a>
             {% endif %}
         </div>
         <div class="slide">
             {% if banner.banner_image2 %}
-            <img src="{{ banner.banner_image2.url }}" alt="Banner Image 2" />
+            <a href="{{ banner.banner_link2|default:'#' }}">
+                <img
+                    src="{{ banner.banner_image2.url }}"
+                    alt="Banner Image 2"
+                    loading="lazy"
+                />
+            </a>
             {% endif %}
         </div>
         <div class="slide">
             {% if banner.banner_image3 %}
-            <img src="{{ banner.banner_image3.url }}" alt="Banner Image 3" />
+            <a href="{{ banner.banner_link3|default:'#' }}">
+                <img
+                    src="{{ banner.banner_image3.url }}"
+                    alt="Banner Image 3"
+                    loading="lazy"
+                />
+            </a>
             {% endif %}
         </div>
         {% endfor %}
+    </div>
+    <div id="sliderStatus"></div>
+    {% else %}
+    <div
+        class="no-banner"
+        style="
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        "
+    >
+        <p>Nenhum banner disponível</p>
     </div>
     {% endif %}
 </div>
