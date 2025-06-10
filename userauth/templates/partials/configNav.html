@@ -1,16 +1,35 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <nav id="config-nav">
+    <div class="config-nav-header">
+        <h2>Configurações</h2>
+    </div>
     <ul>
         {% if request.path == "/user/config/" %}
-        <a href="{% url "userauths:user-update" pk=current_user.pk %}" ><li><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>
-        <a  href="{% url "userauths:user-config" %}" ><li class="selecionado"><i class="fi fi-ss-palette"></i> Aparencia</li></a>
+        <a href="{% url 'userauths:user-update' pk=current_user.pk %}">
+            <li>
+                <i class="fi fi-ss-user-pen"></i> <span>Editar Perfil</span>
+            </li>
+        </a>
+        <a href="{% url 'userauths:user-config' %}">
+            <li class="selecionado">
+                <i class="fi fi-ss-palette"></i> <span>Aparência</span>
+            </li>
+        </a>
         {% else %}
-        <a > <li class="selecionado"><i class="fi fi-ss-user-pen"></i> Editar Perfil</li></a>
-        <a href="{% url "userauths:user-config" %}" ><li><i class="fi fi-ss-palette"></i> Aparencia</li></a>
+        <a href="{% url 'userauths:user-update' pk=current_user.pk %}">
+            <li class="selecionado">
+                <i class="fi fi-ss-user-pen"></i> <span>Editar Perfil</span>
+            </li>
+        </a>
+        <a href="{% url 'userauths:user-config' %}">
+            <li><i class="fi fi-ss-palette"></i> <span>Aparência</span></li>
+        </a>
         {% endif %}
     </ul>
-    <a id="voltar" href="/">Voltar</a>
+    <div class="config-nav-footer">
+        <a href="/" class="nav-footer-btn">
+            <i class="fi fi-ss-arrow-left"></i> Voltar
+        </a>
+    </div>
 </nav>
 {% endblock content %}

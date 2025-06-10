@@ -2,83 +2,144 @@
 {% block content %}
 {% load static %}
 {% include "partials/configNav.html" %}
-<section class="configSection">
-    <h1>Editar Perfil</h1>
 
-
-
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div id="inputDiv">
-            <label for="username">Nome Completo:</label>
-            <input type="text" name="username" style="text-transform: capitalize;" placeholder="Nome completo" value="{{ user.username }}">
-            <h3>Contatos</h3>
-
-            <p>*É preciso adicionar pelo menos o numero de telefone para adicionar um pet.*</p>
-
-            <label for="instagram_field">Instagram:</label>
-            {% if user.instagram_field %}
-            <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123" value="{{user.instagram_field}}">
-            {% else %}
-            <input type="text" name="instagram_field" id="insta" placeholder="EX.: user_123">
-            {% endif %}
-    
-            <label for="facebook_field">Facebook:</label>
-            {% if user.facebook_field %}
-            <input type="text" name="facebook_field" id="facebook" placeholder="EX.: user_123" value="{{user.facebook_field}}">
-            {% else %}
-            <input type="text" name="facebook_field" id="facebook" placeholder="EX.: user_123">
-            {% endif %}
-    
-            <label for="phone_number">Telefone:</label>
-            {% if user.phone_number %}
-            <input type="number" name="phone_number" id="phone" placeholder="EX.:77 777777777" value="{{ user.phone_number }}">
-            {% else %}
-            <input type="number" name="phone_number" id="phone" placeholder="EX.:77 777777777">
-            {% endif %}
-        </div>
-        <button class="userUpdateBtn" type="submit">Salvar</button>
-    </form>
-
-    <div id="error-messages" class="alerts alert-dangers" style="display: none;">
-        <button type="button" class="closeE" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">X</span>
-        </button>
-
-        {% if form.errors %}
-        <ul id="error-list">
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+<section class="configSection profile-edit-section">
+    <div class="profile-header">
+        <h1><i class="fi fi-ss-user-pen"></i> Editar Perfil</h1>
+        <p>Atualize suas informações pessoais e de contato</p>
     </div>
-    
-    <form id="phtoform" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h3>Foto de Perfil</h3>
-        <div id="photoDiv">
-            <div id="profileImageDiv">
-                {% if user.image_user_profile %}
-                    <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil do {{ user.name }}" id="profileImage">
-                {% else %}
-                    <img id="profileImage" src="{% static 'assets/img/avatar.jpg' %}" alt="Foto de perfil do {{ user.username }}"/>
+
+    <div class="profile-edit-container">
+        <div class="profile-card">
+            <h2><i class="fi fi-ss-idcard"></i> Informações Pessoais</h2>
+            
+            <form method="POST" enctype="multipart/form-data" class="profile-form">
+                {% csrf_token %}
+                
+                <div class="form-groups">
+                    <label for="username">Nome Completo</label>
+                    <div class="input-with-icon">
+                        <i class="fi fi-ss-user"></i>
+                        <input type="text" name="username" id="username" placeholder="Seu nome completo" value="{{ user.username }}" style="text-transform: capitalize;">
+                    </div>
+                </div>
+                
+                <div class="form-divider">
+                    <span>Contatos</span>
+                </div>
+                
+                <div class="form-notice">
+                    <i class="fi fi-ss-info"></i>
+                    <p>É necessário adicionar pelo menos o número de telefone para cadastrar um pet.</p>
+                </div>
+                
+                <div class="form-groups">
+                    <label for="instagram_field">Instagram</label>
+                    <div class="input-with-icon">
+                        <i class="fi fi-brands-instagram"></i>
+                        <input type="text" name="instagram_field" id="insta" placeholder="seu_usuario" value="{{ user.instagram_field|default:'' }}">
+                    </div>
+                </div>
+                
+                <div class="form-groups">
+                    <label for="facebook_field">Facebook</label>
+                    <div class="input-with-icon">
+                        <i class="fi fi-brands-facebook"></i>
+                        <input type="text" name="facebook_field" id="facebook" placeholder="seu_usuario" value="{{ user.facebook_field|default:'' }}">
+                    </div>
+                </div>
+                
+                <div class="form-groups">
+                    <label for="phone_number">Telefone</label>
+                    <div class="input-with-icon">
+                        <i class="fi fi-ss-phone-call"></i>
+                        <input type="tel" name="phone_number" id="phone" placeholder="(00) 00000-0000" value="{{ user.phone_number|default:'' }}">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-save">
+                    <i class="fi fi-ss-check"></i> Salvar Alterações
+                </button>
+            </form>
+            
+            <!-- Mensagens de erro -->
+            <div id="error-messages" class="alert-message" style="display: {% if form.errors %}block{% else %}none{% endif %};">
+                <div class="alert-header">
+                    <i class="fi fi-ss-exclamation"></i>
+                    <span>Corrija os erros abaixo</span>
+                    <button type="button" class="close-alert" aria-label="Close">
+                        <i class="fi fi-ss-cross-small"></i>
+                    </button>
+                </div>
+                
+                {% if form.errors %}
+                <ul class="error-list">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </div>
-            <label for="changePhoto" id="changePhotoLabel">Trocar foto</label>
-            <input type="file" name="image_user_profile" id="changePhoto" style="display: none;">
         </div>
-
-        <button class="userUpdateBtn" type="submit">Salvar</button>
-
-    </form>
-    <h1 style="margin-top: 4.3rem;"><a id="deletarPerfil" href="{% url "userauths:user-delete" pk=user.pk  %}">Deletar perfil</a></h1>
+        
+        <!-- Seção de Foto de Perfil -->
+        <div class="profile-card">
+            <h2><i class="fi fi-ss-camera"></i> Foto de Perfil</h2>
+            
+            <form id="photo-form" method="POST" enctype="multipart/form-data" class="profile-photo-form">
+                {% csrf_token %}
+                
+                <div class="photo-upload-container">
+                    <div class="profile-image-container">
+                        {% if user.image_user_profile %}
+                            <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil" class="profile-image" id="profileImagePreview">
+                        {% else %}
+                            <img src="{% static 'assets/img/avatar.jpg' %}" alt="Foto de perfil padrão" class="profile-image" id="profileImagePreview">
+                        {% endif %}
+                        
+                        <div class="image-overlay">
+                            <i class="fi fi-ss-camera"></i>
+                            <span>Alterar foto</span>
+                        </div>
+                    </div>
+                    
+                    <input type="file" name="image_user_profile" id="changePhoto" accept="image/*" class="hidden-file-input">
+                    
+                    <div class="photo-upload-info">
+                        <p>Formatos suportados: JPG, PNG</p>
+                        <p>Tamanho máximo: 5MB</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-save">
+                    <i class="fi fi-ss-check"></i> Salvar Foto
+                </button>
+            </form>
+        </div>
+        
+        <!-- Seção de Exclusão de Conta -->
+        <div class="profile-card danger-zone">
+            <h2><i class="fi fi-ss-trash"></i> Zona de Perigo</h2>
+            
+            <div class="danger-content">
+                <div class="danger-warning">
+                    <i class="fi fi-ss-exclamation-triangle"></i>
+                    <p>A exclusão da conta é permanente e não pode ser desfeita. Todos os seus dados serão removidos.</p>
+                </div>
+                
+                <a href="{% url 'userauths:user-delete' pk=user.pk %}" class="btn-danger" id="deleteProfile">
+                    <i class="fi fi-ss-trash"></i> Excluir Minha Conta
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         function preventAtSymbol(event) {
@@ -86,12 +147,54 @@
                 event.preventDefault();
             }
         }
-
+        
         const instaInput = document.getElementById('insta');
         const facebookInput = document.getElementById('facebook');
-
-        instaInput.addEventListener('keypress', preventAtSymbol);
-        facebookInput.addEventListener('keypress', preventAtSymbol);
+        
+        if (instaInput) instaInput.addEventListener('keypress', preventAtSymbol);
+        if (facebookInput) facebookInput.addEventListener('keypress', preventAtSymbol);
+        
+        const fileInput = document.getElementById('changePhoto');
+        const imagePreview = document.getElementById('profileImagePreview');
+        
+        if (fileInput && imagePreview) {
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        const closeButtons = document.querySelectorAll('.close-alert');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.alert-message').style.display = 'none';
+            });
+        });
+        
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.substring(0, 11);
+                
+                if (value.length > 0) {
+                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    if (value.length > 10) {
+                        value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                    } else {
+                        value = value.replace(/(\d{4})(\d)/, '$1-$2');
+                    }
+                }
+                
+                e.target.value = value;
+            });
+        }
     });
 </script>
 {% endblock content %}

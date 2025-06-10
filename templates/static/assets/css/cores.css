@@ -20,7 +20,7 @@
     --color-detail-hover: #6B8E23;
 }
 [data-theme="light"]{
-    --color-bg: #e4e4e4;
+    --color-bg: #f5f5f5;
     --color-fg: #000000;
     --color-fg-hover: #b8b8b8;
     --color-fg-reverse: #fff;

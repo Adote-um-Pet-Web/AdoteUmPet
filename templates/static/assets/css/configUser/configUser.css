@@ -1,69 +1,329 @@
-#changePhotoLabel{
-    background-color: var(--color-detail);
-    padding: 10px;    
-    border-radius: 7px;
-    transition: background-color 0.3s, color 0.3s, border-radius 0.3s,transform 0.3s;
+/* Estilos para Edição de Perfil */
+.profile-edit-section {
+    margin-left: 280px;
+    padding: 30px;
+    width: calc(100% - 350px);
 }
-#changePhotoLabel:hover{
-    background-color: var(--color-detail-hover);
-    transform: scale(1.05);
+
+.profile-header {
+    margin-bottom: 30px;
 }
-#profileImageDiv{
-    width: 200px;
-    height: 200px;
-    background-color: var(--color-card);
-    border-radius: 5px;
-    margin-right: 1.3rem;
-}
-#profileImageDiv img{
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-#photoDiv{
-    display: flex;
-    flex-direction: row;
-    align-items:end;
-    justify-content: left;
-}
-#inputDiv{
+
+.profile-header h1 {
     color: var(--color-fg);
+    font-size: 2rem;
+    margin: 0 0 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.profile-header h1 i {
+    margin-right: 10px;
+    color: var(--color-main);
+}
+
+.profile-header p {
+    color: var(--color-fg-light);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.profile-edit-container {
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    gap: 25px;
 }
-#inputDiv label{
-    margin-bottom: 0.5rem;
-}
-#inputDiv input{
-    margin-bottom: 2rem;
-    border-radius: 7px;
-    border: 3px solid var(--color-detail);
-    padding: 14px;
+
+.profile-card {
     background-color: var(--color-card);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border);
+}
+
+.profile-card h2 {
     color: var(--color-fg);
+    font-size: 1.3rem;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.profile-card h2 i {
+    margin-right: 10px;
+    color: var(--color-main);
+}
+
+.form-groups label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-fg);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-bg);
+    padding: 5px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.input-with-icon i {
+    color: var(--color-fg-light);
+    font-size: 1rem;
+}
+
+.input-with-icon input {
+    padding: 0;
+    margin: none !important;
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: var(--color-fg);
+    background-color: transparent;
+    outline: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.form-divider {
+    position: relative;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.form-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--color-border);
+    z-index: 1;
+}
+
+.form-divider span {
+    position: relative;
+    padding: 0 15px;
+    background-color: var(--color-card);
+    color: var(--color-fg-light);
+    font-size: 0.85rem;
+    z-index: 2;
+}
+
+.form-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: var(--color-main-light);
+    border-radius: 8px;
+    color: var(--color-main-dark);
+}
+
+.form-notice i {
+    color: var(--color-main);
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.form-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-main-dark);
+}
+
+.btn-save {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Foto de Perfil */
+.profile-photo-form {
+    margin-top: 20px;
+}
+
+.photo-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid var(--color-border);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.image-overlay span {
     font-size: 0.9rem;
 }
-#deletarPerfil{
-    background-color: transparent;
-    border: 2px solid red;
+
+.hidden-file-input {
+    display: none;
+}
+
+.photo-upload-info {
     text-align: center;
-    border-radius: 6px;
-    margin-top: 5rem;
-    padding: 10px;
+    color: var(--color-fg-light);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.photo-upload-info p {
+    margin: 5px 0;
+}
+
+/* Mensagens de Erro */
+.alert-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--color-error-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-error);
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+.alert-header i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.alert-header span {
+    flex-grow: 1;
+}
+
+.close-alert {
+    background: none;
+    border: none;
+    color: var(--color-error);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+}
+
+.error-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--color-error-dark);
+    font-size: 0.9rem;
+}
+
+.error-list li {
+    margin-bottom: 5px;
+}
+
+/* Zona de Perigo */
+.danger-zone {
+    border-left: 4px solid var(--color-error);
+}
+
+.danger-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.danger-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+    background-color: var(--color-error-light);
+    border-radius: 8px;
+}
+
+.danger-warning i {
+    color: var(--color-error);
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.danger-warning p {
+    margin: 0;
+    color: var(--color-error-dark);
+    font-size: 0.95rem;
+}
+
+.btn-danger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: rgba(255, 0, 0, 0.667);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
     font-size: 1rem;
-    width: 10%;
-    font-weight: 200;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-    color: var(--color-fg);
     text-decoration: none;
 }
-#deletarPerfil:hover{
-    background-color: rgba(255, 31, 31, 0.692);
-    transform: scale(1.05);
 
-}
-#phtoform{
-    margin-top: 3rem;
+.btn-danger:hover {
+    background-color: rgba(213, 0, 0, 0.685);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

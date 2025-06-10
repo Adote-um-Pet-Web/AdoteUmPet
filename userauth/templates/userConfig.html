@@ -2,20 +2,51 @@
 {% block content %}
 {% include "partials/configNav.html" %}
 <section class="configSection">
-    <h1>Aparencia</h1>
-    <h3>Cores</h3>
-    <ul class="configUl">
-        <li>Amarelo</li>
-        <li>Azul</li>
-        <li>Laranja</li>
-    </ul>
-    <button class="userUpdateBtn">aplicar</button>
-    <h3>Tema</h3>
-    <ul class="configUl">
-        <li>Claro</li>
-        <li>Escuro</li>
-        <li>automático</li>
-    </ul>
-    <button class="userUpdateBtn">aplicar</button>
+    <div class="config-header">
+        <h1><i class="fi fi-ss-palette"></i> Aparência</h1>
+        <p>Personalize a aparência do seu perfil</p>
+    </div>
+
+    <div class="config-card">
+        <h2><i class="fi fi-ss-paint-brush"></i> Cores do tema</h2>
+        <p>Selecione sua cor preferida</p>
+
+        <div class="color-options">
+            <div class="color-option selected" data-color="padrao">
+                <div class="color-preview" style="background: #ffc401"></div>
+                <span>Amarelo</span>
+            </div>
+            <div class="color-option" data-color="invertido">
+                <div class="color-preview" style="background: #46cbff"></div>
+                <span>Azul</span>
+            </div>
+            <div class="color-option" data-color="laranja">
+                <div class="color-preview" style="background: #FF8000"></div>
+                <span>Laranja</span>
+            </div>
+        </div>
+        <button class="btn-primary">Aplicar cor</button>
+    </div>
+
+    <div class="config-card">
+        <h2><i class="fi fi-ss-moon"></i> Tema</h2>
+        <p>Escolha entre modo claro ou escuro</p>
+
+        <div class="theme-options">
+            <div class="theme-option selected" data-theme="light">
+                <i class="fi fi-ss-sun"></i>
+                <span>Claro</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+                <i class="fi fi-ss-moon"></i>
+                <span>Escuro</span>
+            </div>
+            <div class="theme-option" data-theme="auto">
+                <i class="fi fi-ss-settings"></i>
+                <span>Automático</span>
+            </div>
+        </div>
+        <button class="btn-primary">Aplicar tema</button>
+    </div>
 </section>
 {% endblock content %}
