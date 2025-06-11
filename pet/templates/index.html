@@ -20,9 +20,9 @@
                 {% if pets.images_pets.first.image_pet_profile %}
                     <a href="{% url 'pets:pet_detail' pk=pets.id %}" class="card">
                         <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
-                        <h1>{{ pets.name }}</h1>
+                        <h1 class="pet-name">{{ pets.name }}</h1>
                         <div class="info">
-                            <p data-species="{{ pets.species }}"  class="pet-species"> {% if pets.get_species_display == "cat" %}Gato {% else %}Cachorro{% endif %}</p>
+                            <p data-species="{{ pets.species }}" class="pet-species"> {% if pets.get_species_display == "cat" %}Gato {% else %}Cachorro{% endif %}</p>
                             <p data-breed="{{ pets.breed }}" class="pet-breed">{{ pets.breed }}</p>
                             <p  data-size="{{ pets.size }}" class="pet-size">{{ pets.get_size_display }}</p>
                             <p data-age="{{ pets.age }}" class="pet-age">{{ pets.age }} anos</p>
@@ -39,6 +39,11 @@
                 <p>Volte mais tarde para conhecer novos amigos!</p>
             </div>
         {% endif %}
+        <div class="no-results-message no-pets-message" id="nopet" style="display: none;">
+            <img src="{% static 'assets/img/cat_sad.jpg' %}" alt="Nenhum pet encontrado">
+            <h2>Nenhum pet encontrado</h2>
+            <p>Tente alterar os termos da sua pesquisa.</p>
+        </div>
     </section>
 </main>
 

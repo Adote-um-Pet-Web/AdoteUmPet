@@ -104,3 +104,7 @@ textarea:focus{
         transform: translateX(0);
     }
 }
+
+.no-results-message{
+    width: calc(100% - 65px ) !important;
+}
