@@ -4,6 +4,7 @@
     padding: 25px;
     position: sticky;
     height: auto;
+    max-height: 27rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-radius: 16px;
     width: 18rem;
