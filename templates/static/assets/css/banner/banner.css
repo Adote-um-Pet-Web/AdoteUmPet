@@ -8,8 +8,7 @@
 #bannerArea {
     margin-top: 4.2rem;
     width: 100%;
-    max-height: 430px;
-    min-height: 390px;
+    height: 430px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,19 +31,18 @@
 }
 
 .slide {
-    position: absolute;
-    display: flex;
+    display: none;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
     cursor: pointer;
-    will-change: opacity, transform;
 }
 
 .slide.active {
-    opacity: 1;
-    z-index: 1;
+    display: block;
+}
+
+.slide:hover {
+    filter: brightness(0.95);
 }
 
 .slide img {
@@ -53,32 +51,26 @@
     object-fit: cover;
 }
 
-.slide:hover {
-    filter: brightness(0.95);
-}
-
 #sliderStatus {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     z-index: 2;
-    gap: 15px;
+    gap: 10px;
 }
 
 .dot {
     display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background-color: #bbb;
     border-radius: 50%;
-    margin: 0 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .dot.active {
     background-color: #717171;
-    transform: scale(1.2);
 }
 
 .dot:hover {
@@ -116,6 +108,12 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+@media (max-width: 1024px) {
+    #bannerArea {
+        height: 380px;
+    }
+}
+
 @media (max-width: 768px) {
     #bannerArea {
         height: 300px;
@@ -124,6 +122,21 @@
 
     .slider-nav {
         padding: 10px 7px;
-        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    #bannerArea {
+        height: 250px;
+        margin-top: 3.2rem;
+    }
+
+    #sliderStatus {
+        margin-top: 15px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
     }
 }
