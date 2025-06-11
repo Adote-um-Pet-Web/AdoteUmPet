@@ -1,52 +1,114 @@
-#petDetail #t1{
+/* Layout principal */
+.pet-profile {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+    gap: 1rem;
+}
+
+/* Cabeçalho - versão mobile */
+.pet-header {
     flex-direction: column;
-}
-#petDetail #titulo img{
-    width: 6rem;
-    height: 6rem;
-}
-#petDetail #titulo h1{
-    width: 60%;
-    text-align: right;
-}
-#petDetail #titulo {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-#petDetail #t1 #btns{
-    font-size: 1rem;
-    justify-content: space-around;
-    margin-top: 1rem;
-}
-#petDetail #t1 #btns form button{
-    font-size: 1rem;
-    display: block;
-    text-align: left;
-}
-#petDetail #t1 #btns a{
-    font-size: 1rem;
-}
-#queroAdotar{
-    padding: .8rem;
-}
-#petDetail #main{
-    flex-direction: column;
-}
-#galeria{
-    position: relative;
-    width: 80%;
-    margin-bottom: 10px;
-}
-#details{
-    width: 80%;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
     align-items: center;
+    height: 17rem;
 }
-#details section{
+
+.pet-avatar-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 70%;
+}
+
+.pet-avatar {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+}
+
+.pet-meta {
+    align-items: center;
     width: 100%;
 }
-#petDetail #main{
-    align-items: center;
+
+.pet-name {
+    font-size: 1.8rem;
+    white-space: normal;
+    word-break: break-word;
+    width: 100%;
+}
+
+.pet-basic-info {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.pet-basic-info span {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    margin: 0.2rem;
+}
+
+/* Ações */
+.pet-actions {
+    justify-content: center;
+    width: 100%;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    flex-grow: 1;
+    min-width: 120px;
+    justify-content: center;
+    padding: 0.8rem;
+}
+
+/* Conteúdo */
+.pet-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/* Galeria */
+.gallery-thumbnails {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-thumbnails img {
+    height: 80px;
+}
+
+/* Informações */
+.info-list {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+}
+
+.info-item.full-width {
+    grid-column: 1;
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 400px) {
+    .pet-header {
+        padding: 1.2rem 0.5rem;
+    }
+
+    .action-btn {
+        min-width: calc(50% - 0.5rem);
+    }
+
+    .action-btn span {
+        display: none;
+    }
+
+    .action-btn i {
+        margin: 0;
+        font-size: 1.2rem;
+    }
 }

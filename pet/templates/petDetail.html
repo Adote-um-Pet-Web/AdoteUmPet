@@ -1,127 +1,251 @@
-{% extends "base.html" %} {% load static %} {% block title %}Informações do
-Pet{% endblock title %} {% block content %}
-<div id="petDetail">
-    <div id="t1">
-        <div id="titulo">
-            <img src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}">
-            <h1>Oi, eu sou {% if pet.sex == "Female" %}a {% else %}o {% endif %} <span style="text-transform: capitalize;">{{ pet.name }}</span>!</h1>
-        </div>
-        <div id="btns">
-            <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}">
-                {% csrf_token %}
-                <button type="submit" id="favoritar">
-                    {% if is_favorited %}
-                    <i style="color: #b40000;" class="fi fi-sr-heart" id="coracao"></i>
-                {% else %}
-                    <i style="color: #fff;" class="fi fi-sr-heart" id="coracao"></i>
-                {% endif %}
-                    Favoritar
-                </button>
-            </form>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Informações do Pet{% endblock title %}
 
-
-            <form method="post" action="{% url 'adoption:adoption-pet' pk=pet.pk %}">
-                {% csrf_token %}
-                <button type="submit" id="queroAdotar">
-                    <i class="fi fi-sr-star"></i>
-                    Adotar
-                </button>
-            </form>
-
-            <form method="post" action="{% url 'adoption:share-pet' pk=pet.pk %}">
-                {% csrf_token %}
-                <button id="compartilharBtn" type="submit">
-                    <i class="fi fi-sr-share"></i>
-                    Compartilhar
-                </button>
-            </form>
-
-        </div>
-    </div>
-<div id="main">
-            <!-- Galeria de Fotos -->
-            <section id="galeria">
-                <h2>Galeria de Fotos</h2>
-                <div id="bigPhoto" class="big-photo">
-                    <img id="mainPhoto" src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}">
+{% block content %}
+<div class="pet-profile">
+    <!-- Cabeçalho com foto e ações -->
+    <header class="pet-header">
+        <div class="pet-avatar-container">
+            <img src="{{ pet.images_pets.first.image_pet_profile.url }}" 
+                 alt="Foto de perfil do pet {{ pet.name }}"
+                 class="pet-avatar">
+            <div class="pet-meta">
+                <h1 class="pet-name">
+                    Oi, eu sou {% if pet.sex == "Female" %}a {% else %}o {% endif %}
+                    <span>{{ pet.name|title }}</span>!
+                </h1>
+                <div class="pet-basic-info">
+                    <span class="pet-breed"><i class="fi fi-sr-paw"></i> {{ pet.breed }}</span>
+                    <span class="pet-age"><i class="fi fi-sr-calendar"></i> {{ pet.age }} anos</span>
+                    <span class="pet-size">
+                        <i class="fi fi-sr-ruler-combined"></i>
+                        {% if pet.size == "SMALL" %}Pequeno
+                        {% elif pet.size == "Medium" %}Médio
+                        {% else %}Grande{% endif %}
+                    </span>
                 </div>
-                <div class="gallery">
-                    <img src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
-                    <img src="{{ pet.images_pets.first.image_pet_datail1.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
-                    <img src="{{ pet.images_pets.first.image_pet_datail2.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
-                    <img src="{{ pet.images_pets.first.image_pet_datail3.url }}" alt="Foto de perfil do pet {{ pet.name }}" onclick="changePhoto(this)">
-                </div>
-            </section>
-
-            <div id="modal" class="modal">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <img class="modal-content" id="modalImage">
             </div>
+        </div>
 
-    <div id="details">
-        <!-- Informações básicas -->
-        <section id="informacoes-basicas">
-            <h2>Informações Básicas</h2>
-            <ul>
-                <li><strong>Nome:</strong> {{ pet.name }}</li>
-                <li><strong>Idade:</strong> {{ pet.age }} anos</li>
-                <li><strong>Especie:</strong> {% if pet.species == "DOG" %} Cachorro {% else %} Gato{% endif %}</li>
-                <li><strong>Cor:</strong> {{ pet.color }}</li>
-                <li><strong>Raça:</strong> {{ pet.breed }}</li>
-                <li><strong>Peso:</strong> {{ pet.weight }}kg</li>
-                <li><strong>Genero:</strong> {% if pet.sex == "Male" %} Macho {% else %} Femea{% endif %}</li>
-                <li>
-                    <strong>Tamanho:</strong>
-                    {% if pet.size == "SMALL" %}
-                      Pequeno
-                    {% elif pet.size == "Medium" %}
-                      Medio
-                    {% else %}
-                      Grande
-                    {% endif %}
-                  </li>
-                <li><strong>Altura:</strong> {{ pet.heigth }}cm</li>
-                <li style="text-transform: capitalize;"><strong>Atual Cuidador:</strong> {{ pet.owner }}</li>
-            </ul>
+        <div class="pet-actions">
+            <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}" class="action-form">
+                {% csrf_token %}
+                <button type="submit" class="action-btn favorite-btn">
+                    <i class="fi fi-sr-heart"></i>
+                    <span>Favoritar</span>
+                </button>
+            </form>
+
+            <form method="post" action="{% url 'adoption:adoption-pet' pk=pet.pk %}" class="action-form">
+                {% csrf_token %}
+                <button type="submit" class="action-btn adopt-btn">
+                    <i class="fi fi-sr-star"></i>
+                    <span>Adotar</span>
+                </button>
+            </form>
+
+            <form method="post" action="{% url 'adoption:share-pet' pk=pet.pk %}" class="action-form">
+                {% csrf_token %}
+                <button type="submit" class="action-btn share-btn">
+                    <i class="fi fi-sr-share"></i>
+                    <span>Compartilhar</span>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="pet-content">
+        <!-- Galeria de fotos -->
+        <section class="pet-gallery">
+            <div class="gallery-main">
+                <img id="mainPhoto" 
+                     src="{{ pet.images_pets.first.image_pet_profile.url }}" 
+                     alt="Foto do pet {{ pet.name }}"
+                     class="main-photo">
+                <div class="gallery-controls">
+                    <button class="gallery-nav prev-btn" onclick="prevPhoto()">
+                        <i class="fi fi-sr-angle-left"></i>
+                    </button>
+                    <button class="gallery-nav next-btn" onclick="nextPhoto()">
+                        <i class="fi fi-sr-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="gallery-thumbnails">
+                <img src="{{ pet.images_pets.first.image_pet_profile.url }}" 
+                     alt="Foto do pet {{ pet.name }}"
+                     onclick="changePhoto(this)">
+                <img src="{{ pet.images_pets.first.image_pet_datail1.url }}" 
+                     alt="Foto do pet {{ pet.name }}"
+                     onclick="changePhoto(this)">
+                <img src="{{ pet.images_pets.first.image_pet_datail2.url }}" 
+                     alt="Foto do pet {{ pet.name }}"
+                     onclick="changePhoto(this)">
+                <img src="{{ pet.images_pets.first.image_pet_datail3.url }}" 
+                     alt="Foto do pet {{ pet.name }}"
+                     onclick="changePhoto(this)">
+            </div>
         </section>
 
-        <!-- Histórico -->
-        <section id="historico">
-            <h2>História</h2>
-            <p>
-               {{pet.history_pet.first.history}}
-            </p>
-        </section>
+        <!-- Informações do pet -->
+        <section class="pet-info">
+            <div class="pet-info-container">
+                <div class="info-section">
+                    <h2 class="section-title">
+                        <i class="fi fi-sr-info"></i>
+                        Informações Básicas
+                    </h2>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-paw"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Espécie</span>
+                                <span class="info-value">
+                                    {% if pet.species == "DOG" %}Cachorro{% else %}Gato{% endif %}
+                                </span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-venus-mars"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Gênero</span>
+                                <span class="info-value">
+                                    {% if pet.sex == "Male" %}Macho{% else %}Fêmea{% endif %}
+                                </span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-palette"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Cor</span>
+                                <span class="info-value">{{ pet.color }}</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-scale"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Peso</span>
+                                <span class="info-value">{{ pet.weight }} kg</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-ruler-vertical"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Altura</span>
+                                <span class="info-value">{{ pet.heigth }} cm</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-user"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Cuidador</span>
+                                <span class="info-value">{{ pet.owner|title }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-        <!-- Histórico Médico -->
-        <section id="historico-medico">
-            <h2>Histórico Médico</h2>
-            <ul>
-                <li><strong>Ja foi castrado? </strong> {% if pet.medical_records.first.castreated == True %} Sim {% else %}Nao{% endif %}</li>
-                <li><strong>ja foi vacinado?</strong> {% if pet.medical_records.first.vaccines == True %} Sim{% else %} Nao{% endif %}</li>
-                {% if pet.medical_records.first.vaccines == True %}
-                <p><strong> Descrição da vacina:</strong>  {{ pet.medical_records.first.vaccine_description}}</p>
-                {% endif %}
-                <li><strong>tem algum parasita? </strong> {% if  pet.medical_records.first.dewormed == True %} Sim{% else %} Nao{% endif %}</li>
-                {% if pet.medical_records.first.dewormed == True %}
-                <p><strong> Descrição do parasita :</strong>  {{ pet.medical_records.first.dewormer_description}}</p>
-                {% endif %}
-                <p><strong> Histórico Médico: </strong>  {{ pet.medical_records.first.medical_history}}</p>
-            </ul>
-        </section>
+                <div class="info-section">
+                    <h2 class="section-title">
+                        <i class="fi fi-sr-book"></i>
+                        História de vida
+                    </h2>
+                    <div class="text-content">
+                        <p>{{ pet.history_pet.first.history }}</p>
+                    </div>
+                </div>
 
-        <!-- Observacoes -->
-        <section id="Observacoes">
-            <h2>Observacoes</h2>
-            <p>
-                {{pet.history_pet.first.observations}}
-            </p>
+                <div class="info-section">
+                    <h2 class="section-title">
+                        <i class="fi fi-sr-medical-star"></i>
+                        Histórico Médico
+                    </h2>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-hospital"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Castrado</span>
+                                <span class="info-value">
+                                    {% if pet.medical_records.first.castreated %}Sim{% else %}Não{% endif %}
+                                </span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-syringe"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Vacinado</span>
+                                <span class="info-value">
+                                    {% if pet.medical_records.first.vaccines %}Sim{% else %}Não{% endif %}
+                                </span>
+                            </div>
+                        </li>
+                        {% if pet.medical_records.first.vaccines %}
+                        <li class="info-item full-width">
+                            <div class="info-icon"><i class="fi fi-sr-file-medical"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Vacinas</span>
+                                <span class="info-value">{{ pet.medical_records.first.vaccine_description }}</span>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fi fi-sr-bug"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Vermifugado</span>
+                                <span class="info-value">
+                                    {% if pet.medical_records.first.dewormed %}Sim{% else %}Não{% endif %}
+                                </span>
+                            </div>
+                        </li>
+                        {% if pet.medical_records.first.dewormed %}
+                        <li class="info-item full-width">
+                            <div class="info-icon"><i class="fi fi-sr-file-medical"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Vermífugo</span>
+                                <span class="info-value">{{ pet.medical_records.first.dewormer_description }}</span>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li class="info-item full-width">
+                            <div class="info-icon"><i class="fi fi-sr-notes-medical"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">Histórico Médico</span>
+                                <span class="info-value">{{ pet.medical_records.first.medical_history }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h2 class="section-title">
+                        <i class="fi fi-sr-comment-alt"></i>
+                        Observações
+                    </h2>
+                    <div class="text-content">
+                        <p>{{ pet.history_pet.first.observations }}</p>
+                    </div>
+                </div>
+            </div>
         </section>
+    </main>
+
+    <!-- Modal para visualização de foto -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-controls">
+            <button class="modal-nav prev-btn" onclick="modalPrevPhoto()">
+                <i class="fi fi-sr-angle-left"></i>
+            </button>
+            <button class="modal-nav next-btn" onclick="modalNextPhoto()">
+                <i class="fi fi-sr-angle-right"></i>
+            </button>
+        </div>
     </div>
-
 </div>
 
-    <script src="{% static 'assets/js/petDetail.js'%}"></script>
-
-</div>
+<script src="{% static 'assets/js/petDetail.js' %}"></script>
 {% endblock content %}
