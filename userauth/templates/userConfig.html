@@ -1,5 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %} 
 {% include "partials/configNav.html" %}
 <section class="configSection">
     <div class="config-header">
@@ -12,16 +11,16 @@
         <p>Selecione sua cor preferida</p>
 
         <div class="color-options">
-            <div class="color-option selected" data-color="padrao">
+            <div class="color-option" data-color="padrao">
                 <div class="color-preview" style="background: #ffc401"></div>
                 <span>Amarelo</span>
             </div>
             <div class="color-option" data-color="invertido">
-                <div class="color-preview" style="background: #46cbff"></div>
-                <span>Azul</span>
+                <div class="color-preview" style="background: #9c27b0"></div>
+                <span>Roxo</span>
             </div>
             <div class="color-option" data-color="laranja">
-                <div class="color-preview" style="background: #FF8000"></div>
+                <div class="color-preview" style="background: #ff8000"></div>
                 <span>Laranja</span>
             </div>
         </div>
@@ -33,7 +32,7 @@
         <p>Escolha entre modo claro ou escuro</p>
 
         <div class="theme-options">
-            <div class="theme-option selected" data-theme="light">
+            <div class="theme-option" data-theme="light">
                 <i class="fi fi-ss-sun"></i>
                 <span>Claro</span>
             </div>
