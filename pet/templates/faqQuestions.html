@@ -1,14 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
 <style>
     .container {
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        background-color: #fff;
+        background-color: var(--color-card);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: var(--color-fg);
+    }
+    
+    .faq-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 20px;
+    }
+    
+    .faq-header h1 {
+        color: var(--color-main);
+        font-size: 2.5rem;
+    }
+    
+    .faq-header p {
+        color: var(--color-fg);
+        opacity: 0.8;
+        font-size: 1.1rem;
+    }
+    
+    .faq-item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 20px;
+    }
+    
+    .faq-question {
+        font-weight: bold;
+        color: var(--color-main);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    
+    .faq-question:hover {
+        color: var(--color-main-hover);
+    }
+    
+    .faq-answer {
+        color: var(--color-fg);
+        line-height: 1.6;
+        opacity: 0.9;
+    }
+    
+    .faq-answer ul {
+        padding-left: 20px;
+    }
+    
+    .faq-answer li {
+        margin-bottom: 8px;
+    }
+    
+    .contact-info {
+        background-color: var(--color-bg);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 40px;
+        border: 1px solid var(--color-border);
+    }
+    
+    .contact-info h3 {
+        color: var(--color-detail);
+        margin-bottom: 15px;
+    }
+    
+    .contact-info a {
+        color: var(--color-detail);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .contact-info a:hover {
+        color: var(--color-detail-hover);
+        text-decoration: underline;
     }
 </style>
-<div class="container"></div>
 
+<div class="container">
+    <div class="faq-header">
+        <h1>Perguntas Frequentes</h1>
+        <p>Tire suas dúvidas sobre como funciona nosso site de adoção de animais</p>
+    </div>
+    
+    <div class="faq-content">
+        <div class="faq-item">
+            <div class="faq-question">1. Como funciona o site?</div>
+            <div class="faq-answer">
+                Nosso site é uma plataforma que divulga animais disponíveis para adoção. Os anúncios são criados por pessoas que estão doando seus pets ou por protetores independentes. O contato para adoção é feito diretamente entre as partes interessadas.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">2. O site intermediaria a adoção?</div>
+            <div class="faq-answer">
+                Não, nosso papel é apenas divulgar os animais disponíveis. Todo o processo de adoção (contato, entrevista, visita e entrega do animal) é realizado diretamente entre o doador e o adotante.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">3. Como entro em contato com o doador?</div>
+            <div class="faq-answer">
+                Cada anúncio contém as informações de contato fornecidas pelo doador. Normalmente você encontrará um número de telefone, e-mail ou rede social para entrar em contato diretamente com a pessoa responsável pelo animal.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">4. Posso confiar nos anúncios?</div>
+            <div class="faq-answer">
+                Embora façamos o possível para manter a qualidade dos anúncios, recomendamos sempre:
+                <ul>
+                    <li>Conhecer pessoalmente o animal antes de adotar</li>
+                    <li>Visitar o local onde o pet está sendo cuidado</li>
+                    <li>Pedir informações sobre saúde e comportamento do animal</li>
+                    <li>Desconfiar de anúncios que pareçam suspeitos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">5. Como faço para doar um animal?</div>
+            <div class="faq-answer">
+                Você pode cadastrar o animal no nosso site fornecendo informações básicas como fotos, características e seus dados de contato. Lembre-se de ser transparente sobre o histórico de saúde e comportamento do pet para garantir uma adoção responsável.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">6. Há algum custo para usar o site?</div>
+            <div class="faq-answer">
+                Não, nosso serviço é completamente gratuito tanto para quem quer adotar quanto para quem quer doar um animal. Nosso objetivo é ajudar os animais a encontrarem um lar amoroso.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">7. O que fazer se encontrar um anúncio suspeito?</div>
+            <div class="faq-answer">
+                Caso encontre algum anúncio que pareça falso, mal-intencionado ou que esteja violando nossas políticas, por favor entre em contato conosco através dos canais de suporte para que possamos verificar a situação.
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact-info">
+        <h3>Ainda tem dúvidas?</h3>
+        <p>Entre em contato conosco pelo e-mail: <a href="mailto:contato@adoteumpet.com">contato@adoteumpet.com</a></p>
+        <p>Ou através das nossas redes sociais: <a href="#">@adoteumpet</a></p>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+</script>
 {% endblock content %}
