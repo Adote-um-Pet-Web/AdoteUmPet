@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var display = computedStyle.getPropertyValue("display");
 
         if (display === "none") {
-            navbar.style.display = "block";
+            navbar.style.display = "flex";
             navbar.style.animation = "slideLeft 0.3s ease forwards";
             arrow.innerHTML = "&#x25B4;";
-        } else if (display === "block") {
+        } else if (display === "flex") {
             navbar.style.animation = "slideRight 0.3s ease forwards";
             setTimeout(() => {
                 navbar.style.display = "none";
@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
         var display = computedStyle.getPropertyValue("display");
 
         if (display === "none") {
-            navbarM.style.display = "block";
+            navbarM.style.display = "flex";
             arrowM.innerHTML = "&#x25B4;";
-        } else if (display === "block") {
+        } else if (display === "flex") {
             navbarM.style.display = "none";
             arrowM.innerHTML = "&#x25BE;";
         }
@@ -42,9 +42,9 @@ function showBreeds(species) {
     var catCheckbox = document.getElementById("cat");
 
     if (species === "dog") {
-        breedListDog.style.display = dogCheckbox.checked ? "block" : "none";
+        breedListDog.style.display = dogCheckbox.checked ? "flex" : "none";
     } else if (species === "cat") {
-        breedListCat.style.display = catCheckbox.checked ? "block" : "none";
+        breedListCat.style.display = catCheckbox.checked ? "flex" : "none";
     }
 }
 

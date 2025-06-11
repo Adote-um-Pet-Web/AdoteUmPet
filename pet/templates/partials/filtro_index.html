@@ -1,80 +1,124 @@
 {% load static %}
 <nav class="navbar">
-    <div class="filter-section">
-        <h3 id="speciesTitle" class="filter-title">
-            Espécie
-            <span id="speciesTitleArrow" class="arrow">&#x25BE;</span>
-        </h3>
-        <ul id="speciesList" class="hidden">
-            <li>
-                <input type="checkbox" id="dog" value="DOG" />
-                <label for="dog">Cachorro</label>
-            </li>
-            <li>
-                <input type="checkbox" id="cat" value="CAT" />
-                <label for="cat">Gato</label>
-            </li>
-        </ul>
+    <div>
+        <div class="filter-section">
+            <div class="filter-header">
+                <h3 id="speciesTitle" class="filter-title">
+                    Espécie
+                </h3>
+                <span id="speciesTitleArrow" class="arrow">&#x25BE;</span>
+            </div>
+            <ul id="speciesList" class="hidden">
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="dog" value="DOG" />
+                        <span class="checkmark"></span>
+                        Cachorro
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="cat" value="CAT" />
+                        <span class="checkmark"></span>
+                        Gato
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-header">
+                <h3 id="sizeTitle" class="filter-title">
+                    Tamanho
+                </h3>
+                <span id="sizeTitleArrow" class="arrow">&#x25BE;</span>
+            </div>
+            <ul id="sizeList" class="hidden">
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="sizeSmall" value="SMALL" />
+                        <span class="checkmark"></span>
+                        Pequeno
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="sizeMedium" value="MEDIUM" />
+                        <span class="checkmark"></span>
+                        Médio
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="sizeLarge" value="LARGE" />
+                        <span class="checkmark"></span>
+                        Grande
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-header">
+                <h3 id="ageTitle" class="filter-title">
+                    Idade
+                </h3>
+                <span id="ageTitleArrow" class="arrow">&#x25BE;</span>
+            </div>
+            <ul id="ageList" class="hidden">
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="age1" value="0-1" />
+                        <span class="checkmark"></span>
+                        0-1 ano
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="age2" value="1-3" />
+                        <span class="checkmark"></span>
+                        1-3 anos
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="age3" value="3-5" />
+                        <span class="checkmark"></span>
+                        3-5 anos
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="age4" value="5+" />
+                        <span class="checkmark"></span>
+                        5+
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-header">
+                <h3 id="genderTitle" class="filter-title">
+                    Sexo
+                </h3>
+                <span id="genderTitleArrow" class="arrow">&#x25BE;</span>
+            </div>
+            <ul id="genderList" class="hidden">
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="genderMale" value="Male" />
+                        <span class="checkmark"></span>
+                        Macho
+                    </label>
+                </li>
+                <li>
+                    <label class="filter-option">
+                        <input type="checkbox" id="genderFemale" value="Female" />
+                        <span class="checkmark"></span>
+                        Fêmea
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="filter-section">
-        <h3 id="sizeTitle" class="filter-title">
-            Tamanho
-            <span id="sizeTitleArrow" class="arrow">&#x25BE;</span>
-        </h3>
-        <ul id="sizeList" class="hidden">
-            <li>
-                <input type="checkbox" id="sizeSmall" value="SMALL" />
-                <label for="sizeSmall">Pequeno</label>
-            </li>
-            <li>
-                <input type="checkbox" id="sizeMedium" value="MEDIUM" />
-                <label for="sizeMedium">Médio</label>
-            </li>
-            <li>
-                <input type="checkbox" id="sizeLarge" value="LARGE" />
-                <label for="sizeLarge">Grande</label>
-            </li>
-        </ul>
-    </div>
-    <div class="filter-section">
-        <h3 id="ageTitle" class="filter-title">
-            Idade
-            <span id="ageTitleArrow" class="arrow">&#x25BE;</span>
-        </h3>
-        <ul id="ageList" class="hidden">
-            <li>
-                <input type="checkbox" id="age1" value="0-1" />
-                <label for="age1">0-1 ano</label>
-            </li>
-            <li>
-                <input type="checkbox" id="age2" value="1-3" />
-                <label for="age2">1-3 anos</label>
-            </li>
-            <li>
-                <input type="checkbox" id="age3" value="3-5" />
-                <label for="age3">3-5 anos</label>
-            </li>
-            <li>
-                <input type="checkbox" id="age4" value="5+" />
-                <label for="age4">5+</label>
-            </li>
-        </ul>
-    </div>
-    <div class="filter-section">
-        <h3 id="genderTitle" class="filter-title">
-            Sexo
-            <span id="genderTitleArrow" class="arrow">&#x25BE;</span>
-        </h3>
-        <ul id="genderList" class="hidden">
-            <li>
-                <input type="checkbox" id="genderMale" value="Male" />
-                <label for="genderMale">Macho</label>
-            </li>
-            <li>
-                <input type="checkbox" id="genderFemale" value="Female" />
-                <label for="genderFemale">Fêmea</label>
-            </li>
-        </ul>
-    </div>
-    <button id="filterBtn">Filtrar</button>
+
+    <button id="filterBtn" class="modern-btn">Filtrar</button>
 </nav>
