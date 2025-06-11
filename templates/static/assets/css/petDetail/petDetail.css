@@ -81,8 +81,12 @@
     font-size: 0.9rem;
     color: var(--color-fg);
     white-space: nowrap;
+    display: flex;
+    flex-direction: row;
 }
-
+.pet-basic-info span i{
+    margin-right: 10px;
+}
 /* Ações */
 .pet-actions {
     display: flex;
