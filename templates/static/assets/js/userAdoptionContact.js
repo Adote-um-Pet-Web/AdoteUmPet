@@ -12,7 +12,6 @@ function downloadImage() {
         img.style.height = "140px";
     });
     
-    // Capturar com escala maior
     html2canvas(container, {
         scale: 3, 
         useCORS: true,

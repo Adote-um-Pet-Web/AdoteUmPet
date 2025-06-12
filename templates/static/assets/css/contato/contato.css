@@ -54,7 +54,7 @@
     flex: 1;
 }
 
-.profile-image {
+.profile-image-contact {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -91,7 +91,7 @@
     gap: 2rem;
 }
 
-.info-section {
+.info-section-page {
     background: rgba(0, 0, 0, 0.03);
     padding: 1.5rem;
     border-radius: 12px;

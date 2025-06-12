@@ -1,58 +1,6 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
+
 <style>
-    :root {
-        --gradient-instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    }
-
-    .containerInsta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3rem;
-        padding: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        align-items: flex-start;
-    }
-
-    .controls-section {
-        flex: 1;
-        min-width: 300px;
-        max-width: 450px;
-        display: flex;
-        flex-direction: column;
-        padding: 1.5rem;
-        background: var(--color-card);
-        color: var(--color-fg);
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .canvas-section {
-        flex: 1;
-        min-width: 300px;
-        display: flex;
-        justify-content: center;
-        position: sticky;
-        top: 2rem;
-    }
-
-    #canvas {
-        background: linear-gradient(135deg, var(--color-main) 0%, var(--color-detail-hover) 100%);
-        width: 350px;
-        height: 622px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        border-radius: 30px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-    }
-
     #canvas::before {
         content: "";
         position: absolute;
@@ -60,316 +8,26 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url("{% static 'assets/img/backgroundShared.png' %}") center/cover;
+        background: url("{% static 'assets/img/backgroundShared.png' %}")
+            center/cover;
         opacity: 0.1;
         z-index: 0;
-    }
-
-    #canvas > * {
-        position: relative;
-        z-index: 2;
-    }
-
-    .post-header {
-        text-align: center;
-        width: 100%;
-    }
-
-    .post-header h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        font-weight: 900;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-        color: #fff;
-    }
-
-    .post-header h3 {
-        margin: 0.5rem 0 0 0;
-        font-size: 2rem;
-        color: white;
-        font-weight: 700;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .pet-avatar {
-        width: 140px;
-        height: 540px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 5px solid rgba(255, 255, 255, 0.95);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease;
-    }
-
-    .pet-avatar:hover {
-        transform: scale(1.05);
-    }
-
-    #instaInfo {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 1.5rem;
-        width: calc(100% - 3rem);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        margin: 1rem 0;
-    }
-
-    #instaInfo ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-
-    #instaInfo li {
-        display: flex;
-        align-items: center;
-        font-size: 1.1rem;
-    }
-
-    #instaInfo li:last-child {
-        border-bottom: none;
-    }
-
-    #instaInfo li i {
-        margin-right: 0.4rem;
-        font-size: 1.4rem;
-        min-width: 24px;
-        color: var(--color-main);
-    }
-
-    #instaInfo li strong {
-        margin-left: 0.5rem;
-        font-weight: 600;
-    }
-
-    .contact-badge {
-        background: white;
-        color: #333;
-        border-radius: 50px;
-        padding: 0.8rem 1.5rem;
-        font-size: 1.1rem;
-        font-weight: 700;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        display: inline-flex;
-        align-items: center;
-        margin-bottom: 1rem;
-        transition: all 0.3s ease;
-    }
-
-    .contact-badge:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .contact-badge i {
-        margin-right: 0.8rem;
-        color: var(--color-main);
-        font-size: 1.3rem;
-    }
-
-    .page-title {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        color: var(--color-main);
-        font-weight: 700;
-        position: relative;
-        padding-bottom: 0.5rem;
-    }
-
-    .page-title::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: var(--gradient-instagram);
-        border-radius: 2px;
-    }
-
-    .action-buttons {
-        display: flex;
-        gap: 1rem;
-        margin: 2rem 0;
-    }
-
-    .action-btn {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .action-btn i {
-        margin-right: 0.8rem;
-        font-size: 1.2rem;
-    }
-
-    .download-btn {
-        background: var(--color-main);
-        color: white;
-    }
-
-    .download-btn:hover {
-        background: var(--color-main-hover);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .share-btn {
-        background: white;
-        color: var(--color-main);
-        border: 2px solid var(--color-main);
-    }
-
-    .share-btn:hover {
-        background: var(--color-main-light);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .pet-details {
-        background: var(--color-card);
-        padding: 1.5rem;
-        border-radius: 16px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        margin-top: 1.5rem;
-    }
-
-    .pet-details h3 {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-        color: var(--color-main);
-        display: flex;
-        align-items: center;
-    }
-
-    .pet-details h3 i {
-        margin-right: 0.8rem;
-        color: var(--color-main);
-    }
-
-    .detail-item {
-        display: flex;
-        margin-bottom: 0.8rem;
-        padding-bottom: 0.8rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .detail-item:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
-
-    .detail-label {
-        font-weight: 600;
-        color: var(--color-main);
-        min-width: 80px;
-    }
-
-    .detail-value {
-        color: #555;
-    }
-
-    /* Decorative elements */
-    .corner-decoration {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        z-index: 1;
-    }
-
-    .corner-1 {
-        top: -30px;
-        left: -30px;
-    }
-
-    .corner-2 {
-        bottom: -30px;
-        right: -30px;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 992px) {
-        .containerInsta {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .controls-section {
-            max-width: 100%;
-            order: 2;
-        }
-        
-        .canvas-section {
-            position: static;
-            order: 1;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .action-buttons {
-            flex-direction: column;
-        }
-        
-        #canvas {
-            width: 100%;
-            max-width: 350px;
-            height: 622px;
-            padding: 1.5rem;
-        }
-        
-        .post-header h1 {
-            font-size: 2rem;
-        }
-        
-        .post-header h3 {
-            font-size: 1.6rem;
-        }
-    }
-
-    /* Animation */
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    .pet-avatar {
-        animation: float 4s ease-in-out infinite;
     }
 </style>
 
 <div class="containerInsta">
     <div class="controls-section">
         <h1 class="page-title">Compartilhe esse Pet</h1>
-        <p>Gere uma imagem personalizada para compartilhar nas redes sociais e ajudar {{ pet.name }} a encontrar um lar!</p>
+        <p>
+            Gere uma imagem personalizada para compartilhar nas redes sociais e
+            ajudar {{ pet.name }} a encontrar um lar!
+        </p>
 
         <div class="action-buttons">
             <button class="action-btn download-btn" id="download">
                 <i class="fi fi-sr-download"></i> Baixar
             </button>
-            <button class="action-btn share-btn" id="share">
+            <button class="action-btn share-btn-photo" id="share">
                 <i class="fi fi-sr-share"></i> Compartilhar
             </button>
         </div>
@@ -379,25 +37,37 @@
         <div id="canvas">
             <div class="corner-decoration corner-1"></div>
             <div class="corner-decoration corner-2"></div>
-            
+
             <div class="post-header">
                 <h1>ADOTE</h1>
                 <h3>{{ pet.name|upper }}</h3>
             </div>
 
-            <img class="pet-avatar" src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="{{ pet.name }}" />
+            <img
+                class="pet-avatar-share"
+                src="{{ pet.images_pets.first.image_pet_profile.url }}"
+                alt="{{ pet.name }}"
+            />
 
             <div id="instaInfo">
                 <ul>
-                    <li><i class="fi fi-sr-cake-birthday"></i> Idade: <strong>{{ pet.age }} anos</strong></li>
-                    <li><i class="fi fi-sr-palette"></i> Cor: <strong>{{ pet.color }}</strong></li>
-                    <li><i class="fi fi-sr-venus-mars"></i> Sexo: <strong>{{ pet.get_sex_display }}</strong></li>
-                    <li><i class="fi fi-sr-ruler-combined"></i> Porte: <strong>{{ pet.get_size_display }}</strong></li>
+                    <li>
+                        <i class="fi fi-sr-cake-birthday"></i> Idade:
+                        <strong>{{ pet.age }} anos</strong>
+                    </li>
+                    <li>
+                        <i class="fi fi-sr-venus-mars"></i> Sexo:
+                        <strong>{{ pet.get_sex_display }}</strong>
+                    </li>
+                    <li>
+                        <i class="fi fi-sr-ruler-combined"></i> Porte:
+                        <strong>{{ pet.get_size_display }}</strong>
+                    </li>
                 </ul>
             </div>
 
             <div class="contact-badge">
-                <i class="fi fi-sr-phone-call"></i> @adoteUmPet
+                <i class="fi fi-sr-phone-call"></i> {{ owner.phone_number}}
             </div>
         </div>
     </div>

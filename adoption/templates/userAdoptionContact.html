@@ -12,9 +12,9 @@
         <div class="contact-profiles">
             <div class="profile-section">
                 {% if owner.image_user_profile %}
-                <img class="profile-image" src="{{ owner.image_user_profile.url }}" alt="Foto de perfil do dono: {{ owner.username }}"/>
+                <img class="profile-image-contact" src="{{ owner.image_user_profile.url }}" alt="Foto de perfil do dono: {{ owner.username }}"/>
                 {% else %}
-                <img class="profile-image" src="{% static "assets/img/avatar.jpg" %}" alt="Foto de perfil do dono: {{ owner.username }}"/>
+                <img class="profile-image-contact" src="{% static "assets/img/avatar.jpg" %}" alt="Foto de perfil do dono: {{ owner.username }}"/>
                 {% endif %}
                 <h3 class="profile-name">{{owner.username}}</h3>
                 <p class="profile-role">Tutor atual</p>
@@ -25,14 +25,14 @@
             </div>
 
             <div class="profile-section">
-                <img class="profile-image" src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}"/>
+                <img class="profile-image-contact" src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}"/>
                 <h3 class="profile-name">{{ pet.name }}</h3>
                 <p class="profile-role">Pet para adoção</p>
             </div>
         </div>
 
         <div class="contact-info">
-            <div class="info-section">
+            <div class="info-section-page">
                 <h3 class="info-title"><i class="fas fa-address-card"></i> Informações de Contato</h3>
                 
                 <div class="info-item">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="info-section">
+            <div class="info-section-page">
                 <h3 class="info-title"><i class="fas fa-share-alt"></i> Redes Sociais</h3>
                 
                 <div class="info-item">
