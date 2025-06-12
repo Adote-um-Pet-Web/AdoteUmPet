@@ -55,7 +55,7 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    z-index: 2;
+    z-index: 0;
     gap: 10px;
 }
 
@@ -111,32 +111,5 @@
 @media (max-width: 1024px) {
     #bannerArea {
         height: 380px;
-    }
-}
-
-@media (max-width: 768px) {
-    #bannerArea {
-        height: 300px;
-        margin-top: 3.5rem;
-    }
-
-    .slider-nav {
-        padding: 10px 7px;
-    }
-}
-
-@media (max-width: 480px) {
-    #bannerArea {
-        height: 250px;
-        margin-top: 3.2rem;
-    }
-
-    #sliderStatus {
-        margin-top: 15px;
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
     }
 }
