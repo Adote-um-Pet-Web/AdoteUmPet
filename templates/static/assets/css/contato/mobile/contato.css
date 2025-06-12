@@ -1,13 +1,44 @@
-.contact-container{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-.contact-header{
-    width: calc(100% - 2rem);
-    align-self: center;
+.contact-wrapper {
     padding: 1rem;
 }
-.contact-button{
+
+.contact-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+    box-shadow: none;
     border-radius: 0;
+}
+
+.contact-header h1 {
+    font-size: 1.5rem;
+}
+
+.contact-profiles {
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-divider {
+    padding: 1rem 0;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+}
+
+.contact-info {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.info-section {
+    padding: 1.25rem;
+}
+
+.download-button {
+    width: 100%;
+    justify-content: center;
 }

@@ -2,62 +2,103 @@
 {% load static %}
 {% block content %}
 
+<div class="contact-wrapper" data-color="padrao" data-theme="light">
+    <div class="contact-card" id="contact-container">
+        <div class="contact-header">
+            <h1>Contatos para Adoção {% if pet.sex == "Female" %}da {% else %}do {% endif %} <span class="pet-name">{{ pet.name }}</span></h1>
+            <p class="contact-subtitle">Entre em contato com o atual tutor para mais informações</p>
+        </div>
 
-<div class="contact-container" id="contact-container">
-    <h1 class="contact-header">Contatos para a Adoção {% if pet.sex == "Female" %}da {% else %}do {% endif %} <span style="text-transform: capitalize; color:var(--color-main);">{{ pet.name }}</span></h1>
-    {% if owner.image_user_profile %}
-    <img
-        class="contact-photo"
-        src="{{ owner.image_user_profile.url }}"
-        alt="Foto de perfil do dono : {{ owner.username }}"
-    />
-    {% else %}
-    <img
-    class="contact-photo"
-    src="{% static "assets/img/avatar.jpg" %}"
-    alt="Foto de perfil do dono : {{ owner.username }}"/>
-    {% endif %}
-    <img 
-    src="{{ pet.images_pets.first.image_pet_profile.url }}"
-    alt="Foto de perfil do pet {{ pet.name }}" 
-    class="contact-photo"
-    />
+        <div class="contact-profiles">
+            <div class="profile-section">
+                {% if owner.image_user_profile %}
+                <img class="profile-image" src="{{ owner.image_user_profile.url }}" alt="Foto de perfil do dono: {{ owner.username }}"/>
+                {% else %}
+                <img class="profile-image" src="{% static "assets/img/avatar.jpg" %}" alt="Foto de perfil do dono: {{ owner.username }}"/>
+                {% endif %}
+                <h3 class="profile-name">{{owner.username}}</h3>
+                <p class="profile-role">Tutor atual</p>
+            </div>
 
-    <ul class="contact-details">
-        <li style="text-transform: capitalize;">
-            <span class="contact-label">Nome do atual dono:</span>
-            {{owner.username}}
-        </li>
-        <li><span class="contact-label">Email:</span> {{owner.email}}</li>
-        <li>
-            <span class="contact-label">Telefone:</span> 
-            {% if owner.phone_number %}
-            {{owner.phone_number}}
-            {% else %}
-            <p>Nenhum Telefone adicionado pelo usuario</p>
-            {% endif %}
-        </li>
-        <li>
-            <span class="contact-label">Instagram:</span>
-            {% if owner.instagram_field %}
-            <a href="https://www.instagram.com/{{owner.instagram_field}}">@{{owner.instagram_field}}</a>
-            {% else %}
-            <p>Nenhum Intagram adicionado pelo usuario</p>
-            {% endif %}
-        </li>
-        <li>
-            <span class="contact-label">Facebook:</span>
-            {% if owner.facebook_field %}
-            <a href="https://www.facebook.com/{{owner.facebook_field}}">@{{owner.facebook_field}}</a>
-            {% else %}
-            <p>Nenhum Facebook adicionado pelo usuario</p>
-            {% endif %}
-        </li>
-    </ul>
+            <div class="profile-divider">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+
+            <div class="profile-section">
+                <img class="profile-image" src="{{ pet.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pet.name }}"/>
+                <h3 class="profile-name">{{ pet.name }}</h3>
+                <p class="profile-role">Pet para adoção</p>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <div class="info-section">
+                <h3 class="info-title"><i class="fas fa-address-card"></i> Informações de Contato</h3>
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope info-icon"></i>
+                    <div>
+                        <p class="info-label">Email</p>
+                        <p class="info-value">{{owner.email}}</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone info-icon"></i>
+                    <div>
+                        <p class="info-label">Telefone</p>
+                        <p class="info-value">
+                            {% if owner.phone_number %}
+                            {{owner.phone_number}}
+                            {% else %}
+                            <span class="info-missing">Não informado</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3 class="info-title"><i class="fas fa-share-alt"></i> Redes Sociais</h3>
+                
+                <div class="info-item">
+                    <i class="fab fa-instagram info-icon"></i>
+                    <div>
+                        <p class="info-label">Instagram</p>
+                        <p class="info-value">
+                            {% if owner.instagram_field %}
+                            <a href="https://www.instagram.com/{{owner.instagram_field}}" target="_blank">@{{owner.instagram_field}}</a>
+                            {% else %}
+                            <span class="info-missing">Não informado</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fab fa-facebook-f info-icon"></i>
+                    <div>
+                        <p class="info-label">Facebook</p>
+                        <p class="info-value">
+                            {% if owner.facebook_field %}
+                            <a href="https://www.facebook.com/{{owner.facebook_field}}" target="_blank">@{{owner.facebook_field}}</a>
+                            {% else %}
+                            <span class="info-missing">Não informado</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="download-button" onclick="downloadImage()">
+        <i class="fas fa-download"></i>
+        Baixar Informações
+    </button>
 </div>
-        <button class="contact-button" onclick="downloadImage()">
-            Baixar Imagem
-        </button>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="{% static 'assets/js/userAdoptionContact.js' %}"></script>
