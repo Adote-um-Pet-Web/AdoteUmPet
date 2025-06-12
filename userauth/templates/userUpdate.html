@@ -1,7 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
-{% include "partials/configNav.html" %}
+{% extends "base.html" %} {% block content %} {% load static %} {% include "partials/configNav.html" %}
 
 <section class="configSection profile-edit-section">
     <div class="profile-header">
@@ -12,127 +9,193 @@
     <div class="profile-edit-container">
         <div class="profile-card">
             <h2><i class="fi fi-ss-idcard"></i> Informações Pessoais</h2>
-            
-            <form method="POST" enctype="multipart/form-data" class="profile-form">
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+                class="profile-form"
+            >
                 {% csrf_token %}
-                
+
                 <div class="form-groups">
                     <label for="username">Nome Completo</label>
                     <div class="input-with-icon">
                         <i class="fi fi-ss-user"></i>
-                        <input type="text" name="username" id="username" placeholder="Seu nome completo" value="{{ user.username }}" style="text-transform: capitalize;">
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="Seu nome completo"
+                            value="{{ user.username }}"
+                            style="text-transform: capitalize"
+                        />
                     </div>
                 </div>
-                
+
                 <div class="form-divider">
                     <span>Contatos</span>
                 </div>
-                
+
                 <div class="form-notice">
                     <i class="fi fi-ss-info"></i>
-                    <p>É necessário adicionar pelo menos o número de telefone para cadastrar um pet.</p>
+                    <p>
+                        É necessário adicionar pelo menos o número de telefone
+                        para cadastrar um pet.
+                    </p>
                 </div>
-                
+
                 <div class="form-groups">
                     <label for="instagram_field">Instagram</label>
                     <div class="input-with-icon">
                         <i class="fi fi-brands-instagram"></i>
-                        <input type="text" name="instagram_field" id="insta" placeholder="seu_usuario" value="{{ user.instagram_field|default:'' }}">
+                        <input
+                            type="text"
+                            name="instagram_field"
+                            id="insta"
+                            placeholder="seu_usuario"
+                            value="{{ user.instagram_field|default:'' }}"
+                        />
                     </div>
                 </div>
-                
+
                 <div class="form-groups">
                     <label for="facebook_field">Facebook</label>
                     <div class="input-with-icon">
                         <i class="fi fi-brands-facebook"></i>
-                        <input type="text" name="facebook_field" id="facebook" placeholder="seu_usuario" value="{{ user.facebook_field|default:'' }}">
+                        <input
+                            type="text"
+                            name="facebook_field"
+                            id="facebook"
+                            placeholder="seu_usuario"
+                            value="{{ user.facebook_field|default:'' }}"
+                        />
                     </div>
                 </div>
-                
+
                 <div class="form-groups">
                     <label for="phone_number">Telefone</label>
                     <div class="input-with-icon">
                         <i class="fi fi-ss-phone-call"></i>
-                        <input type="tel" name="phone_number" id="phone" placeholder="(00) 00000-0000" value="{{ user.phone_number|default:'' }}">
+                        <input
+                            type="tel"
+                            name="phone_number"
+                            id="phone"
+                            placeholder="(00) 00000-0000"
+                            value="{{ user.phone_number|default:'' }}"
+                        />
                     </div>
                 </div>
-                
+
                 <button type="submit" class="btn-primary btn-save">
                     <i class="fi fi-ss-check"></i> Salvar Alterações
                 </button>
             </form>
-            
+
             <!-- Mensagens de erro -->
-            <div id="error-messages" class="alert-message" style="display: {% if form.errors %}block{% else %}none{% endif %};">
+            <div
+                id="error-messages"
+                class="alert-message"
+                style="display: {% if form.errors %}block{% else %}none{% endif %};"
+            >
                 <div class="alert-header">
                     <i class="fi fi-ss-exclamation"></i>
                     <span>Corrija os erros abaixo</span>
-                    <button type="button" class="close-alert" aria-label="Close">
+                    <button
+                        type="button"
+                        class="close-alert"
+                        aria-label="Close"
+                    >
                         <i class="fi fi-ss-cross-small"></i>
                     </button>
                 </div>
-                
+
                 {% if form.errors %}
                 <ul class="error-list">
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    {% endfor %}
-                    {% for error in form.non_field_errors %}
-                        <li>{{ error }}</li>
+                    {% for field in form %} {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
                 {% endif %}
             </div>
         </div>
-        
+
+        <!-- Seção de Foto de Perfil -->
         <!-- Seção de Foto de Perfil -->
         <div class="profile-card">
             <h2><i class="fi fi-ss-camera"></i> Foto de Perfil</h2>
-            
-            <form id="photo-form" method="POST" enctype="multipart/form-data" class="profile-photo-form">
+
+            <form
+                id="photo-form"
+                method="POST"
+                enctype="multipart/form-data"
+                class="profile-photo-form"
+            >
                 {% csrf_token %}
-                
+
                 <div class="photo-upload-container">
-                    <div class="profile-image-container">
+                    <label for="changePhoto" class="profile-image-container">
                         {% if user.image_user_profile %}
-                            <img src="{{ user.image_user_profile.url }}" alt="Foto de perfil" class="profile-image" id="profileImagePreview">
+                        <img
+                            src="{{ user.image_user_profile.url }}"
+                            alt="Foto de perfil"
+                            class="profile-image"
+                            id="profileImagePreview"
+                        />
                         {% else %}
-                            <img src="{% static 'assets/img/avatar.jpg' %}" alt="Foto de perfil padrão" class="profile-image" id="profileImagePreview">
+                        <img
+                            src="{% static 'assets/img/avatar.jpg' %}"
+                            alt="Foto de perfil padrão"
+                            class="profile-image"
+                            id="profileImagePreview"
+                        />
                         {% endif %}
-                        
+
                         <div class="image-overlay">
                             <i class="fi fi-ss-camera"></i>
                             <span>Alterar foto</span>
                         </div>
-                    </div>
-                    
-                    <input type="file" name="image_user_profile" id="changePhoto" accept="image/*" class="hidden-file-input">
-                    
+                    </label>
+
+                    <input
+                        type="file"
+                        name="image_user_profile"
+                        id="changePhoto"
+                        accept="image/jpeg, image/png"
+                        class="hidden-file-input"
+                    />
+
                     <div class="photo-upload-info">
                         <p>Formatos suportados: JPG, PNG</p>
                         <p>Tamanho máximo: 5MB</p>
                     </div>
                 </div>
-                
+
                 <button type="submit" class="btn-primary btn-save">
                     <i class="fi fi-ss-check"></i> Salvar Foto
                 </button>
             </form>
         </div>
-        
+
         <!-- Seção de Exclusão de Conta -->
         <div class="profile-card danger-zone">
             <h2><i class="fi fi-ss-trash"></i> Zona de Perigo</h2>
-            
+
             <div class="danger-content">
                 <div class="danger-warning">
                     <i class="fi fi-ss-exclamation-triangle"></i>
-                    <p>A exclusão da conta é permanente e não pode ser desfeita. Todos os seus dados serão removidos.</p>
+                    <p>
+                        A exclusão da conta é permanente e não pode ser
+                        desfeita. Todos os seus dados serão removidos.
+                    </p>
                 </div>
-                
-                <a href="{% url 'userauths:user-delete' pk=user.pk %}" class="btn-danger" id="deleteProfile">
+
+                <a
+                    href="{% url 'userauths:user-delete' pk=user.pk %}"
+                    class="btn-danger"
+                    id="deleteProfile"
+                >
                     <i class="fi fi-ss-trash"></i> Excluir Minha Conta
                 </a>
             </div>
@@ -141,60 +204,63 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", function () {
         function preventAtSymbol(event) {
-            if (event.key === '@') {
+            if (event.key === "@") {
                 event.preventDefault();
             }
         }
-        
-        const instaInput = document.getElementById('insta');
-        const facebookInput = document.getElementById('facebook');
-        
-        if (instaInput) instaInput.addEventListener('keypress', preventAtSymbol);
-        if (facebookInput) facebookInput.addEventListener('keypress', preventAtSymbol);
-        
-        const fileInput = document.getElementById('changePhoto');
-        const imagePreview = document.getElementById('profileImagePreview');
-        
+
+        const instaInput = document.getElementById("insta");
+        const facebookInput = document.getElementById("facebook");
+
+        if (instaInput)
+            instaInput.addEventListener("keypress", preventAtSymbol);
+        if (facebookInput)
+            facebookInput.addEventListener("keypress", preventAtSymbol);
+
+        const fileInput = document.getElementById("changePhoto");
+        const imagePreview = document.getElementById("profileImagePreview");
+
         if (fileInput && imagePreview) {
-            fileInput.addEventListener('change', function() {
+            fileInput.addEventListener("change", function () {
                 const file = this.files[0];
                 if (file) {
                     const reader = new FileReader();
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         imagePreview.src = e.target.result;
-                    }
+                    };
                     reader.readAsDataURL(file);
                 }
             });
         }
-        
-        const closeButtons = document.querySelectorAll('.close-alert');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                this.closest('.alert-message').style.display = 'none';
+
+        const closeButtons = document.querySelectorAll(".close-alert");
+        closeButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                this.closest(".alert-message").style.display = "none";
             });
         });
-        
-        const phoneInput = document.getElementById('phone');
+
+        const phoneInput = document.getElementById("phone");
         if (phoneInput) {
-            phoneInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
+            phoneInput.addEventListener("input", function (e) {
+                let value = e.target.value.replace(/\D/g, "");
                 if (value.length > 11) value = value.substring(0, 11);
-                
+
                 if (value.length > 0) {
-                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
                     if (value.length > 10) {
-                        value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                        value = value.replace(/(\d{5})(\d)/, "$1-$2");
                     } else {
-                        value = value.replace(/(\d{4})(\d)/, '$1-$2');
+                        value = value.replace(/(\d{4})(\d)/, "$1-$2");
                     }
                 }
-                
+
                 e.target.value = value;
             });
         }
     });
 </script>
+<script src="{% static 'assets/js/profilePhotoUpdate.js' %}"></script>
 {% endblock content %}
