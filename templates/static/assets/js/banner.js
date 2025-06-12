@@ -1,5 +1,7 @@
+
+//banner
 document.addEventListener("DOMContentLoaded", function () {
-    const bannerArea = document.getElementById("bannerArea"); // Adicionado - estava faltando
+    const bannerArea = document.getElementById("bannerArea");
     const slidersContainer = document.getElementById("sliders");
     const slides = document.querySelectorAll(".slide");
     const sliderStatus = document.getElementById("sliderStatus");
