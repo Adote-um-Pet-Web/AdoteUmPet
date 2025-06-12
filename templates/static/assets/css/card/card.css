@@ -134,17 +134,12 @@
     opacity: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
     #cards {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
         padding: 1rem;
     }
-
-    .card {
-        min-height: 400px;
-    }
-
     .card img {
         height: 180px;
     }
@@ -167,17 +162,10 @@
     }
 
     .card {
-        min-height: 380px;
+        width: 100%;
+        max-width: 100%;
     }
-
-    .info {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-
-    .info p {
-        white-space: normal;
-    }
+    
 }
 
 .iconsPet {
