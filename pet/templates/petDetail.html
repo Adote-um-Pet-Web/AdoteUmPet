@@ -32,8 +32,13 @@
             <form method="post" action="{% url 'pets:toggle_favorited' pk=pet.pk %}" class="action-form">
                 {% csrf_token %}
                 <button type="submit" class="action-btn favorite-btn">
+                    {% if is_favorited %}
+                    <i class="fi fi-sr-heart" style="color:rgb(185, 0, 0);"></i>
+                    <span>Favoritado</span>
+                    {% else %}
                     <i class="fi fi-sr-heart"></i>
                     <span>Favoritar</span>
+                    {% endif %}
                 </button>
             </form>
 
