@@ -1,11 +1,9 @@
-/* Layout principal */
 .pet-profile {
     margin: 1rem auto;
     padding: 0 0.5rem;
     gap: 1rem;
 }
 
-/* Cabeçalho - versão mobile */
 .pet-header {
     flex-direction: column;
     text-align: center;
@@ -53,7 +51,6 @@
     margin: 0.2rem;
 }
 
-/* Ações */
 .pet-actions {
     justify-content: center;
     width: 100%;
@@ -68,13 +65,11 @@
     padding: 0.8rem;
 }
 
-/* Conteúdo */
 .pet-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
-/* Galeria */
 .gallery-thumbnails {
     grid-template-columns: repeat(2, 1fr);
 }
@@ -83,7 +78,6 @@
     height: 80px;
 }
 
-/* Informações */
 .info-list {
     grid-template-columns: 1fr;
     gap: 1.2rem;
@@ -93,8 +87,7 @@
     grid-column: 1;
 }
 
-/* Ajustes para telas muito pequenas */
-@media (max-width: 400px) {
+@media (max-width: 440px) {
     .pet-header {
         padding: 1.2rem 0.5rem;
     }
@@ -110,5 +103,10 @@
     .action-btn i {
         margin: 0;
         font-size: 1.2rem;
+    }
+}
+@media (max-width: 370px) {
+    .pet-basic-info{
+        gap: 0.3rem !important;
     }
 }

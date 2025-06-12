@@ -433,7 +433,6 @@
     }
 }
 
-/* Responsivo */
 @media (max-width: 1024px) {
     .pet-content {
         grid-template-columns: 1fr;
