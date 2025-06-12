@@ -75,7 +75,7 @@
 
 .pet-basic-info span {
     background-color: var(--color-card);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
