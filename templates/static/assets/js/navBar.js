@@ -1,4 +1,3 @@
-// abertura e fechamento do filtro
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#filtro").addEventListener("click", function () {
         var navbar = document.querySelector(".navbar");

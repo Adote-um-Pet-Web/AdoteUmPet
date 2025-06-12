@@ -34,7 +34,7 @@
     margin: 0;
 }
 
-.pet-name {
+.pet-name-contato {
     color: var(--color-main);
     text-transform: capitalize;
 }
