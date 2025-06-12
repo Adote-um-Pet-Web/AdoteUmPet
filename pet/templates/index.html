@@ -22,7 +22,7 @@
                         <img src="{{ pets.images_pets.first.image_pet_profile.url }}" alt="Foto de perfil do pet {{ pets.name }}">
                         <h1 class="pet-name">{{ pets.name }}</h1>
                         <div class="info">
-                            <p data-species="{{ pets.species }}" class="pet-species"> {% if pets.get_species_display == "cat" %}Gato {% else %}Cachorro{% endif %}</p>
+                            <p data-species="{{ pets.species }}" class="pet-species">{% if pet.species == "DOG" %}Cachorro{% else %}Gato{% endif %}</p>
                             <p data-breed="{{ pets.breed }}" class="pet-breed">{{ pets.breed }}</p>
                             <p  data-size="{{ pets.size }}" class="pet-size">{{ pets.get_size_display }}</p>
                             <p data-age="{{ pets.age }}" class="pet-age">{{ pets.age }} anos</p>
