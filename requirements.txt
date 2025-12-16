@@ -8,7 +8,7 @@ colorama==0.4.6
 cryptography==44.0.1
 defusedxml==0.7.1
 Django==5.0.13
-django-allauth==0.61.0
+django-allauth==65.13.0
 django-debug-toolbar==4.4.2
 django-jazzmin==3.0.0
 gunicorn==23.0.0
